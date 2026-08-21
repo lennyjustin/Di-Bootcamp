@@ -1,0 +1,111 @@
+# 1: Converting Lists into Dictionaries
+
+
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+
+# Combine using zip() and dict()
+result = dict(zip(keys, values))
+print(result)
+# 2: Cinemax #2
+
+family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
+
+total_cost = 0
+
+for name, age in family.items():
+    if age < 3:
+        price = 0
+    elif 3 <= age <= 12:
+        price = 10
+    else:
+        price = 15
+    
+    print(f"{name.capitalize()} pays: ${price}")
+    total_cost += price
+
+print(f"Total Cost: ${total_cost}")
+
+# Bonus: Interactive input
+user_family = {}
+while True:
+    name = input("Enter family member name (or 'done' to finish): ")
+    if name.lower() == 'done':
+        break
+    age = int(input(f"Enter age for {name}: "))
+    user_family[name] = age
+
+user_total = 0
+for name, age in user_family.items():
+    price = 0 if age < 3 else (10 if 3 <= age <= 12 else 15)
+    user_total += price
+
+print(f"User Family Total Cost: ${user_total}")
+# 3: Zara
+
+# Create initial dictionary
+brand = {
+    "name": "Zara",
+    "creation_date": 1975,
+    "creator_name": "Amancio Ortega Gaona",
+    "type_of_clothes": ["men", "women", "children", "home"],
+    "international_competitors": ["Gap", "H&M", "Benetton"],
+    "number_stores": 7000,
+    "major_color": {
+        "France": "blue",
+        "Spain": "red",
+        "US": ["pink", "green"]
+    }
+}
+
+# 1. Change number_stores to 2
+brand["number_stores"] = 2
+
+# 2. Print sentence about clients
+print(f"Zara produces clothing for {', '.join(brand['type_of_clothes'])}.")
+
+# 3. Add country_creation key
+brand["country_creation"] = "Spain"
+
+# 4. Add "Desigual" if international_competitors exists
+if "international_competitors" in brand:
+    brand["international_competitors"].append("Desigual")
+
+# 5. Delete creation_date key
+brand.pop("creation_date", None)
+
+# 6. Print last item in international_competitors
+print("Last competitor:", brand["international_competitors"][-1])
+
+# 7. Print major colors in US
+print("US major colors:", brand["major_color"]["US"])
+
+# 8. Print number of keys
+print("Number of keys:", len(brand))
+
+# 9. Print all keys
+print("Keys:", list(brand.keys()))
+
+# Bonus: Merge dictionaries
+more_on_zara = {
+    "creation_date": 1975,
+    "number_stores": 10000
+}
+brand.update(more_on_zara)
+print("Merged brand dictionary:", brand)
+# 4: Disney Characters
+
+
+users = ["Mickey", "Minnie", "Donald", "Ariel", "Pluto"]
+
+# 1. Map characters to indices
+dict1 = {char: i for i, char in enumerate(users)}
+print(dict1)
+
+# 2. Map indices to characters
+dict2 = {i: char for i, char in enumerate(users)}
+print(dict2)
+
+# 3. Alphabetically sorted mapped to indices
+dict3 = {char: i for i, char in enumerate(sorted(users))}
+print(dict3)

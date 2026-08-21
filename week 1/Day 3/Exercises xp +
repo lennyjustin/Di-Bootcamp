@@ -1,0 +1,111 @@
+# 1: Student Grade Summary
+
+student_grades = {
+    "Alice": [88, 92, 100],
+    "Bob": [75, 78, 80],
+    "Charlie": [92, 90, 85],
+    "Dana": [83, 88, 92],
+    "Eli": [78, 80, 72]
+}
+
+# 1. Calculate average grade for each student
+student_averages = {}
+for name, grades in student_grades.items():
+    student_averages[name] = sum(grades) / len(grades)
+
+# 2. Assign letter grades based on scale
+student_letter_grades = {}
+for name, avg in student_averages.items():
+    if avg >= 90:
+        grade = "A"
+    elif avg >= 80:
+        grade = "B"
+    elif avg >= 70:
+        grade = "C"
+    elif avg >= 60:
+        grade = "D"
+    else:
+        grade = "F"
+    student_letter_grades[name] = grade
+
+# 3. Calculate class average
+class_average = sum(student_averages.values()) / len(student_averages)
+
+# 4. Print results
+print(f"Class Average: {class_average:.2f}\n")
+for name in student_grades:
+    print(f"{name}: Average = {student_averages[name]:.2f}, Grade = {student_letter_grades[name]}")
+# 2: Advanced Data Manipulation and Analysis
+
+sales_data = [
+    {"customer_id": 1, "product": "Smartphone", "price": 600, "quantity": 1, "date": "2023-04-03"},
+    {"customer_id": 2, "product": "Laptop", "price": 1200, "quantity": 1, "date": "2023-04-04"},
+    {"customer_id": 1, "product": "Laptop", "price": 1000, "quantity": 1, "date": "2023-04-05"},
+    {"customer_id": 2, "product": "Smartphone", "price": 500, "quantity": 2, "date": "2023-04-06"},
+    {"customer_id": 3, "product": "Headphones", "price": 150, "quantity": 4, "date": "2023-04-07"},
+    {"customer_id": 3, "product": "Smartphone", "price": 550, "quantity": 1, "date": "2023-04-08"},
+    {"customer_id": 1, "product": "Headphones", "price": 100, "quantity": 2, "date": "2023-04-09"},
+]
+
+# 1. Total Sales Calculation
+total_sales = {}
+for item in sales_data:
+    product = item["product"]
+    revenue = item["price"] * item["quantity"]
+    total_sales[product] = total_sales.get(product, 0) + revenue
+
+print("Total Sales per Product:", total_sales)
+
+# 2. Customer Spending Profile
+customer_spending = {}
+for item in sales_data:
+    customer_id = item["customer_id"]
+    revenue = item["price"] * item["quantity"]
+    customer_spending[customer_id] = customer_spending.get(customer_id, 0) + revenue
+
+print("Customer Spending Profile:", customer_spending)
+
+# 3. Sales Data Enhancement
+for item in sales_data:
+    item["total_price"] = item["price"] * item["quantity"]
+
+# 4. High-Value Transactions (> $500 sorted descending)
+high_value_transactions = [item for item in sales_data if item["total_price"] > 500]
+high_value_transactions.sort(key=lambda x: x["total_price"], reverse=True)
+
+print("High-Value Transactions:", high_value_transactions)
+
+# 5. Customer Loyalty Identification (> 1 purchase)
+purchase_counts = {}
+for item in sales_data:
+    cid = item["customer_id"]
+    purchase_counts[cid] = purchase_counts.get(cid, 0) + 1
+
+loyal_customers = [cid for cid, count in purchase_counts.items() if count > 1]
+print("Loyal Customers:", loyal_customers)
+
+# Bonus: Insights and Analysis
+# a. Average transaction value per category
+avg_transaction_value = {}
+for product in total_sales:
+    transactions = [t for t in sales_data if t["product"] == product]
+    avg_transaction_value[product] = total_sales[product] / len(transactions)
+
+# b. Most popular product based on quantity sold
+product_quantities = {}
+for item in sales_data:
+    prod = item["product"]
+    product_quantities[prod] = product_quantities.get(prod, 0) + item["quantity"]
+
+most_popular = max(product_quantities, key=product_quantities.get)
+
+print("Average Transaction Value:", avg_transaction_value)
+print("Most Popular Product:", most_popular)
+
+# Marketing Insights
+"""
+Insights:
+1. Headphones are the most popular product by quantity sold, making them ideal candidates for bundles or promotional cross-selling alongside high-value items like Laptops.
+2. Laptops have high transaction values and total sales; target marketing should emphasize quality and long-term value to attract customers ready for major upgrades.
+3. Identifying loyal customers (Customer IDs 1, 2, and 3) enables targeted rewards programs or personalized email campaigns to boost retention.
+"""
