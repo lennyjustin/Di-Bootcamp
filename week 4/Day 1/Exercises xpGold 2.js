@@ -27,12 +27,12 @@ function repeat(str, n = 1) {
 
 // Exercise 5: Turtle & Rabbit
 const startLine = '     ||<- Start line';
-let turtle = '🐢';
-let rabbit = '🐇';
+let turtle = 'B';
+let rabbit = 'R';
 
 turtle = turtle.trim().padEnd(9, '=');
 rabbit = rabbit.trim().padEnd(9, '=');
 
 // To line them visually under the start line as in the expected output:
-turtle = '       🐢';
-rabbit = '       🐇';
+turtle = '       B';
+rabbit = '       R';
