@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple drum machine">
+    <title>Drum Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="drum-machine">
+        <h1>Drum Machine</h1>
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="pulse Room home">
+                <span class="brand-mark"></span></span></span><span></span>
+            </a>
+            <section class="intro">
+            <div>
+                <p class="eyebrow">DRUM LAB / 001 </p>
+                <h1>make the room <br><em>move</em></h1>
+            </div>
+            <p class="intro-copy">Tap a pad or use your keyboard to play a sound. You can also use the arrow keys to navigate between pads.</p>
+             </section>  
+             <section class="controls">
+                <div class="control">
+                    <label for="volume">Volume</label>
+                    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+                </div>
+                <div class="control">
+                    <label for="speed">Speed</label>
+                    <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+                </div>
+            </div>
+            <div class="pads" id="pads"> 
+            
+    <button class="pad" data-key="A">A</button>
+    <button class="pad" data-key="S">S</button>
+    <button class="pad" data-key="D">D</button>
+    <button class="pad" data-key="F">F</button>
+    <button class="pad" data-key="J">J</button>
+    <button class="pad" data-key="K">K</button>
+    <button class="pad" data-key="L">L</button>
+    <button class="pad" data-key=";">;</button>
+  </div>
+
+  <!-- Audio elements: update src to match your sounds/ folder -->
+  <audio data-key="A" src="sounds/clap.wav"></audio>
+  <audio data-key="S" src="sounds/hihat.wav"></audio>
+  <audio data-key="D" src="sounds/kick.wav"></audio>
+  <audio data-key="F" src="sounds/openhat.wav"></audio>
+  <audio data-key="J" src="sounds/boom.wav"></audio>
+  <audio data-key="K" src="sounds/ride.wav"></audio>
+  <audio data-key="L" src="sounds/snare.wav"></audio>
+  <audio data-key=";" src="sounds/tom.wav"></audio>
+
+  <script src="script.js"></script>
+            </div>
+    </main>
+</body>
+</html>

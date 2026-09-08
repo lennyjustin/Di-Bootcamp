@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1: Calculate the Tip</title>
+    <style>
+        #totalTip {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid green;
+            background-color: #f0fff0;
+        }
+
+        #each {
+            display: block;
+        }
+
+        label, input, select {
+            display: block;
+            margin: 10px 0;
+        }
+
+        #calculate {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tip Calculator</h1>
+
+<label for="billAmt">Bill Amount ($)</label>
+<input type="number" id="billAmt" placeholder="Enter bill amount">
+
+<label for="serviceQual">Service Quality</label>
+<select id="serviceQual">
+    <option value="0.25">Excellent (25%)</option>
+    <option value="0.20">Good (20%)</option>
+    <option value="0.15">Fair (15%)</option>
+    <option value="0.10">Poor (10%)</option>
+    <option value="0">Terrible (0%)</option>
+</select>
+
+<label for="numOfPeople">Number of People</label>
+<input type="number" id="numOfPeople" placeholder="Enter number of people">
+
+<button id="calculate">Calculate Tip</button>
+
+<div id="totalTip">
+    <p>Total tip per person: $<span id="tip"></span></p>
+    <p id="each">Each person should pay this amount.</p>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

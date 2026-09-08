@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge: Mad Libs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 180px;
+            margin: 8px 0;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #shuffleBtn {
+            background-color: #2196F3;
+            margin-left: 10px;
+        }
+
+        #shuffleBtn:hover {
+            background-color: #1976D2;
+        }
+
+        #story {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            display: none;
+        }
+
+        #story.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mad Libs</h1>
+
+    <form id="libform">
+        <label for="noun">Noun:</label>
+        <input type="text" id="noun" placeholder="e.g., elephant"><br>
+
+        <label for="adjective">Adjective:</label>
+        <input type="text" id="adjective" placeholder="e.g., purple"><br>
+
+        <label for="person">Someone's Name:</label>
+        <input type="text" id="person" placeholder="e.g., John"><br>
+
+        <label for="verb">Verb:</label>
+        <input type="text" id="verb" placeholder="e.g., dancing"><br>
+
+        <label for="place">A place:</label>
+        <input type="text" id="place" placeholder="e.g., Paris"><br>
+
+        <button type="submit" id="lib-button">Lib it!</button>
+        <button type="button" id="shuffleBtn">Shuffle</button>
+    </form>
+
+    <p>Generated story:</p>
+    <div id="story">
+        <span id="storyText"></span>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
