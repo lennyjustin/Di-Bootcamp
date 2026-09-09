@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+<body>
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="lastName" placeholder="Last name" required>
+    <button type="submit">Send</button>
+  </form>
+
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("userForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const user = {
+        name: document.getElementById("name").value,
+        lastName: document.getElementById("lastName").value
+      };
+
+      document.getElementById("output").textContent = JSON.stringify(user);
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
