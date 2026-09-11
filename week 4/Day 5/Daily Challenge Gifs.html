@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Gifs</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            isolation: isolate;
+            min-height: 100vh;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+            color: #f8fbff;
+            background: linear-gradient(-45deg, #171044, #293b83, #12616a, #57245e);
+            background-size: 400% 400%;
+            animation: backgroundFlow 18s ease infinite;
+        }
+
+        body::before,
+        body::after {
+            position: fixed;
+            z-index: -1;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            content: "";
+            filter: blur(1rem);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        body::before {
+            top: 5%;
+            left: 5%;
+            background: #d75cff;
+            animation: floatGlow 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            right: 5%;
+            bottom: 5%;
+            background: #43f4dc;
+            animation: floatGlow 15s ease-in-out infinite alternate-reverse;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        input,
+        button {
+            border: 1px solid rgb(255 255 255 / 25%);
+            border-radius: 0.5rem;
+            font: inherit;
+            padding: 0.7rem 1rem;
+        }
+
+        input {
+            color: #17203a;
+            background: rgb(255 255 255 / 92%);
+        }
+
+        button {
+            color: white;
+            background: #5b4bdb;
+            cursor: pointer;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        button:hover {
+            background: #4636c4;
+            transform: translateY(-2px);
+        }
+
+        #gif-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gif-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            width: 250px;
+            padding: 0.75rem;
+            border: 1px solid rgb(255 255 255 / 22%);
+            border-radius: 0.75rem;
+            background: rgb(255 255 255 / 13%);
+            box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 20%);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+        }
+
+        .gif-card img {
+            width: 100%;
+            height: 250px;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+
+        #status {
+            min-height: 1.5rem;
+        }
+
+        .error {
+            color: #ffb4c0;
+        }
+
+        @keyframes backgroundFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatGlow {
+            from { transform: translate3d(-1rem, -1rem, 0) scale(0.9); }
+            to { transform: translate3d(2rem, 2rem, 0) scale(1.15); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            body::before,
+            body::after,
+            button {
+                animation: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Gifs</h1>
+
+    <form id="gif-form">
+        <input id="gif-input" type="text" placeholder="Enter a category" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <button id="delete-all" type="button">DELETE ALL</button>
+    <p id="status" aria-live="polite"></p>
+    <section id="gif-container" aria-live="polite"></section>
+
+    <script src="Daily Challenge Gifs.js"></script>
+</body>
+</html>

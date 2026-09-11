@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Promise.all()</title>
+    <style>
+        :root {
+            font-family: Arial, sans-serif;
+            color: #17203a;
+            background: #120d32;
+        }
+
+        body {
+            position: relative;
+            isolation: isolate;
+            max-width: 760px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: linear-gradient(160deg, #20134f, #f28c8c 48%, #ffd27f);
+        }
+
+        body::before {
+            position: fixed;
+            z-index: -2;
+            inset: 0;
+            content: "";
+            background:
+                radial-gradient(circle at 78% 18%, rgb(255 244 184 / 80%) 0 4rem, transparent 4.2rem),
+                linear-gradient(to top, rgb(18 13 50 / 85%) 0 18%, transparent 50%);
+            pointer-events: none;
+        }
+
+        body::after {
+            position: fixed;
+            z-index: -1;
+            right: 8%;
+            bottom: 6%;
+            width: 120px;
+            height: 230px;
+            content: "";
+            border-radius: 50% 50% 24% 24%;
+            background:
+                radial-gradient(ellipse at 50% 22%, #f7c6a4 0 15%, transparent 15.5%),
+                radial-gradient(ellipse at 50% 16%, #3a245d 0 28%, transparent 28.5%),
+                linear-gradient(105deg, transparent 0 26%, #f1b24d 27% 31%, transparent 32%),
+                linear-gradient(75deg, transparent 0 68%, #f1b24d 69% 73%, transparent 74%),
+                linear-gradient(90deg, #35225d 0 100%);
+            box-shadow: 0 0 0 8px rgb(255 255 255 / 8%), 0 1rem 3rem rgb(18 13 50 / 35%);
+            opacity: 0.88;
+            transform: rotate(-5deg);
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 0.5rem 1.5rem rgb(34 43 90 / 12%);
+        }
+
+        fieldset {
+            display: grid;
+            gap: 0.6rem;
+            border: 1px solid #c6cbea;
+            border-radius: 0.5rem;
+        }
+
+        input,
+        button {
+            border: 1px solid #c6cbea;
+            border-radius: 0.5rem;
+            font: inherit;
+            padding: 0.65rem 0.8rem;
+        }
+
+        button {
+            color: white;
+            background: #5b4bdb;
+            border-color: #5b4bdb;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4636c4;
+        }
+
+        #results {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-card {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 0.5rem 1.5rem rgb(34 43 90 / 12%);
+        }
+
+        #status {
+            min-height: 1.5rem;
+        }
+
+        .error {
+            color: #b00020;
+        }
+
+        a {
+            color: #24134f;
+            font-weight: 700;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::after {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sunrise Times</h1>
+    <p>Enter coordinates for two cities. Both sunrise times appear only after both requests resolve.</p>
+
+    <form id="sunrise-form">
+        <fieldset>
+            <legend>First city</legend>
+            <label for="city-one-name">Name</label>
+            <input id="city-one-name" value="Paris" required>
+            <label for="city-one-lat">Latitude</label>
+            <input id="city-one-lat" type="number" step="any" value="48.864716" required>
+            <label for="city-one-lng">Longitude</label>
+            <input id="city-one-lng" type="number" step="any" value="2.349014" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Second city</legend>
+            <label for="city-two-name">Name</label>
+            <input id="city-two-name" value="New York" required>
+            <label for="city-two-lat">Latitude</label>
+            <input id="city-two-lat" type="number" step="any" value="40.730610" required>
+            <label for="city-two-lng">Longitude</label>
+            <input id="city-two-lng" type="number" step="any" value="-73.935242" required>
+        </fieldset>
+
+        <button type="submit">Find sunrise times</button>
+    </form>
+
+    <p id="status" aria-live="polite"></p>
+    <section id="results" aria-live="polite"></section>
+    <p><a href="https://sunrise-sunset.org/" target="_blank" rel="noopener noreferrer">Data by Sunrise-Sunset.org</a></p>
+
+    <script src="Daily Challenge Promise all.js"></script>
+</body>
+</html>
