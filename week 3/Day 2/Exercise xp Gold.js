@@ -78,4 +78,3 @@ console.log(
         3
     )
 ); // true
-<script src="./Exercise xp Gold.html"></script>

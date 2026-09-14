@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="converter">
+    <p class="eyebrow">LIVE EXCHANGE RATES</p>
+    <h1>Currency Converter</h1>
+    <p class="intro">Convert money quickly with current rates from ExchangeRate-API.</p>
+
+    <form id="converter-form">
+      <label for="amount">Amount</label>
+      <input id="amount" type="number" min="0" step="any" value="1" required>
+
+      <div class="currency-row">
+        <div>
+          <label for="from-currency">From</label>
+          <select id="from-currency" required disabled><option>Loading currencies...</option></select>
+        </div>
+        <button id="switch-button" class="switch-button" type="button" aria-label="Switch currencies" title="Switch currencies" disabled>⇄</button>
+        <div>
+          <label for="to-currency">To</label>
+          <select id="to-currency" required disabled><option>Loading currencies...</option></select>
+        </div>
+      </div>
+
+      <button id="convert-button" class="convert-button" type="submit" disabled>Load currencies first</button>
+    </form>
+
+    <section id="result" class="result" aria-live="polite">
+      <p>Choose two currencies to get started.</p>
+    </section>
+    <p id="status" class="status" role="status"></p>
+    <p class="note">
+      Powered by <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a><br>
+      <a href="https://app.exchangerate-api.com/activate-account/resent" target="_blank" rel="noopener noreferrer">Activate or resend account email</a>
+    </p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

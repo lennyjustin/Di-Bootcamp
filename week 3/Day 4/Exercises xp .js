@@ -139,11 +139,7 @@ console.log(kilogramsToGramsArrow(2));
 })(3, "Amina", "Nairobi", "software builder");
 // You will be a software builder in Nairobi, and married to Amina with 3 kids.
 // Exercise 7: Welcome
-// HTML
-// xml
-<nav id="navbar"></nav>
-// JavaScript
-// js
+// Add <nav id="navbar"></nav> to the HTML page before running this code.
 (function (userName) {
     const userDiv = document.createElement("div");
 
@@ -162,9 +158,7 @@ console.log(kilogramsToGramsArrow(2));
 // This adds a new div to the navbar containing John’s name and a profile image.
 
 
-<div id="juice"></div>
-JavaScript
-js
+// Add <div id="juice"></div> to the HTML page before running this code.
 function makeJuice(size) {
     function addIngredients(
         firstIngredient,
@@ -184,7 +178,6 @@ function makeJuice(size) {
 
 makeJuice("large");
 // Part II
-js
 function makeJuice(size) {
     const ingredients = [];
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Discover random Star Wars characters using the SWAPI.">
+	<title>Star Wars Web App</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<main class="app-shell">
+		<header class="hero">
+			<p class="eyebrow"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> SWAPI DATABASE</p>
+			<h1>STAR WARS</h1>
+			<p class="subtitle">Explore a galaxy of characters, one random discovery at a time.</p>
+		</header>
+
+		<section class="character-card" aria-live="polite">
+			<div class="card-glow" aria-hidden="true"></div>
+			<div id="character-content" class="character-content">
+				<div class="placeholder-icon" aria-hidden="true"><i class="fa-solid fa-jedi"></i></div>
+				<p class="placeholder-text">Click the button to discover a character</p>
+			</div>
+		</section>
+
+		<button id="discover-button" class="discover-button" type="button">
+			<i class="fa-solid fa-shuffle" aria-hidden="true"></i>
+			<span>Find Someone</span>
+		</button>
+
+		<p class="data-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Data provided by the Star Wars API</p>
+	</main>
+
+	<script src="../Script.js"></script>
+</body>
+</html>

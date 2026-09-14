@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover Pokémon with the PokéAPI.">
+  <title>Pokédex Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">POKÉAPI DATABASE</p>
+      <h1>Pokédex Explorer</h1>
+      <p>Search by name or number, or discover a random Pokémon.</p>
+    </header>
+
+    <form id="search-form" class="search-bar">
+      <label class="sr-only" for="search-input">Pokémon name or number</label>
+      <input id="search-input" type="search" placeholder="e.g. pikachu or 25" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+
+    <button id="random-button" class="random-button" type="button">Discover Random Pokémon</button>
+
+    <section id="pokemon-card" class="pokemon-card" aria-live="polite">
+      <div class="empty-state">
+        <div class="pokeball" aria-hidden="true"></div>
+        <p>Search for a Pokémon to begin your adventure.</p>
+      </div>
+    </section>
+
+    <nav class="navigation" aria-label="Pokémon navigation">
+      <button id="previous-button" class="nav-button" type="button" aria-label="Previous Pokémon">←</button>
+      <button id="next-button" class="nav-button" type="button" aria-label="Next Pokémon">→</button>
+    </nav>
+
+    <p class="credit">Data provided by <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
