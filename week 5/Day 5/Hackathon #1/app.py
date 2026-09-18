@@ -9,20 +9,24 @@ from openai import OpenAI
 load_dotenv()
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
-SUBJECTS = [
-    "History",
-    "Biology",
-    "Mathematics",
-    "Geography",
-    "English",
-    "Computer Studies",
-]
-
-
 def load_demo_content() -> dict[str, Any]:
     demo_path = os.path.join(os.path.dirname(__file__), "data", "demo_content.json")
     with open(demo_path, "r", encoding="utf-8") as file:
         return json.load(file)
+
+
+def load_curriculum_guide() -> dict[str, Any]:
+    guide_path = os.path.join(os.path.dirname(__file__), "data", "curriculum_guide.json")
+    with open(guide_path, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+
+def curriculum_subjects() -> list[str]:
+    return [
+        subject
+        for group in load_curriculum_guide()["groups"]
+        for subject in group["subjects"]
+    ]
 
 
 def validate_learning_content(content: Any) -> dict[str, Any]:
@@ -195,6 +199,11 @@ def health_check():
     return jsonify({"status": "ok", "app": "SomaSmart"})
 
 
+@app.route("/api/curriculum")
+def curriculum():
+    return jsonify(load_curriculum_guide())
+
+
 @app.route("/api/learn", methods=["POST"])
 def learn():
     data = request.get_json(silent=True) or {}
@@ -210,7 +219,7 @@ def learn():
     if len(topic) > 200:
         return jsonify({"error": "Topic is too long. Please keep it under 200 characters."}), 400
 
-    if subject not in SUBJECTS:
+    if subject not in curriculum_subjects():
         return jsonify({"error": "Please choose a valid subject."}), 400
 
     try:

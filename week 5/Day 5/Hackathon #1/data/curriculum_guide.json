@@ -1,0 +1,68 @@
+{
+  "title": "Kenya secondary curriculum guide",
+  "intro": "Explore learning areas used in Kenya's secondary and Senior School curriculum, then choose a subject to build a lesson.",
+  "updated_note": "Subject groupings are based on the KICD Grade 10 and Grade 11 curriculum-design pages. Confirm the current official design before making school or examination decisions.",
+  "groups": [
+    {
+      "name": "Languages",
+      "description": "Communication, reading, writing and language development.",
+      "subjects": ["English", "Kiswahili", "Arabic", "French", "German"]
+    },
+    {
+      "name": "Pure Sciences",
+      "description": "Scientific understanding, investigation and evidence-based thinking.",
+      "subjects": ["Biology", "Chemistry", "Physics"]
+    },
+    {
+      "name": "Applied Sciences",
+      "description": "Science and technology applied to everyday life, health and practical problem-solving.",
+      "subjects": ["Agriculture", "Home Science", "Computer Studies"]
+    },
+    {
+      "name": "Humanities",
+      "description": "People, places, history, citizenship and society.",
+      "subjects": ["History and Government", "Geography", "Business Studies"]
+    },
+    {
+      "name": "Religious Education",
+      "description": "Faith, values, ethics and responsible participation in society.",
+      "subjects": ["Christian Religious Education", "Islamic Religious Education", "Hindu Religious Education"]
+    },
+    {
+      "name": "Arts & Sports",
+      "description": "Creative expression, performance, wellbeing and physical development.",
+      "subjects": ["Art and Design", "Music", "Sports and Physical Education"]
+    },
+    {
+      "name": "Technical Studies",
+      "description": "Design, making, digital skills and practical career-oriented learning.",
+      "subjects": ["Technical Studies", "Building and Construction", "Electricity", "Woodwork", "Metalwork"]
+    }
+  ],
+  "resources": [
+    {
+      "name": "KICD curriculum designs",
+      "description": "Official curriculum-design landing page for regular and special-needs learners.",
+      "url": "https://kicd.ac.ke/curriculum-designs/",
+      "source": "Kenya Institute of Curriculum Development"
+    },
+    {
+      "name": "KICD Grade 10 designs",
+      "description": "Official Grade 10 learning-area pages.",
+      "url": "https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-ten/",
+      "source": "Kenya Institute of Curriculum Development"
+    },
+    {
+      "name": "KICD Grade 11 designs",
+      "description": "Official Grade 11 learning-area pages.",
+      "url": "https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-eleven/",
+      "source": "Kenya Institute of Curriculum Development"
+    },
+    {
+      "name": "Secondary syllabus collection",
+      "description": "A subject-by-subject syllabus index. Use KICD as the authoritative reference where versions differ.",
+      "url": "https://educationnewshub.co.ke/syllabus-for-all-secondary-schools-per-subjects-latest-syllabus/",
+      "source": "Education News Hub"
+    }
+  ]
+}

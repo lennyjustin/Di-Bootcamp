@@ -15,6 +15,7 @@ SomaSmart is a simple AI-powered study companion that explains a topic, highligh
 - Five-question quiz
 - Results screen with revision advice
 - Demo fallback without an API key
+- Kenya curriculum guide with KICD learning areas and resource links
 
 ## Tech stack
 - Python 3
@@ -48,3 +49,14 @@ The Flask server listens on all network interfaces. Windows Firewall may ask for
 5. Start the quiz
 6. Answer all questions
 7. View the final score
+
+## Curriculum resources
+
+The home page includes learning areas based on the KICD Grade 10 and Grade 11 curriculum-design pages. It links learners to:
+
+- [KICD curriculum designs](https://kicd.ac.ke/curriculum-designs/)
+- [KICD Grade 10 designs](https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-ten/)
+- [KICD Grade 11 designs](https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-eleven/)
+- [Secondary subject syllabus index](https://educationnewshub.co.ke/syllabus-for-all-secondary-schools-per-subjects-latest-syllabus/)
+
+The links are provided for orientation and revision. Always confirm the latest official curriculum design with KICD or your school.

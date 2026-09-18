@@ -28,11 +28,54 @@ const feedbackMessage = document.getElementById('feedback-message');
 const revisionBox = document.getElementById('revision-box');
 const tryAnotherBtn = document.getElementById('try-another-btn');
 const reviewLessonBtn = document.getElementById('review-lesson-btn');
+const curriculumGroups = document.getElementById('curriculum-groups');
+const curriculumResources = document.getElementById('curriculum-resources');
 
 let currentLesson = null;
 let currentQuestionIndex = 0;
 let selectedAnswers = [];
 let answeredQuestions = [];
+
+function renderCurriculumGuide(guide) {
+  curriculumGroups.innerHTML = guide.groups.map((group) => `
+    <article class="curriculum-card">
+      <div class="curriculum-card-topline">
+        <span class="curriculum-icon">${group.name.charAt(0)}</span>
+        <h3>${group.name}</h3>
+      </div>
+      <p>${group.description}</p>
+      <div class="subject-tags">
+        ${group.subjects.map((subject) => `
+          <button class="subject-tag" type="button" data-subject="${subject}">${subject}</button>
+        `).join('')}
+      </div>
+    </article>
+  `).join('');
+
+  curriculumResources.innerHTML = guide.resources.map((resource) => `
+    <a class="resource-link" href="${resource.url}" target="_blank" rel="noopener noreferrer">
+      <span>${resource.name}</span>
+      <small>${resource.source} ↗</small>
+    </a>
+  `).join('');
+
+  document.querySelectorAll('.subject-tag').forEach((button) => {
+    button.addEventListener('click', () => {
+      subjectInput.value = button.dataset.subject;
+      topicInput.focus();
+      topicInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+}
+
+function loadCurriculumGuide() {
+  fetch('/api/curriculum')
+    .then((response) => response.json())
+    .then(renderCurriculumGuide)
+    .catch(() => {
+      curriculumGroups.innerHTML = '<p class="muted-text">The curriculum guide is temporarily unavailable.</p>';
+    });
+}
 
 function showScreen(screenName) {
   Object.entries(screens).forEach(([name, screen]) => {
@@ -269,3 +312,4 @@ reviewLessonBtn.addEventListener('click', () => {
 });
 
 showScreen('home');
+loadCurriculumGuide();
