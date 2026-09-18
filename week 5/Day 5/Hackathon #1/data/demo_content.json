@@ -1,0 +1,72 @@
+{
+  "subject": "History",
+  "title": "Causes of the First World War",
+  "explanation": "The First World War began in 1914 after years of tension in Europe. Many countries had built large armies and formed alliances, which made conflict more likely. National pride, competition for colonies, and fear of other countries all made the situation worse. The assassination of Archduke Franz Ferdinand of Austria-Hungary in 1914 triggered a chain reaction, and countries began mobilising for war.",
+  "key_points": [
+    "Europe was divided into rival alliance systems that increased tension.",
+    "Countries competed for land, power, and resources around the world.",
+    "Nationalism made people feel strongly about their own country and suspicious of rivals.",
+    "The assassination of Archduke Franz Ferdinand triggered the outbreak of war.",
+    "The war spread quickly because many nations were already prepared to defend their allies."
+  ],
+  "example": "Imagine two students in the same classroom who are always arguing and have already chosen sides. If one of them is insulted, the argument may spread quickly because everyone is already on one side or the other. In the same way, European countries were already divided, so one event caused a much larger conflict.",
+  "questions": [
+    {
+      "question": "Which event is most closely linked with the start of the First World War?",
+      "options": [
+        "The Battle of Britain",
+        "The assassination of Archduke Franz Ferdinand",
+        "The Great Fire of London",
+        "The signing of the Magna Carta"
+      ],
+      "answer": 1,
+      "explanation": "The assassination of Archduke Franz Ferdinand in 1914 is the event that triggered the outbreak of war after years of tension."
+    },
+    {
+      "question": "Why were alliances important in causing the war?",
+      "options": [
+        "They made countries richer than before",
+        "They meant a conflict between two countries could quickly involve others",
+        "They removed all danger of war",
+        "They convinced citizens to stop fighting"
+      ],
+      "answer": 1,
+      "explanation": "Alliances meant countries were linked to one another, so a local crisis could spread into a much larger war."
+    },
+    {
+      "question": "Which of the following was a major cause of tension in Europe before 1914?",
+      "options": [
+        "A shortage of food in every country",
+        "Competition for colonies and global influence",
+        "The end of all monarchies",
+        "The invention of the internet"
+      ],
+      "answer": 1,
+      "explanation": "European powers competed for colonies and influence, which increased rivalry and distrust."
+    },
+    {
+      "question": "What does nationalism mean in this context?",
+      "options": [
+        "A fear of books and learning",
+        "Strong loyalty and pride in one's country, sometimes above others",
+        "The spread of technology",
+        "A type of trade agreement"
+      ],
+      "answer": 1,
+      "explanation": "Nationalism encouraged countries to defend their interests fiercely and often made differences between nations worse."
+    },
+    {
+      "question": "Why did the war spread so quickly across Europe?",
+      "options": [
+        "Countries had no communication systems",
+        "Leaders wanted to avoid peace at all costs",
+        "The alliance system meant countries were pulled into the conflict",
+        "The continent had no armies"
+      ],
+      "answer": 2,
+      "explanation": "Once one country declared war, allied nations often felt forced to respond, which accelerated the spread of the war."
+    }
+  ],
+  "source": "demo",
+  "demo_label": "Demo content"
+}
