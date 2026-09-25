@@ -1,0 +1,42 @@
+{
+  "subject": "Chemistry",
+  "source_note": "Worked Chemistry examples supplied for SomaSmart. Confirm grade-specific scope with the official KICD curriculum design.",
+  "worked": [
+    [
+      "Write the equation: HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l), a 1 : 1 : 1 ratio.",
+      "Moles of HCl = concentration × volume in dm³ = 2 × (25 ÷ 1,000) = 0.05 mol.",
+      "From the mole ratio, moles of NaCl formed = 0.05 mol.",
+      "Molar mass of NaCl = 23 + 35.5 = 58.5 g/mol.",
+      "Mass = moles × molar mass = 0.05 × 58.5 = 2.925 g ≈ 2.93 g."
+    ],
+    [
+      "Both are giant covalent allotropes of carbon, so the difference lies in their structures, not their bonding type.",
+      "In diamond each carbon forms four single covalent bonds in a rigid tetrahedral lattice, so all four outer electrons are localised in bonds.",
+      "In graphite each carbon bonds to only three others in flat hexagonal layers, leaving one delocalised electron per atom.",
+      "These delocalised electrons move freely along the layers, so graphite conducts electricity, while diamond has no mobile charge carriers and acts as an insulator.",
+      "The weak van der Waals forces between graphite layers also make it soft and a good lubricant, unlike hard diamond."
+    ],
+    [
+      "Draw the energy axis vertically (enthalpy) against reaction progress horizontally.",
+      "Place the reactants line higher than the products line, because an exothermic reaction releases heat to the surroundings.",
+      "Draw the curve rising from the reactants to a peak (the transition state) and then falling to the products.",
+      "Activation energy Ea is the vertical distance from the reactants level to the peak; it is the minimum energy colliding particles need.",
+      "ΔH is the vertical distance from reactants to products, measured downwards, so ΔH is negative (for example ΔH = −92 kJ/mol)."
+    ],
+    [
+      "Electrolyte: CuSO₄(aq) contains Cu²⁺, SO₄²⁻, H⁺ and OH⁻ ions; both electrodes are copper, so they take part in the reaction.",
+      "At the cathode Cu²⁺ is discharged in preference to H⁺ because copper is lower in the electrochemical series: Cu²⁺(aq) + 2e⁻ → Cu(s).",
+      "At the anode the copper electrode dissolves instead of OH⁻ being discharged: Cu(s) → Cu²⁺(aq) + 2e⁻.",
+      "The cathode therefore gains mass while the anode loses an equal mass, and the blue colour of the solution stays unchanged because the Cu²⁺ concentration is constant.",
+      "This is the principle of electroplating and of refining copper to high purity."
+    ],
+    [
+      "Raw materials are charged at the top: haematite (Fe₂O₃), coke, limestone (CaCO₃), with hot air blasted in at the bottom.",
+      "Coke burns in the blast of air, releasing heat: C(s) + O₂(g) → CO₂(g).",
+      "Carbon dioxide is reduced by more coke to the reducing agent carbon monoxide: CO₂(g) + C(s) → 2CO(g).",
+      "Carbon monoxide reduces the ore to molten iron: Fe₂O₃(s) + 3CO(g) → 2Fe(l) + 3CO₂(g).",
+      "Limestone decomposes, CaCO₃(s) → CaO(s) + CO₂(g), and the lime removes silica as slag: CaO(s) + SiO₂(s) → CaSiO₃(l).",
+      "Molten iron (pig iron, about 96% Fe) is tapped from the base with the less dense slag floating above it; waste gases leave at the top."
+    ]
+  ]
+}

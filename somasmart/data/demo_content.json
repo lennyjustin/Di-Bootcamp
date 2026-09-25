@@ -1,0 +1,188 @@
+{
+  "source": "demo",
+  "demo_label": "Curriculum demo lesson",
+  "lessons": {
+    "History": {
+      "title": "Causes of the First World War",
+      "explanation": "The First World War began in 1914 after long tension among European powers. Militarism, rival alliances, imperial competition and nationalism made conflict more likely. The assassination of Archduke Franz Ferdinand was the immediate trigger, but the deeper causes had developed over many years.",
+      "key_points": ["Militarism encouraged countries to build large armies and navies.", "Alliances divided Europe into rival groups.", "Imperial competition and nationalism increased distrust.", "The assassination at Sarajevo triggered the wider conflict."],
+      "example": "A disagreement spreads faster when people have already chosen sides. European alliances worked in a similar way: a local crisis pulled several countries into war.",
+      "questions": [
+        {"question":"What event triggered the First World War?","options":["The Russian Revolution","The assassination of Archduke Franz Ferdinand","The Industrial Revolution","The Berlin Conference"],"answer":1,"explanation":"The assassination at Sarajevo in 1914 triggered the chain of declarations of war."},
+        {"question":"What is militarism?","options":["Rule by teachers","Building military strength and preparing for war","Sharing colonies","Refusing to trade"],"answer":1,"explanation":"Militarism is the policy of building armed forces and giving them an important role in national policy."},
+        {"question":"How did alliances affect the crisis?","options":["They stopped all wars","They caused a local conflict to involve more countries","They ended nationalism","They removed armies"],"answer":1,"explanation":"Allied countries supported one another, allowing a local dispute to become a wider war."},
+        {"question":"Which was a long-term cause?","options":["Imperial rivalry","The internet","Space travel","Plastic pollution"],"answer":0,"explanation":"Competition for colonies and influence increased rivalry before 1914."},
+        {"question":"Nationalism means strong loyalty to a country. What could it cause?","options":["Less identity","Greater rivalry between nations","No political opinions","The end of languages"],"answer":1,"explanation":"Extreme nationalism can make people view other nations as threats or rivals."}
+      ]
+    },
+    "Biology": {
+      "title": "Cell Structure and Functions",
+      "explanation": "A cell is the basic unit of life. Animal and plant cells have a cell membrane, cytoplasm, a nucleus and mitochondria. Plant cells also have a cellulose cell wall, a large permanent vacuole and chloroplasts. Each structure has a role that helps the cell survive.",
+      "key_points": ["The nucleus contains genetic material and controls cell activities.", "Mitochondria release energy during respiration.", "Chloroplasts absorb light for photosynthesis in plant cells.", "The cell membrane controls movement of substances into and out of a cell."],
+      "example": "A school can be compared with a cell: the principal represents the nucleus, classrooms represent working compartments, and gates represent the selectively controlling cell membrane.",
+      "questions": [
+        {"question":"Which structure controls many cell activities?","options":["Nucleus","Cell wall","Vacuole","Rib cage"],"answer":0,"explanation":"The nucleus contains genetic material and coordinates cell activities."},
+        {"question":"Where does aerobic respiration mainly occur?","options":["Cell wall","Mitochondria","Chloroplast","Vacuole"],"answer":1,"explanation":"Mitochondria release usable energy through aerobic respiration."},
+        {"question":"What is the role of chlorophyll?","options":["Absorb light energy","Digest proteins","Carry urine","Strengthen bones"],"answer":0,"explanation":"Chlorophyll absorbs light energy needed for photosynthesis."},
+        {"question":"Which structure is found in plant cells but not ordinary animal cells?","options":["Cytoplasm","Nucleus","Cellulose cell wall","Cell membrane"],"answer":2,"explanation":"Plant cells have a cellulose cell wall for support."},
+        {"question":"What controls substances entering a cell?","options":["Cell membrane","Nucleus","Chromosome","Mitochondrion"],"answer":0,"explanation":"The cell membrane is selectively permeable and regulates movement of substances."}
+      ]
+    },
+    "Mathematics": {
+      "title": "Linear Equations and Inequalities",
+      "explanation": "A linear equation has a variable whose highest power is one. To solve it, simplify both sides and perform the same operation on each side until the variable is alone. Inequalities use signs such as less than or greater than; multiplying or dividing by a negative reverses the sign.",
+      "key_points": ["An equation states that two expressions are equal.", "Use inverse operations to isolate the unknown.", "Do the same operation to both sides of an equation.", "Reverse an inequality sign when multiplying or dividing by a negative number."],
+      "example": "For 3x + 2 = 14, subtract 2 to get 3x = 12, then divide by 3. Therefore x = 4.",
+      "questions": [
+        {"question":"Solve 2x + 4 = 10.","options":["2","3","6","7"],"answer":1,"explanation":"Subtract 4 and divide by 2: x = 3."},
+        {"question":"Which operation undoes multiplication by 5?","options":["Addition of 5","Subtraction of 5","Division by 5","Squaring"],"answer":2,"explanation":"Division by 5 is the inverse of multiplication by 5."},
+        {"question":"What is the highest power of the variable in a linear equation?","options":["0","1","2","3"],"answer":1,"explanation":"A linear equation has a variable to the first power."},
+        {"question":"Solve x - 7 = 2.","options":["-5","5","9","14"],"answer":2,"explanation":"Add 7 to both sides, giving x = 9."},
+        {"question":"What happens to an inequality sign when dividing by -2?","options":["It disappears","It stays the same","It reverses","It becomes equal"],"answer":2,"explanation":"Multiplying or dividing an inequality by a negative reverses its direction."}
+      ]
+    },
+    "Geography": {
+      "title": "Weather and Climate",
+      "explanation": "Weather is the condition of the atmosphere at a particular place and time. Climate is the average pattern of weather over a long period, usually at least 30 years. Temperature, rainfall, wind, humidity and air pressure are important elements measured by weather instruments.",
+      "key_points": ["Weather changes over short periods; climate describes long-term patterns.", "A thermometer measures temperature.", "A rain gauge measures rainfall.", "Altitude, latitude, distance from the sea and relief influence climate."],
+      "example": "Saying that Nairobi is rainy today describes weather. Saying that a region usually has wet and dry seasons describes climate.",
+      "questions": [
+        {"question":"What is weather?","options":["Long-term average only","Atmospheric conditions at a particular time and place","The shape of land","Movement of people"],"answer":1,"explanation":"Weather describes current or short-term atmospheric conditions."},
+        {"question":"Which instrument measures rainfall?","options":["Thermometer","Rain gauge","Barometer","Wind vane"],"answer":1,"explanation":"A rain gauge collects and measures precipitation."},
+        {"question":"Climate is normally studied over what kind of period?","options":["A few minutes","One hour","Many years","One gust of wind"],"answer":2,"explanation":"Climate is based on long-term records, commonly 30 years or more."},
+        {"question":"What does a thermometer measure?","options":["Temperature","Rainfall","Wind direction","Humidity only"],"answer":0,"explanation":"A thermometer measures temperature."},
+        {"question":"Which factor usually becomes cooler with increasing altitude?","options":["Temperature","Longitude","Population","Soil colour"],"answer":0,"explanation":"Air temperature generally decreases as altitude increases."}
+      ]
+    },
+    "English": {
+      "title": "Reading Comprehension Strategies",
+      "explanation": "Good reading comprehension involves understanding the main idea, locating supporting details, interpreting vocabulary in context, making inferences and checking evidence. A reader should preview a passage, read actively, and answer using information from the text rather than guesses.",
+      "key_points": ["The main idea is the central message of a passage.", "Supporting details explain or prove the main idea.", "Context can help reveal the meaning of an unfamiliar word.", "An inference is a conclusion supported by clues in the text."],
+      "example": "If a passage describes dark clouds, umbrellas and wet roads, you can infer that it has been raining even if the sentence does not say so directly.",
+      "questions": [
+        {"question":"What is the main idea?","options":["A minor detail","The central message","A difficult word","The final punctuation"],"answer":1,"explanation":"The main idea is what the passage is mostly about."},
+        {"question":"What supports a main idea?","options":["Unrelated guesses","Supporting details","Page numbers only","The title alone"],"answer":1,"explanation":"Supporting details explain, develop or provide evidence for the main idea."},
+        {"question":"What does context mean in reading?","options":["Words and ideas around a term","A book cover","A spelling test","A paragraph number"],"answer":0,"explanation":"Context is the surrounding information that helps explain a word or idea."},
+        {"question":"An inference is a conclusion based on what?","options":["Evidence and clues","A random choice","The longest word","A dictionary only"],"answer":0,"explanation":"Readers infer by combining text clues with reasoning."},
+        {"question":"Which is an active reading habit?","options":["Ignoring headings","Asking questions while reading","Skipping every paragraph","Guessing without evidence"],"answer":1,"explanation":"Questioning helps a reader monitor understanding and find evidence."}
+      ]
+    },
+    "Computer Studies": {
+      "title": "Computer Hardware and Software",
+      "explanation": "Hardware is the physical equipment of a computer, such as the keyboard, monitor, processor and storage drive. Software is a set of instructions. System software manages hardware, while application software helps users perform tasks such as writing, drawing or browsing.",
+      "key_points": ["Hardware can be touched; software is made of instructions.", "The CPU processes instructions and coordinates operations.", "RAM temporarily stores programs and data in use.", "An operating system manages hardware and provides services for applications."],
+      "example": "A music player is hardware, while the music application running on it is software. Both are needed for the user to play a song.",
+      "questions": [
+        {"question":"Which is hardware?","options":["Keyboard","Spreadsheet formula","Operating system","Web page"],"answer":0,"explanation":"A keyboard is a physical device that can be touched."},
+        {"question":"What is the main role of the CPU?","options":["Print paper","Process instructions","Store files permanently only","Display sound"],"answer":1,"explanation":"The central processing unit executes instructions and coordinates processing."},
+        {"question":"What is RAM used for?","options":["Temporary working storage","Permanent paper storage","Typing only","Cooling the screen"],"answer":0,"explanation":"RAM temporarily holds data and programs currently being used."},
+        {"question":"Which is system software?","options":["Operating system","Calculator document","Photo","Keyboard"],"answer":0,"explanation":"An operating system manages computer resources and provides a platform for applications."},
+        {"question":"Which is application software?","options":["Word processor","Motherboard","Mouse","Power cable"],"answer":0,"explanation":"A word processor helps a user perform a specific task."}
+      ]
+    },
+    "Kiswahili": {
+      "title": "Sarufi na Aina za Maneno",
+      "explanation": "Sarufi ni mfumo wa kanuni unaoeleza jinsi maneno yanavyounda sentensi sahihi. Aina muhimu za maneno ni nomino, vitenzi, vivumishi, vielezi, viwakilishi na viunganishi. Ufahamu wa aina hizi huboresha kuzungumza na kuandika Kiswahili kwa usahihi.",
+      "key_points": ["Nomino hutaja mtu, mahali, kitu au wazo.", "Kitenzi huonyesha kitendo au hali.", "Kivumishi hueleza nomino.", "Kielezi hueleza zaidi kuhusu kitenzi, kivumishi au sentensi."],
+      "example": "Katika sentensi ‘Mtoto mwerevu anasoma kwa bidii’, ‘mtoto’ ni nomino, ‘mwerevu’ ni kivumishi, na ‘anasoma’ ni kitenzi.",
+      "questions": [
+        {"question":"Neno ‘mti’ ni aina gani ya neno?","options":["Nomino","Kitenzi","Kielezi","Kiunganishi"],"answer":0,"explanation":"Mti ni jina la kitu, kwa hiyo ni nomino."},
+        {"question":"Kitenzi huonyesha nini?","options":["Kitendo au hali","Rangi pekee","Mahali pekee","Idadi pekee"],"answer":0,"explanation":"Kitenzi huonyesha kitendo au hali ya mhusika."},
+        {"question":"Katika ‘gari kubwa’, neno ‘kubwa’ ni nini?","options":["Nomino","Kivumishi","Kitenzi","Kiwakilishi"],"answer":1,"explanation":"Kubwa linaeleza sifa ya nomino gari."},
+        {"question":"Kielezi hueleza zaidi kuhusu nini?","options":["Kitenzi au sentensi","Herufi moja","Alama ya kuuliza","Jalada la kitabu"],"answer":0,"explanation":"Kielezi huongeza taarifa kuhusu kitendo au sentensi."},
+        {"question":"Lengo la sarufi ni nini?","options":["Kujenga sentensi sahihi","Kuchora ramani","Kupima joto","Kuhesabu fedha"],"answer":0,"explanation":"Sarufi hutupa kanuni za kutumia lugha kwa usahihi."}
+      ]
+    },
+    "Chemistry": {
+      "title": "Acids, Bases and Indicators",
+      "explanation": "Acids produce hydrogen ions in water and commonly have a pH below 7. Bases have a pH above 7 and can neutralise acids. Indicators change colour depending on acidity or alkalinity; neutral solutions have a pH of 7.",
+      "key_points": ["The pH scale describes how acidic or alkaline a solution is.", "Acids have pH values below 7.", "Alkaline bases have pH values above 7.", "Neutralisation produces a salt and water from an acid and a base."],
+      "example": "When hydrochloric acid reacts with sodium hydroxide, they neutralise to form sodium chloride and water.",
+      "questions": [
+        {"question":"What pH is neutral at room temperature?","options":["0","5","7","14"],"answer":2,"explanation":"A neutral solution has a pH of 7."},
+        {"question":"Which pH indicates an acid?","options":["2","7","9","14"],"answer":0,"explanation":"Acids have pH values below 7."},
+        {"question":"What does an indicator do?","options":["Changes colour with pH","Measures mass only","Creates electricity","Stops evaporation"],"answer":0,"explanation":"Indicators show acidity or alkalinity through a colour change."},
+        {"question":"What is formed in acid-base neutralisation?","options":["Salt and water","Only oxygen","Metal and oil","Sugar and carbon"],"answer":0,"explanation":"An acid and a base react to form salt and water."},
+        {"question":"A base has a pH generally what?","options":["Below 7","Exactly 0","Above 7","Always 1"],"answer":2,"explanation":"Alkaline bases have pH values above 7."}
+      ]
+    },
+    "Physics": {
+      "title": "Forces and Motion",
+      "explanation": "A force is a push or pull that can change an object's motion or shape. Speed describes distance travelled per unit time. Balanced forces do not change motion, while an unbalanced force causes acceleration, slowing down or a change of direction.",
+      "key_points": ["Force is measured in newtons.", "Speed equals distance divided by time.", "Balanced forces produce no change in motion.", "Friction opposes motion between surfaces."],
+      "example": "A cyclist travelling 100 metres in 20 seconds has a speed of 5 metres per second because 100 divided by 20 equals 5.",
+      "questions": [
+        {"question":"What is the unit of force?","options":["Newton","Joule","Watt","Metre"],"answer":0,"explanation":"Force is measured in newtons (N)."},
+        {"question":"What is the formula for speed?","options":["Time divided by distance","Distance divided by time","Mass divided by force","Force times time"],"answer":1,"explanation":"Speed is distance travelled per unit time."},
+        {"question":"What do balanced forces do?","options":["Always accelerate an object","Cause no change in motion","Destroy mass","Create light"],"answer":1,"explanation":"Balanced forces have zero resultant force, so motion does not change."},
+        {"question":"What force opposes sliding motion?","options":["Friction","Gravity only","Magnetism always","Upthrust only"],"answer":0,"explanation":"Friction acts between surfaces and opposes relative motion."},
+        {"question":"What can an unbalanced force cause?","options":["A change in motion","No possible effect","Only a colour change","A loss of time"],"answer":0,"explanation":"A resultant unbalanced force changes velocity or direction."}
+      ]
+    },
+    "Agriculture": {
+      "title": "Soil Properties and Fertility",
+      "explanation": "Soil supports crops by providing anchorage, water, air and mineral nutrients. Soil texture depends on the proportions of sand, silt and clay. Fertile soil contains available nutrients, organic matter, living organisms and a suitable pH. Farmers maintain fertility through manure, compost, crop rotation and careful fertiliser use.",
+      "key_points": ["Sand has large particles and drains quickly.", "Clay holds water but may have poor drainage.", "Organic matter improves soil structure and nutrient supply.", "Crop rotation and compost help maintain fertility."],
+      "example": "Adding well-rotted compost to a vegetable garden can improve water retention, add nutrients and support useful soil organisms.",
+      "questions": [
+        {"question":"Which soil particle is largest?","options":["Clay","Silt","Sand","Humus"],"answer":2,"explanation":"Sand particles are larger than silt and clay particles."},
+        {"question":"What is a benefit of organic matter?","options":["Improves soil structure","Removes all water","Stops roots growing","Makes soil sterile"],"answer":0,"explanation":"Organic matter improves structure and releases nutrients as it decomposes."},
+        {"question":"Which practice helps maintain soil fertility?","options":["Crop rotation","Burning every field","Removing all residues","Overgrazing"],"answer":0,"explanation":"Rotation can reduce nutrient depletion and interrupt pest cycles."},
+        {"question":"Clay soil usually holds what well?","options":["Water","Large stones only","No nutrients","Air only"],"answer":0,"explanation":"Small clay particles hold water, although drainage may be slow."},
+        {"question":"What do plant roots obtain from soil?","options":["Water and mineral nutrients","Sunlight directly","Sound","Plastic"],"answer":0,"explanation":"Roots absorb water and dissolved mineral nutrients from soil."}
+      ]
+    },
+    "Home Science": {
+      "title": "Food Nutrients and Balanced Diets",
+      "explanation": "A balanced diet supplies the body with the nutrients and energy it needs in suitable amounts. Carbohydrates mainly provide energy, proteins support growth and repair, fats provide concentrated energy, vitamins and minerals regulate body processes, fibre supports digestion and water is essential for transport and temperature control.",
+      "key_points": ["Carbohydrates are an important energy source.", "Proteins build and repair body tissues.", "Vitamins and minerals support regulation and health.", "A balanced diet includes variety and appropriate portions."],
+      "example": "A balanced lunch might include a whole-grain food, beans or fish, vegetables, fruit and clean water rather than relying on one food group.",
+      "questions": [
+        {"question":"Which nutrient mainly supports growth and repair?","options":["Protein","Water only","Fibre only","Salt"],"answer":0,"explanation":"Proteins provide materials for growth and tissue repair."},
+        {"question":"Which nutrient is a major energy source?","options":["Carbohydrate","Vitamin C","Water","Mineral salt"],"answer":0,"explanation":"Carbohydrates are broken down to release energy."},
+        {"question":"What does fibre help?","options":["Digestion","Hearing","Bone colour","Vision only"],"answer":0,"explanation":"Fibre helps food move through the digestive system."},
+        {"question":"What makes a diet balanced?","options":["Variety and suitable amounts","Eating one food only","Avoiding water","Eating as much sugar as possible"],"answer":0,"explanation":"A balanced diet contains different nutrients in appropriate proportions."},
+        {"question":"Why is water important?","options":["Transport and temperature control","It replaces every nutrient","It creates bones alone","It prevents all diseases"],"answer":0,"explanation":"Water supports transport, chemical reactions and temperature regulation."}
+      ]
+    },
+    "Business Studies": {
+      "title": "Needs, Wants and Scarcity",
+      "explanation": "Needs are essentials such as food, shelter and clothing. Wants are things people would like but can live without. Resources are limited while human wants are many, creating scarcity. Because of scarcity, individuals and businesses must make choices and consider opportunity cost.",
+      "key_points": ["Needs are essential for basic living.", "Wants are desirable but not essential.", "Scarcity exists because resources are limited.", "Opportunity cost is the next best choice given up."],
+      "example": "If a student spends saved money on a phone case instead of a textbook, the textbook is the opportunity cost of that decision.",
+      "questions": [
+        {"question":"Which is usually a basic need?","options":["Food","Luxury watch","Video game skin","Designer sunglasses"],"answer":0,"explanation":"Food is essential for survival."},
+        {"question":"Why does scarcity occur?","options":["Resources are limited but wants are many","Nobody has wants","Resources are unlimited","Choices never exist"],"answer":0,"explanation":"Scarcity results from limited resources and unlimited wants."},
+        {"question":"What is opportunity cost?","options":["The next best alternative forgone","The selling price only","A business name","A government tax"],"answer":0,"explanation":"It is the value of the next best option not chosen."},
+        {"question":"Which is a want?","options":["Clean air","Basic shelter","Luxury holiday","Safe drinking water"],"answer":2,"explanation":"A luxury holiday is desirable but not essential for basic survival."},
+        {"question":"What must scarcity require people to do?","options":["Make choices","Stop planning","Use no resources","Avoid all decisions"],"answer":0,"explanation":"Limited resources mean people must choose how to use them."}
+      ]
+    },
+    "Art and Design": {
+      "title": "Elements and Principles of Art",
+      "explanation": "The elements of art are the basic visual ingredients used by an artist: line, shape, form, colour, value, texture and space. Principles such as balance, contrast, emphasis, rhythm, movement, pattern and unity organise these elements to communicate an idea.",
+      "key_points": ["Line can show direction, outline or movement.", "Colour has properties such as hue, value and intensity.", "Texture describes how a surface looks or feels.", "Balance and emphasis help organise a composition."],
+      "example": "A poster can use large dark lettering for emphasis, contrasting colours for readability and balanced spacing to guide the viewer.",
+      "questions": [
+        {"question":"Which is an element of art?","options":["Line","Profit","Latitude","Voltage"],"answer":0,"explanation":"Line is one of the basic visual elements of art."},
+        {"question":"What does texture describe?","options":["Surface quality","Sound volume","Market price","Distance only"],"answer":0,"explanation":"Texture describes how a surface looks or feels."},
+        {"question":"What is emphasis used for?","options":["To create a focal point","To hide every object","To measure temperature","To calculate area"],"answer":0,"explanation":"Emphasis draws attention to an important part of a composition."},
+        {"question":"What is contrast?","options":["A noticeable difference","Exact sameness","A musical instrument","A type of soil"],"answer":0,"explanation":"Contrast is the use of differences such as light and dark or large and small."},
+        {"question":"What can balance organise?","options":["Visual weight in a design","Only sound","Chemical pH","Rainfall"],"answer":0,"explanation":"Balance distributes visual weight so a composition feels stable."}
+      ]
+    },
+    "Music": {
+      "title": "Elements of Music",
+      "explanation": "Music is organised sound. Its elements include rhythm, melody, harmony, dynamics, tempo, timbre, texture and form. Rhythm arranges durations, melody arranges pitches, dynamics describe loudness, and tempo describes speed.",
+      "key_points": ["Rhythm organises sounds and silences in time.", "Melody is a sequence of pitches heard as a musical idea.", "Dynamics show how loud or soft music is.", "Tempo is the speed of a performance."],
+      "example": "A song may begin softly and slowly, build to a loud chorus, then return to a quiet ending; this uses dynamics and tempo to create mood.",
+      "questions": [
+        {"question":"What is rhythm?","options":["Organisation of sounds in time","The colour of an instrument","The cost of a song","A type of stage"],"answer":0,"explanation":"Rhythm arranges durations, beats and silences in time."},
+        {"question":"What is melody?","options":["A sequence of pitches","The audience size","A microphone cable","The stage lighting"],"answer":0,"explanation":"Melody is a recognisable sequence of musical pitches."},
+        {"question":"What do dynamics describe?","options":["Loudness and softness","Speed only","Instrument size","Ticket price"],"answer":0,"explanation":"Dynamics indicate changes in volume."},
+        {"question":"What does tempo mean?","options":["Speed of music","Pitch height only","Number of performers","Instrument material"],"answer":0,"explanation":"Tempo is how fast or slowly a piece is performed."},
+        {"question":"What is timbre?","options":["Tone colour of a sound","The beat count only","A rest symbol","A dance step"],"answer":0,"explanation":"Timbre is the quality that makes two instruments sound different at the same pitch."}
+      ]
+    }
+  }
+}

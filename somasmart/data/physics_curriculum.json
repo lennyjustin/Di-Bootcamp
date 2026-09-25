@@ -1,0 +1,38 @@
+{
+  "subject": "Physics",
+  "source_note": "Worked Physics examples supplied for SomaSmart. Confirm grade-specific scope with the official KICD curriculum design.",
+  "worked": [
+    [
+      "Use a = (v − u) ÷ t with u = 10 m/s, v = 30 m/s and t = 8 s.",
+      "a = (30 − 10) ÷ 8 = 2.5 m/s².",
+      "For distance use s = ((u + v) ÷ 2) × t = ((10 + 30) ÷ 2) × 8.",
+      "s = 20 × 8 = 160 m. (Checking with s = ut + ½at² gives 80 + 80 = 160 m.)"
+    ],
+    [
+      "A transformer works by mutual induction: the primary coil must produce a changing magnetic flux in the core.",
+      "Alternating current continuously changes in magnitude and direction, so the flux linking the secondary keeps changing.",
+      "By Faraday's law the induced e.m.f. depends on the rate of change of flux, so a changing flux induces a voltage in the secondary.",
+      "Steady d.c. gives a constant flux, so after the initial switch-on there is no rate of change and no induced e.m.f.; only at make and break is a momentary voltage induced.",
+      "A d.c. supply would also overheat the primary because only its low resistance, not inductive reactance, limits the current."
+    ],
+    [
+      "The process has two stages: melting the ice at 0 °C, then warming the water from 0 °C to 40 °C.",
+      "Latent heat of fusion: Q₁ = mL_f = 0.5 × 334,000 = 167,000 J.",
+      "Sensible heat: Q₂ = mcΔθ = 0.5 × 4,200 × 40 = 84,000 J.",
+      "Total heat Q = Q₁ + Q₂ = 167,000 + 84,000 = 251,000 J = 251 kJ."
+    ],
+    [
+      "Mount the lens in a holder between an illuminated object (cross-wires) and a white screen on a metre rule.",
+      "Set the object distance u (say 15 cm) and move the screen until a sharp inverted image forms; record the image distance v.",
+      "Repeat for at least five values of u, each time recording u and v in a table.",
+      "Compute 1/u and 1/v and plot 1/v against 1/u; the graph is a straight line with intercepts 1/f on both axes.",
+      "Focal length f = 1 ÷ intercept. As a quick check, the distant-object method gives f directly as the image distance for parallel rays."
+    ],
+    [
+      "Number of half-lives n = total time ÷ half-life = 24 ÷ 6 = 4.",
+      "After each half-life the remaining fraction halves: 1 → ½ → ¼ → ⅛ → 1/16.",
+      "Using the formula, remaining fraction = (½)ⁿ = (½)⁴ = 1/16.",
+      "So 1/16 (6.25%) of the sample remains undecayed after 24 hours."
+    ]
+  ]
+}

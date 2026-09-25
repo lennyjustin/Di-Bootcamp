@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SomaSmart</title>
+    <meta name="description" content="SomaSmart helps students understand topics, practice with quizzes, and revise smartly." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <section id="auth-screen" class="auth-screen">
+      <div class="gold-streak top"></div>
+      <div class="gold-streak bottom"></div>
+      <div class="auth-card">
+        <div class="auth-brand"><span class="auth-logo">S</span><span>SomaSmart</span></div>
+        <div id="login-panel">
+          <h1>Welcome <span>Back</span></h1>
+          <p class="auth-subtitle">Welcome back. Please enter your details.</p>
+          <form id="login-form" class="auth-form">
+            <label for="login-email">Email Address</label>
+            <input id="login-email" type="email" placeholder="you@example.com" required />
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" placeholder="••••••••" minlength="6" required />
+            <div class="auth-row">
+              <label class="remember-label"><input id="remember-me" type="checkbox" /> Remember me</label>
+              <button id="forgot-password" class="text-button" type="button">Forgot password?</button>
+            </div>
+            <button class="auth-main-btn" type="submit">Sign In <span>→</span></button>
+          </form>
+        </div>
+        <div id="signup-panel" class="hidden">
+          <h1>Create <span>Account</span></h1>
+          <p class="auth-subtitle">Let’s get you started!</p>
+          <form id="signup-form" class="auth-form">
+            <label for="signup-name">Full Name</label>
+            <input id="signup-name" type="text" placeholder="Your full name" required />
+            <label for="signup-email">Email Address</label>
+            <input id="signup-email" type="email" placeholder="you@example.com" required />
+            <label for="signup-password">Password</label>
+            <input id="signup-password" type="password" placeholder="••••••••" minlength="6" required />
+            <label for="signup-confirm">Confirm Password</label>
+            <input id="signup-confirm" type="password" placeholder="••••••••" minlength="6" required />
+            <button class="auth-main-btn" type="submit">Create Account <span>→</span></button>
+          </form>
+        </div>
+        <div class="auth-divider">Or continue with</div>
+        <div class="social-buttons">
+          <button id="google-login" type="button">G <span>Google</span></button>
+          <button id="apple-login" type="button"> <span>Apple</span></button>
+        </div>
+        <p id="auth-message" class="auth-message" aria-live="polite"></p>
+        <div class="auth-switch">
+          <span id="switch-login-copy">Don’t have an account?</span>
+          <button id="switch-auth" type="button">Sign up</button>
+        </div>
+        <a class="local-app-link" href="http://127.0.0.1:5000">Open SomaSmart ↗</a>
+      </div>
+    </section>
+
+    <div id="app-shell" class="page-shell hidden">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="logo-badge">S</div>
+          <div>
+            <div class="brand-name">SomaSmart</div>
+            <div class="brand-tagline">Learn smarter. Practice better.</div>
+          </div>
+        </div>
+        <button id="logout-btn" class="logout-btn" type="button">Log out</button>
+      </header>
+
+      <main>
+        <section id="home-screen" class="screen active">
+          <div class="hero-card">
+            <div class="hero-copy">
+              <p class="eyebrow">AI study companion</p>
+              <h1>Understand any topic. Practice with confidence.</h1>
+              <p class="lead">
+                Learn in simple language, review key ideas, and test yourself with short quizzes built for secondary school students.
+              </p>
+
+              <form id="learn-form" class="learn-form">
+                <div class="field-row">
+                  <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                      <option value="History">History</option>
+                      <option value="Biology">Biology</option>
+                      <option value="Mathematics">Mathematics</option>
+                      <option value="Geography">Geography</option>
+                      <option value="English">English</option>
+                      <option value="Computer Studies">Computer Studies</option>
+                      <option value="Kiswahili">Kiswahili</option>
+                      <option value="Chemistry">Chemistry</option>
+                      <option value="Physics">Physics</option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Home Science">Home Science</option>
+                      <option value="Business Studies">Business Studies</option>
+                      <option value="Art and Design">Art and Design</option>
+                      <option value="Music">Music</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group form-group-grow">
+                    <label for="topic">Topic</label>
+                    <input
+                      id="topic"
+                      name="topic"
+                      type="text"
+                      value="Causes of the First World War"
+                      maxlength="200"
+                      placeholder="e.g. Causes of the First World War"
+                    />
+                  </div>
+                </div>
+
+                <div class="topic-suggestions" aria-live="polite">
+                  <span class="suggestions-label">Curriculum topic ideas</span>
+                  <div id="topic-suggestions" class="suggestion-list">
+                    <span class="muted-text">Loading topic ideas...</span>
+                  </div>
+                </div>
+
+                <button id="start-learning-btn" class="primary-btn" type="submit">
+                  Start learning
+                </button>
+              </form>
+
+              <div id="form-error" class="form-error" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <p class="curriculum-note">
+            Topic ideas are original study prompts informed by Kenya Institute of Curriculum Development learning areas.
+            <a href="https://kicd.ac.ke/cbc-materials/curriculum-designs/" target="_blank" rel="noopener noreferrer">View official curriculum designs ↗</a>
+          </p>
+
+          <div class="steps-section">
+            <h2>How it works</h2>
+            <div class="steps-grid">
+              <article class="step-card">
+                <span class="step-number">1</span>
+                <h3>Choose a subject</h3>
+                <p>Pick the topic you want to understand better.</p>
+              </article>
+              <article class="step-card">
+                <span class="step-number">2</span>
+                <h3>Read the lesson</h3>
+                <p>Get clear explanations, key points, and practical examples.</p>
+              </article>
+              <article class="step-card">
+                <span class="step-number">3</span>
+                <h3>Test yourself</h3>
+                <p>Answer five questions and get instant feedback.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="loading-screen" class="screen hidden" aria-live="polite">
+          <div class="panel loading-panel">
+            <div class="spinner" aria-hidden="true"></div>
+            <h2>Preparing your learning session...</h2>
+            <p>Your lesson and quiz are being created.</p>
+          </div>
+        </section>
+
+        <section id="lesson-screen" class="screen hidden">
+          <div class="panel lesson-panel">
+            <div class="lesson-topline">
+              <span id="lesson-subject" class="subject-chip">History</span>
+            </div>
+            <h2 id="lesson-title">Topic title</h2>
+            <div id="lesson-content" class="lesson-content"></div>
+            <button id="start-quiz-btn" class="primary-btn" type="button">Start quiz</button>
+          </div>
+        </section>
+
+        <section id="quiz-screen" class="screen hidden">
+          <div class="panel quiz-panel">
+            <div class="quiz-header">
+              <div>
+                <p class="eyebrow">Quiz</p>
+                <h2 id="quiz-title">Topic quiz</h2>
+              </div>
+              <span id="question-counter" class="counter-pill">Question 1 of 5</span>
+            </div>
+
+            <div class="progress-bar" aria-label="Quiz progress">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+
+            <div id="quiz-question-box" class="question-box">
+              <h3 id="quiz-question">Question text</h3>
+            </div>
+
+            <div id="answer-options" class="answer-options"></div>
+
+            <div id="quiz-feedback" class="quiz-feedback hidden" aria-live="polite"></div>
+
+            <button id="next-question-btn" class="primary-btn" type="button" disabled>Next question</button>
+          </div>
+        </section>
+
+        <section id="results-screen" class="screen hidden">
+          <div class="panel results-panel">
+            <p class="eyebrow">Quiz complete</p>
+            <h2>Your results</h2>
+            <div class="score-box">
+              <div id="score-text" class="score-text">0 / 5</div>
+              <div id="percentage-text" class="percentage-text">0%</div>
+            </div>
+            <p id="feedback-message" class="feedback-message"></p>
+            <div id="revision-box" class="revision-box"></div>
+            <div class="results-actions">
+              <button id="try-another-btn" class="primary-btn" type="button">Try another topic</button>
+              <button id="review-lesson-btn" class="secondary-btn" type="button">Review the lesson</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 SomaSmart</p>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

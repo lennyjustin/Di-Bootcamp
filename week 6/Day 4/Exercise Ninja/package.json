@@ -1,0 +1,26 @@
+{
+  "name": "di-bootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lennyjustin/Di-Bootcamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lennyjustin/Di-Bootcamp/issues"
+  },
+  "homepage": "https://github.com/lennyjustin/Di-Bootcamp#readme",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "chalk": "^6.0.0",
+    "commander": "^15.0.0"
+  }
+}

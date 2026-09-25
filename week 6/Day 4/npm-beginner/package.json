@@ -1,0 +1,7 @@
+{
+  "name": "npm-beginner",
+  "private": true,
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
