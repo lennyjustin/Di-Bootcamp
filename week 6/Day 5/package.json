@@ -1,0 +1,13 @@
+{
+  "name": "emoji-pop-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An Express-powered emoji guessing game for the Daily Challenge.",
+  "main": "Daily Challenge.js",
+  "scripts": {
+    "start": "node \"Daily Challenge.js\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
