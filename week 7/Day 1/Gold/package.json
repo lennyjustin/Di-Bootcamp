@@ -1,0 +1,13 @@
+{
+  "name": "week-7-blog-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "In-memory blog posts CRUD API built with Express Router.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

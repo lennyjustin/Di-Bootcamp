@@ -1,0 +1,14 @@
+{
+  "name": "trivia-quiz-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express Router trivia quiz with per-player session score tracking.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  }
+}

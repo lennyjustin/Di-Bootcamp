@@ -1,0 +1,13 @@
+{
+  "name": "week-7-day-1-express-exercises",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express Router examples and in-memory todo and book CRUD APIs.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

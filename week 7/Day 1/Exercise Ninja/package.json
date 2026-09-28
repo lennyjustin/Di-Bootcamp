@@ -1,0 +1,13 @@
+{
+  "name": "emoji-greeting-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express emoji greeting form exercise using express.Router.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
