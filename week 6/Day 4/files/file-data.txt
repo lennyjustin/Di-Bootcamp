@@ -1,0 +1,2 @@
+This file is read by the Week 6 Day 4 Daily Challenge.
+The challenge demonstrates Node.js modules, Chalk, and file-system access.
