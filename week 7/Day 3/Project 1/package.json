@@ -1,8 +1,8 @@
 {
-  "name": "multiplayer-strategy-game",
+  "name": "task-management-api-1",
   "version": "1.0.0",
   "private": true,
-  "description": "Turn-based 10x10 multiplayer base capture game with Express REST API.",
+  "description": "Express task management API with JSON-file storage.",
   "main": "Mini project.js",
   "scripts": {
     "start": "node \"Mini project.js\"",

@@ -1,183 +1,162 @@
 (() => {
   const socket = io();
-  const joinScreen = document.querySelector('#join-screen');
-  const chatScreen = document.querySelector('#chat-screen');
+  const welcome = document.querySelector('#welcome');
+  const chat = document.querySelector('#chat');
   const joinForm = document.querySelector('#join-form');
   const joinError = document.querySelector('#join-error');
-  const usernameInput = document.querySelector('#username');
-  const roomTitle = document.querySelector('#current-room');
-  const roomDescription = document.querySelector('#room-description');
-  const messageList = document.querySelector('#message-list');
+  const messages = document.querySelector('#messages');
   const messageForm = document.querySelector('#message-form');
   const messageInput = document.querySelector('#message-input');
-  const userList = document.querySelector('#user-list');
-  const memberCount = document.querySelector('#member-count');
-  const onlineCount = document.querySelector('#online-count');
-  const onlineCountSmall = document.querySelector('#online-count-small');
-  const toast = document.querySelector('#toast');
-  const roomDescriptions = {
+  const roomNames = {
     general: 'The place for everyday conversations.',
     random: 'Unexpected stuff, delightful detours.',
     help: 'Ask a question. Someone has your back.',
   };
-  const colors = ['#6878e8', '#e59b62', '#46ad99', '#b27ac4', '#d16d7d', '#568fc4'];
+  const colors = ['#6c7ee8', '#df9865', '#46aa92', '#b076c2', '#cf6b7a', '#5793bd'];
   let username = '';
-  let currentRoom = 'general';
+  let room = 'general';
+  let toastTimer;
   let unread = 0;
-  let toastTimeout;
   let currentDay = '';
 
+  function avatarColor(name) {
+    let hash = 0;
+    for (const character of name) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+    return colors[hash % colors.length];
+  }
+
   function initials(name) {
-    return name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+    return name.trim().split(/\s+/).slice(0, 2).map((word) => word[0]).join('').toUpperCase();
   }
 
-  function colorFor(name) {
-    let value = 0;
-    for (const character of name) value = (value * 31 + character.charCodeAt(0)) >>> 0;
-    return colors[value % colors.length];
+  function toast(text) {
+    const element = document.querySelector('#toast');
+    element.textContent = text;
+    element.classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => element.classList.remove('visible'), 2600);
   }
 
-  function showToast(text) {
-    toast.textContent = text;
-    toast.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => toast.classList.remove('show'), 2800);
-  }
-
-  function setRoom(room) {
-    currentRoom = room;
-    roomTitle.textContent = room;
-    roomDescriptions[room] && (roomDescription.textContent = roomDescriptions[room]);
-    document.querySelector('#welcome-room').textContent = `#${room}`;
+  function updateRoom(nextRoom) {
+    room = nextRoom;
+    document.querySelector('#room-title').textContent = room;
+    document.querySelector('#room-description').textContent = roomNames[room];
     messageInput.placeholder = `Message #${room}`;
-    document.querySelectorAll('.nav-room').forEach((button) => {
+    document.querySelectorAll('#room-nav button').forEach((button) => {
       button.classList.toggle('active', button.dataset.room === room);
-      button.setAttribute('aria-current', button.dataset.room === room ? 'page' : 'false');
     });
     currentDay = '';
   }
 
-  function addDayDivider(date) {
-    const dateKey = new Date(date).toLocaleDateString();
-    if (dateKey === currentDay) return;
-    currentDay = dateKey;
+  function dayDivider(timestamp) {
+    const date = new Date(timestamp);
+    const day = date.toLocaleDateString();
+    if (day === currentDay) return;
+    currentDay = day;
     const divider = document.createElement('div');
-    divider.className = 'chat-date';
-    divider.textContent = dateKey === new Date().toLocaleDateString() ? 'TODAY' : dateKey;
-    messageList.append(divider);
+    divider.className = 'date-divider';
+    divider.textContent = day === new Date().toLocaleDateString() ? 'TODAY' : day;
+    messages.append(divider);
   }
 
-  function appendMessage(message, { notify = false } = {}) {
-    const welcome = messageList.querySelector('.welcome-message');
-    if (welcome) welcome.remove();
-    addDayDivider(message.createdAt);
-
+  function addMessage(message, notify = false) {
+    messages.querySelector('.room-welcome')?.remove();
+    dayDivider(message.createdAt);
     const row = document.createElement('article');
     row.className = 'message';
-    const avatar = document.createElement('div');
+    const avatar = document.createElement('span');
     avatar.className = 'message-avatar';
-    avatar.style.backgroundColor = colorFor(message.username);
+    avatar.style.backgroundColor = avatarColor(message.username);
     avatar.textContent = initials(message.username);
-    const content = document.createElement('div');
-    content.className = 'message-content';
+    const body = document.createElement('div');
+    body.className = 'message-body';
     const meta = document.createElement('div');
     meta.className = 'message-meta';
-    const name = document.createElement('span');
-    name.className = 'message-name';
+    const name = document.createElement('b');
     name.textContent = message.username;
     const time = document.createElement('time');
-    time.className = 'message-time';
     time.dateTime = message.createdAt;
     time.textContent = new Date(message.createdAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     const text = document.createElement('p');
-    text.className = 'message-text';
     text.textContent = message.text;
     meta.append(name, time);
-    content.append(meta, text);
-    row.append(avatar, content);
-    messageList.append(row);
-    messageList.scrollTop = messageList.scrollHeight;
-
+    body.append(meta, text);
+    row.append(avatar, body);
+    messages.append(row);
+    messages.scrollTop = messages.scrollHeight;
     if (notify && message.username !== username) {
-      showToast(`${message.username} sent a message`);
+      toast(`${message.username} sent a message`);
       if (document.hidden) {
         unread += 1;
-        document.title = `(${unread}) #${currentRoom} · Gather`;
+        document.title = `(${unread}) #${room} · Gather`;
         if ('Notification' in window && Notification.permission === 'granted') {
-          new Notification(`${message.username} in #${currentRoom}`, { body: message.text });
+          new Notification(`${message.username} in #${room}`, { body: message.text });
         }
       }
     }
   }
 
-  function appendNotice(notice) {
-    const row = document.createElement('div');
-    row.className = 'notice';
-    row.textContent = notice.text;
-    messageList.append(row);
-    messageList.scrollTop = messageList.scrollHeight;
-    if (notice.text.includes('joined')) showToast(notice.text);
+  function addNotice(notice) {
+    const item = document.createElement('div');
+    item.className = 'notice';
+    item.textContent = notice.text;
+    messages.append(item);
+    messages.scrollTop = messages.scrollHeight;
+    if (notice.text.includes('joined')) toast(notice.text);
   }
 
-  function renderUsers(users) {
-    memberCount.textContent = users.length;
-    onlineCount.textContent = `${users.length} online`;
-    onlineCountSmall.textContent = users.length;
-    userList.replaceChildren();
-    for (const name of users) {
+  function updateUsers(users) {
+    document.querySelector('#member-total').textContent = users.length;
+    document.querySelector('#member-small').textContent = users.length;
+    document.querySelector('#online-total').textContent = `${users.length} online`;
+    const list = document.querySelector('#user-list');
+    list.replaceChildren();
+    users.forEach((name) => {
       const item = document.createElement('li');
       const avatar = document.createElement('span');
-      avatar.className = 'avatar';
-      avatar.style.backgroundColor = `${colorFor(name)}20`;
-      avatar.style.color = colorFor(name);
+      avatar.className = 'user-avatar';
+      avatar.style.color = avatarColor(name);
+      avatar.style.backgroundColor = `${avatarColor(name)}25`;
       avatar.textContent = initials(name);
       const label = document.createElement('span');
-      label.className = 'member-name';
       label.textContent = name;
       item.append(avatar, label);
-      userList.append(item);
-    }
+      list.append(item);
+    });
+  }
+
+  function showRoom({ room: nextRoom, users, messages: history }) {
+    updateRoom(nextRoom);
+    welcome.classList.add('hidden');
+    chat.classList.remove('hidden');
+    document.querySelector('#my-name').textContent = username;
+    document.querySelector('#my-avatar').textContent = initials(username);
+    document.querySelector('#my-avatar').style.backgroundColor = `${avatarColor(username)}35`;
+    messages.innerHTML = `<div class="room-welcome"><span>✳</span><div><b>Welcome to #${nextRoom}</b><p>This is the beginning of something good. Say hello!</p></div></div>`;
+    history.forEach((message) => addMessage(message));
+    updateUsers(users);
+    messageInput.focus();
   }
 
   joinForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    username = usernameInput.value.trim().replace(/\s+/g, ' ');
-    currentRoom = new FormData(joinForm).get('room');
-    if (username.length < 2 || username.length > 24) {
-      joinError.textContent = 'Your name should be between 2 and 24 characters.';
-      usernameInput.focus();
-      return;
-    }
+    username = document.querySelector('#username').value.trim().replace(/\s+/g, ' ');
+    room = new FormData(joinForm).get('room');
     joinError.textContent = '';
-    socket.emit('chat:join', { username, room: currentRoom });
+    socket.emit('chat:join', { username, room });
   });
 
-  socket.on('room:state', ({ room, users, messages }) => {
-    setRoom(room);
-    joinScreen.classList.add('hidden');
-    chatScreen.classList.remove('hidden');
-    document.querySelector('#my-name').textContent = username;
-    document.querySelector('#my-avatar').textContent = initials(username);
-    document.querySelector('#my-avatar').style.backgroundColor = `${colorFor(username)}35`;
-    document.querySelector('#my-avatar').style.color = colorFor(username);
-    messageList.innerHTML = '<div class="welcome-message"><div class="welcome-icon">✳</div><div><strong>Welcome to <span id="welcome-room"></span></strong><p>This is the beginning of something good. Say hello!</p></div></div>';
-    messages.forEach((message) => appendMessage(message));
-    renderUsers(users);
-    messageInput.focus();
-  });
-
-  socket.on('room:users', renderUsers);
-  socket.on('chat:message', (message) => appendMessage(message, { notify: true }));
-  socket.on('chat:notice', appendNotice);
+  socket.on('room:state', showRoom);
+  socket.on('room:users', updateUsers);
+  socket.on('chat:message', (message) => addMessage(message, true));
+  socket.on('chat:notice', addNotice);
   socket.on('chat:error', (message) => {
-    if (joinScreen.classList.contains('hidden')) showToast(message);
+    if (welcome.classList.contains('hidden')) toast(message);
     else joinError.textContent = message;
   });
-  socket.on('connect_error', () => showToast('Connection lost. Trying to reconnect…'));
+  socket.on('connect_error', () => toast('Connection interrupted; reconnecting…'));
   socket.on('connect', () => {
-    if (username) {
-      socket.emit('chat:join', { username, room: currentRoom });
-    }
+    if (username && !welcome.classList.contains('hidden')) socket.emit('chat:join', { username, room });
   });
 
   messageForm.addEventListener('submit', (event) => {
@@ -189,47 +168,44 @@
     messageInput.focus();
   });
 
-  document.querySelectorAll('.nav-room').forEach((button) => {
+  document.querySelectorAll('#room-nav button').forEach((button) => {
     button.addEventListener('click', () => {
-      if (button.dataset.room === currentRoom) return;
-      currentRoom = button.dataset.room;
-      messageList.innerHTML = '<div class="welcome-message"><div class="welcome-icon">✳</div><div><strong>Welcome to <span id="welcome-room"></span></strong><p>This is the beginning of something good. Say hello!</p></div></div>';
-      socket.emit('chat:join', { username, room: currentRoom });
+      if (button.dataset.room === room) return;
+      room = button.dataset.room;
+      messages.innerHTML = `<div class="room-welcome"><span>✳</span><div><b>Welcome to #${room}</b><p>This is the beginning of something good. Say hello!</p></div></div>`;
+      socket.emit('chat:join', { username, room });
     });
   });
 
   document.querySelector('#leave-button').addEventListener('click', () => {
     socket.emit('chat:leave');
     username = '';
-    chatScreen.classList.add('hidden');
-    joinScreen.classList.remove('hidden');
-    usernameInput.value = '';
-    usernameInput.focus();
+    chat.classList.add('hidden');
+    welcome.classList.remove('hidden');
+    joinForm.reset();
     document.title = 'Gather — Real-time chat';
   });
 
   document.querySelector('#members-toggle').addEventListener('click', () => {
-    document.querySelector('#members-panel').classList.toggle('collapsed');
-    chatScreen.classList.toggle('members-hidden');
+    document.querySelector('#members').classList.toggle('collapsed');
+    chat.classList.toggle('members-hidden');
   });
 
-  document.querySelector('#notify-button').addEventListener('click', async () => {
-    if (!('Notification' in window)) return showToast('Desktop notifications are not supported in this browser.');
+  document.querySelector('#notifications').addEventListener('click', async () => {
+    if (!('Notification' in window)) return toast('Browser notifications are not supported.');
     const permission = await Notification.requestPermission();
-    showToast(permission === 'granted' ? 'Desktop notifications enabled.' : 'Notifications were not enabled.');
+    toast(permission === 'granted' ? 'Browser notifications enabled.' : 'Notifications were not enabled.');
   });
 
-  document.querySelector('#emoji-button').addEventListener('click', () => {
-    const start = messageInput.selectionStart;
-    const end = messageInput.selectionEnd;
-    messageInput.setRangeText('😊', start, end, 'end');
+  document.querySelector('#emoji').addEventListener('click', () => {
+    messageInput.setRangeText('😊', messageInput.selectionStart, messageInput.selectionEnd, 'end');
     messageInput.focus();
   });
 
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
       unread = 0;
-      document.title = `#${currentRoom} · Gather`;
+      document.title = `#${room} · Gather`;
     }
   });
 })();

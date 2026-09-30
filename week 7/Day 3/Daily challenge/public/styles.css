@@ -1,0 +1,17 @@
+*{box-sizing:border-box}
+body{position:relative;isolation:isolate;overflow-x:hidden;margin:0;min-height:100vh;background:#d9eee4;color:#111;font-family:Georgia,'Times New Roman',serif;font-size:16px}
+body::before{position:fixed;z-index:0;inset:0;content:"";pointer-events:none;background:linear-gradient(125deg,#a8ead1,#bdd4ff,#ffd2b5,#d8c4ff,#a8ead1);background-size:400% 400%;animation:gradient-shift 14s ease-in-out infinite}
+.page{position:relative;z-index:1;width:min(480px,calc(100% - 32px));margin:24px auto}
+.form-card{padding:20px 18px;background:#ffffffb8;border:1px solid #ffffffd9;border-radius:16px;box-shadow:0 14px 44px #384d3e12;backdrop-filter:blur(12px)}
+h1{margin:0 0 22px;font-size:31px}
+.form-card form{display:grid;grid-template-columns:max-content minmax(0,220px);align-items:center;gap:14px 7px}
+.form-card label{font-size:16px}
+.form-card input{height:22px;padding:1px 4px;border:1px solid #888;border-radius:2px;font:14px Arial,sans-serif}
+.form-card button{grid-column:1;justify-self:start;margin-top:0;padding:2px 8px;font:13px Arial,sans-serif}
+.form-card button:disabled{color:#666;cursor:not-allowed}
+.message{grid-column:1/-1;min-height:19px;margin:10px 0 0;font-size:16px;line-height:1.4}
+.message.success{color:#111}.message.error{color:#111}
+.switch{margin-top:15px;font-size:14px}.switch a{color:#234d8b}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media(max-width:400px){.form-card form{grid-template-columns:90px minmax(0,1fr)}.form-card input{width:100%}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}}

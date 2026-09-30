@@ -1,12 +1,12 @@
 {
-  "name": "realtime-chat-app",
+  "name": "day-3-realtime-chat",
   "version": "1.0.0",
   "private": true,
-  "description": "Real-time room chat built with Express and Socket.IO.",
-  "main": "Exercise.js",
+  "description": "Real-time room chat using Express and Socket.IO.",
+  "main": "Mini project.js",
   "scripts": {
-    "start": "node Exercise.js",
-    "dev": "node --watch Exercise.js",
+    "start": "node \"Mini project.js\"",
+    "dev": "node --watch \"Mini project.js\"",
     "test": "node --test"
   },
   "dependencies": {

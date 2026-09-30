@@ -1,22 +1,17 @@
 (() => {
-  const state = { token: localStorage.getItem('gridline-token') || '', user: null, game: null, authMode: 'login' };
+  const state = { token: localStorage.getItem('gridline-token') || '', user: null, game: null, mode: 'login' };
   const $ = (selector) => document.querySelector(selector);
-  const authView = $('#auth-view');
-  const lobbyView = $('#lobby-view');
-  const gameView = $('#game-view');
-  const toast = $('#game-toast');
+  const authView = $('#auth');
+  const lobbyView = $('#lobby');
+  const gameView = $('#game');
   let toastTimer;
 
-  async function api(url, { method = 'GET', body } = {}) {
+  async function api(url, options = {}) {
     const response = await fetch(url, {
-      method,
-      headers: {
-        ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
-        ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}),
-      },
-      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+      ...options,
+      headers: { ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}) },
     });
-    const data = response.status === 204 ? {} : await response.json();
+    const data = await response.json();
     if (!response.ok) {
       if (response.status === 401) logout(false);
       throw new Error(data.error || 'Request failed.');
@@ -24,108 +19,89 @@
     return data;
   }
 
-  function notify(message, type = '') {
-    toast.textContent = message;
-    toast.className = `game-toast show ${type}`;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { toast.className = 'game-toast'; }, 3000);
-  }
-
-  function showView(view) {
+  function show(view) {
     [authView, lobbyView, gameView].forEach((element) => element.classList.add('hidden'));
     view.classList.remove('hidden');
-    $('#logout-button').classList.toggle('hidden', view === authView);
+    $('#logout').classList.toggle('hidden', view === authView);
   }
 
-  function initials(username) {
-    return username.slice(0, 2).toUpperCase();
+  function notice(message, kind = '') {
+    const toast = $('#toast');
+    toast.textContent = message;
+    toast.className = `toast show ${kind}`;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.className = 'toast'; }, 3000);
   }
 
-  async function authenticate() {
+  function initials(name) { return name.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase(); }
+
+  async function submitAuth(event) {
+    event.preventDefault();
     const username = $('#username').value.trim();
     const password = $('#password').value;
-    const endpoint = state.authMode === 'register' ? '/api/register' : '/api/login';
+    const endpoint = state.mode === 'register' ? '/api/register' : '/api/login';
     try {
       $('#auth-submit').textContent = 'Connecting…';
-      const result = await api(endpoint, { method: 'POST', body: { username, password } });
-      state.token = result.token;
+      const result = await api(endpoint, { method: 'POST', body: JSON.stringify({ username, password }) });
       state.user = result.user;
+      state.token = result.token;
       localStorage.setItem('gridline-token', state.token);
       await loadLobby();
     } catch (error) {
       $('#auth-error').textContent = error.message;
     } finally {
-      $('#auth-submit').textContent = state.authMode === 'register' ? 'Create commander' : 'Enter the arena';
+      $('#auth-submit').textContent = state.mode === 'register' ? 'Create commander' : 'Enter the arena';
     }
   }
 
   async function loadLobby() {
-    showView(lobbyView);
+    show(lobbyView);
     $('#commander-name').textContent = state.user.username;
     $('#commander-avatar').textContent = initials(state.user.username);
     try {
       const { games } = await api('/api/games');
-      renderGames(games.filter((game) => game.status === 'waiting'));
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+      renderGames(games.filter((item) => item.status === 'waiting'));
+    } catch (error) { notice(error.message, 'error'); }
   }
 
   function renderGames(games) {
-    const list = $('#game-list');
+    const list = $('#games-list');
     list.replaceChildren();
     if (!games.length) {
       const empty = document.createElement('div');
-      empty.className = 'empty-state';
-      const icon = document.createElement('div');
-      icon.textContent = '⌁';
-      const heading = document.createElement('strong');
-      heading.textContent = 'No open matches';
-      const detail = document.createElement('span');
-      detail.textContent = 'Start a new game and invite an opponent.';
-      empty.append(icon, heading, detail);
+      empty.className = 'empty';
+      empty.innerHTML = '<b>No open matches</b><small>Start a game and invite an opponent.</small>';
       list.append(empty);
       return;
     }
-    for (const game of games) {
-      const row = document.createElement('article');
+    games.forEach((item) => {
+      const row = document.createElement('div');
       row.className = 'open-game';
-      const icon = document.createElement('div');
-      icon.className = 'open-game-icon';
-      icon.textContent = '⌖';
-      const info = document.createElement('div');
-      info.className = 'open-game-info';
-      const title = document.createElement('strong');
-      title.textContent = `${game.players[0]?.username || 'Commander'}’s match`;
-      const subtitle = document.createElement('small');
-      subtitle.textContent = `Created ${new Date(game.createdAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
+      const title = document.createElement('b');
+      title.textContent = `${item.players[0]?.username || 'Commander'}’s match`;
       const join = document.createElement('button');
-      join.className = 'button primary';
+      join.className = 'primary';
       join.textContent = 'Join';
-      join.addEventListener('click', () => joinGame(game.id));
-      info.append(title, subtitle);
-      row.append(icon, info, join);
+      join.addEventListener('click', () => joinGame(item.id));
+      row.append(title, join);
       list.append(row);
-    }
+    });
   }
 
   async function createGame() {
     try {
-      const { game } = await api('/api/games', { method: 'POST' });
+      const { game } = await api('/api/games', { method: 'POST', body: '{}' });
       await openGame(game.id);
-      notify('Match created. Waiting for an opponent…');
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+    } catch (error) { notice(error.message, 'error'); }
   }
 
   async function joinGame(id) {
     try {
-      await api(`/api/games/${id}/join`, { method: 'POST' });
+      await api(`/api/games/${id}/join`, { method: 'POST', body: '{}' });
       await openGame(id);
     } catch (error) {
-      notify(error.message, 'error');
-      loadLobby();
+      notice(error.message, 'error');
+      await loadLobby();
     }
   }
 
@@ -133,65 +109,51 @@
     try {
       const { game } = await api(`/api/games/${id}`);
       state.game = game;
-      showView(gameView);
+      show(gameView);
       renderGame();
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+    } catch (error) { notice(error.message, 'error'); }
   }
 
   function renderGame() {
     const game = state.game;
     if (!game) return;
-    $('#match-short-id').textContent = game.id.slice(0, 8).toUpperCase();
-    const waiting = game.status === 'waiting';
-    const finished = game.status === 'finished';
-    const myTurn = game.currentTurn === state.user.id && !waiting && !finished;
     const me = game.players.find((player) => player.id === state.user.id);
     const opponent = game.players.find((player) => player.id !== state.user.id);
-    $('#game-title').textContent = finished
-      ? (game.winner?.id === state.user.id ? 'Victory secured' : 'The base has fallen')
-      : waiting ? 'Waiting for opponent' : myTurn ? 'Your move, commander' : `${game.currentTurnUsername} is thinking…`;
-    const turnBadge = $('#turn-badge');
-    turnBadge.textContent = finished ? 'MATCH OVER' : waiting ? 'WAITING' : myTurn ? 'YOUR TURN' : 'ENEMY TURN';
-    turnBadge.className = `turn-badge${waiting ? ' waiting' : !myTurn && !finished ? ' enemy' : ''}`;
+    const waiting = game.status === 'waiting';
+    const finished = game.status === 'finished';
+    const myTurn = !waiting && !finished && game.currentTurn === state.user.id;
+    $('#game-id').textContent = game.id.slice(0, 8).toUpperCase();
+    $('#game-title').textContent = finished ? (game.winner?.id === state.user.id ? 'Victory secured' : 'The base has fallen') : waiting ? 'Waiting for opponent' : myTurn ? 'Your move, commander' : `${game.currentTurnUsername} is thinking…`;
+    $('#turn-badge').textContent = finished ? 'MATCH OVER' : waiting ? 'WAITING' : myTurn ? 'YOUR TURN' : 'ENEMY TURN';
+    $('#turn-badge').className = `badge${!myTurn && !waiting && !finished ? ' enemy' : ''}`;
     $('#turn-number').textContent = waiting ? 'TURN —' : `TURN ${game.turnNumber}`;
-    $('#move-instruction').textContent = waiting ? 'Share the game ID with a friend, or wait for someone to join.' : finished ? 'This match is complete.' : myTurn ? 'Choose one adjacent tile or attack from beside the enemy base.' : 'Opponent turn. Plan your next move.';
-    $('#player-cards').replaceChildren();
+    $('#move-hint').textContent = waiting ? 'Share this game ID or wait for a commander to join.' : finished ? 'The match is complete.' : myTurn ? 'Choose an adjacent tile or attack next to the enemy base.' : 'Opponent turn. Plan your next move.';
+    const players = $('#players');
+    players.replaceChildren();
     game.players.forEach((player, index) => {
-      const card = document.createElement('div');
-      card.className = 'player-card';
-      const disc = document.createElement('span');
-      disc.className = `player-disc${index === 1 ? ' red' : ''}`;
-      disc.textContent = initials(player.username);
-      const copy = document.createElement('div');
-      copy.className = 'player-copy';
-      const name = document.createElement('strong');
+      const item = document.createElement('div');
+      item.className = 'player-card';
+      const avatar = document.createElement('span');
+      avatar.className = `player-disc${index === 1 ? ' red' : ''}`;
+      avatar.textContent = initials(player.username);
+      const name = document.createElement('b');
       name.textContent = player.username;
-      const detail = document.createElement('small');
-      detail.textContent = index === 0 ? 'BLUE COMMAND' : 'RED COMMAND';
-      copy.append(name, detail);
-      card.append(disc, copy);
+      item.append(avatar, name);
       if (game.currentTurn === player.id) {
-        const tag = document.createElement('span');
-        tag.className = 'turn-tag';
-        tag.textContent = 'ACTIVE';
-        card.append(tag);
+        const turn = document.createElement('small');
+        turn.textContent = 'ACTIVE';
+        item.append(turn);
       }
-      $('#player-cards').append(card);
+      players.append(item);
     });
     renderBoard(me, opponent, myTurn);
     renderLog(game.recentMoves);
+    document.querySelector('.winner-banner')?.remove();
     if (finished) {
-      let banner = document.querySelector('.winner-banner');
-      if (!banner) {
-        banner = document.createElement('div');
-        banner.className = 'winner-banner';
-        $('#board').before(banner);
-      }
-      banner.textContent = game.winner?.id === state.user.id ? '✦  Your base-capture plan worked. You win!' : `✦  ${game.winner?.username || 'Your opponent'} captured the base.`;
-    } else {
-      document.querySelector('.winner-banner')?.remove();
+      const banner = document.createElement('div');
+      banner.className = 'winner-banner';
+      banner.textContent = game.winner.id === state.user.id ? 'You captured the base. You win!' : `${game.winner.username} captured the base.`;
+      $('#board').before(banner);
     }
   }
 
@@ -199,62 +161,40 @@
     const board = $('#board');
     board.replaceChildren();
     const game = state.game;
-    const lastMove = game.recentMoves.at(-1)?.to;
-    const obstacleSet = new Set(game.obstacles.map(({ row, col }) => `${row},${col}`));
+    const obstacles = new Set(game.obstacles.map(({ row, col }) => `${row},${col}`));
+    const last = game.recentMoves.at(-1)?.to;
     for (let row = 0; row < 10; row += 1) {
       for (let col = 0; col < 10; col += 1) {
+        const key = `${row},${col}`;
         const cell = document.createElement('button');
         cell.type = 'button';
-        cell.className = 'tile';
+        cell.className = 'cell';
         cell.setAttribute('role', 'gridcell');
         cell.setAttribute('aria-label', `Row ${row + 1}, column ${col + 1}`);
-        const pointKey = `${row},${col}`;
-        if (obstacleSet.has(pointKey)) {
-          cell.classList.add('obstacle');
-          cell.disabled = true;
-          cell.title = 'Obstacle';
-        }
-        if (row === me.base.row && col === me.base.col) {
-          cell.classList.add('base-blue');
-          const mark = document.createElement('span');
-          mark.className = 'base-mark';
-          mark.textContent = '⌂';
-          cell.append(mark);
-          cell.title = 'Your base';
-        }
-        if (opponent && row === opponent.base.row && col === opponent.base.col) {
-          cell.classList.remove('obstacle');
-          cell.classList.add('base-red');
-          cell.title = 'Enemy base';
-          const mark = document.createElement('span');
-          mark.className = 'base-mark';
-          mark.textContent = '⌂';
-          cell.append(mark);
-        }
-        if (lastMove && lastMove.row === row && lastMove.col === col) cell.classList.add('last-move');
-        const playerHere = game.players.find((player) => player.position.row === row && player.position.col === col);
-        if (playerHere) {
+        if (obstacles.has(key)) { cell.classList.add('obstacle'); cell.disabled = true; cell.title = 'Obstacle'; }
+        if (row === me.base.row && col === me.base.col) { cell.classList.add('blue-base'); cell.title = 'Your base'; cell.insertAdjacentText('afterbegin', '⌂'); }
+        if (opponent && row === opponent.base.row && col === opponent.base.col) { cell.classList.remove('obstacle'); cell.classList.add('red-base'); cell.title = 'Enemy base'; cell.insertAdjacentText('afterbegin', '⌂'); }
+        if (last?.row === row && last?.col === col) cell.classList.add('last');
+        const occupant = game.players.find((player) => player.position.row === row && player.position.col === col);
+        if (occupant) {
           const unit = document.createElement('span');
-          unit.className = `unit${playerHere.id === game.players[1]?.id ? ' red' : ''}`;
-          unit.textContent = initials(playerHere.username);
-          unit.title = `${playerHere.username}${playerHere.id === state.user.id ? ' (you)' : ''}`;
+          unit.className = `unit${occupant.id === game.players[1]?.id ? ' red' : ''}`;
+          unit.textContent = initials(occupant.username);
+          unit.title = occupant.username;
           cell.append(unit);
-        } else if (myTurn && !obstacleSet.has(pointKey)) {
+        } else if (myTurn && !obstacles.has(key)) {
           cell.addEventListener('click', () => {
-            const deltaRow = row - me.position.row;
-            const deltaCol = col - me.position.col;
-            const direction = deltaRow === -1 && deltaCol === 0 ? 'up'
-              : deltaRow === 1 && deltaCol === 0 ? 'down'
-                : deltaRow === 0 && deltaCol === -1 ? 'left'
-                  : deltaRow === 0 && deltaCol === 1 ? 'right' : null;
-            if (direction) makeMove(direction);
+            const dr = row - me.position.row;
+            const dc = col - me.position.col;
+            const direction = dr === -1 && dc === 0 ? 'up' : dr === 1 && dc === 0 ? 'down' : dr === 0 && dc === -1 ? 'left' : dr === 0 && dc === 1 ? 'right' : null;
+            if (direction) move(direction);
           });
         }
         board.append(cell);
       }
     }
     document.querySelectorAll('[data-direction]').forEach((button) => { button.disabled = !myTurn; });
-    $('#attack-button').disabled = !myTurn;
+    $('#attack').disabled = !myTurn;
     $('#attack-action').disabled = !myTurn;
   }
 
@@ -263,16 +203,14 @@
     list.replaceChildren();
     if (!moves.length) {
       const empty = document.createElement('li');
-      empty.className = 'log-empty';
-      empty.textContent = 'No moves recorded yet.';
+      empty.textContent = 'No moves yet.';
       list.append(empty);
       return;
     }
     [...moves].reverse().forEach((move) => {
-      const item = document.createElement('li');
-      const action = move.type === 'attack' ? 'attacked the enemy base' : `moved ${move.direction}`;
-      item.textContent = `${move.username} ${action}`;
-      list.append(item);
+      const row = document.createElement('li');
+      row.textContent = move.type === 'attack' ? `${move.username} attacked the base` : `${move.username} moved ${move.direction}`;
+      list.append(row);
     });
   }
 
@@ -282,90 +220,61 @@
       const { game } = await api(`/api/games/${state.game.id}`);
       state.game = game;
       renderGame();
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+    } catch (error) { notice(error.message, 'error'); }
   }
 
-  async function makeMove(direction) {
-    if (!state.game) return;
+  async function move(direction) {
     try {
-      const { game } = await api(`/api/games/${state.game.id}/moves`, { method: 'POST', body: { direction } });
+      const { game } = await api(`/api/games/${state.game.id}/moves`, { method: 'POST', body: JSON.stringify({ direction }) });
       state.game = game;
       renderGame();
-      if (game.winner) notify('Base captured. Victory!', 'success');
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+      if (game.winner) notice('Base captured. Victory!', 'success');
+    } catch (error) { notice(error.message, 'error'); }
   }
 
-  async function attackBase() {
-    if (!state.game) return;
+  async function attack() {
     try {
-      const { game } = await api(`/api/games/${state.game.id}/attack`, { method: 'POST', body: {} });
+      const { game } = await api(`/api/games/${state.game.id}/attack`, { method: 'POST', body: '{}' });
       state.game = game;
       renderGame();
-      notify('Enemy base captured!', 'success');
-    } catch (error) {
-      notify(error.message, 'error');
-    }
+      notice('Enemy base captured!', 'success');
+    } catch (error) { notice(error.message, 'error'); }
   }
 
-  function logout(showNotice = true) {
+  function logout() {
     state.token = '';
     state.user = null;
     state.game = null;
     localStorage.removeItem('gridline-token');
-    showView(authView);
-    if (showNotice) notify('You have logged out.');
+    show(authView);
   }
 
-  document.querySelectorAll('.auth-tab').forEach((tab) => {
-    tab.addEventListener('click', () => {
-      state.authMode = tab.dataset.mode;
-      document.querySelectorAll('.auth-tab').forEach((item) => item.classList.toggle('active', item === tab));
-      $('#auth-title').textContent = state.authMode === 'register' ? 'Create your commander' : 'Welcome back, commander';
-      $('#auth-subtitle').textContent = state.authMode === 'register' ? 'Choose a callsign and enter the arena.' : 'Sign in and get back to the front.';
-      $('#auth-submit').textContent = state.authMode === 'register' ? 'Create commander' : 'Enter the arena';
-      $('#password').autocomplete = state.authMode === 'register' ? 'new-password' : 'current-password';
-      $('#auth-error').textContent = '';
-    });
-  });
-
-  $('#auth-form').addEventListener('submit', (event) => {
-    event.preventDefault();
+  document.querySelectorAll('.tabs button').forEach((tab) => tab.addEventListener('click', () => {
+    state.mode = tab.dataset.mode;
+    document.querySelectorAll('.tabs button').forEach((button) => button.classList.toggle('active', button === tab));
+    $('#auth-title').textContent = state.mode === 'register' ? 'Create your commander' : 'Welcome back, commander';
+    $('#auth-subtitle').textContent = state.mode === 'register' ? 'Choose a callsign and enter the arena.' : 'Sign in and return to the front.';
+    $('#auth-submit').textContent = state.mode === 'register' ? 'Create commander' : 'Enter the arena';
+    $('#password').autocomplete = state.mode === 'register' ? 'new-password' : 'current-password';
     $('#auth-error').textContent = '';
-    authenticate();
-  });
+  }));
+  $('#auth-form').addEventListener('submit', submitAuth);
   $('#create-game').addEventListener('click', createGame);
-  $('#refresh-games').addEventListener('click', loadLobby);
-  $('#back-lobby').addEventListener('click', loadLobby);
-  $('#copy-link').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(state.game.id);
-      notify('Game ID copied. Share it with your opponent.', 'success');
-    } catch {
-      notify(`Game ID: ${state.game.id}`);
-    }
-  });
-  $('#logout-button').addEventListener('click', () => logout());
-  document.querySelectorAll('[data-direction]').forEach((button) => button.addEventListener('click', () => makeMove(button.dataset.direction)));
-  $('#attack-button').addEventListener('click', attackBase);
-  $('#attack-action').addEventListener('click', attackBase);
+  $('#refresh').addEventListener('click', loadLobby);
+  $('#back').addEventListener('click', loadLobby);
+  $('#logout').addEventListener('click', logout);
+  document.querySelectorAll('[data-direction]').forEach((button) => button.addEventListener('click', () => move(button.dataset.direction)));
+  $('#attack').addEventListener('click', attack);
+  $('#attack-action').addEventListener('click', attack);
   document.addEventListener('keydown', (event) => {
     if (gameView.classList.contains('hidden') || event.target instanceof HTMLInputElement) return;
-    const keys = { ArrowUp: 'up', w: 'up', ArrowDown: 'down', s: 'down', ArrowLeft: 'left', a: 'left', ArrowRight: 'right', d: 'right' };
-    const direction = keys[event.key] || keys[event.key.toLowerCase()];
-    if (direction) {
-      event.preventDefault();
-      makeMove(direction);
-    }
+    const directions = { ArrowUp: 'up', w: 'up', ArrowDown: 'down', s: 'down', ArrowLeft: 'left', a: 'left', ArrowRight: 'right', d: 'right' };
+    const direction = directions[event.key] || directions[event.key.toLowerCase()];
+    if (direction) { event.preventDefault(); move(direction); }
   });
-
-  // REST polling keeps both players in sync while a match is open.
   setInterval(() => {
     if (!gameView.classList.contains('hidden') && state.game) refreshGame();
-  }, 1800);
+  }, 1600);
 
   (async () => {
     if (!state.token) return;
@@ -373,8 +282,6 @@
       const { user } = await api('/api/me');
       state.user = user;
       await loadLobby();
-    } catch {
-      logout(false);
-    }
+    } catch { logout(); }
   })();
 })();

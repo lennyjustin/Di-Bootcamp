@@ -1,15 +1,9 @@
-# Gather — Real-time Chat
+# Mini Project — Real-time Chat App
 
-A responsive multi-room chat app built with Express and Socket.IO. It supports usernames, `general`/`random`/`help` rooms, live presence, room switching/leaving, message history for the current server session, in-app new-message notifications, and optional browser notifications.
+Express and Socket.IO chat with selectable usernames, `general`/`random`/`help` rooms, room join/leave, live member lists, real-time messages, join notices, browser notifications, emoji insertion, and in-memory recent-message history.
 
-## Run it
+## Run
 
-From this folder:
+From this folder run `npm install`, then `npm start`. Open `http://localhost:3001` (or set `PORT`). Use another browser tab to test multiple users. Run `npm test` for Socket.IO integration tests.
 
-1. `npm install`
-2. `npm start`
-3. Open `http://localhost:3000` in one or more browser tabs.
-
-Set `PORT` to use a different port. Chat messages are kept in memory and reset when the server restarts; no account or database is required.
-
-Run the Socket.IO integration tests with `npm test`.
+Messages and users live in server memory; chat history resets when the server stops. The client uses text-only rendering for messages to avoid interpreting user input as HTML.

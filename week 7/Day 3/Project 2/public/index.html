@@ -1,64 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101b2b">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111c24">
   <title>Gather — Real-time chat</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/socket.io/socket.io.js" defer></script>
-  <script src="/app.js" defer></script>
+  <link rel="stylesheet" href="/styles.css"><script src="/socket.io/socket.io.js" defer></script><script src="/app.js" defer></script>
 </head>
 <body>
-  <main class="shell">
-    <section id="join-screen" class="join-screen" aria-labelledby="welcome-title">
-      <div class="join-card">
-        <a class="brand" href="#" aria-label="Gather home"><span class="brand-mark">g</span> gather<span class="brand-period">.</span></a>
-        <div class="eyebrow"><span class="pulse-dot"></span> YOUR PEOPLE, RIGHT NOW</div>
-        <h1 id="welcome-title">Good conversations<br><span>start somewhere.</span></h1>
-        <p class="join-copy">Pick a name, choose your corner of the internet, and jump in.</p>
-        <form id="join-form">
-          <label for="username">YOUR NAME</label>
-          <input id="username" name="username" maxlength="24" minlength="2" placeholder="e.g. Alex Morgan" autocomplete="nickname" required>
-          <label class="room-label" for="room">PICK A ROOM</label>
-          <div class="room-picker">
-            <label class="room-option"><input type="radio" name="room" value="general" checked><span class="room-icon general-icon">✳</span><span><strong>General</strong><small>For everything</small></span><i></i></label>
-            <label class="room-option"><input type="radio" name="room" value="random"><span class="room-icon random-icon">☄</span><span><strong>Random</strong><small>Unexpected stuff</small></span><i></i></label>
-            <label class="room-option"><input type="radio" name="room" value="help"><span class="room-icon help-icon">↗</span><span><strong>Help desk</strong><small>Ask the community</small></span><i></i></label>
-          </div>
-          <p id="join-error" class="form-error" role="alert"></p>
-          <button class="primary-button" type="submit">Join the conversation <span>↗</span></button>
-        </form>
-        <p class="privacy-note"><span>✦</span> No account needed. Just be kind.</p>
-      </div>
-      <div class="join-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div><span class="art-star star-one">✳</span><span class="art-star star-two">✦</span><span class="art-caption">a little more connected</span></div>
+  <main class="app">
+    <section id="welcome" class="welcome-screen">
+      <div class="welcome-card"><a class="brand" href="#"><span class="brand-mark">g</span> gather<span class="brand-dot">.</span></a><div class="eyebrow"><i></i> YOUR PEOPLE, RIGHT NOW</div><h1>Good conversations<br><em>start somewhere.</em></h1><p class="welcome-copy">Pick a name, choose your corner of the internet, and jump in.</p>
+        <form id="join-form"><label for="username">YOUR NAME</label><input id="username" name="username" minlength="2" maxlength="24" placeholder="e.g. Alex Morgan" autocomplete="nickname" required><label class="room-label">PICK A ROOM</label><div class="room-picker"><label class="room-option"><input type="radio" name="room" value="general" checked><span class="room-symbol general">✳</span><span><b>General</b><small>For everything</small></span><i></i></label><label class="room-option"><input type="radio" name="room" value="random"><span class="room-symbol random">☄</span><span><b>Random</b><small>Unexpected stuff</small></span><i></i></label><label class="room-option"><input type="radio" name="room" value="help"><span class="room-symbol help">↗</span><span><b>Help desk</b><small>Ask the community</small></span><i></i></label></div><p id="join-error" class="error" role="alert"></p><button class="join-button" type="submit">Join the conversation <span>↗</span></button></form><div class="kind-note">✦ &nbsp; No account needed. Just be kind.</div></div>
+      <div class="ambient" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orb"></div><span class="spark spark-a">✳</span><span class="spark spark-b">✦</span><small>a little more connected</small></div>
     </section>
 
-    <section id="chat-screen" class="chat-screen hidden" aria-label="Chat room">
-      <aside class="sidebar">
-        <a class="brand sidebar-brand" href="#"><span class="brand-mark">g</span> gather<span class="brand-period">.</span></a>
-        <div class="workspace-label">YOUR WORKSPACE</div>
-        <div class="workspace-card"><div class="workspace-avatar">G</div><span><strong>Gather space</strong><small>Community chat</small></span><span class="chevron">⌄</span></div>
-        <div class="section-heading"><span>CHANNELS</span><span class="section-plus">+</span></div>
-        <nav id="room-nav" class="room-nav" aria-label="Chat rooms">
-          <button class="nav-room" data-room="general"><span class="hash">#</span> general</button>
-          <button class="nav-room" data-room="random"><span class="hash">#</span> random</button>
-          <button class="nav-room" data-room="help"><span class="hash">#</span> help</button>
-        </nav>
-        <div class="sidebar-bottom"><div class="connection-indicator"><span class="pulse-dot"></span> Live and connected</div><div class="profile-row"><div id="my-avatar" class="avatar my-avatar">A</div><span class="profile-name"><strong id="my-name">You</strong><small>Online</small></span><button id="leave-button" class="leave-button" title="Leave chat" aria-label="Leave chat">↪</button></div></div>
-      </aside>
-
-      <section class="conversation">
-        <header class="chat-header"><div><div class="channel-title"><span class="hash">#</span><h2 id="current-room">general</h2></div><p id="room-description">The place for everyday conversations.</p></div><div class="header-actions"><div class="live-pill"><span class="pulse-dot"></span> LIVE</div><button id="notify-button" class="icon-button" title="Enable desktop notifications" aria-label="Enable desktop notifications">♧</button><button id="members-toggle" class="members-toggle"><span>◎</span> <b id="member-count">0</b> <span class="members-text">members</span></button></div></header>
-        <div id="message-list" class="message-list" aria-live="polite" aria-relevant="additions text"><div class="welcome-message"><div class="welcome-icon">✳</div><div><strong>Welcome to <span id="welcome-room">#general</span></strong><p>This is the beginning of something good. Say hello!</p></div></div></div>
-        <div id="toast" class="toast" role="status"></div>
-        <form id="message-form" class="message-form"><button id="emoji-button" class="composer-tool" type="button" aria-label="Add an emoji" title="Add a smile">☺</button><input id="message-input" maxlength="1000" placeholder="Message #general" autocomplete="off" aria-label="Message"><button class="send-button" type="submit" aria-label="Send message"><span>Send</span><b>↗</b></button><div class="composer-hint">Press <kbd>Enter</kbd> to send</div></form>
-      </section>
-
-      <aside id="members-panel" class="members-panel"><div class="members-title"><h3>People here</h3><span id="online-count" class="online-count">0 online</span></div><div class="member-group"><p class="member-group-label">ONLINE — <span id="online-count-small">0</span></p><ul id="user-list" class="user-list"></ul></div><div class="member-tip"><span>✦</span><p><strong>Make someone’s day.</strong><br>A friendly hello goes a long way.</p></div></aside>
+    <section id="chat" class="chat hidden">
+      <aside class="sidebar"><a class="brand sidebar-brand" href="#"><span class="brand-mark">g</span> gather<span class="brand-dot">.</span></a><p class="side-label">YOUR SPACE</p><div class="space-card"><span class="space-icon">G</span><span><b>Gather space</b><small>Community chat</small></span></div><p class="side-label channels-label">CHANNELS <button class="side-plus" type="button" aria-hidden="true">+</button></p><nav id="room-nav" aria-label="Chat rooms"><button data-room="general"><i>#</i> general</button><button data-room="random"><i>#</i> random</button><button data-room="help"><i>#</i> help</button></nav><div class="side-bottom"><div class="online-status"><i></i> Live and connected</div><div class="profile"><span id="my-avatar" class="avatar">A</span><span class="profile-info"><b id="my-name">You</b><small>Online</small></span><button id="leave-button" title="Leave chat" aria-label="Leave chat">↪</button></div></div></aside>
+      <section class="conversation"><header class="chat-header"><div><div class="channel-name"><span>#</span><h2 id="room-title">general</h2></div><p id="room-description">The place for everyday conversations.</p></div><div class="header-right"><span class="live-badge"><i></i> LIVE</span><button id="notifications" title="Enable browser notifications" aria-label="Enable browser notifications">♧</button><button id="members-toggle">◎ <b id="member-total">0</b> <span>members</span></button></div></header><div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div><div id="toast" class="toast" role="status"></div><form id="message-form" class="composer"><button id="emoji" type="button" title="Insert a smile" aria-label="Insert emoji">☺</button><input id="message-input" maxlength="1000" autocomplete="off" placeholder="Message #general" aria-label="Message"><button class="send" type="submit">Send <b>↗</b></button><small>Press <kbd>Enter</kbd> to send</small></form></section>
+      <aside id="members" class="members"><h3>People here</h3><p class="online-count"><i></i><span id="online-total">0 online</span></p><p class="member-label">ONLINE — <span id="member-small">0</span></p><ul id="user-list"></ul><div class="kind-card"><b>✦ &nbsp; Make someone’s day.</b><p>A friendly hello goes a long way.</p></div></aside>
     </section>
   </main>
 </body>

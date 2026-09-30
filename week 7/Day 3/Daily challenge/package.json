@@ -1,0 +1,16 @@
+{
+  "name": "daily-challenge-user-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "User registration and login with Express, bcrypt, and JSON storage.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^4.21.2"
+  }
+}
