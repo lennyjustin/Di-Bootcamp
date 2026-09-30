@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "king",
+    "lastName": "justin",
+    "email": "king12@gmail.com",
+    "username": "Easy",
+    "passwordHash": "$2b$10$qtQWnxK6DLoZgEVi1.96GuhK0MZ8Rs/Q08/QRZNvnj4EVez2dgETC"
+  },
+  {
+    "id": 2,
+    "name": "king",
+    "lastName": "king",
+    "email": "king13@gmail.com",
+    "username": "king",
+    "passwordHash": "$2b$10$JLB17jBTiQb6NrKD.WEQzePBbZQfWdna.WiVtnYs6kFs.bq24kTNq"
+  }
+]
