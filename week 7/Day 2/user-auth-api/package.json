@@ -1,0 +1,21 @@
+{
+  "name": "user-auth-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express registration and login API using Knex, PostgreSQL, and bcrypt.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "node --test",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "knex": "^3.1.0",
+    "pg": "^8.13.1"
+  }
+}

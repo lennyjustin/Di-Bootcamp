@@ -1,0 +1,15 @@
+{
+  "name": "task-management-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express task CRUD API with JSON file storage.",
+  "main": "Mini project.js",
+  "scripts": {
+    "start": "node \"Mini project.js\"",
+    "dev": "node --watch \"Mini project.js\"",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

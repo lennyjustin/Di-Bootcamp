@@ -1,0 +1,15 @@
+{
+  "name": "gridline-strategy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn-based multiplayer base-capture strategy game using Express REST APIs.",
+  "main": "Mini project.js",
+  "scripts": {
+    "start": "node \"Mini project.js\"",
+    "dev": "node --watch \"Mini project.js\"",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
