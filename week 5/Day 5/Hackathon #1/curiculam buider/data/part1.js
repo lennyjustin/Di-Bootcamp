@@ -1,0 +1,28 @@
+const makeNotes = (tagline, topics) => ({ tagline, strands: topics.map((name, i) => ({ name, notes: [`Key concepts and vocabulary in ${name.toLowerCase()}.`, `Processes, examples and applications related to ${name.toLowerCase()}.`, `Learners explain how ${name.toLowerCase()} connects to everyday life and the local environment.`] })), terms: topics.flatMap((name) => [name.split(" ")[0], "Evidence", "Application"]).slice(0, 6), questions: topics.map((name) => `Describe two important ideas in ${name.toLowerCase()} and give a practical example.`), worked: topics.map((name) => [`Define the central ideas in ${name.toLowerCase()}.`, `Give one relevant example and explain its importance.`]) });
+window.NOTES_PART1 = {
+  "English": makeNotes("Language, literature, communication and critical reading for confident expression.", ["Listening and Speaking", "Reading", "Writing", "Grammar and Vocabulary"]),
+  "Kiswahili": makeNotes("Kusikiliza, kuzungumza, kusoma, kuandika na matumizi ya lugha.", ["Kusikiliza na Kuzungumza", "Kusoma", "Kuandika", "Sarufi na Msamiati"]),
+  "Arabic": makeNotes("Communication, comprehension, grammar and cultural expression in Arabic.", ["Listening and Speaking", "Reading", "Writing", "Language Structures"]),
+  "French": makeNotes("Practical communication, comprehension and cultural awareness in French.", ["Oral Communication", "Reading", "Writing", "Grammar"]),
+  "German": makeNotes("Foundations of German communication, comprehension and cultural awareness.", ["Communication", "Reading", "Writing", "Language Structures"]),
+  "Biology": makeNotes("Life processes, organisms, ecology and health informed by observation and evidence.", ["Cell Biology", "Nutrition", "Transport and Respiration", "Ecology"]),
+  "Chemistry": makeNotes("Matter, chemical change, laboratory practice and responsible use of resources.", ["The Particulate Nature of Matter", "Chemical Reactions", "Acids, Bases and Salts", "Organic Chemistry"]),
+  "Physics": makeNotes("Measurement, forces, energy, waves, electricity and technology.", ["Measurements", "Forces and Pressure", "Energy", "Electricity"]),
+  "Agriculture": makeNotes("Sustainable farming, food production, soil care and agricultural enterprise.", ["Soil and Water", "Crop Production", "Livestock Production", "Agribusiness"]),
+  "Home Science": makeNotes("Nutrition, textiles, home management, health and responsible consumption.", ["Nutrition", "Clothing and Textiles", "Home Management", "Consumer Education"]),
+  "Computer Studies": makeNotes("Digital systems, computational thinking, data, networks and responsible technology use.", ["Computer Systems", "Algorithms and Programming", "Data Management", "Networks and Cyber Safety"]),
+  "History and Government": makeNotes("People, events, governance, citizenship and Kenya's place in the wider world.", ["Sources of History", "Early Communities", "Colonialism and Nationalism", "Government and Citizenship"]),
+  "Geography": makeNotes("People, places, physical processes, resources and sustainable development.", ["Map Work", "The Earth and Its Structure", "Weather and Climate", "Resources and Development"]),
+  "Business Studies": makeNotes("Enterprise, markets, finance, production and ethical business decision-making.", ["Entrepreneurship", "Business Activities", "Money and Banking", "Financial Records"]),
+  "Christian Religious Education": makeNotes("Biblical knowledge, Christian values, ethics and responsible participation in society.", ["The Bible", "Creation and Human Responsibility", "Jesus Christ", "Christian Ethics"]),
+  "Islamic Religious Education": makeNotes("Qur'an, Sunnah, faith, worship, morality and responsible Muslim citizenship.", ["Qur'an and Hadith", "Faith and Worship", "Seerah", "Islamic Ethics"]),
+  "Hindu Religious Education": makeNotes("Hindu teachings, values, practices and responsible living in society.", ["Sources of Hindu Knowledge", "Beliefs and Practices", "Dharma", "Hindu Values"]),
+  "Art and Design": makeNotes("Visual communication, creativity, design processes and appreciation of artistic work.", ["Elements of Art", "Drawing and Design", "Colour", "Art Appreciation"]),
+  "Music": makeNotes("Performance, composition, listening and appreciation across musical traditions.", ["Elements of Music", "Vocal Music", "Instrumental Music", "Composition"]),
+  "Sports and Physical Education": makeNotes("Movement, fitness, games, health, teamwork and lifelong wellbeing.", ["Fitness", "Athletics", "Games", "Health and Safety"]),
+  "Technical Studies": makeNotes("Design thinking, tools, materials, making and practical problem-solving.", ["Design Process", "Materials", "Tools and Workshop Safety", "Project Work"]),
+  "Building and Construction": makeNotes("Construction materials, drawing, structures, safety and sustainable building practice.", ["Building Materials", "Technical Drawing", "Building Technology", "Site Safety"]),
+  "Electricity": makeNotes("Electrical principles, circuits, installation practice, safety and efficient energy use.", ["Electrical Quantities", "Circuits", "Domestic Installation", "Safety and Maintenance"]),
+  "Woodwork": makeNotes("Wood science, tools, joints, design and safe production of useful artefacts.", ["Timber Technology", "Tools", "Joints", "Project Production"]),
+  "Metalwork": makeNotes("Metals, workshop processes, fabrication, joining and safe practical production.", ["Metals", "Tools and Machines", "Joining Processes", "Fabrication"])
+};

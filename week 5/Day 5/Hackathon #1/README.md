@@ -1,62 +1,50 @@
-# SomaSmart
+# SomaSmart Hackathon
 
-## Project name
-SomaSmart
-
-## Problem statement
-Many students read notes but still struggle to understand difficult topics, test their knowledge, and know what to revise.
-
-## Solution
-SomaSmart is a simple AI-powered study companion that explains a topic, highlights key points, gives a practical example, and generates a quiz with instant feedback.
+SomaSmart is a study companion that combines the Hackathon app with the local learning platform in `week 5/Day 5/somasmart`. The Hackathon Flask server serves that platform's UI, topic catalog, lesson data, and subject curriculum JSON from one same-origin application.
 
 ## Features
-- Home page with subject and topic selection
-- Lesson explanation section
-- Five-question quiz
-- Results screen with revision advice
-- Demo fallback without an API key
-- Kenya curriculum guide with KICD learning areas and resource links
 
-## Tech stack
-- Python 3
-- Flask
-- OpenAI SDK
-- HTML, CSS, JavaScript
+- Curriculum-informed topic suggestions across the locally defined subjects.
+- Lessons and five-question quizzes, with local demo content when an AI key is unavailable.
+- Subject-specific local curriculum endpoints for Mathematics, Chemistry, Physics, and Business Studies.
+- Quiz feedback, results, and revision suggestions.
+- Rate limiting, request-size limits, and basic security headers.
 
-## Install
+## Install and run
+
 ```bash
 python -m venv .venv
-pip install -r requirements.txt
 ```
 
-## Run
+Activate the virtual environment, then run:
+
 ```bash
+python -m pip install -r requirements.txt
 python app.py
 ```
-Open http://127.0.0.1:5000 on this computer.
 
-To open SomaSmart from another device on the same Wi-Fi network, use:
+Open <http://127.0.0.1:5000> for SomaSmart, or <http://127.0.0.1:5000/curriculum-builder/> for the curriculum notes and lesson builder. Both are served by the same Flask process and link to each other. The server defaults to the adjacent `../somasmart` platform folder. To use another local copy, set `SOMASMART_PLATFORM_DIR` to its path before starting the server.
 
-`http://192.168.8.12:5000`
+## Environment
 
-The Flask server listens on all network interfaces. Windows Firewall may ask for permission the first time it runs; allow Python on private networks.
+Copy `.env.example` to `.env` and set `OPENAI_API_KEY` to enable AI-generated lessons. Leave it unset to use the local curriculum/demo content; no external API key is required for the learning flow.
 
-## Demo flow
-1. Select History
-2. Enter "Causes of the First World War"
-3. Click Start learning
-4. Read the explanation
-5. Start the quiz
-6. Answer all questions
-7. View the final score
+## API endpoints
 
-## Curriculum resources
+- `GET /api/health` — health check.
+- `GET /api/curriculum` — legacy curriculum guide retained for compatibility.
+- `GET /api/curriculum-topics` — local subject and topic catalog.
+- `GET /api/curriculum/mathematics`
+- `GET /api/curriculum/chemistry`
+- `GET /api/curriculum/physics`
+- `GET /api/curriculum/business-studies`
+- `POST /api/learn` — returns a validated AI or local lesson and quiz.
+- `GET /curriculum-builder/` — curriculum notes, revision tasks, and lesson builder.
 
-The home page includes learning areas based on the KICD Grade 10 and Grade 11 curriculum-design pages. It links learners to:
+## Tests
 
-- [KICD curriculum designs](https://kicd.ac.ke/curriculum-designs/)
-- [KICD Grade 10 designs](https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-ten/)
-- [KICD Grade 11 designs](https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-eleven/)
-- [Secondary subject syllabus index](https://educationnewshub.co.ke/syllabus-for-all-secondary-schools-per-subjects-latest-syllabus/)
+```bash
+python -m unittest discover -s tests -v
+```
 
-The links are provided for orientation and revision. Always confirm the latest official curriculum design with KICD or your school.
+The local curriculum resources are original study prompts and notes. Confirm grade-specific scope with the official Kenya Institute of Curriculum Development designs.

@@ -1,0 +1,91 @@
+{
+  "subject": "Mathematics",
+  "tagline": "Numbers, algebra, geometry, measurement, trigonometry, statistics and probability.",
+  "source_note": "Curriculum-informed notes supplied for SomaSmart. Confirm the current official grade-specific design with KICD.",
+  "strands": [
+    {
+      "name": "Numbers and Operations",
+      "notes": [
+        "Natural numbers, integers, rational and irrational numbers; place value up to billions; operations follow BODMAS order.",
+        "Factors and multiples: prime factorisation, GCD/HCF and LCM by factor tree or division; divisibility tests for 2, 3, 4, 5, 6, 8, 9 and 11.",
+        "Fractions, decimals and percentages: conversion, ratio, proportion (direct and inverse), rates, percentage increase and decrease, and mixtures.",
+        "Squares, square roots, cubes and cube roots by factorisation and tables; indices laws and standard form.",
+        "Logarithms: product, quotient and power laws; use of logarithm tables and calculators.",
+        "Approximation and errors: rounding off, significant figures, absolute, relative and percentage error, and limits of accuracy in sums and products."
+      ]
+    },
+    {
+      "name": "Algebra",
+      "notes": [
+        "Algebraic expressions: substitution, simplification, expansion, factorisation and algebraic fractions.",
+        "Linear equations and inequalities in one and two unknowns; simultaneous equations solved by substitution, elimination and graphically.",
+        "Quadratic expressions and equations solved by factorisation, completing the square, the quadratic formula and graphically; the discriminant determines the nature of roots.",
+        "Formulae: change of subject, forming equations from word problems, and simple linear programming to maximise or minimise an objective function.",
+        "Sequences and series: arithmetic and geometric progressions; compound interest, appreciation and depreciation.",
+        "Matrices: order, operations, identity matrix, determinant and inverse of a 2 × 2 matrix, and solving simultaneous equations by matrix method."
+      ]
+    },
+    {
+      "name": "Measurement and Geometry",
+      "notes": [
+        "Length, area and volume: perimeter and area of plane figures, surface area and volume of prisms, cylinders, pyramids, cones and spheres; frustums by subtraction of similar solids.",
+        "Circle measurement: arc length, area of sector, segment and chord properties; angle at centre, angles in the same segment, cyclic quadrilaterals and tangents.",
+        "Angles and polygons: parallel lines, interior and exterior angle properties, construction with ruler and compasses, and regular polygons.",
+        "Similarity and congruence: SSS, SAS, ASA, RHS; area and volume scale factors; enlargement with positive, negative and fractional scale factors.",
+        "Transformations: reflection, rotation, translation, enlargement, shear, stretch, transformation matrices, invariant points and loci.",
+        "Pythagoras' theorem in two and three dimensions; latitude, longitude, great circles, distances in nautical miles and time differences."
+      ]
+    },
+    {
+      "name": "Trigonometry, Vectors and Coordinate Geometry",
+      "notes": [
+        "Trigonometric ratios sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse and tan θ = opposite/adjacent; special angles and bearings.",
+        "Trigonometric identities sin²θ + cos²θ = 1 and tan θ = sin θ ÷ cos θ; graphs of sine, cosine and tangent.",
+        "Sine rule, cosine rule and triangle area formula; bearings and three-figure notation in navigation problems.",
+        "Vectors: representation, magnitude, addition and subtraction, scalar multiplication, position vectors, midpoint, section formula, collinearity and ratio theorem.",
+        "Coordinate geometry: gradient, line equations, parallel and perpendicular lines, distance and midpoint formulae."
+      ]
+    },
+    {
+      "name": "Statistics and Probability",
+      "notes": [
+        "Data collection and presentation: frequency tables, bar graphs, pie charts, line graphs, histograms, frequency polygons and cumulative frequency curves.",
+        "Measures of central tendency: mean, median and mode, including assumed mean and grouped data methods; effect of extreme values.",
+        "Measures of dispersion: range, interquartile range, quartiles, percentiles, mean absolute deviation, variance and standard deviation.",
+        "Probability: experimental and theoretical probability, mutually exclusive and independent events, tree diagrams and conditional probability.",
+        "Interpretation and honest reporting of data, including misleading graphs and sampling bias."
+      ]
+    },
+    {
+      "name": "Calculus and Applications",
+      "notes": [
+        "Rates of change and gradients of curves; differentiation of polynomials.",
+        "Applications of differentiation: gradients, tangents and normals, stationary points, velocity and acceleration from displacement.",
+        "Integration as reverse differentiation; definite integrals for area under a curve and volume of revolution basics.",
+        "Numerical methods: area estimation by the trapezium rule and mid-ordinate rule; comparison with exact integration.",
+        "Real-life applications: profit and cost optimisation, motion problems, growth and decay, and graphs to solve equations approximately."
+      ]
+    }
+  ],
+  "terms": ["Index", "Discriminant", "Scale factor", "Ogive", "Standard deviation", "Stationary point", "Linear programming"],
+  "questions": [
+    "Simplify (2x² − 8) ÷ (x² + x − 6) and state the values of x for which the expression is undefined.",
+    "Solve the simultaneous equations 3x + 2y = 16 and 5x − y = 18 by elimination, then check graphically.",
+    "A cone of base radius 7 cm and height 24 cm is cut parallel to the base halfway up. Find the volume of the frustum (take π = 22/7).",
+    "Two ships leave a port; A sails 40 km on a bearing of 060° and B sails 55 km on a bearing of 150°. Calculate the distance between them using the cosine rule.",
+    "The marks of 50 learners are grouped in classes of width 10 from 30 to 79. Draw an ogive and estimate the median and interquartile range.",
+    "A bag has 5 red and 3 blue balls. Two are drawn without replacement. Draw a tree diagram and find the probability that both are the same colour.",
+    "Find the coordinates of the turning points of y = x³ − 3x² − 9x + 5 and state their nature.",
+    "Estimate the area under y = x² + 1 between x = 0 and x = 4 using the trapezium rule with 4 strips, then compare with the exact value by integration."
+  ],
+  "worked": [
+    ["Factorise the numerator: 2x² − 8 = 2(x − 2)(x + 2).", "Factorise the denominator: x² + x − 6 = (x + 3)(x − 2).", "Cancel the common factor: the expression simplifies to 2(x + 2) ÷ (x + 3).", "The original denominator is zero when x = −3 or x = 2, so it is undefined at these values."],
+    ["Label the equations 3x + 2y = 16 and 5x − y = 18.", "Multiply the second equation by 2: 10x − 2y = 36.", "Add the equations: 13x = 52, so x = 4.", "Substitute x = 4: 12 + 2y = 16, so y = 2. The lines meet at (4, 2)."],
+    ["Volume of the whole cone = ⅓ × 22/7 × 7² × 24 = 1,232 cm³.", "The smaller cone has scale factor ½, so its volume is 1,232 × (½)³ = 154 cm³.", "Volume of the frustum = 1,232 − 154 = 1,078 cm³."],
+    ["The angle between the two courses is 150° − 060° = 90°.", "AB² = 40² + 55² − 2(40)(55)cos 90° = 4,625.", "AB = √4,625 = 68.0 km to 3 significant figures."],
+    ["Using frequencies 4, 8, 14, 16 and 8, cumulative frequencies are 4, 12, 26, 42 and 50.", "The median is the 25th value: 49.5 + ((25 − 12) ÷ 14) × 10 = 58.8 marks.", "The lower quartile is about 49.9 and upper quartile about 66.7, so the interquartile range is about 16.8 marks."],
+    ["P(red then red) = 5/8 × 4/7 = 20/56.", "P(blue then blue) = 3/8 × 2/7 = 6/56.", "The outcomes are mutually exclusive, so P(same colour) = 26/56 = 13/28 ≈ 0.464."],
+    ["dy/dx = 3x² − 6x − 9 = 3(x − 3)(x + 1).", "Stationary points occur at x = 3 and x = −1.", "The points are (3, −22) and (−1, 10). The second derivative identifies (3, −22) as a minimum and (−1, 10) as a maximum."],
+    ["With 4 strips, h = 1 and the ordinates are 1, 2, 5, 10 and 17.", "Trapezium estimate = ½[(1 + 17) + 2(2 + 5 + 10)] = 26 square units.", "Exact area = ∫₀⁴(x² + 1)dx = 76/3 ≈ 25.33 square units, so the estimate overstates by about 0.67."]
+  ]
+}

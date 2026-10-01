@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kenya Secondary Curriculum Guide — notes and lesson builder</title>
+<meta name="description" content="Learning areas used in Kenya's secondary and Senior School curriculum, with study notes, key terms, revision questions and a lesson builder for every subject." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 8h10v18H5zM17 8h10v18H17z' fill='none' stroke='%231f6a4a' stroke-width='2.5'/%3E%3Cpath d='M16 6v22' stroke='%23a2600f' stroke-width='2.5'/%3E%3C/svg%3E" />
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@500,600&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site">
+  <div class="wrap hrow">
+    <a class="brand" href="#home" onclick="goHome();return false;" aria-label="Kenya Secondary Curriculum Guide home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 8.5h9.5v17H5zM17.5 8.5H27v17h-9.5z" stroke="currentColor" stroke-width="2" style="color:var(--primary)"/><path d="M16 5.5v21" stroke="currentColor" stroke-width="2" style="color:var(--accent)"/><path d="M8 13h4M8 17h4M20 13h4M20 17h4" stroke="currentColor" stroke-width="1.5" style="color:var(--primary)"/></svg>
+      <span>Curriculum Guide<small>Kenya secondary &amp; Senior School</small></span>
+    </a>
+    <div class="spacer"></div>
+    <a class="btn btn-ghost app-link" href="http://127.0.0.1:5000" target="_blank" rel="noopener">Open SomaSmart</a>
+    <div class="searchbox"><input id="q" type="search" placeholder="Search subjects or topics" aria-label="Search subjects and topics" autocomplete="off" /><div class="results" id="qres" role="listbox"></div></div>
+    <button class="iconbtn" id="theme" aria-label="Switch colour theme"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeicon"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></button>
+  </div>
+</header>
+<main>
+<div id="home">
+  <section class="wrap hero"><div class="hero-grid"><div><span class="eyebrow">Grade 10 &amp; 11 learning areas</span><h1>Study notes for every secondary learning area in Kenya</h1><p class="lead">Explore learning areas used in Kenya's secondary and Senior School curriculum, then choose a subject to read structured notes and build a lesson.</p><div class="hero-cta"><a class="btn btn-primary" href="#groups">Browse learning areas</a><a class="btn btn-ghost" href="#resources">Official sources</a><a class="btn btn-ghost" href="http://127.0.0.1:5000" target="_blank" rel="noopener">Practice in SomaSmart</a></div></div><div class="statcard"><div class="statgrid"><div class="stat"><b id="ngrp">8</b><span>Subject groupings</span></div><div class="stat"><b id="nsub">0</b><span>Subjects with notes</span></div><div class="stat"><b id="nstrand">0</b><span>Strands outlined</span></div><div class="stat"><b id="nq">0</b><span>Revision tasks</span></div></div></div></div><p class="notice"><strong>Before you rely on this:</strong> subject groupings are based on KICD Grade 10 and Grade 11 curriculum-design pages. Confirm the current official design before making school or examination decisions.</p></section>
+  <section class="block" id="groups"><div class="wrap"><div class="section-head"><div><h2>Learning area groupings</h2><p>Pick any subject to open its notes: strand-by-strand summaries, key terms, revision questions and a lesson builder.</p></div></div><div class="groups" id="grouplist"></div></div></section>
+  <section class="block" id="resources"><div class="wrap"><div class="section-head"><div><h2>Official and supporting sources</h2><p>Use KICD as the authoritative reference where versions differ between publishers.</p></div></div><div class="reslist" id="reslist"></div></div></section>
+</div>
+<div id="subject" class="wrap"></div>
+</main>
+<footer class="site"><div class="wrap"><p>Notes are a revision aid compiled around KICD strand structures, not a replacement for the official curriculum designs published by the <a href="https://kicd.ac.ke/curriculum-designs/" target="_blank" rel="noopener">Kenya Institute of Curriculum Development</a>. Grade 10 designs: <a href="https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-ten/" target="_blank" rel="noopener">KICD Grade 10</a> · Grade 11 designs: <a href="https://kicd.ac.ke/cbc-materials/curriculum-designs/grade-eleven/" target="_blank" rel="noopener">KICD Grade 11</a>.</p></div></footer>
+<script src="data/part1.js"></script><script src="data/part2.js"></script><script src="data/part3.js"></script><script src="data/part4.js"></script><script src="app.js"></script>
+</body>
+</html>

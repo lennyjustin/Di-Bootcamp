@@ -1,0 +1,44 @@
+{
+  "subject": "Business Studies",
+  "source_note": "Worked Business Studies examples supplied for SomaSmart. Confirm grade-specific scope with the official KICD curriculum design.",
+  "worked": [
+    [
+      "Transaction 1 — capital introduced: debit Cash 100,000 and credit Capital 100,000 (the business receives cash; the owner is the giver).",
+      "Transaction 2 — stock on credit: debit Purchases 40,000 and credit Creditor (supplier) 40,000.",
+      "Transaction 3 — cash sale: debit Cash 25,000 and credit Sales 25,000.",
+      "Posting to the ledger: the cash account shows debits of 100,000 and 25,000, giving a balance of 125,000; purchases 40,000 debit; capital 100,000, creditor 40,000 and sales 25,000 on the credit side.",
+      "Check the accounting equation: assets (cash 125,000 + stock 40,000 = 165,000) = capital 100,000 + liabilities 40,000 + sales revenue 25,000, so the books balance."
+    ],
+    [
+      "Cost of sales = opening stock + purchases − closing stock = 60,000 + 300,000 − 40,000 = KSh 320,000.",
+      "Gross profit = sales − cost of sales = 500,000 − 320,000 = KSh 180,000.",
+      "Average stock = (opening stock + closing stock) ÷ 2 = (60,000 + 40,000) ÷ 2 = KSh 50,000.",
+      "Rate of stock turnover = cost of sales ÷ average stock = 320,000 ÷ 50,000 = 6.4 times a year.",
+      "Interpretation: stock is replaced about every 57 days (365 ÷ 6.4), and the gross profit margin is 180,000 ÷ 500,000 × 100 = 36%."
+    ],
+    [
+      "Draw the normal demand curve DD and supply curve SS intersecting at equilibrium price P₁ and quantity Q₁.",
+      "A subsidy lowers the cost of production, so the supply curve shifts downward and to the right, to S₁S₁.",
+      "The new intersection gives a lower equilibrium price P₂ and a higher equilibrium quantity Q₂; demand itself does not shift.",
+      "The fall in price is usually smaller than the subsidy per unit, because the benefit is shared between consumers (lower price) and producers (higher revenue per unit).",
+      "Effects: maize flour becomes more affordable, consumption rises, millers' output expands, but the government carries the cost and the market may be distorted if the subsidy is withdrawn abruptly."
+    ],
+    [
+      "Membership: a private company has 1 to 50 members, while a public company has a minimum of 7 with no upper limit.",
+      "Transfer of shares: shares in a private company are transferred only with the consent of other members, whereas public company shares are freely transferable on the securities exchange.",
+      "Raising capital: a private company cannot invite the public to buy shares; a public company issues a prospectus and sells shares to the public.",
+      "Publication of accounts: a public company must publish audited accounts and file them for public inspection; a private company's accounts are not published.",
+      "Commencement of business: a private company may begin trading on receiving the certificate of incorporation, while a public company must also obtain a certificate of trading.",
+      "A private company may restrict directorship to family members, so control stays closely held, unlike a public company run by a board answerable to many shareholders."
+    ],
+    [
+      "State the marketing objective, for example to sell 300 broilers and 2,000 eggs a month within the first year.",
+      "Describe the target market: households, kiosks, hotels, schools and event caterers within a named estate or market centre.",
+      "Product: live and dressed broilers plus table eggs, graded and packed in labelled trays, with hygiene and freshness as the selling point.",
+      "Price: base the price on cost per bird plus a mark-up, compare with competitors' prices, and offer a discount for bulk buyers such as hotels.",
+      "Place (distribution): sell directly at the farm gate, supply kiosks and butcheries weekly, and deliver bulk orders by motorcycle.",
+      "Promotion: WhatsApp and Facebook posts, posters at the market, introductory offers, referral discounts and sponsoring a local event.",
+      "Competition and strategy: name the main competitors, state your advantage (reliable supply, cleaner handling, credit-free pricing), and note how you will collect customer feedback."
+    ]
+  ]
+}

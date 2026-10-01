@@ -1,0 +1,94 @@
+{
+  "title": "Curriculum-informed topic guide",
+  "description": "Original topic suggestions informed by Kenya's secondary and Senior School learning areas. Use the official KICD designs to confirm the current grade-specific scope.",
+  "source": {
+    "name": "Kenya Institute of Curriculum Development",
+    "url": "https://kicd.ac.ke/cbc-materials/curriculum-designs/"
+  },
+  "subjects": {
+    "History": [
+      "Causes of the First World War",
+      "The Scramble for Africa",
+      "Nationalism and independence in Kenya",
+      "The Constitution and good citizenship"
+    ],
+    "Biology": [
+      "Cell structure and functions",
+      "Nutrition in plants",
+      "Human reproduction",
+      "Ecology and food chains"
+    ],
+    "Mathematics": [
+      "Linear equations and inequalities",
+      "Quadratic expressions",
+      "Trigonometry in right-angled triangles",
+      "Statistics and probability"
+    ],
+    "Geography": [
+      "Map reading and interpretation",
+      "Weather and climate",
+      "Rocks and the rock cycle",
+      "Population and settlement"
+    ],
+    "English": [
+      "Reading comprehension strategies",
+      "Parts of speech and sentence structure",
+      "Summary writing",
+      "Oral communication and presentation"
+    ],
+    "Computer Studies": [
+      "Computer hardware and software",
+      "Data representation and number systems",
+      "Algorithms and flowcharts",
+      "Computer networks and online safety"
+    ],
+    "Kiswahili": [
+      "Ufahamu wa kusoma",
+      "Sarufi na aina za maneno",
+      "Insha za maelezo",
+      "Fasihi simulizi"
+    ],
+    "Chemistry": [
+      "The particulate nature of matter",
+      "The periodic table",
+      "Acids, bases and indicators",
+      "Chemical reactions and equations"
+    ],
+    "Physics": [
+      "Measurement and physical quantities",
+      "Forces and motion",
+      "Work, energy and power",
+      "Electric circuits"
+    ],
+    "Agriculture": [
+      "Soil properties and fertility",
+      "Crop production practices",
+      "Livestock health and management",
+      "Agribusiness and value addition"
+    ],
+    "Home Science": [
+      "Food nutrients and balanced diets",
+      "Food hygiene and safety",
+      "Textile fibres and fabrics",
+      "Consumer rights and budgeting"
+    ],
+    "Business Studies": [
+      "Needs, wants and scarcity",
+      "Forms of business ownership",
+      "Entrepreneurship and business ideas",
+      "Saving, budgeting and financial literacy"
+    ],
+    "Art and Design": [
+      "Elements and principles of art",
+      "Colour theory",
+      "Drawing and observational studies",
+      "Design process and visual communication"
+    ],
+    "Music": [
+      "Elements of music",
+      "Reading musical notation",
+      "Kenyan traditional music",
+      "Composition and performance"
+    ]
+  }
+}

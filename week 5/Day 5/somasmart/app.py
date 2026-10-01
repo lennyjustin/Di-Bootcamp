@@ -1,30 +1,14 @@
 import json
 import os
 import time
-from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, redirect, render_template, request, send_from_directory, url_for
+from flask import Flask, jsonify, render_template, request
 from openai import OpenAI
 
 load_dotenv()
-APP_DIR = Path(__file__).resolve().parent
-PLATFORM_DIR = Path(
-    os.getenv("SOMASMART_PLATFORM_DIR", str(APP_DIR.parent / "somasmart"))
-).resolve()
-if not PLATFORM_DIR.is_dir():
-    PLATFORM_DIR = APP_DIR
-
-PLATFORM_DATA_DIR = PLATFORM_DIR / "data"
-TEMPLATE_DIR = PLATFORM_DIR / "templates"
-STATIC_DIR = PLATFORM_DIR / "static"
-CURRICULUM_BUILDER_DIR = APP_DIR / "curiculam buider"
-app = Flask(
-    __name__,
-    template_folder=str(TEMPLATE_DIR if TEMPLATE_DIR.is_dir() else APP_DIR / "templates"),
-    static_folder=str(STATIC_DIR if STATIC_DIR.is_dir() else APP_DIR / "static"),
-)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024
 
 RATE_LIMIT_WINDOW_SECONDS = 60
@@ -38,27 +22,13 @@ def add_security_headers(response):
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
-    script_policy = "script-src 'self';"
-    style_policy = "style-src 'self' https://fonts.googleapis.com;"
-    if request.path.startswith("/curriculum-builder/"):
-        script_policy = "script-src 'self' 'unsafe-inline';"
-        style_policy = (
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com "
-            "https://api.fontshare.com;"
-        )
     response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; "
-        f"{script_policy} "
-        f"{style_policy} "
-        "font-src 'self' https://fonts.gstatic.com https://cdn.fontshare.com; "
-        "connect-src 'self'; img-src 'self' data:;"
+        "default-src 'self'; "
+        "base-uri 'self'; frame-ancestors 'none'; form-action 'self'; "
+        "script-src 'self'; style-src 'self' https://fonts.googleapis.com; "
+        "font-src 'self' https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;"
     )
     return response
-
-
-@app.errorhandler(413)
-def request_too_large(_error):
-    return jsonify({"error": "Request is too large."}), 413
 
 
 def is_rate_limited(client_key: str) -> bool:
@@ -77,43 +47,40 @@ def is_rate_limited(client_key: str) -> bool:
     return False
 
 
-def load_platform_json(filename: str) -> dict[str, Any]:
-    platform_path = PLATFORM_DATA_DIR / filename
-    app_path = APP_DIR / "data" / filename
-    data_path = platform_path if platform_path.is_file() else app_path
-    with data_path.open("r", encoding="utf-8") as file:
-        return json.load(file)
-
 def load_demo_content() -> dict[str, Any]:
-    return load_platform_json("demo_content.json")
-
-
-def load_curriculum_guide() -> dict[str, Any]:
-    return load_platform_json("curriculum_guide.json")
+    demo_path = os.path.join(os.path.dirname(__file__), "data", "demo_content.json")
+    with open(demo_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_curriculum_topics() -> dict[str, Any]:
-    return load_platform_json("curriculum_topics.json")
-
-
-def load_subject_curriculum(filename: str) -> dict[str, Any]:
-    return load_platform_json(filename)
+    topics_path = os.path.join(os.path.dirname(__file__), "data", "curriculum_topics.json")
+    with open(topics_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_mathematics_curriculum() -> dict[str, Any]:
-    return load_subject_curriculum("mathematics_curriculum.json")
+    curriculum_path = os.path.join(os.path.dirname(__file__), "data", "mathematics_curriculum.json")
+    with open(curriculum_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_chemistry_curriculum() -> dict[str, Any]:
-    return load_subject_curriculum("chemistry_curriculum.json")
+    curriculum_path = os.path.join(os.path.dirname(__file__), "data", "chemistry_curriculum.json")
+    with open(curriculum_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_physics_curriculum() -> dict[str, Any]:
-    return load_subject_curriculum("physics_curriculum.json")
+    curriculum_path = os.path.join(os.path.dirname(__file__), "data", "physics_curriculum.json")
+    with open(curriculum_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_business_studies_curriculum() -> dict[str, Any]:
-    return load_subject_curriculum("business_studies_curriculum.json")
+    curriculum_path = os.path.join(os.path.dirname(__file__), "data", "business_studies_curriculum.json")
+    with open(curriculum_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def curriculum_subjects() -> list[str]:
@@ -186,6 +153,7 @@ def build_ai_prompt(subject: str, topic: str) -> str:
     return (
         f"You are a kind and knowledgeable secondary school tutor. "
         f"Teach the topic '{topic}' in {subject}. "
+        "Keep the lesson aligned with the subject's school curriculum and use original wording. "
         "Use age-appropriate language and explain clearly. "
         "Provide a brief but helpful explanation, three to five key learning points, and one example. "
         "Then generate exactly five multiple-choice questions about the topic. "
@@ -199,8 +167,8 @@ def build_ai_prompt(subject: str, topic: str) -> str:
 
 
 def call_openai_api(subject: str, topic: str) -> dict[str, Any]:
-    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
-    if not api_key or api_key == "your_openai_api_key_here":
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
         raise RuntimeError("Missing API key.")
 
     client = OpenAI(api_key=api_key)
@@ -278,38 +246,21 @@ def get_learning_content(subject: str, topic: str) -> dict[str, Any]:
         lessons = demo_content.get("lessons", {})
         lesson = lessons.get(subject) or lessons.get("History")
         if not lesson:
-            raise ValueError("No local lesson is available for this subject.")
+            raise ValueError("No demo lesson is available for this subject.")
 
         result = dict(lesson)
         result["subject"] = subject
-        result["source"] = "demo"
-        result["demo_label"] = demo_content.get("demo_label", "Local curriculum lesson")
-
-        curriculum_files = {
-            "Mathematics": "mathematics_curriculum.json",
-            "Chemistry": "chemistry_curriculum.json",
-            "Physics": "physics_curriculum.json",
-            "Business Studies": "business_studies_curriculum.json",
-        }
-        curriculum_filename = curriculum_files.get(subject)
-        if curriculum_filename:
-            curriculum = load_subject_curriculum(curriculum_filename)
-            result["worked_answers"] = curriculum.get("worked", [])
-            result["curriculum_source_note"] = curriculum.get("source_note")
+        result["source"] = demo_content.get("source", "demo")
+        result["demo_label"] = demo_content.get("demo_label", "Demo content")
 
         if subject == "Mathematics":
             mathematics = load_mathematics_curriculum()
             topic_lower = topic.lower()
-            topic_words = {
-                word
-                for word in topic_lower.replace(",", "").split()
-                if len(word) > 3
-            }
-            strands = mathematics.get("strands", [])
+            topic_words = {word for word in topic_lower.replace(",", "").split() if len(word) > 3}
             selected_strand = next(
                 (
                     strand
-                    for strand in strands
+                    for strand in mathematics["strands"]
                     if strand["name"].lower() in topic_lower
                     or any(
                         word in topic_words
@@ -317,13 +268,28 @@ def get_learning_content(subject: str, topic: str) -> dict[str, Any]:
                         if len(word) > 3
                     )
                 ),
-                strands[0] if strands else None,
+                mathematics["strands"][0],
             )
-            if selected_strand:
-                result["curriculum_strand"] = selected_strand["name"]
-                result["curriculum_notes"] = selected_strand.get("notes", [])
-            result["key_terms"] = mathematics.get("terms", [])
-            result["revision_tasks"] = mathematics.get("questions", [])
+            result["curriculum_strand"] = selected_strand["name"]
+            result["curriculum_notes"] = selected_strand["notes"]
+            result["key_terms"] = mathematics["terms"]
+            result["revision_tasks"] = mathematics["questions"]
+            result["worked_answers"] = mathematics["worked"]
+
+        if subject == "Chemistry":
+            chemistry = load_chemistry_curriculum()
+            result["worked_answers"] = chemistry["worked"]
+            result["curriculum_source_note"] = chemistry["source_note"]
+
+        if subject == "Physics":
+            physics = load_physics_curriculum()
+            result["worked_answers"] = physics["worked"]
+            result["curriculum_source_note"] = physics["source_note"]
+
+        if subject == "Business Studies":
+            business_studies = load_business_studies_curriculum()
+            result["worked_answers"] = business_studies["worked"]
+            result["curriculum_source_note"] = business_studies["source_note"]
 
         return result
 
@@ -333,29 +299,14 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/curriculum-builder")
-def curriculum_builder_redirect():
-    return redirect(url_for("curriculum_builder"))
-
-
-@app.route("/curriculum-builder/")
-def curriculum_builder():
-    return send_from_directory(CURRICULUM_BUILDER_DIR, "index.html")
-
-
-@app.route("/curriculum-builder/<path:filename>")
-def curriculum_builder_assets(filename: str):
-    return send_from_directory(CURRICULUM_BUILDER_DIR, filename)
-
-
 @app.route("/api/health")
 def health_check():
     return jsonify({"status": "ok", "app": "SomaSmart"})
 
 
-@app.route("/api/curriculum")
-def curriculum():
-    return jsonify(load_curriculum_guide())
+@app.errorhandler(413)
+def request_too_large(_error):
+    return jsonify({"error": "Request is too large."}), 413
 
 
 @app.route("/api/curriculum-topics")
@@ -392,13 +343,9 @@ def learn():
         response.headers["Retry-After"] = str(RATE_LIMIT_WINDOW_SECONDS)
         return response
 
-    data = request.get_json(silent=True)
-    if not isinstance(data, dict):
-        data = {}
-    subject_value = data.get("subject")
-    topic_value = data.get("topic")
-    subject = subject_value.strip() if isinstance(subject_value, str) else ""
-    topic = topic_value.strip() if isinstance(topic_value, str) else ""
+    data = request.get_json(silent=True) or {}
+    subject = (data.get("subject") or "").strip()
+    topic = (data.get("topic") or "").strip()
 
     if not subject or not topic:
         return jsonify({"error": "Subject and topic are required."}), 400
