@@ -1,0 +1,40 @@
+.para {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+
+.exercise-content {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+}
+
+.exercise-content h1,
+.exercise-content p,
+.exercise-content ul {
+  margin: 0;
+}
+
+.exercise-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.exercise-form input,
+.exercise-form button {
+  min-height: 38px;
+  padding: 8px 12px;
+  font: inherit;
+}
+
+.exercise-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
