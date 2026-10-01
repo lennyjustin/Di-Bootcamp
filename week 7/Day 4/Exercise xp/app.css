@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #172033;
+  background: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+.app {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1,
+.exercise-card h2 {
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+.page-header h1 {
+  margin: 4px 0 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #5268cf;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.exercise-card {
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px solid #e3e8f1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(27 42 74 / 5%);
+}
+
+.exercise-card h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+}
+
+.exercise-card h3 {
+  margin: 8px 0;
+}
+
+.exercise-card > p {
+  margin: 12px 0;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding-top: 32px;
+  }
+
+  .exercise-card {
+    padding: 18px;
+  }
+}
