@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 5% 0%, rgb(103 123 233 / 12%), transparent 35rem),
+    #f5f7fb;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1050px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.eyebrow,
+.panel-kicker {
+  margin: 0;
+  color: #596bd1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-header h1,
+.panel h2 {
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+.page-header h1 {
+  margin: 7px 0 8px;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.intro {
+  max-width: 580px;
+  margin: 0;
+  color: #667085;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.side-panels {
+  display: grid;
+  gap: 18px;
+}
+
+.panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #e4e9f2;
+  border-radius: 18px;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 12px 32px rgb(27 42 74 / 5%);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 20px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.step-number {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 13px;
+  background: #eef0ff;
+  color: #596bd1;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.step-number-soft {
+  background: #eff5f4;
+  color: #478176;
+}
+
+.panel-kicker {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.panel h2 {
+  margin: 3px 0 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.025em;
+}
+
+.greeting {
+  margin: 0 0 17px;
+  color: #27345d;
+  font-size: 1.15rem !important;
+  line-height: 1.5;
+}
+
+.details-form {
+  display: grid;
+  gap: 9px;
+}
+
+.details-form label {
+  margin-top: 4px;
+  color: #475467;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.details-form input,
+textarea,
+select {
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 12px;
+  border: 1px solid #d9dfeb;
+  border-radius: 10px;
+  background: #fff;
+  color: #172033;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.details-form input::placeholder {
+  color: #98a2b3;
+}
+
+.details-form input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.button:focus-visible {
+  outline: 3px solid rgb(89 107 209 / 28%);
+  outline-offset: 2px;
+}
+
+.details-form input[aria-invalid='true'] {
+  border-color: #e16a6a;
+}
+
+.error-message {
+  margin: -3px 0 2px;
+  color: #bb3434;
+  font-size: 0.84rem;
+}
+
+.button {
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #596bd1;
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: #4859bd;
+}
+
+.selection-note {
+  margin: 12px 0 0;
+  color: #667085;
+  font-size: 0.88rem;
+}
+
+.selection-note strong {
+  color: #172033;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100% - 28px, 540px);
+    padding-top: 36px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.panel,
+.details-form input,
+textarea,
+select {
+  background: linear-gradient(135deg, #eaf0ff 0%, #e1f6ff 24%, #f1e8ff 49%, #e3f8ee 74%, #fff0e5 100%);
+  background-size: 320% 320%;
+  animation: animated-white-surface 13s ease-in-out infinite;
+}
+
+.details-form input,
+textarea,
+select {
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+@keyframes animated-white-surface {
+  0%,
+  100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .details-form input,
+  textarea,
+  select { animation: none; }
+}
