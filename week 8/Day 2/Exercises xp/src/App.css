@@ -1,0 +1,122 @@
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7ff 0%, #eef2ff 100%);
+}
+
+.content {
+  max-width: 1100px;
+}
+
+.screen-title {
+  font-size: 2.5rem;
+  margin: 2rem 0 1rem;
+  color: #1f2937;
+}
+
+.exercise-box {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.exercise-box h2 {
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.post-list,
+.experience-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.post-card,
+.experience-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #f9fafb;
+}
+
+.post-card h3,
+.experience-card h3 {
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.response-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+}
+
+.response-box pre {
+  margin: 0.75rem 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #0f172a;
+}
+
+.gold-form-box {
+  border: 1px solid #dfe7f5;
+}
+
+.gold-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 500px;
+}
+
+.gold-form input,
+.gold-form textarea,
+.gold-form button {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  font-size: 1rem;
+}
+
+.gold-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.gold-form button {
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navbar {
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600;
+}
+
+.nav-link.active {
+  color: #fff !important;
+}
+
+.list-group-item {
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .screen-title {
+    font-size: 2rem;
+  }
+
+  .exercise-box {
+    padding: 1rem;
+  }
+}

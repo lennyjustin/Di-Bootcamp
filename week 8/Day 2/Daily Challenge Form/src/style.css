@@ -1,0 +1,152 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #151515;
+  background: #f5f6f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  width: min(100% - 32px, 680px);
+  margin: 0 auto;
+  padding: 58px 0;
+}
+
+.intro {
+  margin: 0 0 24px;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #5750bd;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  color: #161922;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: -0.04em;
+}
+
+.intro > p:last-child {
+  margin: 9px 0 0;
+  color: #656b78;
+  line-height: 1.55;
+}
+
+.autocomplete-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d0d0d0;
+  border-radius: 7px;
+  background: #f4f4f4;
+  padding: 26px 18px 0;
+  box-shadow: 0 8px 24px rgb(21 26 45 / 6%);
+}
+
+.autocomplete-card h2 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 1.35rem;
+}
+
+.autocomplete-card input {
+  display: block;
+  width: 100%;
+  min-height: 43px;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px;
+  outline: none;
+  background: #fff;
+  padding: 9px 11px;
+  font-size: 1rem;
+}
+
+.autocomplete-card input:focus {
+  border-color: #555;
+  box-shadow: 0 0 0 2px rgb(255 210 42 / 30%);
+}
+
+.suggestions-list {
+  display: grid;
+  max-height: 320px;
+  gap: 5px;
+  overflow-y: auto;
+  margin: 9px 0 10px;
+  padding: 0 4px 0 0;
+  list-style: none;
+}
+
+.suggestions-list button {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #c9c9c9;
+  border-left: 9px solid #ffd32a;
+  border-radius: 4px;
+  background: #e9e9e9;
+  padding: 8px 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.suggestions-list button:hover,
+.suggestions-list button:focus-visible {
+  border-color: #a8a8a8;
+  background: #fff1ae;
+  outline: none;
+}
+
+.suggestion-count {
+  margin: 17px -18px 0;
+  border-top: 1px solid #e1b900;
+  background: #ffd32a;
+  padding: 11px 16px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding-top: 36px;
+  }
+
+  .autocomplete-card {
+    padding: 22px 14px 0;
+  }
+
+  .suggestion-count {
+    margin-right: -14px;
+    margin-left: -14px;
+  }
+}
