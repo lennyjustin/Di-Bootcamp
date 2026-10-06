@@ -1,0 +1,32 @@
+{
+  "socialMedias": [
+    "Facebook",
+    "Instagram",
+    "LinkedIn",
+    "Twitter"
+  ],
+  "skills": [
+    "Java",
+    "C#",
+    "Python",
+    "JavaScript",
+    "React",
+    "HTML",
+    "CSS",
+    "Node.js"
+  ],
+  "experiences": [
+    {
+      "role": "Full Stack Developer",
+      "company": "Demo1 Technologies",
+      "location": "2017-01-01 New York, USA",
+      "description": "Built and updated various web applications using modern JavaScript libraries."
+    },
+    {
+      "role": "UI Designer",
+      "company": "Demo2 Technologies",
+      "location": "2016-05-01 Beijing, China",
+      "description": "Designed user-friendly web pages and improved frontend usability."
+    }
+  ]
+}

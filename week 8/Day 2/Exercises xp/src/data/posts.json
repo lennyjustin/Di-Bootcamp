@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "First post",
+    "content": "This is the first post from the JSON file. It shows how data can be rendered in React."
+  },
+  {
+    "id": 2,
+    "title": "Second post",
+    "content": "This is the second item in the array. It helps us understand how to map arrays in React."
+  },
+  {
+    "id": 3,
+    "title": "Third post",
+    "content": "The final post demonstrates that JSON content can be displayed cleanly and efficiently."
+  }
+]
