@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #302e2b;
+  background: #f6f4f0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #c9a973;
+  outline-offset: 3px;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 80% 4%, rgb(239 227 205 / 65%), transparent 28rem),
+    #f6f4f0;
+}
+
+.content {
+  width: min(100% - 44px, 730px);
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  min-height: 79px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8e4dc;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #33322e;
+  font-family: Manrope, sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border-radius: 10px;
+  background: #4b5042;
+  color: #f2e9d7;
+  font-size: 20px;
+}
+
+.topbar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #989187;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.topbar-tag span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c2a271;
+}
+
+.hero {
+  padding: 59px 0 28px;
+}
+
+.eyebrow,
+.form-label,
+.page-footer > span:last-child {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  color: #a18b68;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 13px;
+  color: #302f2b;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(40px, 6vw, 57px);
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 1.06;
+}
+
+h1 span {
+  color: #9f8153;
+}
+
+.hero-copy {
+  max-width: 435px;
+  margin-bottom: 0;
+  color: #89847b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.todo-app {
+  padding: 24px;
+  border: 1px solid #e9e5dd;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 15px 42px rgb(65 57 42 / 5%);
+}
+
+.form-label {
+  margin-bottom: 9px;
+  color: #a0917b;
+  font-size: 8px;
+}
+
+.add-form {
+  display: flex;
+  min-height: 52px;
+  gap: 9px;
+  margin-bottom: 25px;
+}
+
+.add-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 0 14px;
+  border: 1px solid #e8e5de;
+  border-radius: 9px;
+  background: #fcfbf9;
+  color: #393832;
+  font-size: 12px;
+}
+
+.add-form input::placeholder {
+  color: #aaa59c;
+}
+
+.add-form button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 9px;
+  background: #4c5042;
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 150ms ease, opacity 150ms ease;
+}
+
+.add-form button:hover:not(:disabled) {
+  background: #62664f;
+}
+
+.add-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.todo-panel {
+  border: 1px solid #efede8;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 17px 14px;
+}
+
+.panel-heading .eyebrow {
+  margin-bottom: 5px;
+  font-size: 8px;
+}
+
+.panel-heading h2 {
+  margin-bottom: 0;
+  color: #373630;
+  font-family: Manrope, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.count-chip {
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #f5f2ec;
+  color: #947d5b;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+}
+
+.todo-list {
+  margin: 0;
+  padding: 0 17px;
+  list-style: none;
+}
+
+.todo-row {
+  display: flex;
+  min-height: 57px;
+  align-items: center;
+  gap: 13px;
+  border-top: 1px solid #f2f0ec;
+}
+
+.todo-number {
+  width: 20px;
+  flex: 0 0 auto;
+  color: #b7b1a7;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+}
+
+.todo-text {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  color: #4b4942;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.remove-button {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #a7a197;
+  cursor: pointer;
+  font-size: 19px;
+  opacity: 0;
+  transition: background 150ms ease, color 150ms ease, opacity 150ms ease;
+}
+
+.todo-row:hover .remove-button,
+.todo-row:focus-within .remove-button {
+  opacity: 1;
+}
+
+.remove-button:hover {
+  background: #fff0ed;
+  color: #b9685a;
+}
+
+.empty-state {
+  display: grid;
+  min-height: 154px;
+  justify-items: center;
+  align-content: center;
+  gap: 7px;
+  border-top: 1px solid #f2f0ec;
+  color: #99948b;
+  text-align: center;
+}
+
+.empty-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 2px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f7f3eb;
+  color: #ae9064;
+}
+
+.empty-state strong {
+  color: #514c42;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+}
+
+.empty-state p {
+  margin-bottom: 0;
+  font-size: 10px;
+}
+
+.panel-footer {
+  min-height: 42px;
+  margin: 0 17px;
+  padding-top: 14px;
+  border-top: 1px solid #f2f0ec;
+  color: #99948b;
+  font-size: 10px;
+}
+
+.page-footer {
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #9a958a;
+  font-size: 10px;
+}
+
+.page-footer > span:last-child {
+  font-size: 8px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 540px) {
+  .content {
+    width: min(100% - 30px, 440px);
+  }
+
+  .hero {
+    padding-top: 43px;
+  }
+
+  h1 {
+    letter-spacing: -2.4px;
+  }
+
+  .todo-app {
+    padding: 16px;
+  }
+
+  .topbar-tag {
+    font-size: 7px;
+  }
+
+  .page-footer {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 380px) {
+  .add-form {
+    gap: 6px;
+  }
+
+  .add-form button {
+    gap: 5px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
