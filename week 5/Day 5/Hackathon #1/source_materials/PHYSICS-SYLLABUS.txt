@@ -1,0 +1,760 @@
+232 -  PHYSICS
+GENERAL OBJECTIVES
+By the end of the course, the learner should be able to:
+(a) select and use appropriate instruments to carry out measurements in the physical 
+environment;
+(b) use the knowledge acquired to discover and explain the order of the physical 
+environment;
+(c) use the acquired knowledge in the conservation and management of the 
+environment;
+(d) apply the principles of Physics and acquired skills to construct appropriate 
+scientific devices from the available resources;
+(e) develop capacity for critical thinking in solving problems in any situation;
+(f) contribute to the technological and industrial development of the nation;
+(g) appreciate and explain the role of Physics in promoting health in society;
+(h) observe general safety precautions in all aspects of life;
+(i) acquire and demonstrate a sense of honesty and high integrity in all aspects of 
+Physics and life in general;
+(j) acquire positive attitude towards Physics;
+(k) acquire adequate knowledge in Physics for further education and/or training.
+1.0.0 INTRODUCTION TO PHYSICS
+1.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+(a) explain what the study of physics involves
+(b) relate physics to other subjects and to technology
+(c) identify career opportunities related to physics
+(d) state and explain basic laboratory safety rules.
+1.2.0 Content
+1.2.1 Physics as a Science (reference to Primary Science Syllabus)
+1.2.2 Meaning of Physics
+1.2.3 Branches of Physics
+1.2.4 Relation between Physics, other subjects and technology
+1.2.5 Career opportunities in Physics
+1.2.6 Basic laboratory safety rules
+1.2.7 Testing on any aspect of this topic should be in relation to other topics
+2.0.0 MEASUREMENT I
+2.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define length, area, volume, mass, density, time interval and state the 
+corresponding symbols and SI units
+b) convert other metric units to SI units
+87
+
+c) estimate length, mass and time
+d) use accurately various measuring instruments:
+e) determine experimentally the densities of substances
+f) solve numerical problems on density
+2.2.0 Content
+2.2.1 Definition of length, area, volume, mass, density and time
+2.2.2 SI units and symbols
+2.2.3 Estimation of quantities
+2.2.4 Conversion of units
+2.2.5 Measuring instruments: metre rule, tape measure, beam balance, stop 
+clock/watch, measuring cylinder, pipette and burette
+2.2.6 Experiments on density
+2.2.7 Problems on density
+3.0.0 MEASUREMENT II
+3.1.0 Specific Objectives
+By the end of this topic the learner should be able to:
+a) measure length using vernier callipers and micrometer screw gauge
+b) estimate the diameter of a molecule of oil
+c) solve numerical problems in measurement
+3.2.0 Content
+3.2.1 Measurement of length using Vernier callipers and micrometer screw gauge
+3.2.2 Decimal places, significant figures and standard form
+3.2.3 Estimation of the diameter of a molecule of oil (relate to the size of the HIV virus, 
+mention effects of oil spills on health and environment)
+3.2.4 Problems in measurements
+4.0.0 FORCE
+4.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define force and state its SI unit
+b) describe types of forces
+c) describe experiments to illustrate cohesion, adhesion and surface tension
+d) state the effects of force
+e) state the difference between mass and weight
+f) state the relation between mass and weight, W=mg
+g) define scalar and vector quantities
+h) solve numerical problems involving W=mg
+4.2.0 Content
+4.2.1 Definition of force
+4.2.2 Types of forces (including cohesive, adhesive and surface tension)
+4.2.3 Experiments to demonstrate cohesion, adhesion and surface tension (actual 
+measurement of surface tension not required)
+88
+
+4.2.4 Effects of force
+4.2.5 Mass, weight and their relationship
+4.2.6 Scalar and vector quantities
+4.2.7 Problems involving W=mg
+5.0.0 PRESSURE
+5.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define pressure and state its SI units;
+b) determine pressure exerted by solids;
+c) describe experiments to investigate factors affecting pressure in fluids;
+d) derive the formula p=pgh;
+e) state the principle of transmission of pressure in fluids (Pascals principle);
+f) explain atmospheric pressure and its effect;
+g) state and explain the applications of pressure;
+h) solve numerical problems involving pressure.
+5.2.0 Content
+5.2.1 Definition of pressure
+5.2.2 Pressure in solids
+5.2.3 Factors affecting pressure in fluids (Experimental treatment required)
+5.2.4 Derivation of p =p gh
+5.2.5 Atmospheric pressure
+5.2.6 Simple mercury barometer, manometers
+5.2.7 Applications of pressure: drinking straw, syringe, siphon, hydraulic press, 
+hydraulic brakes, bicycle pump, force pump, lift pump
+5.2.8 Problems on pressure
+6.0.0 PARTICULATE NATURE OF MATTER
+6.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) Give evidence that matter is made up of tiny particles
+b) describe experiments to show that particles of matter are at constant random 
+motion
+c) explain the states of matter in terms of particle movement
+d) explain diffusion
+6.2.0 Content
+6.2.1 Experiments to show that matter is made up of tiny particles (e.g. cutting papers 
+into small pieces, dilution experiments etc.)
+6.2.2 Brownian motion
+6.2.3 States of matter
+6.2.4 Diffusion (Graham’s law not required)
+89
+
+7.0.0 THERMAL EXPANSION
+7.1.0 Specific Objectives
+By the end of this topic, the learner should be able to
+a) define temperature;
+b) describe the functioning of various thermometers;
+c) describe thermal expansion in solids, liquids and gases;
+d) explain expansion in terms of particle behaviour;
+e) describe the unusual expansion of water and its effects;
+f) explain the effects and applications of thermal expansion.
+7.2.0 Content
+7.2.1 Temperature
+7.2.2 Thermometers: Liquid-in-glass, including Clinical and Six’s maximum and 
+minimum
+7.2.3 Expansion of solids, liquids and gases
+7.2.4 Effects of expansion and contraction
+7.2.5 Unusual expansion of water (Anomolous expansion)
+7.2.6 Applications of thermal expansion, include Bimetallic strip
+8.0.0 HEAT TRANSFER
+8.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state the difference between temperature and heat
+b) state and explain the modes of heat transfer
+c) describe experiments to illustrate factors affecting heat transfer
+d) explain applications of heat transfer
+8.2.0 Content
+8.2.1 Heat and temperature
+8.2.2 Modes of heat transfer
+8.2.3 Factors affecting heat transfer (Experimental treatment required)
+8.2.4 Applications of heat transfer on vacuum flask, domestic hot water system, solar 
+concentrators
+9.0.0 RECTILINEAR PROPAGATION OF LIGHT AND REFLECTION AT  
+PLANE SURFACE
+9.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) perform and describe experiments to show that light travels in a straight line;
+b) describe the formation of shadows and Eclispses;
+c) explain the functioning of a pin-hole camera;
+d) state the laws of reflection;
+e) verify experimentally laws of reflection;
+f) state the characteristics of images formed by plane mirrors;
+g) explain the applications of reflection at plane surfaces;
+90
+
+h) solve numerical problems involving pin-hole camera and mirrors inclined at 
+an angle.
+9.2.0 Content
+9.2.1 Rectilinear propagation of light (experimental treatment required)
+9.2.2 Formation of shadows and eclipses (umbra and penumbra)
+9.2.3 Pin-hole camera: image formation and magnification
+9.2.4 Laws of reflection
+9.2.5 Images formed by plane mirrors, ray diagrams, parallel and inclined mirrors
+9.2.6 Devices based on reflection: periscope, kaleidoscope
+9.2.7 Problems on pin-hole camera and mirrors inclined at an angle
+10.0.0 ELECTROSTATICS I
+10.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe electrostatic charging of objects by rubbing;
+b) explain the source of electrostatic charges;
+c) state the two types of charges;
+d) state the basic law of charges;
+e) state the unit of charge;
+f) construct a simple leaf electroscope;
+g) explain the charging of a leaf electroscope;
+h) use a charged leaf electroscope to identify conductors, insulators and types of 
+charge.
+10.2.0 Content
+10.2.1 Electrostatic charging of objects by rubbing (experimental treatment required)
+10.2.2 Types of charges and law of charges
+10.2.3 The source of charge
+10.2.4 The coulomb
+10.2.5 Leaf electroscope: features, charging and discharging
+10.2.6 Charging by contact and by induction
+10.2.7 Identification of charge
+10.2.8 Conductors and insulators
+11.0.0 ELECTROSTATICS II
+11.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) sketch electric field patterns around charged bodies;
+b) describe charge distribution on conductors of various shapes;
+c) define capacitance and state its SI unit;
+d) describe charging and discharging of a capacitor (calculation involving curves 
+not required);
+e) state the factors affecting the capacitance of a parallel plate capacitors;
+f) state the applications of capacitors;
+h) solve numerical problems involving capacitors.
+91
+
+11.2.0 Content
+11.2.1 Electric field patterns
+11.2.2 Charge distribution on conductors: spherical and pear shaped conductors
+11.2.3 Action at points: lightning arrestors
+11.2.4 Capacitance: unit of capacitance (farad, microfarad) factors affecting capacitance
+11.2.5 Applications of capacitors
+11.2.6 Problems involving capacitors {using Q=CV, CT=C1+C2},
+1 = 1 + 1 
+C t C1 C 2
+12.0.0 CELLS AND SIMPLE CIRCUITS
+12.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) draw and set-up simple electric circuits;
+b) identify circuit symbols;
+c) define electric current;
+d) explain the working of primary and secondary cells;
+e) explain the care and maintenance of secondary cells.
+12.2.0 Content
+12.2.1 Simple electric circuits: cell, ammeter, voltmeter, variable resistor, connecting 
+wires, bulb and switches
+12.2.2 Circuit symbols
+12.2.3 Electric current and its units
+12.2.4 Primary and secondary cells. (simple cell, dry Leclanche’ cell, Lead acid cell)
+12.2.5 Care and maintenance of secondary cells
+13.0.0 MAGNETISM
+13.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe the properties and uses of magnets;
+b) identify magnetic and non-magnetic materials;
+c) state the basic law of magnetism;
+d) describe patterns of magnetic field;
+e) describe methods of magnetisation and demagnetization;
+f) explain magnetisation and demagnetisation using the domain theory;
+g) construct a simple compass.
+13.2.0 Content
+13.2.1 Magnets: properties and uses
+13.2.2 Magnetic and non-magnetic materials
+13.2.3 Basic law of magnetism
+13.2.4 Magnetic field patterns
+13.2.5 Magnetisation and demagnetisation
+92
+
+13.2.6 Domain theory of magnetism
+13.2.7 Care of magnets
+13.2.8 Construction of a simple magnetic compass
+14.0.0 TURNING EFFECT OF A FORCE
+14.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define moment of a force about a point and state its SI unit;
+b) state and verify the principle of moments;
+c) solve problems involving the principle of moments.
+14.2.0 Content
+14.2.1 Moment of a force, SI unit of moment of a force
+14.2.2 Principle of moments
+14.2.3 Problems on principle of moments (consider single pivot only)
+15.0.0 EQUILIBRIUM AND CENTRE OF GRAVITY
+15.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define centre of gravity;
+b) determine experimentally the centre of gravity of lamina objects;
+c) identify and explain the states of equilibrium;
+d) state and explain factors affecting stability of an object;
+e) explain the applications of stability;
+f) solve numerical problems involving centre of gravity and moments of a force.
+15.2.0 Content
+15.2.1 Centre of gravity (Experimental treatment required)
+15.2.2 States of equilibrium
+15.2.3 Factors affecting stability
+15.2.4 Problems on centre of gravity and moments of a force(consider single pivot only)
+16.0.0 REFLECTION AT CURVED SURFACES
+16.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe concave, convex and parabolic reflectors;
+b) describe using ray diagram the principal axis, principal focus, centre of 
+curvature and related terms;
+c) locate images formed by curved mirrors by construction of ray diagrams;
+d) determine experimentally the characteristics of images formed by a concave 
+mirror;
+e) define magnification;
+f) explain the applications of curved reflecting surfaces.
+16.2.0 Content
+16.2.1 Concave, convex and parabolic reflectors
+93
+
+16.2.2 Principal axis, principal focus, centre of curvature and related terms
+16.2.3 Location of Images formed by curved mirrors by ray diagram method 
+(Experiments on concave mirrors required)
+16.2.4 Magnification formula
+16.2.5 Applications of curved reflectors
+17.0.0 MAGNETIC EFFECT OF ELECTRIC CURRENT
+17.1.0 Specific Objectives
+By the end of this topic, the leaner should be able to:
+a) perform and describe experiments to determine the direction of the magnetic 
+field round a current carrying conductor;
+b) construct a simple electromagnet;
+c) state the factors affecting the strength of an electromagnet;
+d) determine experimentally the direction of a force on a conductor carrying 
+current in a magnetic field (motor effect);
+e) state the factors affecting force on a current carrying conductor in a magnetic 
+field;
+f) explain the working of simple electric motor and electric bell.
+17.2.0 Content
+17.2.1 Magnetic field due to a current
+17.2.2 Oersted’s experiment
+17.2.3 Magnetic field patterns on straight conductors and solenoid (right hand grip rule)
+17.2.4 Simple electromagnets
+17.2.5 Factors affecting strength of an electromagnet
+17.2.6 Motor effect (Flemings left hand rule)
+17.2.7 Factors affecting force on a current carrying conductor in a magnetic field 
+(Qualitative treatment only)
+17.2.8 Applications - Electric bell, Simple electric motor.
+18.0.0 HOOKE’S LAW
+18.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state and verify experimentally Hooke’s law;
+b) determine the spring constant;
+c) construct and calibrate a spring balance;
+d) solve numerical problems involving Hooke’s law.
+18.2.0 Content
+18.2.1 Hooke’s law
+18.2.2 Spring constant
+18.2.3 Spring balance
+18.2.4 Problems on Hooke’s Law
+94
+
+19.0.0 WAVES I
+19.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe the formation of pulses and waves;
+b) describe transverse and longitudinal waves;
+c) define amplitude(a), wavelength(X), frequency(f) and periodic time(T) of a
+wave;
+d) derive the relation v = f X;
+e) solve numerical problems involving v = f X .
+19.2.0 Content
+19.2.1 Pulses and waves
+19.2.2 Transverse and longitudinal waves
+19.2.3 Amplitude (a),
+Wavelength (X),
+Frequency(f), periodic time (T)
+19.2.4 Relation v = f X
+19.2.5 Problems involving v = f X
+20.0.0 WAVES II
+20.1.0 Specific Objectives
+By the end of this topic the learner should be able to:
+a) describe experiments to illustrate the properties of waves;
+b) sketch wave-fronts to illustrate the properties of waves;
+c) explain constructive interference and destructive interference;
+d) describe experiments to illustrate stationary waves.
+20.2.0 Content
+20.2.1 Properties of waves including sound waves, reflection, refraction, diffraction and 
+interference (Experimental treatment required)
+20.2.2 Constructive interference and destructive interference (qualitative treatment only)
+20.2.3 Stationary waves (qualitative and experimental treatment required)
+21.0.0 SOUND
+21.1.0 Specific Objectives
+By the end of this topic the learner should be able to:
+a) perform and describe simple experiments to show that sound is produced by 
+vibrating bodies;
+b) perform and describe an experiment to show that sound requires a material 
+medium for propagation;
+c) explain the nature of sound waves;
+d) determine the speed of sound in air by the echo method;
+e) state the factors affecting the speed of sound;
+f) solve numerical problems involving speed of sound.
+95
+
+21.2.0 Content
+21.2.1 Sound: nature and sources (experimental treatment required)
+21.2.2 Propagation of sound: compressions and rarefactions
+21.2.3 Speed of sound by echo method
+21.2.4 Factors affecting speed of sound
+21.2.5 Problems involving speed of sound
+22.0.0 FLUID FLOW
+22.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe streamline flow and turbulent flow;
+b) derive the equation of continuity;
+c) describe experiments to illustrate Bernoulli’s effect;
+d) explain the Bernoulli’s effect;
+e) describe the applications of Bernoulli’s effect;
+f) solve numerical problems involving the equation of continuity.
+22.2.0 Content
+22.2.1 Streamline and turbulent flow
+22.2.2 Equation of continuity
+22.2.3 Bernoulli’s effect (Experimental treatment required)
+22.2.4 Applications of Bernoulli’s effect: Bunsen burner, spray gun, carburetor, aerofoil 
+and spinning ball
+22.2.5 Problems involving equation of continuity
+23.0.0 LINEAR MOTION
+23.1.0 Specific Objectives
+By the end of this topic the learner should be able to:
+a) define distance, displacement, speed, velocity and acceleration;
+b) describe experiments to determine velocity and acceleration;
+c) determine acceleration due to gravity;
+d) plot and explain motion time graphs;
+e) apply the equations of uniformly accelerated motion;
+f) solve numerical problems on uniformly accelerated motion.
+23.2.0 Content
+23.2.1 Distance, displacement, speed, velocity, acceleration(Experimental treatment 
+required)
+23.2.2 Acceleration due to gravity free - fall, simple pendulum
+23.2.3 Motion-time graphs- displacement time graphs, Velocity time graphs
+23.2.4 Equations of uniformly accelerated motion
+23.2.5 Problems on uniformly accelerated motion
+24.0.0 REFRACTION OF LIGHT
+24.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+96
+
+a) describe simple experiments to illustrate refraction of light;
+b) state the laws of refraction of light;
+c) verify Snell’s law;
+d) define refractive index;;
+e) determine experimentally the refractive index;
+f) describe experiments to illustrate dispersion of white light;
+g) explain total internal reflection and its effect;
+h) state the application of total internal reflection;
+i) solve numerical problems involving refractive index and critical angle.
+24.2.0 Content
+24.2.1 Refraction of light - laws of refraction (Experimental treatment required)
+24.2.2 Determination of refractive index- Snell’s law, Real/apparent depth, Critical angle
+24.2.3 Dispersion of white light (Experimental treatment required)
+24.2.4 Total internal reflection and its effects: critical angle
+24.2.5 Applications of total internal reflection - Prism periscope, Optical fibre
+24.2.6 Problems involving refractive index and critical angle
+25.0.0 NEWTON’S LAWS OF MOTION
+25.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state Newton’s laws of motion;
+b) describe simple experiments to illustrate inertia;
+c) state the law of conservation of linear momentum;
+d) define elastic collision, inelastic collision and impulse;
+e) derive the equation F = ma;
+f) describe the application of frictional force;
+g) define viscosity;
+h) explain terminal velocity;
+i) solve numerical problems involving Newton’s laws and the law of 
+conservation of linear momentum.
+25.2.0 Content
+25.2.1 Newton’s laws of motion (Experimental treatment on inertia re quired)
+25.2.2 Conservation of linear momentum elastic collisions, inelastic collisions, recoil 
+velocity, impulse (oblique collisions not required)
+25.2.3 The relation F = ma
+25.2.4 Frictional forces:
+• Advantages and disadvantages,
+• Viscosity and terminal velocity (qualitative treatment only).
+25.2.5 Problems involving Newton’s Laws and law of conservation of linear momentum 
+(exclude problems on elastic collisions).
+26.0.0 WORK, ENERGY, POWER AND MACHINES
+26.1.0 Specific Objectives
+By the end of this topic, the learners should be able to:
+97
+
+a) describe energy transformations
+b) state the law of conservation of energy
+c) define work, energy, power and state their SI units
+d) define mechanical advantage, velocity ratio and efficiency of machines
+e) solve numerical problems involving work, energy, power and machines.
+26.2.0 Content
+26.2.1 Forms of energy and energy transformations
+26.2.2 Sources of energy- Renewable, Non-renewable.
+26.2.3 Law of conservation of energy
+26.2.4 Work, energy and power (work done by resolved force not required)
+26.2.5 Kinetic energy and potential energy
+26.2.6 Simple machines
+26.2.7 Problems on work, energy, power and machines
+27.0.0 CURRENT ELECTRICITY
+27.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define potential difference and state its SI unit;
+b) measure potential difference and electric current in a circuit;
+c) verify Ohm’s law;
+d) define resistance and state its SI unit;
+e) determine experimentally the voltage - current relationships for various 
+conductors;
+f) define emf and explain internal resistance of a cell;
+g) derive the formulae for effective resistance of resistors in series and in 
+parallel;
+h) solve numerical problems involving ohm’s law, resistors in series and in 
+parallel.
+27.2.0 Content
+27.2.1 Scale reading: Ammeter, Voltmeter
+27.2.2 Electric circuits: current, potential difference
+27.2.3 Ohm’s law (experimental treatment required)
+27.2.4 Resistance: types of resistors, measurement of resistance, unit of resistance
+27.2.5 Electromotive force (emf) and internal resistance of a cell The relation 
+(E = V + Ir)
+27.2.6 Resistors in series and in parallel
+27.2.7 Problems involving Ohm’s law, resistors in series and in parallel
+28.0.0 HEATING EFFECT OF AN ELECTRIC CURRENT
+28.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) Perform and describe experiments to illustrate heating effect of an electric 
+current;
+b) State the factors affecting heating by an electric current;
+98
+
+c) Derive the equations for electrical energy and electrical power;
+d) Identify devices in which heating effect of an electric current is applied ;
+e) Solve numerical problems involving electrical energy and electrical power.
+28.2.0 Content
+28.2.1 Simple experiments on heating effect
+28.2.2 Factors affecting electrical energy, The relation E=VIt and P =VI
+28.2.3 Heating devices: electric kettle, electric iron, bulb filament, electric heater
+28.2.4 Problems involving electrical energy and electrical power
+29.0.0 QUANTITY OF HEAT
+29.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define heat capacity and specific heat capacity;
+b) determine experimentally specific heat capacity of solids and liquids;
+c) define specific latent heat of fusion and specific latent heat of vaporization 
+of steam;
+d) determine experimentally the specific latent heat of fusion of ice and the 
+specific latent heat of vaporization of steam;
+e) state factors affecting melting point and boiling point;
+f) explain the functioning of a pressure cooker and a refrigerator;
+g) solve problems involving quantity of heat.
+29.2.0 Content
+29.2.1 Heat capacity, specific heat capacity, units(Experimental treatment required)
+29.2.2 Latent heat of fusion, latent heat of vaporization, units(Experimental treatment 
+required)
+29.2.3 Boiling and melting points
+29.2.4 Pressure cooker, refrigerator
+29.2.5 Problems involving quantity of heat (Q=mcA9, Q = mL)
+30.0.0 GAS LAWS
+30.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+(a) state the gas laws for an ideal gas;
+(b) verify experimentally the gas laws;
+(c) explain how the absolute zero temperature may be obtained from the 
+pressure - temperature and volume-temperature graphs;
+(d) convert Celsius scale to Kelvin scale of temperature;
+(e) state the basic assumptions of the kinetic theory of gases;
+(f) explain the gas laws using the kinetic theory of gases;
+(g) solve numerical problems involving gas laws.
+30.2.1 Content
+30.2.1 Boyle’s law, Charles’ law, pressure law, absolute zero
+99
+
+30.2.2 Kelvin scale of temperature
+30.2.3 Gas laws and kinetic theory of gases
+1 9
+30.2.4 (p = - pc not required)
+30.2. 4Problems involving gas laws 
+[including^ p constant]
+T
+31.0. 0THIN LENSES
+31.1. 0Specific objectives
+By the end of this  topic,ntemeslheoLTttld be able  to:
+a) describe converging lenses and diverging lenses;
+b) describe using ray diagrams the principal focus, the optical centre and the 
+focal length of a thin lens;
+c) determine experimentally the focal length of a converging lens;
+d) locate images formed by thin lenses using ray construction method;
+e) describe the characteristics of images formed by thin lenses;
+f) explain image formation in the human eye;
+g) describe the defects of vision in the human eye and how they can be corrected;
+h) describe the use of lenses in various optical devices;
+i) solve numerical problems involving the lens formula and the magnification 
+formula.
+31.2.0 Content
+31.2.1 Types of lenses
+31.2.2 Ray diagrams and terms used
+31.2.3 Images formed - Ray diagrams, Characteristics, Magnification.
+31.2.4 Determination of Focal length: (Experimental treatment required) - estimation method, 
+lens formula, lens-mirror method
+31.2.5 Human eye, defects (short sightedness and long sightedness)
+31.2.6 Optical devises - Simple microscope, Compound microscope, The camera
+31.2.7 Problems involving the lens formula and the magnification formula
+32.0 UNIFORM CIRCULAR MOTION
+32.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define angular displacement and angular velocity;
+b) describe simple experiments to illustrate centripetal force;
+c) explain the applications of uniform circular motion;
+d) solve numerical problems involving uniform circular motion.
+32.2.0 Content
+32.2.1 The radian, angular displacement and, angular velocity
+32.2.2 Centripetal force;
+The relations F = mv2, F=mrW2 
+r
+(derivation of formulae not necessary experimental treatment is required)
+100
+
+32.2.3 Applications of uniform circular motion
+32.2.4 Centrifuge, vertical, horizontal circles banked tracks (calculations on banked 
+tracks and conical pendulum not required).
+32.2.5 Problem solving (application of relations
+F = mv2, F=mrW2 in numerical calculations) 
+r
+33.0.0 FLOATING AND SINKING
+33.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state Archimedes’ principle;
+b) verify Archmedes’ principle;
+c) state the law of floatation;
+d) define relative density;
+e) describe the applications of Archimedes’ principle and relative density;
+f) solve numerical problems involving Archimedes’ principles.
+33.2.0 Content
+33.2.1 Archimedes’ principle law of flotation. (experimental treatment required),
+33.2.2 Relative density
+33.2.3 Applications of Archimedes’ principle and relative density
+33.2.4 Problems on Archimedes’ principle
+34.0.0 ELECTROMAGNETIC SPECTRUM
+34.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe the complete electromagnetic spectrum;
+b) state the properties of electromagnetic waves;
+c) describe the methods of detecting electromagnetic radiations;
+d) describe the applications of electromagnetic radiations;
+e) solve numerical problems involving c=fl.
+34.2.0 Content
+34.2.1 Electromagnetic spectrum
+34.2.2 Properties of electromagnetic waves
+34.2.3 Detection of electromagnetic (e.m.) radiations
+34.2.4 Applications of e.m. radiations (include green house effect)
+34.2.5 Problems involving c=fX
+35.0.0 ELECTROMAGNETIC INDUCTION
+35.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) perform and describe simple experiments to illustrate electromagnetic 
+induction;
+b) state the factors affecting the magnitude and the direction of the induced emf;
+c) state the laws of electromagnetic induction;
+d) describe simple experiments to illustrate mutual induction;
+101
+
+e) explain the working of an alternating current (a.c) generator and a direct 
+current (d.c) generator;
+f) explain the working of a transformer;
+g) explain the applications of electromagnetic induction;
+h) solve numerical problems involving transformers.
+35.2.0 Content
+35.2.1 Simple experiments to illustrate electromagnetic induction
+35.2.2 Induced emf - Faradays’ law, Lenz’s law
+35.2.3 Mutual induction
+35.2.4 Alternating current generator, direct current generator
+35.2.5 Fleming’s right hand-rule
+35.2.6 Transformers
+35.2.7 Applications of electromagnetic induction
+35.2.8 Problems involving transformers
+36.0.0 MAINS ELECTRICITY
+36.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state the sources of mains electricity;
+b) describe the transmission of electric power from the generating station to the 
+consumer;
+c) explain the domestic wiring system;
+d) define the kilowatt hour;
+e) determine the electrical energy consumption and cost;
+f) solve numerical problems involving mains electricity.
+36.2.0 Content
+36.2.1 Sources of mains electricity e.g. geothermal, hydro, nuclear etc.
+36.2.2 Power transmission (include dangers of high voltage transmission)
+36.2.3 Domestic wiring system
+36.2.4 kWh, consumption and cost of electric energy
+36.2.5 Problems involving mains electricity
+37.0.0 CATHODE RAYS AND CATHODE RAY TUBE
+37.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) describe the production of cathode rays;
+b) state the properties of cathode rays;
+c) explain the functioning of a Cathode RayOscilloscope (C.R.O) and a 
+Television tube (TV tube);
+d) explain the uses of a Cathode Ray Oscilloscope;
+e) solve problems involving Cathode Ray Oscilloscope.
+37.2.0 Content
+37.2.1 Production of cathode rays, cathode ray tube
+102
+
+37.2.2 Properties of cathode rays
+37.2.3 C.R.O and TV tubes
+37.2.4 Uses of C.R.O
+37.2.5 Problems involving C.R.O
+38.0.0 X-RAYS
+38.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+(a) explain the production of X-rays;
+(b) state the properties of X-rays;
+(c) state the dangers of X-rays;
+(d) explain the uses of X-rays.
+38.1.0 Content
+38.2.1 Production of X-rays, X-rays tube
+38.2.2 Energy changes in an X-ray tube
+38.2.3 Properties of X-rays.
+38.2.4 Soft X-rays and hard X-rays
+38.2.5 Dangers of X-rays and precautions
+38.2.6 Uses of X-rays (Bragg’s law not required)
+39.0.0 PHOTOELECTRIC EFFECT
+39.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) perform and describe simple experiments to illustrate the photoelectric effect;
+b) explain the factors affecting photoelectric emission;
+c) apply the equation E=h/ to calculate the energy photons,
+d) define threshold frequency, work function and the electron volt;
+e) explain photoelectric emission using Einstein equation (h/ 0 + ^mv = h/ );
+f) explain the applications of photoelectric effect;
+g) solve numerical problems involving photoelectric emissions.
+39.2.0 Content
+39.2.1 Photoelectric effect, photons, threshold frequency, work function, Planck’s 
+constant, and electron-volt
+39.2.2 Factors affecting photoelectric emission
+39.2.3 Energy of Photons
+39.2.4 Einstein’s equation, h/0 + I4mv2 = h/
+39.2.5 Applications of photoelectric effect - Photo emissive cells, Photo conductive cells, 
+Photovoltaic cells.
+40.0.0 RADIOACTIVITY
+40.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) define radioactive decay and half-life;
+b) describe the three types of radiations emitted in natural radioactivity;
+c) explain the detection of radioactive emissions;
+103
+
+d) define nuclear fission and fusion;
+e) write balanced nuclear equations;
+f) explain the dangers of radioactive emissions;
+g) state the applications of radioactivity;
+h) solve numerical problems involving half-life.
+40.2.0 Content
+40.2.1 Radioactive decay
+40.2.2 Half-life
+40.2.3 Types of radiations, properties of radiations
+40.2.4 Detectors of radiation,
+40.2.5 Nuclear fission, nuclear fusion
+40.2.6 Nuclear equations
+40.2.7 Hazards of radioactivity, precautions
+40.2.8 Applications
+40.2.9 Problems on half-life (integration not required)
+41.0.0 ELECTRONICS
+41.1.0 Specific Objectives
+By the end of this topic, the learner should be able to:
+a) state the differences between conductors and insulators;
+b) define instrinsic and extrinsic semi-conductors;
+c) explain doping in semi-conductors;
+d) explain the working of a p-n junction diode;
+e) sketch current-voltage characteristics for a diode;
+f) explain the application of diodes in rectification.
+41.1.0 Content
+41.2.1 Conductors, semi-conductors, insulators
+41.2.2 Intrinsic and extrinsic semi-conductors
+41.2.3 Doping
+41.2.4 p-n junction diode
+41.2.5 applications of diodes: half wave rectification and full wave rectification
+104

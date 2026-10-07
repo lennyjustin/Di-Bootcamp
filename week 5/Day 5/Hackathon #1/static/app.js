@@ -14,6 +14,7 @@ const startLearningBtn = document.getElementById('start-learning-btn');
 const lessonSubject = document.getElementById('lesson-subject');
 const lessonTitle = document.getElementById('lesson-title');
 const lessonContent = document.getElementById('lesson-content');
+const topicSuggestions = document.getElementById('topic-suggestions');
 const startQuizBtn = document.getElementById('start-quiz-btn');
 const quizTitle = document.getElementById('quiz-title');
 const questionCounter = document.getElementById('question-counter');
@@ -62,10 +63,47 @@ function renderCurriculumGuide(guide) {
   document.querySelectorAll('.subject-tag').forEach((button) => {
     button.addEventListener('click', () => {
       subjectInput.value = button.dataset.subject;
+      loadTopicSuggestions();
       topicInput.focus();
       topicInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
+}
+
+function renderTopicSuggestions(subject, topics) {
+  const safeTopics = Array.isArray(topics) && topics.length > 0 ? topics.slice(0, 6) : ['Explore a topic'];
+
+  topicSuggestions.innerHTML = safeTopics.map((topic) => `
+    <button class="topic-chip" type="button" data-topic="${topic}">${topic}</button>
+  `).join('');
+
+  topicSuggestions.querySelectorAll('.topic-chip').forEach((button) => {
+    button.addEventListener('click', () => {
+      topicInput.value = button.dataset.topic;
+      topicInput.focus();
+    });
+  });
+
+  if (safeTopics[0] && safeTopics[0] !== 'Explore a topic' && !topicInput.value.trim()) {
+    topicInput.value = safeTopics[0];
+  }
+}
+
+function loadTopicSuggestions() {
+  fetch('/api/curriculum-topics')
+    .then((response) => response.json())
+    .then((data) => {
+      const selectedSubject = subjectInput.value || 'History';
+      const topics = data.subjects?.[selectedSubject] || [];
+      renderTopicSuggestions(selectedSubject, topics);
+    })
+    .catch(() => {
+      renderTopicSuggestions(subjectInput.value || 'History', [
+        'Causes of the First World War',
+        'Cell structure and functions',
+        'Linear equations and inequalities',
+      ]);
+    });
 }
 
 function loadCurriculumGuide() {
@@ -313,3 +351,5 @@ reviewLessonBtn.addEventListener('click', () => {
 
 showScreen('home');
 loadCurriculumGuide();
+loadTopicSuggestions();
+subjectInput.addEventListener('change', loadTopicSuggestions);

@@ -1,72 +1,419 @@
 {
-  "subject": "History",
-  "title": "Causes of the First World War",
-  "explanation": "The First World War began in 1914 after years of tension in Europe. Many countries had built large armies and formed alliances, which made conflict more likely. National pride, competition for colonies, and fear of other countries all made the situation worse. The assassination of Archduke Franz Ferdinand of Austria-Hungary in 1914 triggered a chain reaction, and countries began mobilising for war.",
-  "key_points": [
-    "Europe was divided into rival alliance systems that increased tension.",
-    "Countries competed for land, power, and resources around the world.",
-    "Nationalism made people feel strongly about their own country and suspicious of rivals.",
-    "The assassination of Archduke Franz Ferdinand triggered the outbreak of war.",
-    "The war spread quickly because many nations were already prepared to defend their allies."
-  ],
-  "example": "Imagine two students in the same classroom who are always arguing and have already chosen sides. If one of them is insulted, the argument may spread quickly because everyone is already on one side or the other. In the same way, European countries were already divided, so one event caused a much larger conflict.",
-  "questions": [
-    {
-      "question": "Which event is most closely linked with the start of the First World War?",
-      "options": [
-        "The Battle of Britain",
-        "The assassination of Archduke Franz Ferdinand",
-        "The Great Fire of London",
-        "The signing of the Magna Carta"
+  "demo_label": "Local curriculum lesson bank",
+  "lessons": {
+    "History": {
+      "title": "Causes of the First World War",
+      "explanation": "The First World War was caused by a mix of rivalry, alliance systems, and nationalism in Europe. Countries built up armies, competed for colonies, and feared each other's power. The assassination of Archduke Franz Ferdinand in 1914 triggered a crisis that spread because many nations were already joined by alliances.",
+      "key_points": [
+        "Alliance systems made conflict spread quickly.",
+        "Nationalism increased suspicion between states.",
+        "Colonial competition created tension between nations.",
+        "The assassination of Franz Ferdinand triggered the outbreak.",
+        "The war became a major global conflict."
       ],
-      "answer": 1,
-      "explanation": "The assassination of Archduke Franz Ferdinand in 1914 is the event that triggered the outbreak of war after years of tension."
+      "example": "A school debate can become a wider dispute when groups choose sides quickly. European countries acted the same way. Once one country was attacked, its allies were likely to respond, spreading the crisis.",
+      "questions": [
+        {
+          "question": "Which event directly triggered the outbreak of the First World War?",
+          "options": [
+            "The Treaty of Versailles",
+            "The assassination of Archduke Franz Ferdinand",
+            "The signing of the Berlin Conference",
+            "The Great Fire of London"
+          ],
+          "answer": 1,
+          "explanation": "The assassination triggered a chain reaction because European powers were already tense and aligned against one another."
+        },
+        {
+          "question": "Why were alliances important in the outbreak of the war?",
+          "options": [
+            "They reduced military spending",
+            "They encouraged peace between countries",
+            "They made a small conflict spread across many states",
+            "They ended colonial rivalry"
+          ],
+          "answer": 2,
+          "explanation": "Alliances meant countries were drawn into the conflict once one alliance member was attacked."
+        },
+        {
+          "question": "What was nationalism in Europe before 1914?",
+          "options": [
+            "A belief that all countries should merge",
+            "Strong pride and loyalty to one's own country",
+            "A plan to end colonialism",
+            "A system of trade routes"
+          ],
+          "answer": 1,
+          "explanation": "Nationalism encouraged countries to defend their interests aggressively and often made rivalry worse."
+        },
+        {
+          "question": "How did colonial competition increase tensions?",
+          "options": [
+            "It made countries richer and calmer",
+            "It encouraged peace talks",
+            "It created rivalry for land, trade, and power",
+            "It ended the need for armies"
+          ],
+          "answer": 2,
+          "explanation": "Competition for colonies made countries distrust one another and build stronger armies."
+        },
+        {
+          "question": "Why did the war spread so widely after 1914?",
+          "options": [
+            "Most countries were already in alliances",
+            "People wanted to stop the fighting",
+            "No country had weapons",
+            "The League of Nations had ended"
+          ],
+          "answer": 0,
+          "explanation": "Once countries had committed to alliances, a crisis could escalate into a continent-wide war."
+        }
+      ]
     },
-    {
-      "question": "Why were alliances important in causing the war?",
-      "options": [
-        "They made countries richer than before",
-        "They meant a conflict between two countries could quickly involve others",
-        "They removed all danger of war",
-        "They convinced citizens to stop fighting"
+    "Biology": {
+      "title": "Cell structure and functions",
+      "explanation": "Cells are the basic units of life. Plant and animal cells have a cell membrane, cytoplasm, and nucleus, but plant cells also have a cell wall and chloroplasts. Each structure carries out a function that supports life.",
+      "key_points": [
+        "The nucleus controls cell activities.",
+        "The cell membrane controls movement in and out of the cell.",
+        "Mitochondria release energy for the cell.",
+        "Chloroplasts help plants make food.",
+        "Cells work together to form tissues and organs."
       ],
-      "answer": 1,
-      "explanation": "Alliances meant countries were linked to one another, so a local crisis could spread into a much larger war."
+      "example": "Think of a cell as a tiny factory. The nucleus gives instructions, the membrane controls what enters or leaves, and the mitochondria power the activities just like electrical energy powers a factory machine.",
+      "questions": [
+        {
+          "question": "Which part of a plant cell contains chlorophyll?",
+          "options": [
+            "Nucleus",
+            "Cell membrane",
+            "Chloroplast",
+            "Cytoplasm"
+          ],
+          "answer": 2,
+          "explanation": "Chloroplasts contain chlorophyll, which absorbs light for photosynthesis."
+        },
+        {
+          "question": "What is the main function of the cell membrane?",
+          "options": [
+            "To store genetic information",
+            "To control movement into and out of the cell",
+            "To make food",
+            "To provide support"
+          ],
+          "answer": 1,
+          "explanation": "The cell membrane is selectively permeable and regulates what enters and leaves the cell."
+        },
+        {
+          "question": "Which organelle is known as the powerhouse of the cell?",
+          "options": [
+            "Nucleus",
+            "Mitochondrion",
+            "Vacuole",
+            "Cell wall"
+          ],
+          "answer": 1,
+          "explanation": "Mitochondria release energy required for cell activities."
+        },
+        {
+          "question": "Why do plant cells need a cell wall?",
+          "options": [
+            "To control the nucleus",
+            "To provide support and protection",
+            "To move food",
+            "To carry oxygen"
+          ],
+          "answer": 1,
+          "explanation": "The rigid cell wall gives plant cells shape and helps protect them."
+        },
+        {
+          "question": "What is the role of the nucleus in a cell?",
+          "options": [
+            "It stores hereditary information and controls cell activities",
+            "It breaks down waste",
+            "It absorbs sunlight",
+            "It transports water"
+          ],
+          "answer": 0,
+          "explanation": "The nucleus contains DNA and directs most cellular functions."
+        }
+      ]
     },
-    {
-      "question": "Which of the following was a major cause of tension in Europe before 1914?",
-      "options": [
-        "A shortage of food in every country",
-        "Competition for colonies and global influence",
-        "The end of all monarchies",
-        "The invention of the internet"
+    "Mathematics": {
+      "title": "Linear equations and inequalities",
+      "explanation": "A linear equation shows a relationship where the value of one variable changes at a constant rate. Inequalities compare two quantities using symbols such as <, >, ?, and ?. These ideas help us model many everyday situations, such as budgeting and distances.",
+      "key_points": [
+        "Linear equations have a constant rate of change.",
+        "The solution is the value that makes the equation true.",
+        "Inequalities compare two quantities.",
+        "Graphing helps show the relationship visually.",
+        "Real-life situations can be represented with algebra."
       ],
-      "answer": 1,
-      "explanation": "European powers competed for colonies and influence, which increased rivalry and distrust."
+      "example": "If a taxi charges a fixed fee of 300 shillings plus 50 shillings per kilometre, the total cost is 300 + 50x. If the cost must stay below 800 shillings, then 300 + 50x < 800.",
+      "questions": [
+        {
+          "question": "Which of the following is a linear equation?",
+          "options": [
+            "x? + 2 = 9",
+            "3x + 5 = 17",
+            "2x? = 8",
+            "x/2 + y? = 4"
+          ],
+          "answer": 1,
+          "explanation": "A linear equation has variables with power 1 and no products of variables."
+        },
+        {
+          "question": "Solve: 2x + 3 = 11",
+          "options": [
+            "x = 2",
+            "x = 3",
+            "x = 4",
+            "x = 5"
+          ],
+          "answer": 2,
+          "explanation": "Subtract 3 from both sides to get 2x = 8, then divide by 2."
+        },
+        {
+          "question": "Which symbol means 'less than or equal to'?",
+          "options": [
+            "<",
+            ">",
+            "?",
+            "?"
+          ],
+          "answer": 2,
+          "explanation": "The symbol ? means less than or equal to."
+        },
+        {
+          "question": "If x = 4, what is the value of 3x - 2?",
+          "options": [
+            "8",
+            "10",
+            "12",
+            "14"
+          ],
+          "answer": 1,
+          "explanation": "3?4 - 2 = 12 - 2 = 10."
+        },
+        {
+          "question": "Which inequality represents 'x is greater than 5'?",
+          "options": [
+            "x < 5",
+            "x ? 5",
+            "x > 5",
+            "x = 5"
+          ],
+          "answer": 2,
+          "explanation": "The symbol > means greater than."
+        }
+      ]
     },
-    {
-      "question": "What does nationalism mean in this context?",
-      "options": [
-        "A fear of books and learning",
-        "Strong loyalty and pride in one's country, sometimes above others",
-        "The spread of technology",
-        "A type of trade agreement"
+    "Chemistry": {
+      "title": "Acids, bases and indicators",
+      "explanation": "Acids and bases are chemical substances with different properties. Acids taste sour and turn blue litmus paper red, while bases feel slippery and turn red litmus paper blue. Indicators help us identify whether a solution is acidic, alkaline, or neutral.",
+      "key_points": [
+        "Acids release hydrogen ions in water.",
+        "Bases neutralise acids.",
+        "Indicators show pH changes.",
+        "Neutral substances are neither acidic nor basic.",
+        "Strong acids and bases are corrosive."
       ],
-      "answer": 1,
-      "explanation": "Nationalism encouraged countries to defend their interests fiercely and often made differences between nations worse."
+      "example": "When vinegar is tested with litmus paper, it turns blue litmus red because vinegar is acidic. Soap solution turns red litmus blue because it is alkaline.",
+      "questions": [
+        {
+          "question": "What colour does blue litmus paper turn in an acid?",
+          "options": [
+            "Blue",
+            "Green",
+            "Red",
+            "Yellow"
+          ],
+          "answer": 2,
+          "explanation": "Acids turn blue litmus paper red."
+        },
+        {
+          "question": "Which substance is most likely to be a base?",
+          "options": [
+            "Lemon juice",
+            "Vinegar",
+            "Soap solution",
+            "Orange juice"
+          ],
+          "answer": 2,
+          "explanation": "Soap solution is alkaline and turns red litmus blue."
+        },
+        {
+          "question": "Why are indicators useful?",
+          "options": [
+            "They make compounds heavier",
+            "They help show whether a solution is acidic or alkaline",
+            "They increase reaction speed",
+            "They prevent rusting"
+          ],
+          "answer": 1,
+          "explanation": "Indicators reveal the pH nature of a solution."
+        },
+        {
+          "question": "Which of the following is neutral?",
+          "options": [
+            "Pure water",
+            "Hydrochloric acid",
+            "Sodium hydroxide",
+            "Lemon juice"
+          ],
+          "answer": 0,
+          "explanation": "Pure water is close to neutral on the pH scale."
+        },
+        {
+          "question": "What happens when an acid reacts with a base?",
+          "options": [
+            "It creates a new gas only",
+            "It forms salt and water",
+            "It releases oxygen",
+            "It produces a metal"
+          ],
+          "answer": 1,
+          "explanation": "Neutralisation produces a salt and water."
+        }
+      ]
     },
-    {
-      "question": "Why did the war spread so quickly across Europe?",
-      "options": [
-        "Countries had no communication systems",
-        "Leaders wanted to avoid peace at all costs",
-        "The alliance system meant countries were pulled into the conflict",
-        "The continent had no armies"
+    "Physics": {
+      "title": "Forces and motion",
+      "explanation": "A force is a push or pull that can change the motion of an object. Motion can be uniform or accelerated, and forces such as friction, gravity, and tension affect how objects move. Understanding force helps us explain everyday movement, from walking to driving.",
+      "key_points": [
+        "Forces can start, stop, or change motion.",
+        "Friction opposes motion.",
+        "Gravity pulls objects toward the Earth.",
+        "Balanced forces cause no change in motion.",
+        "Unbalanced forces cause acceleration."
       ],
-      "answer": 2,
-      "explanation": "Once one country declared war, allied nations often felt forced to respond, which accelerated the spread of the war."
+      "example": "When you slide a book across a table, friction acts in the opposite direction to slow it down. If you push harder, the net force increases and the book moves faster or farther.",
+      "questions": [
+        {
+          "question": "What is a force?",
+          "options": [
+            "A measure of mass",
+            "A push or pull",
+            "A type of energy",
+            "A form of light"
+          ],
+          "answer": 1,
+          "explanation": "A force is any push or pull acting on an object."
+        },
+        {
+          "question": "Which force opposes motion between surfaces?",
+          "options": [
+            "Gravitation",
+            "Magnetism",
+            "Friction",
+            "Pressure"
+          ],
+          "answer": 2,
+          "explanation": "Friction acts opposite the direction of motion and resists sliding."
+        },
+        {
+          "question": "What happens when forces on an object are balanced?",
+          "options": [
+            "The object speeds up",
+            "The object changes direction",
+            "There is no change in motion",
+            "The object disappears"
+          ],
+          "answer": 2,
+          "explanation": "Balanced forces produce a net force of zero, so acceleration is zero."
+        },
+        {
+          "question": "Why do objects fall toward the ground?",
+          "options": [
+            "Because of friction",
+            "Because of gravity",
+            "Because of magnetism",
+            "Because of sound"
+          ],
+          "answer": 1,
+          "explanation": "Gravity pulls objects toward the Earth."
+        },
+        {
+          "question": "Which term describes a change in speed or direction?",
+          "options": [
+            "Inertia",
+            "Acceleration",
+            "Volume",
+            "Density"
+          ],
+          "answer": 1,
+          "explanation": "Acceleration is any change in velocity, including speeding up, slowing down, or turning."
+        }
+      ]
+    },
+    "English": {
+      "title": "Reading comprehension strategies",
+      "explanation": "Reading comprehension means understanding what a text says and how it communicates meaning. Good readers identify the main idea, infer meaning, read for detail, and connect ideas across paragraphs. These strategies improve both academic and everyday reading.",
+      "key_points": [
+        "Readers should identify the main idea.",
+        "Clues in the text help explain meanings.",
+        "Context helps you understand unfamiliar words.",
+        "Supporting details strengthen understanding.",
+        "Readers should ask questions while reading."
+      ],
+      "example": "When reading a passage about climate change, a reader can look for repeated ideas, highlight key phrases, and ask what evidence the text provides, rather than just memorising isolated words.",
+      "questions": [
+        {
+          "question": "What is the main purpose of reading comprehension?",
+          "options": [
+            "To copy words exactly",
+            "To understand and interpret meaning",
+            "To count sentences",
+            "To learn spelling only"
+          ],
+          "answer": 1,
+          "explanation": "Comprehension is about understanding the meaning and purpose of a text."
+        },
+        {
+          "question": "Why is context important when reading?",
+          "options": [
+            "It helps decide the font size",
+            "It helps explain unfamiliar words",
+            "It shortens the passage",
+            "It adds more headings"
+          ],
+          "answer": 1,
+          "explanation": "Context gives clues about a word's meaning from the surrounding text."
+        },
+        {
+          "question": "Which strategy helps a reader find the central idea?",
+          "options": [
+            "Ignoring difficult words",
+            "Reading only the first sentence",
+            "Looking for repeated ideas and key details",
+            "Skipping the conclusion"
+          ],
+          "answer": 2,
+          "explanation": "The main idea is often supported by repeated points and key details throughout the text."
+        },
+        {
+          "question": "What should a reader do when they meet an unfamiliar word?",
+          "options": [
+            "Stop reading completely",
+            "Guess from context and look for clues",
+            "Memorise it only",
+            "Ignore it"
+          ],
+          "answer": 1,
+          "explanation": "Clues from surrounding sentences often clarify the meaning of unfamiliar vocabulary."
+        },
+        {
+          "question": "Which skill is most helpful for active reading?",
+          "options": [
+            "Asking questions while reading",
+            "Skipping the summary",
+            "Reading only once",
+            "Staring at the title"
+          ],
+          "answer": 0,
+          "explanation": "Asking questions helps readers monitor understanding and stay engaged."
+        }
+      ]
     }
-  ],
-  "source": "demo",
-  "demo_label": "Demo content"
+  }
 }
