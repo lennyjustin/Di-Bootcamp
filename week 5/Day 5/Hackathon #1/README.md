@@ -29,6 +29,10 @@ Open <http://127.0.0.1:5000> for SomaSmart, or <http://127.0.0.1:5000/curriculum
 
 Copy `.env.example` to `.env` and set `OPENAI_API_KEY` to enable AI-generated lessons. Leave it unset to use the local curriculum/demo content; no external API key is required for the learning flow.
 
+## Public deployment
+
+The repository-root `render.yaml` configures this project as a Render web service. In Render, create a Blueprint from the repository and select the `hackathon-1-submit` branch. Render will install the requirements and start the Flask app with Gunicorn. The app works without secrets using local demo lessons; add `OPENAI_API_KEY` in the Render dashboard only if AI-generated lessons are desired.
+
 ## API endpoints
 
 - `GET /api/health` — health check.

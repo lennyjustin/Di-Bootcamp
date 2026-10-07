@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: somasmart-hackathon
+    runtime: python
+    plan: free
+    rootDir: "week 5/Day 5/Hackathon #1"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /api/health
