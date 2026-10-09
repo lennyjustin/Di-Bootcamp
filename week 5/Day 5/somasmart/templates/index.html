@@ -4,18 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SomaSmart</title>
-    <meta name="description" content="SomaSmart helps students understand topics, practice with quizzes, and revise smartly." />
+    <meta name="description" content="Discover how SomaSmart turns curriculum-informed topics into clear lessons, practice quizzes, and useful feedback." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='database.css') }}" />
   </head>
   <body>
-    <section id="auth-screen" class="auth-screen">
+    <section id="learn-screen" class="learn-screen">
+      <header class="learn-topbar">
+        <a class="learn-brand" href="/" aria-label="SomaSmart home">
+          <span class="auth-logo">S</span>
+          <span>SomaSmart</span>
+        </a>
+        <button class="learn-login-link" type="button" data-auth-mode="login">Sign in</button>
+      </header>
+
+      <main class="learn-main">
+        <section class="learn-hero" aria-labelledby="learn-title">
+          <div class="learn-hero-copy">
+            <p class="learn-eyebrow">Your learning companion</p>
+            <h1 id="learn-title">Understand more. <span>Learn at your pace.</span></h1>
+            <p class="learn-intro">
+              SomaSmart turns the topic you choose into a clear lesson, a short quiz, and helpful feedback—so you can learn with a plan, not guesswork.
+            </p>
+            <div class="learn-actions">
+              <button class="learn-primary-btn" type="button" data-auth-mode="signup">Get started</button>
+              <a class="learn-secondary-btn" href="#how-it-works">See how it works</a>
+            </div>
+            <p class="learn-curriculum-note">Built around curriculum-informed topics for secondary school learners.</p>
+          </div>
+          <aside class="learn-preview" aria-label="Example learning session">
+            <div class="preview-topline"><span class="preview-dot"></span> YOUR STUDY SESSION</div>
+            <div class="preview-subject">HISTORY <span>LESSON + QUIZ</span></div>
+            <h2>Causes of the First World War</h2>
+            <p>Start with a simple explanation, review the key ideas, then check what you remember.</p>
+            <div class="preview-progress"><span></span></div>
+            <div class="preview-footer"><span>5 practice questions</span><span>Instant feedback</span></div>
+          </aside>
+        </section>
+
+        <section class="learn-details" aria-labelledby="learn-details-title">
+          <div class="learn-section-heading">
+            <p class="learn-eyebrow">Made for active learning</p>
+            <h2 id="learn-details-title">Everything you need for a focused study session</h2>
+          </div>
+          <div class="learn-feature-grid">
+            <article class="learn-feature-card">
+              <span class="learn-feature-number">01</span>
+              <h3>Choose what to study</h3>
+              <p>Pick a subject and enter a topic, or use suggested ideas informed by local curriculum resources.</p>
+            </article>
+            <article class="learn-feature-card">
+              <span class="learn-feature-number">02</span>
+              <h3>Get a clear lesson</h3>
+              <p>Review an explanation, key points, and an example to help make the topic easier to understand.</p>
+            </article>
+            <article class="learn-feature-card">
+              <span class="learn-feature-number">03</span>
+              <h3>Practice and improve</h3>
+              <p>Answer five questions, see feedback and your score, then revisit the lesson or try another topic.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="learn-steps" aria-labelledby="how-it-works-title">
+          <div class="learn-section-heading">
+            <p class="learn-eyebrow">Simple by design</p>
+            <h2 id="how-it-works-title">How SomaSmart works</h2>
+          </div>
+          <ol class="learn-step-list">
+            <li><span>1</span><div><h3>Choose a subject and topic</h3><p>Explore a suggested topic or type in what you are learning today.</p></div></li>
+            <li><span>2</span><div><h3>Study the lesson</h3><p>Read the explanation, review its key points, and work through the example.</p></div></li>
+            <li><span>3</span><div><h3>Take a five-question quiz</h3><p>Answer at your own pace and get feedback as you work through the questions.</p></div></li>
+            <li><span>4</span><div><h3>Review your results</h3><p>See your score, get revision suggestions, and return to saved lessons to practice again.</p></div></li>
+          </ol>
+        </section>
+
+        <aside class="learn-note">
+          <strong>A quick note before you continue</strong>
+          <p>Sign-in is currently a demo experience, not a secure personal account service. Do not use a password you use elsewhere. Learning history is stored with this app and is not private to an individual account.</p>
+        </aside>
+        <div class="learn-bottom-cta">
+          <div><p class="learn-eyebrow">Ready when you are</p><h2>Make your next study session count.</h2></div>
+          <button class="learn-primary-btn" type="button" data-auth-mode="signup">Create an account</button>
+        </div>
+      </main>
+      <footer class="learn-footer">© 2026 SomaSmart</footer>
+    </section>
+
+    <section id="auth-screen" class="auth-screen hidden">
       <div class="gold-streak top"></div>
       <div class="gold-streak bottom"></div>
       <div class="auth-card">
         <div class="auth-brand"><span class="auth-logo">S</span><span>SomaSmart</span></div>
+        <button id="learn-back-btn" class="auth-back-btn" type="button">← Back to learn page</button>
         <div id="login-panel">
           <h1>Welcome <span>Back</span></h1>
           <p class="auth-subtitle">Welcome back. Please enter your details.</p>
@@ -57,6 +141,7 @@
           <button id="switch-auth" type="button">Sign up</button>
         </div>
         <a class="local-app-link" href="/curriculum-builder/">Open Curriculum Guide ↗</a>
+        <p class="auth-demo-note">Demo sign-in only. Don’t use a password you use on other sites.</p>
       </div>
     </section>
 
@@ -159,6 +244,17 @@
               </article>
             </div>
           </div>
+
+          <section class="history-section" aria-labelledby="history-title">
+            <div class="history-heading">
+              <div>
+                <p class="eyebrow">Your learning</p>
+                <h2 id="history-title">Recent lessons and quiz scores</h2>
+              </div>
+              <p id="history-status" class="history-status" aria-live="polite">Sign in to view your history.</p>
+            </div>
+            <div id="learning-history-list" class="learning-history-list" aria-live="polite"></div>
+          </section>
         </section>
 
         <section id="loading-screen" class="screen hidden" aria-live="polite">
@@ -216,6 +312,7 @@
             </div>
             <p id="feedback-message" class="feedback-message"></p>
             <div id="revision-box" class="revision-box"></div>
+            <p id="progress-save-status" class="save-status" aria-live="polite"></p>
             <div class="results-actions">
               <button id="try-another-btn" class="primary-btn" type="button">Try another topic</button>
               <button id="review-lesson-btn" class="secondary-btn" type="button">Review the lesson</button>

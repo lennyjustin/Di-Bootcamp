@@ -1,7 +1,9 @@
 import unittest
+import tempfile
 from unittest.mock import patch
 
 import app as app_module
+import database as database_module
 
 
 class SomaSmartApiTests(unittest.TestCase):
@@ -12,6 +14,14 @@ class SomaSmartApiTests(unittest.TestCase):
 
     def setUp(self):
         app_module._learn_requests.clear()
+        self.database_dir = tempfile.TemporaryDirectory()
+        app_module.app.config["DATABASE_PATH"] = (
+            f"{self.database_dir.name}/test.sqlite3"
+        )
+        database_module.init_database(app_module.app.config["DATABASE_PATH"])
+
+    def tearDown(self):
+        self.database_dir.cleanup()
 
     def test_health_and_local_platform_frontend(self):
         health = self.client.get("/api/health")
@@ -21,14 +31,22 @@ class SomaSmartApiTests(unittest.TestCase):
         page = self.client.get("/")
         self.assertEqual(page.status_code, 200)
         self.assertIn(b"SomaSmart", page.data)
+        self.assertIn(b"How SomaSmart works", page.data)
+        self.assertIn(b"five-question quiz", page.data)
+        self.assertIn(b"Back to learn page", page.data)
 
         javascript = self.client.get("/static/app.js")
         stylesheet = self.client.get("/static/style.css")
+        database_stylesheet = self.client.get("/static/database.css")
         self.assertEqual(javascript.status_code, 200)
         self.assertIn(b"/api/curriculum-topics", javascript.data)
+        self.assertIn(b"/api/history", javascript.data)
+        self.assertIn(b"/api/quiz-attempts", javascript.data)
         self.assertEqual(stylesheet.status_code, 200)
+        self.assertEqual(database_stylesheet.status_code, 200)
         javascript.close()
         stylesheet.close()
+        database_stylesheet.close()
 
     def test_curriculum_builder_is_mounted_with_local_assets(self):
         redirect = self.client.get("/curriculum-builder")
@@ -38,6 +56,7 @@ class SomaSmartApiTests(unittest.TestCase):
         builder = self.client.get("/curriculum-builder/")
         self.assertEqual(builder.status_code, 200)
         self.assertIn(b"Curriculum Guide", builder.data)
+        self.assertIn(b"builder-database.js", builder.data)
         self.assertIn("unsafe-inline", builder.headers["Content-Security-Policy"])
         builder.close()
 
@@ -50,6 +69,8 @@ class SomaSmartApiTests(unittest.TestCase):
         for asset in (
             "styles.css",
             "app.js",
+            "builder-database.js",
+            "builder-database.css",
             "data/part1.js",
             "data/part4.js",
         ):
@@ -98,6 +119,73 @@ class SomaSmartApiTests(unittest.TestCase):
         self.assertEqual(len(lesson["questions"]), 5)
         self.assertTrue(lesson["worked_answers"])
         self.assertTrue(lesson["curriculum_notes"])
+
+    def test_lessons_and_quiz_attempts_are_persisted(self):
+        with patch.object(app_module, "call_openai_api", side_effect=RuntimeError("offline")):
+            response = self.client.post(
+                "/api/learn",
+                json={"subject": "Mathematics", "topic": "Quadratic expressions"},
+            )
+        lesson = response.get_json()
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(lesson["lesson_id"], int)
+
+        saved_lesson = self.client.get(f"/api/lessons/{lesson['lesson_id']}")
+        self.assertEqual(saved_lesson.status_code, 200)
+        self.assertEqual(saved_lesson.get_json()["title"], lesson["title"])
+
+        selected_answers = [question["answer"] for question in lesson["questions"]]
+        attempt = self.client.post(
+            "/api/quiz-attempts",
+            json={
+                "lesson_id": lesson["lesson_id"],
+                "selected_answers": selected_answers,
+            },
+        )
+        self.assertEqual(attempt.status_code, 201)
+        self.assertEqual(attempt.get_json()["score"], 5)
+
+        history = self.client.get("/api/history").get_json()
+        self.assertEqual(len(history["lessons"]), 1)
+        self.assertEqual(history["quiz_attempts"][0]["lesson_id"], lesson["lesson_id"])
+
+        invalid_attempt = self.client.post(
+            "/api/quiz-attempts",
+            json={"lesson_id": lesson["lesson_id"], "selected_answers": []},
+        )
+        self.assertEqual(invalid_attempt.status_code, 400)
+
+    def test_curriculum_builder_plans_can_be_saved_listed_and_deleted(self):
+        payload = {
+            "subject": "Mathematics",
+            "strand": "Algebra",
+            "grade": "Grade 10",
+            "duration": "40 minutes",
+            "plan": {"content": "Lesson objectives and activities"},
+        }
+        created = self.client.post("/api/curriculum-builder/plans", json=payload)
+        self.assertEqual(created.status_code, 201)
+        plan_id = created.get_json()["id"]
+
+        plans = self.client.get("/api/curriculum-builder/plans").get_json()["plans"]
+        self.assertEqual(len(plans), 1)
+        self.assertEqual(plans[0]["plan"], payload["plan"])
+
+        deleted = self.client.delete(f"/api/curriculum-builder/plans/{plan_id}")
+        self.assertEqual(deleted.status_code, 200)
+        self.assertEqual(
+            self.client.get("/api/curriculum-builder/plans").get_json()["plans"], []
+        )
+        self.assertEqual(
+            self.client.delete(f"/api/curriculum-builder/plans/{plan_id}").status_code,
+            404,
+        )
+
+        invalid = self.client.post(
+            "/api/curriculum-builder/plans",
+            json={**payload, "plan": "not an object"},
+        )
+        self.assertEqual(invalid.status_code, 400)
 
     def test_local_lesson_fallback_supports_multiple_subjects(self):
         with patch.object(app_module, "call_openai_api", side_effect=RuntimeError("offline")):

@@ -1,5 +1,6 @@
 import json
 import os
+import sqlite3
 import time
 from pathlib import Path
 from typing import Any
@@ -7,6 +8,18 @@ from typing import Any
 from dotenv import load_dotenv
 from flask import Flask, jsonify, redirect, render_template, request, send_from_directory, url_for
 from openai import OpenAI
+
+from database import (
+    delete_curriculum_plan,
+    get_lesson,
+    init_database,
+    list_curriculum_plans,
+    list_lessons,
+    list_quiz_attempts,
+    save_curriculum_plan,
+    save_lesson,
+    save_quiz_attempt,
+)
 
 load_dotenv()
 APP_DIR = Path(__file__).resolve().parent
@@ -26,6 +39,14 @@ app = Flask(
     static_folder=str(STATIC_DIR if STATIC_DIR.is_dir() else APP_DIR / "static"),
 )
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024
+database_path = Path(
+    os.getenv("DATABASE_PATH", "").strip()
+    or str(APP_DIR / "instance" / "hackathon.sqlite3")
+).expanduser()
+if not database_path.is_absolute():
+    database_path = APP_DIR / database_path
+app.config["DATABASE_PATH"] = str(database_path)
+init_database(app.config["DATABASE_PATH"])
 
 RATE_LIMIT_WINDOW_SECONDS = 60
 RATE_LIMIT_MAX_REQUESTS = 20
@@ -59,6 +80,12 @@ def add_security_headers(response):
 @app.errorhandler(413)
 def request_too_large(_error):
     return jsonify({"error": "Request is too large."}), 413
+
+
+@app.errorhandler(sqlite3.Error)
+def database_error(_error):
+    app.logger.exception("Database operation failed")
+    return jsonify({"error": "Unable to access the learning database."}), 500
 
 
 def is_rate_limited(client_key: str) -> bool:
@@ -383,6 +410,84 @@ def business_studies_curriculum():
     return jsonify(load_business_studies_curriculum())
 
 
+@app.route("/api/history")
+def learning_history():
+    return jsonify(
+        {
+            "lessons": list_lessons(app.config["DATABASE_PATH"]),
+            "quiz_attempts": list_quiz_attempts(app.config["DATABASE_PATH"]),
+        }
+    )
+
+
+@app.route("/api/lessons/<int:lesson_id>")
+def saved_lesson(lesson_id: int):
+    lesson = get_lesson(app.config["DATABASE_PATH"], lesson_id)
+    if lesson is None:
+        return jsonify({"error": "Lesson not found."}), 404
+    return jsonify(lesson)
+
+
+@app.route("/api/quiz-attempts", methods=["POST"])
+def create_quiz_attempt():
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON request body is required."}), 400
+
+    lesson_id = data.get("lesson_id")
+    selected_answers = data.get("selected_answers")
+    if isinstance(lesson_id, bool) or not isinstance(lesson_id, int) or lesson_id < 1:
+        return jsonify({"error": "A valid lesson ID is required."}), 400
+    if not isinstance(selected_answers, list):
+        return jsonify({"error": "Selected answers must be a list."}), 400
+
+    try:
+        attempt = save_quiz_attempt(
+            app.config["DATABASE_PATH"], lesson_id, selected_answers
+        )
+    except LookupError as error:
+        return jsonify({"error": str(error)}), 404
+    except ValueError as error:
+        return jsonify({"error": str(error)}), 400
+    return jsonify(attempt), 201
+
+
+@app.route("/api/curriculum-builder/plans", methods=["GET", "POST"])
+def curriculum_builder_plans():
+    if request.method == "GET":
+        return jsonify({"plans": list_curriculum_plans(app.config["DATABASE_PATH"])})
+
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON request body is required."}), 400
+
+    fields = ("subject", "strand", "grade", "duration")
+    limits = {"subject": 100, "strand": 200, "grade": 40, "duration": 40}
+    plan = {}
+    for field in fields:
+        value = data.get(field)
+        if not isinstance(value, str) or not value.strip():
+            return jsonify({"error": f"{field.capitalize()} is required."}), 400
+        if len(value.strip()) > limits[field]:
+            return jsonify({"error": f"{field.capitalize()} is too long."}), 400
+        plan[field] = value.strip()
+
+    content = data.get("plan")
+    if not isinstance(content, dict):
+        return jsonify({"error": "A lesson plan object is required."}), 400
+    plan["plan"] = content
+
+    plan_id = save_curriculum_plan(app.config["DATABASE_PATH"], plan)
+    return jsonify({"id": plan_id, "plan": plan}), 201
+
+
+@app.route("/api/curriculum-builder/plans/<int:plan_id>", methods=["DELETE"])
+def remove_curriculum_builder_plan(plan_id: int):
+    if not delete_curriculum_plan(app.config["DATABASE_PATH"], plan_id):
+        return jsonify({"error": "Lesson plan not found."}), 404
+    return jsonify({"deleted": True, "id": plan_id})
+
+
 @app.route("/api/learn", methods=["POST"])
 def learn():
     client_key = request.remote_addr or "unknown"
@@ -414,6 +519,9 @@ def learn():
 
     try:
         result = get_learning_content(subject, topic)
+        result["lesson_id"] = save_lesson(
+            app.config["DATABASE_PATH"], subject, topic, result
+        )
         return jsonify(result)
     except Exception:
         app.logger.exception("Failed to generate lesson content")

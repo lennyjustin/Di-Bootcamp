@@ -29,6 +29,7 @@ const revisionBox = document.getElementById('revision-box');
 const tryAnotherBtn = document.getElementById('try-another-btn');
 const reviewLessonBtn = document.getElementById('review-lesson-btn');
 const topicSuggestions = document.getElementById('topic-suggestions');
+const learnScreen = document.getElementById('learn-screen');
 const authScreen = document.getElementById('auth-screen');
 const appShell = document.getElementById('app-shell');
 const loginPanel = document.getElementById('login-panel');
@@ -36,17 +37,22 @@ const signupPanel = document.getElementById('signup-panel');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const switchAuthButton = document.getElementById('switch-auth');
+const learnBackButton = document.getElementById('learn-back-btn');
 const switchLoginCopy = document.getElementById('switch-login-copy');
 const authMessage = document.getElementById('auth-message');
 const logoutButton = document.getElementById('logout-btn');
 const forgotPasswordButton = document.getElementById('forgot-password');
 const googleLoginButton = document.getElementById('google-login');
 const appleLoginButton = document.getElementById('apple-login');
+const learningHistoryList = document.getElementById('learning-history-list');
+const historyStatus = document.getElementById('history-status');
+const progressSaveStatus = document.getElementById('progress-save-status');
 
 let currentLesson = null;
 let currentQuestionIndex = 0;
 let selectedAnswers = [];
 let answeredQuestions = [];
+let authFlowOpen = false;
 
 function escapeHtml(value) {
   return String(value)
@@ -66,9 +72,64 @@ async function fetchJson(url, options) {
   return data;
 }
 
+async function loadLearningHistory() {
+  if (!learningHistoryList || !historyStatus) return;
+  historyStatus.textContent = 'Loading your history...';
+  try {
+    const data = await fetchJson('/api/history');
+    const attemptsByLesson = new Map();
+    data.quiz_attempts.forEach((attempt) => {
+      const attempts = attemptsByLesson.get(attempt.lesson_id) || [];
+      attempts.push(attempt);
+      attemptsByLesson.set(attempt.lesson_id, attempts);
+    });
+
+    if (data.lessons.length === 0) {
+      historyStatus.textContent = 'Your learning history will appear here.';
+      learningHistoryList.innerHTML = '';
+      return;
+    }
+
+    historyStatus.textContent = `${data.lessons.length} recent lesson${data.lessons.length === 1 ? '' : 's'}`;
+    learningHistoryList.innerHTML = data.lessons.map((lesson) => {
+      const attempts = attemptsByLesson.get(lesson.id) || [];
+      const attemptMarkup = attempts.length
+        ? `<ul class="history-attempts">${attempts.map((attempt) => `
+            <li>Quiz: ${attempt.score} / ${attempt.total} · ${escapeHtml(attempt.completed_at)}</li>
+          `).join('')}</ul>`
+        : '<p>No quiz attempts yet.</p>';
+      return `
+        <article class="history-item">
+          <div>
+            <h3>${escapeHtml(lesson.title)}</h3>
+            <p>${escapeHtml(lesson.subject)} · ${escapeHtml(lesson.topic)} · ${escapeHtml(lesson.created_at)}</p>
+            ${attemptMarkup}
+          </div>
+          <button class="history-open-btn" type="button" data-lesson-id="${lesson.id}">Review lesson</button>
+        </article>
+      `;
+    }).join('');
+  } catch (error) {
+    historyStatus.textContent = error.message || 'Unable to load your learning history.';
+  }
+}
+
+async function openSavedLesson(lessonId) {
+  try {
+    const lesson = await fetchJson(`/api/lessons/${lessonId}`);
+    subjectInput.value = lesson.subject;
+    topicInput.value = lesson.topic;
+    renderLesson(lesson);
+  } catch (error) {
+    historyStatus.textContent = error.message || 'Unable to open this lesson.';
+  }
+}
+
 function setAuthenticated(isAuthenticated) {
-  authScreen.classList.toggle('hidden', isAuthenticated);
+  learnScreen.classList.toggle('hidden', isAuthenticated || authFlowOpen);
+  authScreen.classList.toggle('hidden', isAuthenticated || !authFlowOpen);
   appShell.classList.toggle('hidden', !isAuthenticated);
+  if (isAuthenticated) loadLearningHistory();
 }
 
 function showAuthMessage(message, isError = false) {
@@ -76,13 +137,31 @@ function showAuthMessage(message, isError = false) {
   authMessage.classList.toggle('error', isError);
 }
 
+function setAuthMode(mode) {
+  const showingLogin = mode === 'login';
+  loginPanel.classList.toggle('hidden', !showingLogin);
+  signupPanel.classList.toggle('hidden', showingLogin);
+  switchLoginCopy.textContent = showingLogin ? 'Don’t have an account?' : 'Already have an account?';
+  switchAuthButton.textContent = showingLogin ? 'Sign up' : 'Log in';
+  showAuthMessage('');
+}
+
+function openAuth(mode) {
+  authFlowOpen = true;
+  setAuthMode(mode);
+  setAuthenticated(false);
+  const firstInput = document.getElementById(mode === 'signup' ? 'signup-name' : 'login-email');
+  firstInput.focus();
+}
+
+function showLearnPage() {
+  authFlowOpen = false;
+  setAuthenticated(false);
+}
+
 function switchAuthMode() {
   const showingLogin = !loginPanel.classList.contains('hidden');
-  loginPanel.classList.toggle('hidden', showingLogin);
-  signupPanel.classList.toggle('hidden', !showingLogin);
-  switchLoginCopy.textContent = showingLogin ? 'Already have an account?' : 'Don’t have an account?';
-  switchAuthButton.textContent = showingLogin ? 'Log in' : 'Sign up';
-  showAuthMessage('');
+  setAuthMode(showingLogin ? 'signup' : 'login');
 }
 
 function authenticateDemo(email, remember = false) {
@@ -213,6 +292,7 @@ function renderLesson(data) {
   lessonTitle.textContent = data.title;
   lessonContent.innerHTML = createLessonMarkup(data);
   showScreen('lesson');
+  loadLearningHistory();
 }
 
 function resetQuizState() {
@@ -316,6 +396,25 @@ function showResults() {
   `;
 
   showScreen('results');
+  saveQuizAttempt();
+}
+
+async function saveQuizAttempt() {
+  progressSaveStatus.textContent = 'Saving your quiz result...';
+  try {
+    await fetchJson('/api/quiz-attempts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        lesson_id: currentLesson.lesson_id,
+        selected_answers: selectedAnswers,
+      }),
+    });
+    await loadLearningHistory();
+    progressSaveStatus.textContent = 'Quiz result saved.';
+  } catch (error) {
+    progressSaveStatus.textContent = error.message || 'Unable to save your quiz result.';
+  }
 }
 
 function handleLearn(event) {
@@ -362,6 +461,12 @@ function startQuiz() {
 }
 
 form.addEventListener('submit', handleLearn);
+learningHistoryList.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-lesson-id]');
+  if (button) {
+    openSavedLesson(Number(button.dataset.lessonId));
+  }
+});
 startQuizBtn.addEventListener('click', startQuiz);
 nextQuestionBtn.addEventListener('click', goToNextQuestion);
 tryAnotherBtn.addEventListener('click', () => {
@@ -397,13 +502,17 @@ signupForm.addEventListener('submit', (event) => {
 });
 
 switchAuthButton.addEventListener('click', switchAuthMode);
+learnBackButton.addEventListener('click', showLearnPage);
+document.querySelectorAll('[data-auth-mode]').forEach((button) => {
+  button.addEventListener('click', () => openAuth(button.dataset.authMode));
+});
 forgotPasswordButton.addEventListener('click', () => showAuthMessage('Password reset is available in the full account service.', false));
 googleLoginButton.addEventListener('click', () => authenticateDemo('google-user@somasmart.demo', false));
 appleLoginButton.addEventListener('click', () => authenticateDemo('apple-user@somasmart.demo', false));
 logoutButton.addEventListener('click', () => {
   localStorage.removeItem('somasmart-session');
   sessionStorage.removeItem('somasmart-session');
-  setAuthenticated(false);
+  openAuth('login');
   showAuthMessage('You have been logged out.');
 });
 restoreSession();

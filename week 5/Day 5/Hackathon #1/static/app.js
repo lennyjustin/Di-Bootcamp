@@ -31,11 +31,85 @@ const tryAnotherBtn = document.getElementById('try-another-btn');
 const reviewLessonBtn = document.getElementById('review-lesson-btn');
 const curriculumGroups = document.getElementById('curriculum-groups');
 const curriculumResources = document.getElementById('curriculum-resources');
+const learningHistoryList = document.getElementById('learning-history-list');
+const historyStatus = document.getElementById('history-status');
+const progressSaveStatus = document.getElementById('progress-save-status');
 
 let currentLesson = null;
 let currentQuestionIndex = 0;
 let selectedAnswers = [];
 let answeredQuestions = [];
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  })[character]);
+}
+
+async function loadLearningHistory() {
+  historyStatus.textContent = 'Loading your history...';
+  try {
+    const response = await fetch('/api/history');
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to load your learning history.');
+    }
+
+    const attemptsByLesson = new Map();
+    data.quiz_attempts.forEach((attempt) => {
+      const attempts = attemptsByLesson.get(attempt.lesson_id) || [];
+      attempts.push(attempt);
+      attemptsByLesson.set(attempt.lesson_id, attempts);
+    });
+
+    if (data.lessons.length === 0) {
+      historyStatus.textContent = 'Your learning history will appear here.';
+      learningHistoryList.innerHTML = '';
+      return;
+    }
+
+    historyStatus.textContent = `${data.lessons.length} recent lesson${data.lessons.length === 1 ? '' : 's'}`;
+    learningHistoryList.innerHTML = data.lessons.map((lesson) => {
+      const attempts = attemptsByLesson.get(lesson.id) || [];
+      const attemptMarkup = attempts.length
+        ? `<ul class="history-attempts">${attempts.map((attempt) => `
+            <li>Quiz: ${attempt.score} / ${attempt.total} · ${escapeHtml(attempt.completed_at)}</li>
+          `).join('')}</ul>`
+        : '<p>No quiz attempts yet.</p>';
+      return `
+        <article class="history-item">
+          <div>
+            <h3>${escapeHtml(lesson.title)}</h3>
+            <p>${escapeHtml(lesson.subject)} · ${escapeHtml(lesson.topic)} · ${escapeHtml(lesson.created_at)}</p>
+            ${attemptMarkup}
+          </div>
+          <button class="history-open-btn" type="button" data-lesson-id="${lesson.id}">Review lesson</button>
+        </article>
+      `;
+    }).join('');
+  } catch (error) {
+    historyStatus.textContent = error.message || 'Unable to load your learning history.';
+  }
+}
+
+async function openSavedLesson(lessonId) {
+  try {
+    const response = await fetch(`/api/lessons/${lessonId}`);
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to open this lesson.');
+    }
+    subjectInput.value = data.subject;
+    topicInput.value = data.topic;
+    renderLesson(data);
+  } catch (error) {
+    historyStatus.textContent = error.message || 'Unable to open this lesson.';
+  }
+}
 
 function renderCurriculumGuide(guide) {
   curriculumGroups.innerHTML = guide.groups.map((group) => `
@@ -157,6 +231,7 @@ function renderLesson(data) {
   lessonTitle.textContent = data.title;
   lessonContent.innerHTML = createLessonMarkup(data);
   showScreen('lesson');
+  loadLearningHistory();
 }
 
 function resetQuizState() {
@@ -280,6 +355,30 @@ function showResults() {
   `;
 
   showScreen('results');
+  saveQuizAttempt();
+}
+
+async function saveQuizAttempt() {
+  progressSaveStatus.textContent = 'Saving your quiz result...';
+  try {
+    const response = await fetch('/api/quiz-attempts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        lesson_id: currentLesson.lesson_id,
+        selected_answers: selectedAnswers,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to save your quiz result.');
+    }
+    progressSaveStatus.textContent = 'Quiz result saved.';
+    await loadLearningHistory();
+    progressSaveStatus.textContent = 'Quiz result saved.';
+  } catch (error) {
+    progressSaveStatus.textContent = error.message || 'Unable to save your quiz result.';
+  }
 }
 
 function handleLearn(event) {
@@ -339,6 +438,12 @@ function startQuiz() {
 }
 
 form.addEventListener('submit', handleLearn);
+learningHistoryList.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-lesson-id]');
+  if (button) {
+    openSavedLesson(Number(button.dataset.lessonId));
+  }
+});
 startQuizBtn.addEventListener('click', startQuiz);
 nextQuestionBtn.addEventListener('click', goToNextQuestion);
 tryAnotherBtn.addEventListener('click', () => {
@@ -352,4 +457,5 @@ reviewLessonBtn.addEventListener('click', () => {
 showScreen('home');
 loadCurriculumGuide();
 loadTopicSuggestions();
+loadLearningHistory();
 subjectInput.addEventListener('change', loadTopicSuggestions);

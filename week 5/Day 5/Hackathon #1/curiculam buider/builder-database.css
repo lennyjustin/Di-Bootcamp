@@ -1,0 +1,50 @@
+.saved-plans {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line, #d9e2dc);
+}
+
+.saved-plans-status {
+  color: var(--muted, #64746c);
+  font-size: var(--text-sm, .9rem);
+}
+
+.saved-plan {
+  margin-top: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--line, #d9e2dc);
+  border-radius: var(--radius-md, 12px);
+  background: var(--surface, #fff);
+}
+
+.saved-plan-heading,
+.save-plan-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.saved-plan p {
+  color: var(--muted, #64746c);
+  font-size: var(--text-sm, .9rem);
+}
+
+.saved-plan pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font: inherit;
+}
+
+.saved-plan-delete {
+  border: 0;
+  background: transparent;
+  color: #a33b35;
+  cursor: pointer;
+}
+
+.save-plan-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}

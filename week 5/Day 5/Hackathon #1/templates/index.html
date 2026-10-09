@@ -138,6 +138,17 @@
               <div id="curriculum-resources" class="resource-links"></div>
             </div>
           </section>
+
+          <section class="history-section" aria-labelledby="history-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Your learning</p>
+                <h2 id="history-title">Recent lessons and quiz scores</h2>
+              </div>
+              <p id="history-status" class="section-note" aria-live="polite">Loading your history...</p>
+            </div>
+            <div id="learning-history-list" class="learning-history-list" aria-live="polite"></div>
+          </section>
         </section>
 
         <section id="loading-screen" class="screen hidden" aria-live="polite">
@@ -195,6 +206,7 @@
             </div>
             <p id="feedback-message" class="feedback-message"></p>
             <div id="revision-box" class="revision-box"></div>
+            <p id="progress-save-status" class="save-status" aria-live="polite"></p>
             <div class="results-actions">
               <button id="try-another-btn" class="primary-btn" type="button">Try another topic</button>
               <button id="review-lesson-btn" class="secondary-btn" type="button">Review the lesson</button>

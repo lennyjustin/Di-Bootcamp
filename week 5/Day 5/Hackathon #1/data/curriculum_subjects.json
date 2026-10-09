@@ -1,0 +1,1850 @@
+{
+  "English": {
+    "tagline": "Language, literature, communication and critical reading for confident expression.",
+    "strands": [
+      {
+        "name": "Listening and Speaking",
+        "notes": [
+          "Key concepts and vocabulary in listening and speaking.",
+          "Processes, examples and applications related to listening and speaking.",
+          "Learners explain how listening and speaking connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Reading",
+        "notes": [
+          "Key concepts and vocabulary in reading.",
+          "Processes, examples and applications related to reading.",
+          "Learners explain how reading connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Writing",
+        "notes": [
+          "Key concepts and vocabulary in writing.",
+          "Processes, examples and applications related to writing.",
+          "Learners explain how writing connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Grammar and Vocabulary",
+        "notes": [
+          "Key concepts and vocabulary in grammar and vocabulary.",
+          "Processes, examples and applications related to grammar and vocabulary.",
+          "Learners explain how grammar and vocabulary connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Listening",
+      "Evidence",
+      "Application",
+      "Reading",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in listening and speaking and give a practical example.",
+      "Describe two important ideas in reading and give a practical example.",
+      "Describe two important ideas in writing and give a practical example.",
+      "Describe two important ideas in grammar and vocabulary and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in listening and speaking.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in reading.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in writing.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in grammar and vocabulary.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Kiswahili": {
+    "tagline": "Kusikiliza, kuzungumza, kusoma, kuandika na matumizi ya lugha.",
+    "strands": [
+      {
+        "name": "Kusikiliza na Kuzungumza",
+        "notes": [
+          "Key concepts and vocabulary in kusikiliza na kuzungumza.",
+          "Processes, examples and applications related to kusikiliza na kuzungumza.",
+          "Learners explain how kusikiliza na kuzungumza connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Kusoma",
+        "notes": [
+          "Key concepts and vocabulary in kusoma.",
+          "Processes, examples and applications related to kusoma.",
+          "Learners explain how kusoma connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Kuandika",
+        "notes": [
+          "Key concepts and vocabulary in kuandika.",
+          "Processes, examples and applications related to kuandika.",
+          "Learners explain how kuandika connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Sarufi na Msamiati",
+        "notes": [
+          "Key concepts and vocabulary in sarufi na msamiati.",
+          "Processes, examples and applications related to sarufi na msamiati.",
+          "Learners explain how sarufi na msamiati connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Kusikiliza",
+      "Evidence",
+      "Application",
+      "Kusoma",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in kusikiliza na kuzungumza and give a practical example.",
+      "Describe two important ideas in kusoma and give a practical example.",
+      "Describe two important ideas in kuandika and give a practical example.",
+      "Describe two important ideas in sarufi na msamiati and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in kusikiliza na kuzungumza.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in kusoma.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in kuandika.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in sarufi na msamiati.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Arabic": {
+    "tagline": "Communication, comprehension, grammar and cultural expression in Arabic.",
+    "strands": [
+      {
+        "name": "Listening and Speaking",
+        "notes": [
+          "Key concepts and vocabulary in listening and speaking.",
+          "Processes, examples and applications related to listening and speaking.",
+          "Learners explain how listening and speaking connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Reading",
+        "notes": [
+          "Key concepts and vocabulary in reading.",
+          "Processes, examples and applications related to reading.",
+          "Learners explain how reading connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Writing",
+        "notes": [
+          "Key concepts and vocabulary in writing.",
+          "Processes, examples and applications related to writing.",
+          "Learners explain how writing connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Language Structures",
+        "notes": [
+          "Key concepts and vocabulary in language structures.",
+          "Processes, examples and applications related to language structures.",
+          "Learners explain how language structures connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Listening",
+      "Evidence",
+      "Application",
+      "Reading",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in listening and speaking and give a practical example.",
+      "Describe two important ideas in reading and give a practical example.",
+      "Describe two important ideas in writing and give a practical example.",
+      "Describe two important ideas in language structures and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in listening and speaking.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in reading.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in writing.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in language structures.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "French": {
+    "tagline": "Practical communication, comprehension and cultural awareness in French.",
+    "strands": [
+      {
+        "name": "Oral Communication",
+        "notes": [
+          "Key concepts and vocabulary in oral communication.",
+          "Processes, examples and applications related to oral communication.",
+          "Learners explain how oral communication connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Reading",
+        "notes": [
+          "Key concepts and vocabulary in reading.",
+          "Processes, examples and applications related to reading.",
+          "Learners explain how reading connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Writing",
+        "notes": [
+          "Key concepts and vocabulary in writing.",
+          "Processes, examples and applications related to writing.",
+          "Learners explain how writing connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Grammar",
+        "notes": [
+          "Key concepts and vocabulary in grammar.",
+          "Processes, examples and applications related to grammar.",
+          "Learners explain how grammar connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Oral",
+      "Evidence",
+      "Application",
+      "Reading",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in oral communication and give a practical example.",
+      "Describe two important ideas in reading and give a practical example.",
+      "Describe two important ideas in writing and give a practical example.",
+      "Describe two important ideas in grammar and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in oral communication.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in reading.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in writing.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in grammar.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "German": {
+    "tagline": "Foundations of German communication, comprehension and cultural awareness.",
+    "strands": [
+      {
+        "name": "Communication",
+        "notes": [
+          "Key concepts and vocabulary in communication.",
+          "Processes, examples and applications related to communication.",
+          "Learners explain how communication connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Reading",
+        "notes": [
+          "Key concepts and vocabulary in reading.",
+          "Processes, examples and applications related to reading.",
+          "Learners explain how reading connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Writing",
+        "notes": [
+          "Key concepts and vocabulary in writing.",
+          "Processes, examples and applications related to writing.",
+          "Learners explain how writing connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Language Structures",
+        "notes": [
+          "Key concepts and vocabulary in language structures.",
+          "Processes, examples and applications related to language structures.",
+          "Learners explain how language structures connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Communication",
+      "Evidence",
+      "Application",
+      "Reading",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in communication and give a practical example.",
+      "Describe two important ideas in reading and give a practical example.",
+      "Describe two important ideas in writing and give a practical example.",
+      "Describe two important ideas in language structures and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in communication.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in reading.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in writing.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in language structures.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Biology": {
+    "tagline": "Life processes, organisms, ecology and health informed by observation and evidence.",
+    "strands": [
+      {
+        "name": "Cell Biology",
+        "notes": [
+          "Key concepts and vocabulary in cell biology.",
+          "Processes, examples and applications related to cell biology.",
+          "Learners explain how cell biology connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Nutrition",
+        "notes": [
+          "Key concepts and vocabulary in nutrition.",
+          "Processes, examples and applications related to nutrition.",
+          "Learners explain how nutrition connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Transport and Respiration",
+        "notes": [
+          "Key concepts and vocabulary in transport and respiration.",
+          "Processes, examples and applications related to transport and respiration.",
+          "Learners explain how transport and respiration connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Ecology",
+        "notes": [
+          "Key concepts and vocabulary in ecology.",
+          "Processes, examples and applications related to ecology.",
+          "Learners explain how ecology connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Cell",
+      "Evidence",
+      "Application",
+      "Nutrition",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in cell biology and give a practical example.",
+      "Describe two important ideas in nutrition and give a practical example.",
+      "Describe two important ideas in transport and respiration and give a practical example.",
+      "Describe two important ideas in ecology and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in cell biology.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in nutrition.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in transport and respiration.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in ecology.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Chemistry": {
+    "tagline": "Chemical quantities, structure, energetics, electrochemistry and industrial processes.",
+    "strands": [
+      {
+        "name": "Chemical Quantities",
+        "notes": [
+          "Use the mole, balanced equations, concentration and molar mass to solve quantitative problems.",
+          "Convert between mass, amount, volume and concentration using appropriate units."
+        ]
+      },
+      {
+        "name": "Structure and Bonding",
+        "notes": [
+          "Relate ionic, covalent and metallic bonding to structure and properties.",
+          "Compare allotropes such as diamond and graphite using bonding and electron mobility."
+        ]
+      },
+      {
+        "name": "Energetics and Rates",
+        "notes": [
+          "Interpret energy profile diagrams, activation energy and enthalpy changes.",
+          "Explain how collision frequency and activation energy affect reaction rate."
+        ]
+      },
+      {
+        "name": "Electrochemistry",
+        "notes": [
+          "Predict products at electrodes using the electrochemical series.",
+          "Apply electrolysis to electroplating, extraction and purification of metals."
+        ]
+      },
+      {
+        "name": "Metals and Industrial Chemistry",
+        "notes": [
+          "Describe extraction of iron and the role of the blast furnace materials.",
+          "Evaluate industrial processes in terms of products, waste, energy and sustainability."
+        ]
+      }
+    ],
+    "terms": [
+      "Mole",
+      "Allotrope",
+      "Activation energy",
+      "Electrolysis",
+      "Cathode",
+      "Blast furnace"
+    ],
+    "questions": [
+      "Calculate the mass of sodium chloride formed when 25 cm³ of 2 mol/dm³ hydrochloric acid is neutralised by sodium hydroxide.",
+      "Explain why graphite conducts electricity and is soft while diamond is an electrical insulator and very hard.",
+      "Describe and label the energy profile for an exothermic reaction, including activation energy and ΔH.",
+      "Explain the electrode reactions and observations when aqueous copper(II) sulfate is electrolysed using copper electrodes.",
+      "Describe the extraction of iron in the blast furnace, including the functions of coke, limestone and hot air."
+    ],
+    "worked": [
+      [
+        "Write the equation: HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l), a 1 : 1 : 1 ratio.",
+        "Moles of HCl = concentration × volume in dm³ = 2 × (25 ÷ 1,000) = 0.05 mol.",
+        "From the mole ratio, moles of NaCl formed = 0.05 mol.",
+        "Molar mass of NaCl = 23 + 35.5 = 58.5 g/mol.",
+        "Mass = moles × molar mass = 0.05 × 58.5 = 2.925 g ≈ 2.93 g."
+      ],
+      [
+        "Both are giant covalent (allotropes of carbon), so the difference lies in their structures, not their bonding type.",
+        "In diamond each carbon forms four single covalent bonds in a rigid tetrahedral lattice, so all four outer electrons are localised in bonds.",
+        "In graphite each carbon bonds to only three others in flat hexagonal layers, leaving one delocalised electron per atom.",
+        "These delocalised electrons move freely along the layers, so graphite conducts electricity, while diamond has no mobile charge carriers and acts as an insulator.",
+        "The weak van der Waals forces between graphite layers also make it soft and a good lubricant, unlike hard diamond."
+      ],
+      [
+        "Draw the energy axis vertically (enthalpy) against reaction progress horizontally.",
+        "Place the reactants line higher than the products line, because an exothermic reaction releases heat to the surroundings.",
+        "Draw the curve rising from the reactants to a peak (the transition state) and then falling to the products.",
+        "Activation energy Ea is the vertical distance from the reactants level to the peak; it is the minimum energy colliding particles need.",
+        "ΔH is the vertical distance from reactants to products, measured downwards, so ΔH is negative (for example ΔH = −92 kJ/mol)."
+      ],
+      [
+        "Electrolyte: CuSO₄(aq) contains Cu²⁺, SO₄²⁻, H⁺ and OH⁻ ions; both electrodes are copper, so they take part in the reaction.",
+        "At the cathode Cu²⁺ is discharged in preference to H⁺ because copper is lower in the electrochemical series: Cu²⁺(aq) + 2e⁻ → Cu(s).",
+        "At the anode the copper electrode dissolves instead of OH⁻ being discharged: Cu(s) → Cu²⁺(aq) + 2e⁻.",
+        "The cathode therefore gains mass while the anode loses an equal mass, and the blue colour of the solution stays unchanged because the Cu²⁺ concentration is constant.",
+        "This is the principle of electroplating and of refining copper to high purity."
+      ],
+      [
+        "Raw materials are charged at the top: haematite (Fe₂O₃), coke, limestone (CaCO₃), with hot air blasted in at the bottom.",
+        "Coke burns in the blast of air, releasing heat: C(s) + O₂(g) → CO₂(g).",
+        "Carbon dioxide is reduced by more coke to the reducing agent carbon monoxide: CO₂(g) + C(s) → 2CO(g).",
+        "Carbon monoxide reduces the ore to molten iron: Fe₂O₃(s) + 3CO(g) → 2Fe(l) + 3CO₂(g).",
+        "Limestone decomposes, CaCO₃(s) → CaO(s) + CO₂(g), and the lime removes silica as slag: CaO(s) + SiO₂(s) → CaSiO₃(l).",
+        "Molten iron (pig iron, about 96% Fe) is tapped from the base with the less dense slag floating above it; waste gases leave at the top."
+      ]
+    ]
+  },
+  "Physics": {
+    "tagline": "Measurement, mechanics, thermal physics, optics, electricity and radioactivity.",
+    "strands": [
+      {
+        "name": "Measurements and Mechanics",
+        "notes": [
+          "Use SI units, significant figures and appropriate measuring instruments.",
+          "Analyse motion using displacement, velocity, acceleration and the equations of uniformly accelerated motion."
+        ]
+      },
+      {
+        "name": "Electricity and Electromagnetism",
+        "notes": [
+          "Explain current, potential difference, resistance, circuits and electrical power.",
+          "Relate electromagnetic induction and transformer action to changing magnetic flux."
+        ]
+      },
+      {
+        "name": "Thermal Physics",
+        "notes": [
+          "Distinguish temperature, heat capacity, specific latent heat and changes of state.",
+          "Calculate energy transfers using Q = mcΔθ and Q = mL."
+        ]
+      },
+      {
+        "name": "Optics",
+        "notes": [
+          "Investigate image formation by lenses and use the lens formula.",
+          "Relate focal length, object distance and image distance to practical optical instruments."
+        ]
+      },
+      {
+        "name": "Radioactivity",
+        "notes": [
+          "Describe half-life and radioactive decay using exponential models.",
+          "Apply radiation knowledge to safety, medicine, industry and environmental monitoring."
+        ]
+      }
+    ],
+    "terms": [
+      "Acceleration",
+      "Mutual induction",
+      "Latent heat",
+      "Focal length",
+      "Half-life",
+      "Magnetic flux"
+    ],
+    "questions": [
+      "A vehicle accelerates uniformly from 10 m/s to 30 m/s in 8 s. Find its acceleration and distance travelled.",
+      "Explain why a transformer requires alternating current rather than steady direct current.",
+      "Calculate the heat required to melt 0.5 kg of ice at 0 °C and warm the resulting water to 40 °C. Take Lf = 334,000 J/kg and c = 4,200 J/kg°C.",
+      "Describe an experiment for determining the focal length of a converging lens using a metre rule, object and screen.",
+      "A radioactive sample has a half-life of 6 hours. What fraction remains undecayed after 24 hours?"
+    ],
+    "worked": [
+      [
+        "Use a = (v − u) ÷ t with u = 10 m/s, v = 30 m/s and t = 8 s.",
+        "a = (30 − 10) ÷ 8 = 2.5 m/s².",
+        "For distance use s = ((u + v) ÷ 2) × t = ((10 + 30) ÷ 2) × 8.",
+        "s = 20 × 8 = 160 m. (Checking with s = ut + ½at² gives 80 + 80 = 160 m.)"
+      ],
+      [
+        "A transformer works by mutual induction: the primary coil must produce a changing magnetic flux in the core.",
+        "Alternating current continuously changes in magnitude and direction, so the flux linking the secondary keeps changing.",
+        "By Faraday's law the induced e.m.f. depends on the rate of change of flux, so a changing flux induces a voltage in the secondary.",
+        "Steady d.c. gives a constant flux, so after the initial switch-on there is no rate of change and no induced e.m.f.; only at make and break is a momentary voltage induced.",
+        "A d.c. supply would also overheat the primary because only its low resistance, not inductive reactance, limits the current."
+      ],
+      [
+        "The process has two stages: melting the ice at 0 °C, then warming the water from 0 °C to 40 °C.",
+        "Latent heat of fusion: Q₁ = mL_f = 0.5 × 334,000 = 167,000 J.",
+        "Sensible heat: Q₂ = mcΔθ = 0.5 × 4,200 × 40 = 84,000 J.",
+        "Total heat Q = Q₁ + Q₂ = 167,000 + 84,000 = 251,000 J = 251 kJ."
+      ],
+      [
+        "Mount the lens in a holder between an illuminated object (cross-wires) and a white screen on a metre rule.",
+        "Set the object distance u (say 15 cm) and move the screen until a sharp inverted image forms; record the image distance v.",
+        "Repeat for at least five values of u, each time recording u and v in a table.",
+        "Compute 1/u and 1/v and plot 1/v against 1/u; the graph is a straight line with intercepts 1/f on both axes.",
+        "Focal length f = 1 ÷ intercept. As a quick check, the distant-object method gives f directly as the image distance for parallel rays."
+      ],
+      [
+        "Number of half-lives n = total time ÷ half-life = 24 ÷ 6 = 4.",
+        "After each half-life the remaining fraction halves: 1 → ½ → ¼ → ⅛ → 1/16.",
+        "Using the formula, remaining fraction = (½)ⁿ = (½)⁴ = 1/16.",
+        "So 1/16 (6.25%) of the sample remains undecayed after 24 hours."
+      ]
+    ]
+  },
+  "Agriculture": {
+    "tagline": "Sustainable farming, food production, soil care and agricultural enterprise.",
+    "strands": [
+      {
+        "name": "Soil and Water",
+        "notes": [
+          "Key concepts and vocabulary in soil and water.",
+          "Processes, examples and applications related to soil and water.",
+          "Learners explain how soil and water connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Crop Production",
+        "notes": [
+          "Key concepts and vocabulary in crop production.",
+          "Processes, examples and applications related to crop production.",
+          "Learners explain how crop production connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Livestock Production",
+        "notes": [
+          "Key concepts and vocabulary in livestock production.",
+          "Processes, examples and applications related to livestock production.",
+          "Learners explain how livestock production connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Agribusiness",
+        "notes": [
+          "Key concepts and vocabulary in agribusiness.",
+          "Processes, examples and applications related to agribusiness.",
+          "Learners explain how agribusiness connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Soil",
+      "Evidence",
+      "Application",
+      "Crop",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in soil and water and give a practical example.",
+      "Describe two important ideas in crop production and give a practical example.",
+      "Describe two important ideas in livestock production and give a practical example.",
+      "Describe two important ideas in agribusiness and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in soil and water.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in crop production.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in livestock production.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in agribusiness.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Home Science": {
+    "tagline": "Nutrition, textiles, home management, health and responsible consumption.",
+    "strands": [
+      {
+        "name": "Nutrition",
+        "notes": [
+          "Key concepts and vocabulary in nutrition.",
+          "Processes, examples and applications related to nutrition.",
+          "Learners explain how nutrition connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Clothing and Textiles",
+        "notes": [
+          "Key concepts and vocabulary in clothing and textiles.",
+          "Processes, examples and applications related to clothing and textiles.",
+          "Learners explain how clothing and textiles connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Home Management",
+        "notes": [
+          "Key concepts and vocabulary in home management.",
+          "Processes, examples and applications related to home management.",
+          "Learners explain how home management connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Consumer Education",
+        "notes": [
+          "Key concepts and vocabulary in consumer education.",
+          "Processes, examples and applications related to consumer education.",
+          "Learners explain how consumer education connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Nutrition",
+      "Evidence",
+      "Application",
+      "Clothing",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in nutrition and give a practical example.",
+      "Describe two important ideas in clothing and textiles and give a practical example.",
+      "Describe two important ideas in home management and give a practical example.",
+      "Describe two important ideas in consumer education and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in nutrition.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in clothing and textiles.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in home management.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in consumer education.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Computer Studies": {
+    "tagline": "Digital systems, computational thinking, data, networks and responsible technology use.",
+    "strands": [
+      {
+        "name": "Computer Systems",
+        "notes": [
+          "Key concepts and vocabulary in computer systems.",
+          "Processes, examples and applications related to computer systems.",
+          "Learners explain how computer systems connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Algorithms and Programming",
+        "notes": [
+          "Key concepts and vocabulary in algorithms and programming.",
+          "Processes, examples and applications related to algorithms and programming.",
+          "Learners explain how algorithms and programming connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Data Management",
+        "notes": [
+          "Key concepts and vocabulary in data management.",
+          "Processes, examples and applications related to data management.",
+          "Learners explain how data management connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Networks and Cyber Safety",
+        "notes": [
+          "Key concepts and vocabulary in networks and cyber safety.",
+          "Processes, examples and applications related to networks and cyber safety.",
+          "Learners explain how networks and cyber safety connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Computer",
+      "Evidence",
+      "Application",
+      "Algorithms",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in computer systems and give a practical example.",
+      "Describe two important ideas in algorithms and programming and give a practical example.",
+      "Describe two important ideas in data management and give a practical example.",
+      "Describe two important ideas in networks and cyber safety and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in computer systems.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in algorithms and programming.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in data management.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in networks and cyber safety.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "History and Government": {
+    "tagline": "People, events, governance, citizenship and Kenya's place in the wider world.",
+    "strands": [
+      {
+        "name": "Sources of History",
+        "notes": [
+          "Key concepts and vocabulary in sources of history.",
+          "Processes, examples and applications related to sources of history.",
+          "Learners explain how sources of history connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Early Communities",
+        "notes": [
+          "Key concepts and vocabulary in early communities.",
+          "Processes, examples and applications related to early communities.",
+          "Learners explain how early communities connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Colonialism and Nationalism",
+        "notes": [
+          "Key concepts and vocabulary in colonialism and nationalism.",
+          "Processes, examples and applications related to colonialism and nationalism.",
+          "Learners explain how colonialism and nationalism connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Government and Citizenship",
+        "notes": [
+          "Key concepts and vocabulary in government and citizenship.",
+          "Processes, examples and applications related to government and citizenship.",
+          "Learners explain how government and citizenship connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Sources",
+      "Evidence",
+      "Application",
+      "Early",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in sources of history and give a practical example.",
+      "Describe two important ideas in early communities and give a practical example.",
+      "Describe two important ideas in colonialism and nationalism and give a practical example.",
+      "Describe two important ideas in government and citizenship and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in sources of history.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in early communities.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in colonialism and nationalism.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in government and citizenship.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Geography": {
+    "tagline": "People, places, physical processes, resources and sustainable development.",
+    "strands": [
+      {
+        "name": "Map Work",
+        "notes": [
+          "Key concepts and vocabulary in map work.",
+          "Processes, examples and applications related to map work.",
+          "Learners explain how map work connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "The Earth and Its Structure",
+        "notes": [
+          "Key concepts and vocabulary in the earth and its structure.",
+          "Processes, examples and applications related to the earth and its structure.",
+          "Learners explain how the earth and its structure connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Weather and Climate",
+        "notes": [
+          "Key concepts and vocabulary in weather and climate.",
+          "Processes, examples and applications related to weather and climate.",
+          "Learners explain how weather and climate connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Resources and Development",
+        "notes": [
+          "Key concepts and vocabulary in resources and development.",
+          "Processes, examples and applications related to resources and development.",
+          "Learners explain how resources and development connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Map",
+      "Evidence",
+      "Application",
+      "The",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in map work and give a practical example.",
+      "Describe two important ideas in the earth and its structure and give a practical example.",
+      "Describe two important ideas in weather and climate and give a practical example.",
+      "Describe two important ideas in resources and development and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in map work.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in the earth and its structure.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in weather and climate.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in resources and development.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Business Studies": {
+    "tagline": "Accounting, markets, company law, marketing and enterprise decision-making.",
+    "strands": [
+      {
+        "name": "Accounting Fundamentals",
+        "notes": [
+          "Apply the rules of double entry to record capital, purchases, sales and liabilities.",
+          "Use the accounting equation to check that books balance."
+        ]
+      },
+      {
+        "name": "Financial Performance",
+        "notes": [
+          "Calculate cost of sales, gross profit, stock turnover and gross profit margin.",
+          "Interpret profitability and efficiency ratios for business decisions."
+        ]
+      },
+      {
+        "name": "Markets and Government",
+        "notes": [
+          "Explain demand, supply, equilibrium, subsidies and market intervention.",
+          "Evaluate how policy decisions affect consumers, producers and public finance."
+        ]
+      },
+      {
+        "name": "Forms of Business Organisation",
+        "notes": [
+          "Compare private and public companies in ownership, capital, liability and control.",
+          "Explain incorporation, transfer of shares, accounts and commencement of business."
+        ]
+      },
+      {
+        "name": "Marketing",
+        "notes": [
+          "Develop a marketing plan using product, price, place and promotion.",
+          "Identify target markets, competition, distribution channels and customer feedback methods."
+        ]
+      }
+    ],
+    "terms": [
+      "Double entry",
+      "Gross profit",
+      "Subsidy",
+      "Private company",
+      "Marketing mix",
+      "Target market"
+    ],
+    "questions": [
+      "Record these transactions using double entry: capital introduced KSh 100,000, stock bought on credit KSh 40,000 and cash sales KSh 25,000.",
+      "Calculate cost of sales, gross profit, stock turnover and gross profit margin from opening stock KSh 60,000, purchases KSh 300,000, closing stock KSh 40,000 and sales KSh 500,000.",
+      "Explain how a government subsidy to maize millers affects supply, equilibrium price, quantity and stakeholders.",
+      "Distinguish between a private company and a public company in membership, transfer of shares, raising capital, accounts and commencement of business.",
+      "Prepare a marketing plan for a small poultry enterprise selling broilers and eggs."
+    ],
+    "worked": [
+      [
+        "Transaction 1 — capital introduced: debit Cash 100,000 and credit Capital 100,000 (the business receives cash; the owner is the giver).",
+        "Transaction 2 — stock on credit: debit Purchases 40,000 and credit Creditor (supplier) 40,000.",
+        "Transaction 3 — cash sale: debit Cash 25,000 and credit Sales 25,000.",
+        "Posting to the ledger: the cash account shows debits of 100,000 and 25,000, giving a balance of 125,000; purchases 40,000 debit; capital 100,000, creditor 40,000 and sales 25,000 on the credit side.",
+        "Check the accounting equation: assets (cash 125,000 + stock 40,000 = 165,000) = capital 100,000 + liabilities 40,000 + sales revenue 25,000, so the books balance."
+      ],
+      [
+        "Cost of sales = opening stock + purchases − closing stock = 60,000 + 300,000 − 40,000 = KSh 320,000.",
+        "Gross profit = sales − cost of sales = 500,000 − 320,000 = KSh 180,000.",
+        "Average stock = (opening stock + closing stock) ÷ 2 = (60,000 + 40,000) ÷ 2 = KSh 50,000.",
+        "Rate of stock turnover = cost of sales ÷ average stock = 320,000 ÷ 50,000 = 6.4 times a year.",
+        "Interpretation: stock is replaced about every 57 days (365 ÷ 6.4), and the gross profit margin is 180,000 ÷ 500,000 × 100 = 36%."
+      ],
+      [
+        "Draw the normal demand curve DD and supply curve SS intersecting at equilibrium price P₁ and quantity Q₁.",
+        "A subsidy lowers the cost of production, so the supply curve shifts downward and to the right, to S₁S₁.",
+        "The new intersection gives a lower equilibrium price P₂ and a higher equilibrium quantity Q₂; demand itself does not shift.",
+        "The fall in price is usually smaller than the subsidy per unit, because the benefit is shared between consumers (lower price) and producers (higher revenue per unit).",
+        "Effects: maize flour becomes more affordable, consumption rises, millers' output expands, but the government carries the cost and the market may be distorted if the subsidy is withdrawn abruptly."
+      ],
+      [
+        "Membership: a private company has 1 to 50 members, while a public company has a minimum of 7 with no upper limit.",
+        "Transfer of shares: shares in a private company are transferred only with the consent of other members, whereas public company shares are freely transferable on the securities exchange.",
+        "Raising capital: a private company cannot invite the public to buy shares; a public company issues a prospectus and sells shares to the public.",
+        "Publication of accounts: a public company must publish audited accounts and file them for public inspection; a private company's accounts are not published.",
+        "Commencement of business: a private company may begin trading on receiving the certificate of incorporation, while a public company must also obtain a certificate of trading.",
+        "A private company may restrict directorship to family members, so control stays closely held, unlike a public company run by a board answerable to many shareholders."
+      ],
+      [
+        "State the marketing objective, for example to sell 300 broilers and 2,000 eggs a month within the first year.",
+        "Describe the target market: households, kiosks, hotels, schools and event caterers within a named estate or market centre.",
+        "Product: live and dressed broilers plus table eggs, graded and packed in labelled trays, with hygiene and freshness as the selling point.",
+        "Price: base the price on cost per bird plus a mark-up, compare with competitors' prices, and offer a discount for bulk buyers such as hotels.",
+        "Place (distribution): sell directly at the farm gate, supply kiosks and butcheries weekly, and deliver bulk orders by motorcycle.",
+        "Promotion: WhatsApp and Facebook posts, posters at the market, introductory offers, referral discounts and sponsoring a local event.",
+        "Competition and strategy: name the main competitors, state your advantage (reliable supply, cleaner handling, credit-free pricing), and note how you will collect customer feedback."
+      ]
+    ]
+  },
+  "Christian Religious Education": {
+    "tagline": "Biblical knowledge, Christian values, ethics and responsible participation in society.",
+    "strands": [
+      {
+        "name": "The Bible",
+        "notes": [
+          "Key concepts and vocabulary in the bible.",
+          "Processes, examples and applications related to the bible.",
+          "Learners explain how the bible connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Creation and Human Responsibility",
+        "notes": [
+          "Key concepts and vocabulary in creation and human responsibility.",
+          "Processes, examples and applications related to creation and human responsibility.",
+          "Learners explain how creation and human responsibility connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Jesus Christ",
+        "notes": [
+          "Key concepts and vocabulary in jesus christ.",
+          "Processes, examples and applications related to jesus christ.",
+          "Learners explain how jesus christ connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Christian Ethics",
+        "notes": [
+          "Key concepts and vocabulary in christian ethics.",
+          "Processes, examples and applications related to christian ethics.",
+          "Learners explain how christian ethics connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "The",
+      "Evidence",
+      "Application",
+      "Creation",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in the bible and give a practical example.",
+      "Describe two important ideas in creation and human responsibility and give a practical example.",
+      "Describe two important ideas in jesus christ and give a practical example.",
+      "Describe two important ideas in christian ethics and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in the bible.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in creation and human responsibility.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in jesus christ.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in christian ethics.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Islamic Religious Education": {
+    "tagline": "Qur'an, Sunnah, faith, worship, morality and responsible Muslim citizenship.",
+    "strands": [
+      {
+        "name": "Qur'an and Hadith",
+        "notes": [
+          "Key concepts and vocabulary in qur'an and hadith.",
+          "Processes, examples and applications related to qur'an and hadith.",
+          "Learners explain how qur'an and hadith connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Faith and Worship",
+        "notes": [
+          "Key concepts and vocabulary in faith and worship.",
+          "Processes, examples and applications related to faith and worship.",
+          "Learners explain how faith and worship connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Seerah",
+        "notes": [
+          "Key concepts and vocabulary in seerah.",
+          "Processes, examples and applications related to seerah.",
+          "Learners explain how seerah connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Islamic Ethics",
+        "notes": [
+          "Key concepts and vocabulary in islamic ethics.",
+          "Processes, examples and applications related to islamic ethics.",
+          "Learners explain how islamic ethics connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Qur'an",
+      "Evidence",
+      "Application",
+      "Faith",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in qur'an and hadith and give a practical example.",
+      "Describe two important ideas in faith and worship and give a practical example.",
+      "Describe two important ideas in seerah and give a practical example.",
+      "Describe two important ideas in islamic ethics and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in qur'an and hadith.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in faith and worship.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in seerah.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in islamic ethics.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Hindu Religious Education": {
+    "tagline": "Hindu teachings, values, practices and responsible living in society.",
+    "strands": [
+      {
+        "name": "Sources of Hindu Knowledge",
+        "notes": [
+          "Key concepts and vocabulary in sources of hindu knowledge.",
+          "Processes, examples and applications related to sources of hindu knowledge.",
+          "Learners explain how sources of hindu knowledge connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Beliefs and Practices",
+        "notes": [
+          "Key concepts and vocabulary in beliefs and practices.",
+          "Processes, examples and applications related to beliefs and practices.",
+          "Learners explain how beliefs and practices connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Dharma",
+        "notes": [
+          "Key concepts and vocabulary in dharma.",
+          "Processes, examples and applications related to dharma.",
+          "Learners explain how dharma connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Hindu Values",
+        "notes": [
+          "Key concepts and vocabulary in hindu values.",
+          "Processes, examples and applications related to hindu values.",
+          "Learners explain how hindu values connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Sources",
+      "Evidence",
+      "Application",
+      "Beliefs",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in sources of hindu knowledge and give a practical example.",
+      "Describe two important ideas in beliefs and practices and give a practical example.",
+      "Describe two important ideas in dharma and give a practical example.",
+      "Describe two important ideas in hindu values and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in sources of hindu knowledge.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in beliefs and practices.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in dharma.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in hindu values.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Art and Design": {
+    "tagline": "Visual communication, creativity, design processes and appreciation of artistic work.",
+    "strands": [
+      {
+        "name": "Elements of Art",
+        "notes": [
+          "Key concepts and vocabulary in elements of art.",
+          "Processes, examples and applications related to elements of art.",
+          "Learners explain how elements of art connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Drawing and Design",
+        "notes": [
+          "Key concepts and vocabulary in drawing and design.",
+          "Processes, examples and applications related to drawing and design.",
+          "Learners explain how drawing and design connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Colour",
+        "notes": [
+          "Key concepts and vocabulary in colour.",
+          "Processes, examples and applications related to colour.",
+          "Learners explain how colour connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Art Appreciation",
+        "notes": [
+          "Key concepts and vocabulary in art appreciation.",
+          "Processes, examples and applications related to art appreciation.",
+          "Learners explain how art appreciation connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Elements",
+      "Evidence",
+      "Application",
+      "Drawing",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in elements of art and give a practical example.",
+      "Describe two important ideas in drawing and design and give a practical example.",
+      "Describe two important ideas in colour and give a practical example.",
+      "Describe two important ideas in art appreciation and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in elements of art.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in drawing and design.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in colour.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in art appreciation.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Music": {
+    "tagline": "Performance, composition, listening and appreciation across musical traditions.",
+    "strands": [
+      {
+        "name": "Elements of Music",
+        "notes": [
+          "Key concepts and vocabulary in elements of music.",
+          "Processes, examples and applications related to elements of music.",
+          "Learners explain how elements of music connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Vocal Music",
+        "notes": [
+          "Key concepts and vocabulary in vocal music.",
+          "Processes, examples and applications related to vocal music.",
+          "Learners explain how vocal music connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Instrumental Music",
+        "notes": [
+          "Key concepts and vocabulary in instrumental music.",
+          "Processes, examples and applications related to instrumental music.",
+          "Learners explain how instrumental music connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Composition",
+        "notes": [
+          "Key concepts and vocabulary in composition.",
+          "Processes, examples and applications related to composition.",
+          "Learners explain how composition connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Elements",
+      "Evidence",
+      "Application",
+      "Vocal",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in elements of music and give a practical example.",
+      "Describe two important ideas in vocal music and give a practical example.",
+      "Describe two important ideas in instrumental music and give a practical example.",
+      "Describe two important ideas in composition and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in elements of music.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in vocal music.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in instrumental music.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in composition.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Sports and Physical Education": {
+    "tagline": "Movement, fitness, games, health, teamwork and lifelong wellbeing.",
+    "strands": [
+      {
+        "name": "Fitness",
+        "notes": [
+          "Key concepts and vocabulary in fitness.",
+          "Processes, examples and applications related to fitness.",
+          "Learners explain how fitness connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Athletics",
+        "notes": [
+          "Key concepts and vocabulary in athletics.",
+          "Processes, examples and applications related to athletics.",
+          "Learners explain how athletics connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Games",
+        "notes": [
+          "Key concepts and vocabulary in games.",
+          "Processes, examples and applications related to games.",
+          "Learners explain how games connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Health and Safety",
+        "notes": [
+          "Key concepts and vocabulary in health and safety.",
+          "Processes, examples and applications related to health and safety.",
+          "Learners explain how health and safety connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Fitness",
+      "Evidence",
+      "Application",
+      "Athletics",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in fitness and give a practical example.",
+      "Describe two important ideas in athletics and give a practical example.",
+      "Describe two important ideas in games and give a practical example.",
+      "Describe two important ideas in health and safety and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in fitness.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in athletics.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in games.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in health and safety.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Technical Studies": {
+    "tagline": "Design thinking, tools, materials, making and practical problem-solving.",
+    "strands": [
+      {
+        "name": "Design Process",
+        "notes": [
+          "Key concepts and vocabulary in design process.",
+          "Processes, examples and applications related to design process.",
+          "Learners explain how design process connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Materials",
+        "notes": [
+          "Key concepts and vocabulary in materials.",
+          "Processes, examples and applications related to materials.",
+          "Learners explain how materials connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Tools and Workshop Safety",
+        "notes": [
+          "Key concepts and vocabulary in tools and workshop safety.",
+          "Processes, examples and applications related to tools and workshop safety.",
+          "Learners explain how tools and workshop safety connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Project Work",
+        "notes": [
+          "Key concepts and vocabulary in project work.",
+          "Processes, examples and applications related to project work.",
+          "Learners explain how project work connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Design",
+      "Evidence",
+      "Application",
+      "Materials",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in design process and give a practical example.",
+      "Describe two important ideas in materials and give a practical example.",
+      "Describe two important ideas in tools and workshop safety and give a practical example.",
+      "Describe two important ideas in project work and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in design process.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in materials.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in tools and workshop safety.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in project work.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Building and Construction": {
+    "tagline": "Construction materials, drawing, structures, safety and sustainable building practice.",
+    "strands": [
+      {
+        "name": "Building Materials",
+        "notes": [
+          "Key concepts and vocabulary in building materials.",
+          "Processes, examples and applications related to building materials.",
+          "Learners explain how building materials connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Technical Drawing",
+        "notes": [
+          "Key concepts and vocabulary in technical drawing.",
+          "Processes, examples and applications related to technical drawing.",
+          "Learners explain how technical drawing connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Building Technology",
+        "notes": [
+          "Key concepts and vocabulary in building technology.",
+          "Processes, examples and applications related to building technology.",
+          "Learners explain how building technology connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Site Safety",
+        "notes": [
+          "Key concepts and vocabulary in site safety.",
+          "Processes, examples and applications related to site safety.",
+          "Learners explain how site safety connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Building",
+      "Evidence",
+      "Application",
+      "Technical",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in building materials and give a practical example.",
+      "Describe two important ideas in technical drawing and give a practical example.",
+      "Describe two important ideas in building technology and give a practical example.",
+      "Describe two important ideas in site safety and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in building materials.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in technical drawing.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in building technology.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in site safety.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Electricity": {
+    "tagline": "Electrical principles, circuits, installation practice, safety and efficient energy use.",
+    "strands": [
+      {
+        "name": "Electrical Quantities",
+        "notes": [
+          "Key concepts and vocabulary in electrical quantities.",
+          "Processes, examples and applications related to electrical quantities.",
+          "Learners explain how electrical quantities connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Circuits",
+        "notes": [
+          "Key concepts and vocabulary in circuits.",
+          "Processes, examples and applications related to circuits.",
+          "Learners explain how circuits connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Domestic Installation",
+        "notes": [
+          "Key concepts and vocabulary in domestic installation.",
+          "Processes, examples and applications related to domestic installation.",
+          "Learners explain how domestic installation connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Safety and Maintenance",
+        "notes": [
+          "Key concepts and vocabulary in safety and maintenance.",
+          "Processes, examples and applications related to safety and maintenance.",
+          "Learners explain how safety and maintenance connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Electrical",
+      "Evidence",
+      "Application",
+      "Circuits",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in electrical quantities and give a practical example.",
+      "Describe two important ideas in circuits and give a practical example.",
+      "Describe two important ideas in domestic installation and give a practical example.",
+      "Describe two important ideas in safety and maintenance and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in electrical quantities.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in circuits.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in domestic installation.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in safety and maintenance.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Woodwork": {
+    "tagline": "Wood science, tools, joints, design and safe production of useful artefacts.",
+    "strands": [
+      {
+        "name": "Timber Technology",
+        "notes": [
+          "Key concepts and vocabulary in timber technology.",
+          "Processes, examples and applications related to timber technology.",
+          "Learners explain how timber technology connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Tools",
+        "notes": [
+          "Key concepts and vocabulary in tools.",
+          "Processes, examples and applications related to tools.",
+          "Learners explain how tools connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Joints",
+        "notes": [
+          "Key concepts and vocabulary in joints.",
+          "Processes, examples and applications related to joints.",
+          "Learners explain how joints connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Project Production",
+        "notes": [
+          "Key concepts and vocabulary in project production.",
+          "Processes, examples and applications related to project production.",
+          "Learners explain how project production connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Timber",
+      "Evidence",
+      "Application",
+      "Tools",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in timber technology and give a practical example.",
+      "Describe two important ideas in tools and give a practical example.",
+      "Describe two important ideas in joints and give a practical example.",
+      "Describe two important ideas in project production and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in timber technology.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in tools.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in joints.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in project production.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Metalwork": {
+    "tagline": "Metals, workshop processes, fabrication, joining and safe practical production.",
+    "strands": [
+      {
+        "name": "Metals",
+        "notes": [
+          "Key concepts and vocabulary in metals.",
+          "Processes, examples and applications related to metals.",
+          "Learners explain how metals connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Tools and Machines",
+        "notes": [
+          "Key concepts and vocabulary in tools and machines.",
+          "Processes, examples and applications related to tools and machines.",
+          "Learners explain how tools and machines connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Joining Processes",
+        "notes": [
+          "Key concepts and vocabulary in joining processes.",
+          "Processes, examples and applications related to joining processes.",
+          "Learners explain how joining processes connects to everyday life and the local environment."
+        ]
+      },
+      {
+        "name": "Fabrication",
+        "notes": [
+          "Key concepts and vocabulary in fabrication.",
+          "Processes, examples and applications related to fabrication.",
+          "Learners explain how fabrication connects to everyday life and the local environment."
+        ]
+      }
+    ],
+    "terms": [
+      "Metals",
+      "Evidence",
+      "Application",
+      "Tools",
+      "Evidence",
+      "Application"
+    ],
+    "questions": [
+      "Describe two important ideas in metals and give a practical example.",
+      "Describe two important ideas in tools and machines and give a practical example.",
+      "Describe two important ideas in joining processes and give a practical example.",
+      "Describe two important ideas in fabrication and give a practical example."
+    ],
+    "worked": [
+      [
+        "Define the central ideas in metals.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in tools and machines.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in joining processes.",
+        "Give one relevant example and explain its importance."
+      ],
+      [
+        "Define the central ideas in fabrication.",
+        "Give one relevant example and explain its importance."
+      ]
+    ]
+  },
+  "Mathematics": {
+    "tagline": "Numbers, algebra, geometry, measurement, trigonometry, statistics and probability.",
+    "strands": [
+      {
+        "name": "Numbers and Operations",
+        "notes": [
+          "Work with indices, standard form, ratios and proportional reasoning.",
+          "Select efficient operations and check answers using estimation."
+        ]
+      },
+      {
+        "name": "Algebra",
+        "notes": [
+          "Simplify expressions, factorise, solve equations and interpret relationships.",
+          "Use algebraic models to represent patterns and real-life situations."
+        ]
+      },
+      {
+        "name": "Geometry and Measurement",
+        "notes": [
+          "Apply properties of shapes, angles, transformations, area and volume.",
+          "Use accurate constructions and appropriate units in measurement problems."
+        ]
+      },
+      {
+        "name": "Statistics and Probability",
+        "notes": [
+          "Collect, represent and interpret data using suitable statistical measures.",
+          "Describe chance experiments and calculate simple probabilities."
+        ]
+      }
+    ],
+    "terms": [
+      "Index",
+      "Factorisation",
+      "Discriminant",
+      "Gradient",
+      "Mean",
+      "Probability"
+    ],
+    "questions": [
+      "Simplify (2x² − 8) ÷ (x² + x − 6).",
+      "Solve a quadratic equation and verify the roots.",
+      "Find the area of a composite figure from its labelled dimensions.",
+      "Calculate and interpret the probability of an event."
+    ],
+    "worked": [
+      [
+        "Factorise the numerator and denominator.",
+        "Cancel the common factor, stating any restrictions on x."
+      ]
+    ]
+  }
+}
