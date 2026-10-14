@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: daymark-assignment-tracker
+    runtime: static
+    buildCommand: echo "No build required"
+    staticPublishPath: assignment-tracker

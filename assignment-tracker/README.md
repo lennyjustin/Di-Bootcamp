@@ -1,7 +1,11 @@
 # Daymark assignment tracker
 
-Open `index.html` to use the tracker locally. The `main` branch automatically
-publishes this folder to GitHub Pages through the repository's
-`Publish assignment tracker` workflow.
+Open `index.html` to use the tracker locally.
 
-Live site: https://lennyjustin.github.io/Di-Bootcamp/assignment-tracker/
+## Deploy with Render
+
+The repository root contains a Render Blueprint configured to serve this folder
+as a static site. In Render, choose **New > Blueprint**, connect
+`lennyjustin/Di-Bootcamp`, and apply the `render.yaml` configuration. Render
+will deploy the site and provide its public `onrender.com` URL. Future pushes
+to `main` will deploy automatically.
