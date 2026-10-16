@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover courses, turn in assignments and keep track of your learning progress with Daymark."
+    />
+    <meta name="theme-color" content="#fff8fc" />
+    <title>Daymark Learning Portal</title>
+    <link rel="stylesheet" href="staly.css" />
+    <link rel="stylesheet" href="anime.css" />
+    <link rel="stylesheet" href="portal.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="portal-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Daymark Learning Portal home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 3v3m10-3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2Z" />
+              <path d="m9 14 2 2 4-4" />
+            </svg>
+          </span>
+          <span>daymark<span class="brand-period">.</span></span>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">LEARNING PORTAL</span>
+        </a>
+        <div id="account-bar" class="account-bar" hidden>
+          <span id="account-name" class="account-name"></span>
+          <span id="account-role" class="role-pill"></span>
+          <button id="logout-button" class="quiet-button" type="button">Sign out</button>
+        </div>
+        <span id="study-note" class="topbar-note"><span class="status-dot"></span> A little progress, every day</span>
+      </header>
+
+      <section id="auth-view" class="auth-view" aria-labelledby="auth-title">
+        <div class="auth-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT CHAPTER STARTS HERE</p>
+          <h1 id="auth-title">Learn a little.<br /><span>Grow a lot.</span></h1>
+          <p>Find a course that sparks your curiosity, learn with great teachers, and celebrate every milestone along the way.</p>
+          <div class="learning-note"><span aria-hidden="true">✿</span> Many subjects. One place to flourish.</div>
+        </div>
+
+        <div class="panel auth-card">
+          <p class="section-kicker" id="auth-kicker">WELCOME BACK</p>
+          <h2 id="auth-heading">Sign in to Daymark</h2>
+          <p id="auth-description" class="auth-description">Pick up right where your learning left off.</p>
+
+          <form id="login-form" class="portal-form">
+            <label for="login-email">Email address</label>
+            <input id="login-email" name="email" type="email" autocomplete="username" placeholder="you@example.com" required />
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+            <button class="submit-button" type="submit">Sign in <span aria-hidden="true">→</span></button>
+          </form>
+
+          <form id="register-form" class="portal-form" hidden>
+            <label for="register-name">Your name</label>
+            <input id="register-name" name="displayName" type="text" autocomplete="name" maxlength="100" required />
+            <label for="register-email">Email address</label>
+            <input id="register-email" name="email" type="email" autocomplete="email" required />
+            <label for="register-password">Create password <span class="field-note">12 characters or more</span></label>
+            <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="12" required />
+            <label for="register-institution">School or institution <span class="field-note">Optional</span></label>
+            <input id="register-institution" name="institution" type="text" maxlength="160" autocomplete="organization" />
+            <label for="register-student-number">Student number <span class="field-note">Optional</span></label>
+            <input id="register-student-number" name="studentNumber" type="text" maxlength="80" autocomplete="off" />
+            <label for="register-level">Study level <span class="field-note">Optional</span></label>
+            <input id="register-level" name="studyLevel" type="text" maxlength="100" placeholder="e.g. Beginner, Year 2" />
+            <button class="submit-button" type="submit">Create student account <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-switch">
+            <span id="auth-switch-copy">New to Daymark?</span>
+            <button id="auth-switch-button" class="text-button" type="button">Create a student account</button>
+          </p>
+          <p class="auth-footnote">Teacher and administrator accounts are issued by your portal administrator.</p>
+        </div>
+      </section>
+
+      <section id="password-view" class="password-view" hidden aria-labelledby="password-title">
+        <div class="panel password-card">
+          <p class="section-kicker">ONE QUICK SECURITY STEP</p>
+          <h1 id="password-title">Make it yours.</h1>
+          <p>Your administrator gave you a temporary password. Choose a new one to continue.</p>
+          <form id="password-form" class="portal-form">
+            <label for="current-password">Temporary password</label>
+            <input id="current-password" name="currentPassword" type="password" autocomplete="current-password" required />
+            <label for="new-password">New password <span class="field-note">12 characters or more</span></label>
+            <input id="new-password" name="newPassword" type="password" autocomplete="new-password" minlength="12" required />
+            <button class="submit-button" type="submit">Set new password <span aria-hidden="true">→</span></button>
+          </form>
+        </div>
+      </section>
+
+      <div id="portal-view" class="portal-layout" hidden>
+        <aside class="sidebar" aria-label="Portal navigation">
+          <p class="sidebar-heading">YOUR SPACE</p>
+          <nav id="portal-nav" class="portal-nav" aria-label="Main navigation"></nav>
+          <div class="sidebar-note">
+            <span aria-hidden="true">✧</span>
+            <p>Every expert was once a beginner.</p>
+          </div>
+        </aside>
+        <section id="portal-content" class="portal-content" aria-live="polite"></section>
+      </div>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+      <footer class="page-footer">
+        <span>Made for your next big thing.</span>
+        <span>DAYMARK <span class="footer-spark">✳</span></span>
+      </footer>
+    </main>
+  </body>
+</html>
