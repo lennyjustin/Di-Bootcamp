@@ -164,6 +164,7 @@ function courseCard(course) {
         <span>${escapeHtml(course.level)}</span>
         <span>with ${escapeHtml(course.teacher.name)}</span>
       </div>
+      ${course.teacher.qualifications ? `<p class="teacher-qualification">${escapeHtml(course.teacher.qualifications)}</p>` : ""}
       <button class="secondary-button" type="button" data-action="open-course" data-id="${escapeHtml(course.id)}">${action} <span aria-hidden="true">→</span></button>
     </article>
   `;
@@ -393,7 +394,8 @@ async function renderCourseDetail(courseId) {
       ${canManage ? `<span class="published-pill${course.isPublished ? " is-published" : ""}">${course.isPublished ? "Published" : "Draft"}</span>` : ""}
       <h1>${escapeHtml(course.title)}</h1>
       <p class="course-hero-description">${escapeHtml(course.description)}</p>
-      <div class="course-hero-meta"><span>✧ ${escapeHtml(course.level)}</span><span>Teacher: ${escapeHtml(course.teacher.name)}</span></div>
+      <div class="course-hero-meta"><span>✧ ${escapeHtml(course.level)}</span><span>Teacher: ${escapeHtml(course.teacher.name)}</span>${course.teacher.qualifications ? `<span>${escapeHtml(course.teacher.qualifications)}</span>` : ""}</div>
+      ${course.teacher.bio ? `<p class="teacher-bio">${escapeHtml(course.teacher.bio)}</p>` : ""}
       ${canManage ? `<button class="secondary-button publish-toggle" type="button" data-action="toggle-publish" data-id="${escapeHtml(course.id)}" data-published="${String(course.isPublished)}">${course.isPublished ? "Unpublish course" : "Publish course"}</button>` : ""}
       ${currentUser.role === "student" && !isEnrolled ? `<button class="submit-button enroll-button" type="button" data-action="enroll" data-id="${escapeHtml(course.id)}">Enroll in this course <span aria-hidden="true">→</span></button>` : ""}
     </section>

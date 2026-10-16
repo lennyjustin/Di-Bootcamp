@@ -206,10 +206,12 @@ async function bootstrapAdmin(pool) {
 async function getCourseById(pool, courseId) {
   const result = await pool.query(
     `SELECT c.*, cat.name AS category_name, cat.slug AS category_slug,
-            u.display_name AS teacher_name
+            u.display_name AS teacher_name, tp.qualifications AS teacher_qualifications,
+            tp.bio AS teacher_bio
      FROM courses c
      JOIN categories cat ON cat.id = c.category_id
      JOIN users u ON u.id = c.teacher_id
+     LEFT JOIN teacher_profiles tp ON tp.user_id = u.id
      WHERE c.id = $1`,
     [courseId],
   );
@@ -232,7 +234,12 @@ function courseSummary(row) {
     level: row.level,
     isPublished: row.is_published,
     category: { id: row.category_id, name: row.category_name, slug: row.category_slug },
-    teacher: { id: row.teacher_id, name: row.teacher_name },
+    teacher: {
+      id: row.teacher_id,
+      name: row.teacher_name,
+      qualifications: row.teacher_qualifications ?? "",
+      bio: row.teacher_bio ?? "",
+    },
     isEnrolled: Boolean(row.is_enrolled),
     enrolledAt: row.enrolled_at ?? null,
     createdAt: row.created_at,
@@ -380,11 +387,13 @@ export async function createApp(pool) {
   app.get("/api/courses", requireReadyAccount, async (req, res) => {
     const result = await pool.query(
       `SELECT c.*, cat.name AS category_name, cat.slug AS category_slug,
-              u.display_name AS teacher_name,
+              u.display_name AS teacher_name, tp.qualifications AS teacher_qualifications,
+              tp.bio AS teacher_bio,
               (e.student_id IS NOT NULL) AS is_enrolled, e.enrolled_at
        FROM courses c
        JOIN categories cat ON cat.id = c.category_id
        JOIN users u ON u.id = c.teacher_id
+       LEFT JOIN teacher_profiles tp ON tp.user_id = u.id
        LEFT JOIN enrollments e ON e.course_id = c.id AND e.student_id = $1
        WHERE c.is_published = TRUE OR c.teacher_id = $1 OR $2 = 'admin'
        ORDER BY c.created_at DESC`,

@@ -30,9 +30,11 @@ immediately. Do not commit credentials or send them in chat. The database uses
 Render's paid `basic-256mb` plan. The web process uses the free plan and may
 sleep when idle.
 
-The portal service deploys at `https://daymark-learning-portal.onrender.com`.
-The existing tracker URL redirects to the portal. Subsequent pushes to `main`
-automatically sync and deploy the Blueprint.
+After the Blueprint is synced in Render, the portal service deploys at
+`https://daymark-learning-portal.onrender.com`. The existing tracker URL
+redirects to the portal after its static site deploys the updated files.
+Subsequent pushes to `main` deploy automatically when Blueprint auto-sync is
+enabled.
 
 ## Roles and grading
 
