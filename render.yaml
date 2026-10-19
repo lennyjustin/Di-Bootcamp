@@ -3,13 +3,13 @@ services:
     name: daymark-assignment-tracker
     runtime: static
     buildCommand: echo "No build required"
-    staticPublishPath: assignment-tracker/public
+    staticPublishPath: king/assignment-tracker/public
   - type: web
     name: daymark-learning-portal
     runtime: node
     plan: free
     region: ohio
-    rootDir: assignment-tracker
+    rootDir: king/assignment-tracker
     buildCommand: npm ci --omit=dev
     startCommand: npm start
     healthCheckPath: /api/health
