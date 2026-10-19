@@ -1,9 +1,10 @@
 # Daymark Learning Portal
 
 Daymark is a role-based learning portal for students, teachers, and
-administrators. It includes a course catalog, course enrollment, course
-assignments, student submissions, teacher grading and feedback, configurable
-pass marks, and retakes that preserve every attempt.
+administrators. Its public home page explains how the portal works and links to
+student registration and sign-in. Daymark includes a course catalog, course
+enrollment, course assignments, student submissions, teacher grading and
+feedback, configurable pass marks, and retakes that preserve every attempt.
 
 ## Run locally
 

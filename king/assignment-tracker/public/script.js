@@ -2,6 +2,7 @@ if (window.location.hostname === "daymark-assignment-tracker.onrender.com") {
   window.location.replace("https://daymark-learning-portal.onrender.com/");
 }
 
+const homeView = document.querySelector("#home-view");
 const authView = document.querySelector("#auth-view");
 const passwordView = document.querySelector("#password-view");
 const portalView = document.querySelector("#portal-view");
@@ -92,13 +93,40 @@ function showAuth() {
   currentUser = null;
   currentView = null;
   currentCourseId = null;
+  setAuthMode("login");
+  homeView.hidden = true;
   authView.hidden = false;
   passwordView.hidden = true;
   portalView.hidden = true;
   clearAccountBar();
 }
 
+function showHome() {
+  currentUser = null;
+  currentView = null;
+  currentCourseId = null;
+  homeView.hidden = false;
+  authView.hidden = true;
+  passwordView.hidden = true;
+  portalView.hidden = true;
+  clearAccountBar();
+}
+
+function setAuthMode(mode) {
+  const registering = mode === "register";
+  document.querySelector("#login-form").hidden = registering;
+  document.querySelector("#register-form").hidden = !registering;
+  document.querySelector("#auth-kicker").textContent = registering ? "A FRESH START" : "WELCOME BACK";
+  document.querySelector("#auth-heading").textContent = registering ? "Create your account" : "Sign in to Daymark";
+  document.querySelector("#auth-description").textContent = registering
+    ? "Your student account is the first step on a new learning journey."
+    : "Pick up right where your learning left off.";
+  document.querySelector("#auth-switch-copy").textContent = registering ? "Already have an account?" : "New to Daymark?";
+  document.querySelector("#auth-switch-button").textContent = registering ? "Sign in instead" : "Create a student account";
+}
+
 function showPasswordChange() {
+  homeView.hidden = true;
   authView.hidden = true;
   portalView.hidden = true;
   passwordView.hidden = false;
@@ -121,6 +149,7 @@ function renderNavigation() {
 }
 
 function showPortal(view = defaultView(currentUser.role)) {
+  homeView.hidden = true;
   authView.hidden = true;
   passwordView.hidden = true;
   portalView.hidden = false;
@@ -208,6 +237,7 @@ async function loadView() {
 async function fetchCategories() {
   const result = await request("/api/categories");
   categories = result.categories;
+  return result;
 }
 
 async function fetchCourses() {
@@ -596,19 +626,21 @@ async function handlePortalForm(event) {
   }
 }
 
+document.querySelectorAll("[data-auth-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    setAuthMode(button.dataset.authMode);
+    homeView.hidden = true;
+    authView.hidden = false;
+  });
+});
+
+document.querySelectorAll("[data-show-home]").forEach((button) => {
+  button.addEventListener("click", showHome);
+});
+
 document.querySelector("#auth-switch-button").addEventListener("click", () => {
-  const loginForm = document.querySelector("#login-form");
-  const registerForm = document.querySelector("#register-form");
-  const registering = loginForm.hidden;
-  loginForm.hidden = registering;
-  registerForm.hidden = !registering;
-  document.querySelector("#auth-kicker").textContent = registering ? "WELCOME BACK" : "A FRESH START";
-  document.querySelector("#auth-heading").textContent = registering ? "Sign in to Daymark" : "Create your account";
-  document.querySelector("#auth-description").textContent = registering
-    ? "Pick up right where your learning left off."
-    : "Your student account is the first step on a new learning journey.";
-  document.querySelector("#auth-switch-copy").textContent = registering ? "New to Daymark?" : "Already have an account?";
-  document.querySelector("#auth-switch-button").textContent = registering ? "Create a student account" : "Sign in instead";
+  const registering = document.querySelector("#login-form").hidden;
+  setAuthMode(registering ? "login" : "register");
 });
 
 document.querySelector("#auth-view").addEventListener("submit", async (event) => {
@@ -625,7 +657,7 @@ document.querySelector("#password-form").addEventListener("submit", async (event
   try {
     await request("/api/auth/password", { method: "POST", body: formValues(event.target) });
     event.target.reset();
-    showAuth();
+    showHome();
     showToast("Password updated. Sign in with your new password.");
   } catch (error) {
     showToast(error.message, true);
@@ -693,7 +725,7 @@ portalContent.addEventListener("input", (event) => {
 document.querySelector("#logout-button").addEventListener("click", async () => {
   try {
     await request("/api/auth/logout", { method: "POST", body: {} });
-    showAuth();
+    showHome();
     showToast("You’re signed out. See you next time!");
   } catch (error) {
     showToast(error.message, true);
@@ -708,10 +740,10 @@ document.querySelector("#logout-button").addEventListener("click", async () => {
     else showPortal();
   } catch (error) {
     if (error.status === 401) {
-      showAuth();
+      showHome();
       return;
     }
-    showAuth();
+    showHome();
     showToast(error.message, true);
   }
 })();

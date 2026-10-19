@@ -120,6 +120,214 @@ body {
   box-shadow: 0 0 0 3px #fceaf3;
 }
 
+.home-view {
+  padding: 38px clamp(12px, 6vw, 72px) 54px;
+}
+
+.home-hero {
+  display: grid;
+  min-height: 460px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: clamp(36px, 8vw, 100px);
+  padding: 20px 0 58px;
+}
+
+.home-hero-copy {
+  max-width: 600px;
+}
+
+.home-hero h1 {
+  margin: 19px 0 16px;
+  color: #44304f;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 650;
+  letter-spacing: -4px;
+  line-height: 1.02;
+  text-shadow: 2px 3px 0 rgba(255, 218, 236, 0.8);
+}
+
+.home-hero h1 span {
+  color: #bd6798;
+}
+
+.home-hero-copy > p:not(.eyebrow) {
+  max-width: 490px;
+  margin: 0;
+  color: #84758a;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.home-actions .submit-button {
+  width: auto;
+  min-width: 155px;
+  margin: 0;
+}
+
+.home-actions .secondary-button {
+  min-height: 42px;
+  padding: 0 18px;
+}
+
+.home-highlight {
+  position: relative;
+  overflow: hidden;
+  padding: 34px;
+  border: 1px solid #f0d7e7;
+  border-radius: 25px 25px 25px 7px;
+  background:
+    radial-gradient(circle at 92% 7%, rgba(255, 255, 255, 0.92) 0 10%, transparent 10.5%),
+    linear-gradient(145deg, #fffafd 0%, #f9eaf4 58%, #f4e6f5 100%);
+  box-shadow: 0 15px 35px rgba(112, 72, 108, 0.09);
+}
+
+.highlight-sparkle {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  color: #d589ae;
+  font-size: 25px;
+}
+
+.home-highlight h2 {
+  margin: 18px 0 25px;
+  color: #493651;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: clamp(30px, 4vw, 43px);
+  letter-spacing: -1.8px;
+  line-height: 1.12;
+}
+
+.home-highlight h2 span {
+  color: #bd6798;
+}
+
+.journey-steps {
+  display: grid;
+  gap: 11px;
+}
+
+.journey-steps span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #78647d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.journey-steps b {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 1px solid #efd4e4;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  color: #b16892;
+  font-size: 9px;
+}
+
+.home-section {
+  padding: 44px 0 50px;
+  border-top: 1px solid rgba(194, 158, 188, 0.2);
+}
+
+.home-section-heading {
+  max-width: 660px;
+  margin: 0 auto 27px;
+  text-align: center;
+}
+
+.home-section-heading h2,
+.home-bottom h2 {
+  margin: 0 0 9px;
+  color: #493651;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: clamp(25px, 3vw, 34px);
+  letter-spacing: -1.2px;
+}
+
+.home-section-heading > p:last-child,
+.home-bottom > div > p:last-child {
+  margin: 0;
+  color: #8a7b8f;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.role-card {
+  padding: 23px;
+  border: 1px solid #f0e2ed;
+  border-radius: 15px;
+  background: rgba(255, 253, 255, 0.78);
+}
+
+.role-card-icon {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 17px;
+  place-items: center;
+  border-radius: 12px;
+  background: #f9eaf3;
+  color: #bd6798;
+  font-size: 17px;
+}
+
+.role-card h3 {
+  margin: 0 0 9px;
+  color: #513b59;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 16px;
+}
+
+.role-card > p:last-child {
+  margin: 0;
+  color: #8a7b8f;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.home-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 27px 30px;
+  border: 1px solid #f0dce9;
+  border-radius: 16px;
+  background: linear-gradient(110deg, rgba(255, 248, 252, 0.94), rgba(250, 240, 249, 0.92));
+}
+
+.home-bottom > div {
+  max-width: 650px;
+}
+
+.home-bottom h2 {
+  font-size: 23px;
+}
+
+.home-bottom .text-button {
+  flex: 0 0 auto;
+}
+
 .auth-view {
   display: grid;
   min-height: min(700px, calc(100vh - 150px));
@@ -1288,6 +1496,10 @@ body {
     padding-right: 20px;
     padding-left: 20px;
   }
+
+  .home-hero {
+    gap: 32px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1329,6 +1541,46 @@ body {
     grid-template-columns: 1fr;
     gap: 23px;
     padding: 42px 0 50px;
+  }
+
+  .home-view {
+    padding: 24px 0 38px;
+  }
+
+  .home-hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 18px 0 38px;
+  }
+
+  .home-hero h1 {
+    font-size: 48px;
+    letter-spacing: -2.8px;
+  }
+
+  .home-highlight {
+    padding: 26px;
+  }
+
+  .home-section {
+    padding: 32px 0 38px;
+  }
+
+  .role-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .role-card {
+    padding: 20px;
+  }
+
+  .home-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+    padding: 23px;
   }
 
   .auth-copy {

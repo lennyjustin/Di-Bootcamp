@@ -36,12 +36,75 @@
         <span id="study-note" class="topbar-note"><span class="status-dot"></span> A little progress, every day</span>
       </header>
 
-      <section id="auth-view" class="auth-view" aria-labelledby="auth-title">
+      <section id="home-view" class="home-view" aria-labelledby="home-title">
+        <section class="home-hero">
+          <div class="home-hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> A LEARNING SPACE TO GROW IN</p>
+            <h1 id="home-title">Make room for<br /><span>what’s next.</span></h1>
+            <p>Daymark brings courses, assignments, teacher feedback, and learning progress together in one welcoming portal.</p>
+            <div class="home-actions">
+              <button class="submit-button" type="button" data-auth-mode="register">Start learning <span aria-hidden="true">→</span></button>
+              <button class="secondary-button" type="button" data-auth-mode="login">Sign in</button>
+            </div>
+            <div class="learning-note"><span aria-hidden="true">✿</span> Many subjects. One place to flourish.</div>
+          </div>
+          <aside class="home-highlight" aria-label="Daymark learning cycle">
+            <span class="highlight-sparkle" aria-hidden="true">✳</span>
+            <p class="section-kicker">YOUR LEARNING JOURNEY</p>
+            <h2>Learn it.<br />Try it.<br /><span>Grow from it.</span></h2>
+            <div class="journey-steps">
+              <span><b>01</b> Find a course</span>
+              <span><b>02</b> Submit your work</span>
+              <span><b>03</b> Use feedback to improve</span>
+            </div>
+          </aside>
+        </section>
+
+        <section class="home-section" aria-labelledby="home-how-title">
+          <div class="home-section-heading">
+            <p class="section-kicker">ONE PORTAL, CLEAR NEXT STEPS</p>
+            <h2 id="home-how-title">Learning works better together.</h2>
+            <p>Everyone has a space built around the part they play in learning.</p>
+          </div>
+          <div class="role-grid">
+            <article class="role-card">
+              <span class="role-card-icon" aria-hidden="true">✧</span>
+              <p class="section-kicker">FOR STUDENTS</p>
+              <h3>Keep your progress in sight.</h3>
+              <p>Explore published courses, enroll, submit assignments, and see scores, feedback, pass status, and retake options.</p>
+            </article>
+            <article class="role-card">
+              <span class="role-card-icon" aria-hidden="true">✿</span>
+              <p class="section-kicker">FOR TEACHERS</p>
+              <h3>Guide every next step.</h3>
+              <p>Create and publish courses, set assignment rules, review student work, and give useful grades and feedback.</p>
+            </article>
+            <article class="role-card">
+              <span class="role-card-icon" aria-hidden="true">⌂</span>
+              <p class="section-kicker">FOR ADMINISTRATORS</p>
+              <h3>Care for the community.</h3>
+              <p>Issue teacher accounts, assign course ownership, and oversee the people and courses in the portal.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="home-bottom">
+          <div>
+            <p class="section-kicker">PROGRESS, NOT PERFECTION</p>
+            <h2>Every attempt is part of the story.</h2>
+            <p>Teachers set a pass mark and attempt limit. Students can review feedback and try again when a retake is available; every attempt stays recorded.</p>
+          </div>
+          <button class="text-button" type="button" data-auth-mode="register">Create a student account →</button>
+        </section>
+      </section>
+
+      <section id="auth-view" class="auth-view" aria-labelledby="auth-title" hidden>
         <div class="auth-copy">
           <p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT CHAPTER STARTS HERE</p>
           <h1 id="auth-title">Learn a little.<br /><span>Grow a lot.</span></h1>
           <p>Find a course that sparks your curiosity, learn with great teachers, and celebrate every milestone along the way.</p>
           <div class="learning-note"><span aria-hidden="true">✿</span> Many subjects. One place to flourish.</div>
+          <button class="text-button auth-home-link" type="button" data-show-home>← Back to Daymark</button>
         </div>
 
         <div class="panel auth-card">
