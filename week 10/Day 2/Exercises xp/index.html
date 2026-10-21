@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Save, organize, and revisit your favorite recipes."
+    />
+    <title>Recipe Book</title>
+  </head>
+  <body>
+    <main class="recipe-app">
+      <header class="app-header">
+        <p class="eyebrow">YOUR PERSONAL COLLECTION</p>
+        <div class="header-content">
+          <div>
+            <h1>Recipe Book</h1>
+            <p class="subtitle">Good food starts with a recipe worth keeping.</p>
+          </div>
+          <div class="collection-summary" aria-live="polite">
+            <span id="recipeCount">0</span>
+            <span>recipes</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="entry-panel" aria-labelledby="entryHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ADD TO YOUR COLLECTION</p>
+            <h2 id="entryHeading">A new favorite</h2>
+          </div>
+        </div>
+
+        <form id="recipeEntryForm">
+          <label for="recipeTitle">Recipe title</label>
+          <input
+            type="text"
+            id="recipeTitle"
+            name="recipeTitle"
+            placeholder="e.g. Sunday tomato pasta"
+            maxlength="100"
+            required
+          />
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="ingredients">Ingredients</label>
+              <textarea
+                id="ingredients"
+                name="ingredients"
+                placeholder="One ingredient per line"
+                rows="6"
+                required
+              ></textarea>
+              <span class="field-hint">Add one ingredient on each line.</span>
+            </div>
+            <div class="field-group">
+              <label for="instructions">Instructions</label>
+              <textarea
+                id="instructions"
+                name="instructions"
+                placeholder="How do you make it?"
+                rows="6"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <button class="button button-primary" type="submit">
+            <span aria-hidden="true">+</span> Add recipe
+          </button>
+        </form>
+      </section>
+
+      <section class="collection-panel" aria-labelledby="collectionHeading">
+        <div class="section-heading collection-heading">
+          <div>
+            <p class="eyebrow">THE GOOD STUFF</p>
+            <h2 id="collectionHeading">Your recipes</h2>
+          </div>
+          <button
+            class="button button-filter"
+            id="showFavoritesButton"
+            type="button"
+            aria-pressed="false"
+          >
+            Favorites
+          </button>
+        </div>
+
+        <p id="appStatus" class="status-message" role="status" aria-live="polite"></p>
+        <div id="recipeContainer" class="recipe-grid"></div>
+        <div class="collection-actions">
+          <button class="button button-clear" id="clearRecipesButton" type="button">
+            Clear all recipes
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
