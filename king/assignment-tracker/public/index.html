@@ -7,94 +7,89 @@
       name="description"
       content="Discover courses, turn in assignments and keep track of your learning progress with Daymark."
     />
-    <meta name="theme-color" content="#fff8fc" />
+    <meta name="theme-color" content="#f4f7fb" />
     <title>Daymark Learning Portal</title>
     <link rel="stylesheet" href="staly.css" />
     <link rel="stylesheet" href="anime.css" />
     <link rel="stylesheet" href="portal.css" />
     <script src="script.js" defer></script>
   </head>
-  <body>
+  <body class="landing-page">
     <main class="portal-shell">
       <header class="topbar">
         <a class="brand" href="/" aria-label="Daymark Learning Portal home">
           <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 3v3m10-3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2Z" />
-              <path d="m9 14 2 2 4-4" />
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="m3 12 15-8 15 8-15 8L3 12Z" />
+              <path d="M9 16v8c5 4 13 4 18 0v-8M33 12v10" />
+              <circle cx="33" cy="24" r="2" />
             </svg>
           </span>
-          <span>daymark<span class="brand-period">.</span></span>
-          <span class="brand-divider"></span>
-          <span class="brand-subtitle">LEARNING PORTAL</span>
+          <span class="brand-name">Daymark<span class="brand-period">.</span><small>Learning Portal</small></span>
         </a>
+        <nav id="home-navigation" class="home-nav" aria-label="Main menu">
+          <a class="active" href="#home-view" data-show-home>Home</a>
+          <a href="#popular-courses">Courses</a>
+          <button type="button" data-auth-mode="login">Assignments</button>
+          <button type="button" data-auth-mode="login">Grades</button>
+          <a href="#roles">About</a>
+          <a href="#home-footer">Contact</a>
+        </nav>
+        <div class="home-header-actions">
+          <button class="home-login-button" type="button" data-auth-mode="login">Log in</button>
+          <button class="home-signup-button" type="button" data-auth-mode="register">Sign up</button>
+        </div>
         <div id="account-bar" class="account-bar" hidden>
           <span id="account-name" class="account-name"></span>
           <span id="account-role" class="role-pill"></span>
           <button id="logout-button" class="quiet-button" type="button">Sign out</button>
         </div>
-        <span id="study-note" class="topbar-note"><span class="status-dot"></span> A little progress, every day</span>
       </header>
 
       <section id="home-view" class="home-view" aria-labelledby="home-title">
         <section class="home-hero">
           <div class="home-hero-copy">
-            <p class="eyebrow"><span class="eyebrow-line"></span> A LEARNING SPACE TO GROW IN</p>
-            <h1 id="home-title">Make room for<br /><span>what’s next.</span></h1>
-            <p>Daymark brings courses, assignments, teacher feedback, and learning progress together in one welcoming portal.</p>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Welcome to Daymark Learning Portal</p>
+            <h1 id="home-title">Learn Today,<br /><span>Build Tomorrow</span></h1>
+            <p>Access quality courses, submit assignments, get your grades and achieve your goals — all in one place.</p>
             <div class="home-actions">
-              <button class="submit-button" type="button" data-auth-mode="register">Start learning <span aria-hidden="true">→</span></button>
-              <button class="secondary-button" type="button" data-auth-mode="login">Sign in</button>
+              <a class="submit-button" href="#popular-courses">Browse Courses <span aria-hidden="true">→</span></a>
+              <button class="secondary-button" type="button" data-auth-mode="login">Log in</button>
             </div>
-            <div class="learning-note"><span aria-hidden="true">✿</span> Many subjects. One place to flourish.</div>
+            <div class="home-hero-note">A brighter future starts with your next lesson.</div>
           </div>
-          <aside class="home-highlight" aria-label="Daymark learning cycle">
-            <span class="highlight-sparkle" aria-hidden="true">✳</span>
-            <p class="section-kicker">YOUR LEARNING JOURNEY</p>
-            <h2>Learn it.<br />Try it.<br /><span>Grow from it.</span></h2>
-            <div class="journey-steps">
-              <span><b>01</b> Find a course</span>
-              <span><b>02</b> Submit your work</span>
-              <span><b>03</b> Use feedback to improve</span>
-            </div>
-          </aside>
+          <img class="home-hero-photo" src="daymark-learning-hero.png" alt="A student studying online on her laptop" />
+          <p class="home-hero-mantra">Better<br />Learning<br />Brighter Future</p>
         </section>
 
-        <section class="home-section" aria-labelledby="home-how-title">
+        <section class="home-benefits" aria-label="Daymark learning benefits">
+          <article><span class="benefit-icon blue">▣</span><span><strong>Expert-led Courses</strong><small>Learn from experienced instructors</small></span></article>
+          <article><span class="benefit-icon green">▥</span><span><strong>Track Your Progress</strong><small>Monitor your performance</small></span></article>
+          <article><span class="benefit-icon purple">✦</span><span><strong>Teacher Feedback</strong><small>Grow with every attempt</small></span></article>
+          <article><span class="benefit-icon orange">◷</span><span><strong>Flexible Learning</strong><small>Study at your own pace</small></span></article>
+          <article><span class="benefit-icon sky">✓</span><span><strong>Support That Guides</strong><small>Help from your learning team</small></span></article>
+        </section>
+
+        <section id="popular-courses" class="home-section featured-section" aria-labelledby="home-subjects-title">
           <div class="home-section-heading">
-            <p class="section-kicker">ONE PORTAL, CLEAR NEXT STEPS</p>
-            <h2 id="home-how-title">Learning works better together.</h2>
-            <p>Everyone has a space built around the part they play in learning.</p>
+            <div><p class="section-kicker">START LEARNING TODAY</p><h2 id="home-subjects-title">Explore Course Areas</h2><p>Discover popular fields and find a course that fits your goals.</p></div>
+            <button class="text-button" type="button" data-auth-mode="register">View all courses <span aria-hidden="true">→</span></button>
           </div>
-          <div class="role-grid">
-            <article class="role-card">
-              <span class="role-card-icon" aria-hidden="true">✧</span>
-              <p class="section-kicker">FOR STUDENTS</p>
-              <h3>Keep your progress in sight.</h3>
-              <p>Explore published courses, enroll, submit assignments, and see scores, feedback, pass status, and retake options.</p>
-            </article>
-            <article class="role-card">
-              <span class="role-card-icon" aria-hidden="true">✿</span>
-              <p class="section-kicker">FOR TEACHERS</p>
-              <h3>Guide every next step.</h3>
-              <p>Create and publish courses, set assignment rules, review student work, and give useful grades and feedback.</p>
-            </article>
-            <article class="role-card">
-              <span class="role-card-icon" aria-hidden="true">⌂</span>
-              <p class="section-kicker">FOR ADMINISTRATORS</p>
-              <h3>Care for the community.</h3>
-              <p>Issue teacher accounts, assign course ownership, and oversee the people and courses in the portal.</p>
-            </article>
+          <div class="featured-course-grid">
+            <article class="featured-course technology"><span class="course-art" aria-hidden="true">&lt;/&gt;</span><span class="category-tag">Technology</span><h3>Technology &amp; IT</h3><p>Programming, cybersecurity, networking, and web development.</p></article>
+            <article class="featured-course business"><span class="course-art" aria-hidden="true">↗</span><span class="category-tag">Business</span><h3>Business &amp; Finance</h3><p>Accounting, entrepreneurship, marketing, and management.</p></article>
+            <article class="featured-course mathematics"><span class="course-art" aria-hidden="true">⌁</span><span class="category-tag">Engineering</span><h3>Engineering &amp; Construction</h3><p>Explore civil, electrical, mechanical engineering, and construction.</p></article>
+            <article class="featured-course health"><span class="course-art" aria-hidden="true">✚</span><span class="category-tag">Science</span><h3>Health &amp; Life Sciences</h3><p>Explore biology, public health, and laboratory sciences.</p></article>
+            <article class="featured-course education"><span class="course-art" aria-hidden="true">∑ + π</span><span class="category-tag">Education</span><h3>Education &amp; Sciences</h3><p>Build confidence in math, physics, chemistry, and teaching.</p></article>
+            <article class="featured-course creative"><span class="course-art" aria-hidden="true">✳</span><span class="category-tag">Creative Arts</span><h3>Creative &amp; Professional Skills</h3><p>Grow through design, languages, writing, agriculture, and more.</p></article>
           </div>
         </section>
 
-        <section class="home-bottom">
-          <div>
-            <p class="section-kicker">PROGRESS, NOT PERFECTION</p>
-            <h2>Every attempt is part of the story.</h2>
-            <p>Teachers set a pass mark and attempt limit. Students can review feedback and try again when a retake is available; every attempt stays recorded.</p>
-          </div>
-          <button class="text-button" type="button" data-auth-mode="register">Create a student account →</button>
+        <section id="roles" class="home-paths" aria-labelledby="home-path-title">
+          <div class="path-intro"><p class="section-kicker">YOUR NEXT STEP</p><h2 id="home-path-title">Choose Your Path</h2><p>Get started based on your role.</p></div>
+          <article class="path-card student-path"><span class="path-icon student-icon" aria-hidden="true">▣</span><div><h3>Student Site</h3><p>Access your courses, submit assignments, view grades and track your progress.</p><button type="button" data-auth-mode="register">Go to Student Site <span aria-hidden="true">→</span></button></div></article>
+          <article class="path-card teacher-path"><span class="path-icon teacher-icon" aria-hidden="true">✎</span><div><h3 id="teacher-site-title">Teacher Site</h3><p>Create courses, give assignments, mark student work and manage grades.</p><p class="path-note">Teacher accounts are issued by your portal administrator.</p><button type="button" data-auth-mode="login" data-auth-role="teacher">Go to Teacher Site <span aria-hidden="true">→</span></button></div></article>
+          <article class="path-card admin-path"><span class="path-icon admin-icon" aria-hidden="true">⚙</span><div><h3>Administrator Site</h3><p>Manage users, courses, categories and portal settings.</p><button type="button" data-auth-mode="login" data-auth-role="admin">Go to Admin Site <span aria-hidden="true">→</span></button></div></article>
         </section>
       </section>
 
@@ -171,9 +166,10 @@
       </div>
 
       <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-      <footer class="page-footer">
-        <span>Made for your next big thing.</span>
-        <span>DAYMARK <span class="footer-spark">✳</span></span>
+      <footer id="home-footer" class="page-footer">
+        <a class="footer-brand" href="/" data-show-home><span aria-hidden="true">◆</span> Daymark <small>Learning Portal</small></a>
+        <nav class="footer-nav" aria-label="Footer menu"><a href="#home-view" data-show-home>Home</a><a href="#popular-courses">Courses</a><button type="button" data-auth-mode="login">Assignments</button><button type="button" data-auth-mode="login">Grades</button><a href="#roles">About</a></nav>
+        <span class="footer-copyright">© <span id="current-year"></span> Daymark Learning Portal. All rights reserved.</span>
       </footer>
     </main>
   </body>

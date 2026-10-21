@@ -445,9 +445,17 @@ export async function createApp(pool) {
     const response = {
       course: courseSummary({ ...course, is_enrolled: isEnrolled, enrolled_at: enrollment.rows[0]?.enrolled_at }),
       isEnrolled,
+      lessons: [],
       assignments: [],
     };
     if (ownsCourse || isEnrolled) {
+      const lessonResult = await pool.query(
+        `SELECT id, title, content, resource_url, sort_order, created_at
+         FROM lessons WHERE course_id = $1 ORDER BY sort_order ASC, id ASC`,
+        [courseId],
+      );
+      response.lessons = lessonResult.rows;
+
       const assignmentResult = await pool.query(
         `SELECT a.* FROM assignments a
          WHERE a.course_id = $1 AND (a.is_published = TRUE OR $2 = TRUE)
@@ -504,6 +512,39 @@ export async function createApp(pool) {
       }
     }
     res.json(response);
+  });
+
+  app.post("/api/courses/:courseId/lessons", requireSameOrigin, ...requireReadyAccount, requireRoles("teacher", "admin"), async (req, res) => {
+    const courseId = parsePositiveId(req.params.courseId);
+    requireValue(courseId, 400, "Invalid course id.");
+    await canManageCourse(pool, req.user, courseId);
+
+    const { title, content } = req.body ?? {};
+    const resourceUrl = typeof req.body?.resourceUrl === "string" ? req.body.resourceUrl.trim() : "";
+    requireValue(validText(title, 3, 160), 400, "Lesson title must be between 3 and 160 characters.");
+    requireValue(validText(content, 5, 12000), 400, "Lesson content must be between 5 and 12,000 characters.");
+    requireValue(resourceUrl.length <= 1000, 400, "Resource link must be 1,000 characters or fewer.");
+    if (resourceUrl) {
+      let parsed;
+      try {
+        parsed = new URL(resourceUrl);
+      } catch {
+        parsed = null;
+      }
+      requireValue(parsed && parsed.protocol === "https:", 400, "Resource links must use HTTPS.");
+    }
+
+    const orderResult = await pool.query(
+      "SELECT COALESCE(MAX(sort_order), -1) + 1 AS next_order FROM lessons WHERE course_id = $1",
+      [courseId],
+    );
+    const result = await pool.query(
+      `INSERT INTO lessons (course_id, title, content, resource_url, sort_order)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING id, title, content, resource_url, sort_order, created_at`,
+      [courseId, title.trim(), content.trim(), resourceUrl, orderResult.rows[0].next_order],
+    );
+    res.status(201).json({ lesson: result.rows[0] });
   });
 
   app.patch("/api/courses/:courseId", requireSameOrigin, ...requireReadyAccount, requireRoles("teacher", "admin"), async (req, res) => {
@@ -751,7 +792,7 @@ export async function createApp(pool) {
   });
 
   app.get("/", (_req, res) => res.sendFile(path.join(publicDirectory, "index.html")));
-  for (const asset of ["script.js", "staly.css", "anime.css", "portal.css"]) {
+  for (const asset of ["script.js", "staly.css", "anime.css", "portal.css", "daymark-learning-hero.png"]) {
     app.get(`/${asset}`, (_req, res) => res.sendFile(path.join(publicDirectory, asset)));
   }
   app.use("/api", (_req, res) => res.status(404).json({ error: "API endpoint not found." }));

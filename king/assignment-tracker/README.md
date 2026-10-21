@@ -1,10 +1,15 @@
 # Daymark Learning Portal
 
 Daymark is a role-based learning portal for students, teachers, and
-administrators. Its public home page explains how the portal works and links to
-student registration and sign-in. Daymark includes a course catalog, course
+administrators. Its public home page uses the supplied study image and a
+responsive course-area and role-based layout, with links to student, teacher,
+and administrator sign-in. The portal includes a responsive navy-and-blue
+dashboard and a showcase of its six subject areas. Daymark includes a course catalog, course
 enrollment, course assignments, student submissions, teacher grading and
-feedback, configurable pass marks, and retakes that preserve every attempt.
+feedback, course lessons and HTTPS learning resources, configurable pass
+marks, and retakes that preserve every attempt. The public home page includes a
+Teacher Site sign-in entry point and an overview of course, assignment, and
+grading workflows.
 
 ## Run locally
 
@@ -22,8 +27,9 @@ reset an existing account's password.
 
 ## Deploy with Render
 
-The repository-root `render.yaml` configures a Node web service and a persistent
-Render PostgreSQL database. In Render, sync the existing Blueprint for
+The repository-root `render.yaml` configures the Node web service at
+`https://daymark-assignment-tracker.onrender.com` and a persistent Render
+PostgreSQL database. In Render, sync the existing Blueprint for
 `lennyjustin/Di-Bootcamp` on `main`. Enter the bootstrap administrator email in
 Render's secret prompt; Render generates the temporary password. Retrieve it
 from the service environment in the dashboard, sign in once, and replace it
@@ -31,9 +37,8 @@ immediately. Do not commit credentials or send them in chat. The database uses
 Render's paid `basic-256mb` plan. The web process uses the free plan and may
 sleep when idle.
 
-After the Blueprint is synced in Render, the portal service deploys at
-`https://daymark-learning-portal.onrender.com`. The existing tracker URL
-redirects to the portal after its static site deploys the updated files.
+The tracker URL serves the portal directly, including its API and database
+health endpoint; it does not depend on a separate static-site redirect.
 Subsequent pushes to `main` deploy automatically when Blueprint auto-sync is
 enabled.
 
@@ -45,9 +50,13 @@ enabled.
   temporary password is shown once and must be changed at first sign-in.
 - Teachers create draft courses, publish them, add assignments, and grade
   enrolled students' text submissions with feedback.
+- Teachers can add ordered text lessons with optional HTTPS links to externally
+  hosted study resources. Lessons are visible only to course teachers,
+  administrators, and enrolled students.
 - Assignments support a pass mark, up to ten attempts, and either the highest
   or latest score. Failed work can be resubmitted within the configured limit;
   each attempt remains in the database.
 
-The first release accepts text submissions. Lessons, file uploads, automatic
-quiz grading, email verification, and notifications are not part of this MVP.
+The first release accepts text submissions and text-based lessons. Direct file
+uploads, automatic quiz grading, email verification, and notifications are not
+part of this MVP.

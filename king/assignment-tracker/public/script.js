@@ -1,7 +1,3 @@
-if (window.location.hostname === "daymark-assignment-tracker.onrender.com") {
-  window.location.replace("https://daymark-learning-portal.onrender.com/");
-}
-
 const homeView = document.querySelector("#home-view");
 const authView = document.querySelector("#auth-view");
 const passwordView = document.querySelector("#password-view");
@@ -9,6 +5,8 @@ const portalView = document.querySelector("#portal-view");
 const portalNav = document.querySelector("#portal-nav");
 const portalContent = document.querySelector("#portal-content");
 const accountBar = document.querySelector("#account-bar");
+const homeNavigation = document.querySelector("#home-navigation");
+const homeHeaderActions = document.querySelector(".home-header-actions");
 const toast = document.querySelector("#toast");
 
 let currentUser = null;
@@ -20,16 +18,19 @@ let viewGeneration = 0;
 
 const navigationByRole = {
   student: [
-    ["dashboard", "My learning", "⌂"],
-    ["courses", "Explore courses", "✧"],
+    ["dashboard", "Dashboard", "⌂"],
+    ["courses", "My courses", "▤"],
+    ["assignments", "Assignments", "▣"],
+    ["grades", "Grades", "✓"],
   ],
   teacher: [
-    ["teaching", "Teaching space", "⌂"],
-    ["courses", "Course catalog", "✧"],
+    ["teaching", "Dashboard", "⌂"],
+    ["courses", "My courses", "▤"],
+    ["reviews", "Submissions", "✓"],
   ],
   admin: [
-    ["admin", "Portal overview", "⌂"],
-    ["courses", "All courses", "✧"],
+    ["admin", "Dashboard", "⌂"],
+    ["courses", "All courses", "▤"],
   ],
 };
 
@@ -56,7 +57,9 @@ async function request(url, options = {}) {
   try {
     payload = await response.json();
   } catch {
-    throw new Error("The server returned an unexpected response.");
+    const error = new Error("The server returned an unexpected response.");
+    error.status = response.status;
+    throw error;
   }
   if (!response.ok) {
     const error = new Error(payload.error ?? "The request could not be completed.");
@@ -81,23 +84,29 @@ function setAccountBar(user) {
   document.querySelector("#account-name").textContent = user.displayName;
   document.querySelector("#account-role").textContent = user.role;
   accountBar.hidden = false;
-  document.querySelector("#study-note").hidden = true;
+  setLandingHeader(false);
 }
 
 function clearAccountBar() {
   accountBar.hidden = true;
-  document.querySelector("#study-note").hidden = false;
 }
 
-function showAuth() {
+function setLandingHeader(visible) {
+  document.body.classList.toggle("landing-page", visible);
+  homeNavigation.hidden = !visible;
+  homeHeaderActions.hidden = !visible;
+}
+
+function showAuth(audience = "student") {
   currentUser = null;
   currentView = null;
   currentCourseId = null;
-  setAuthMode("login");
+  setAuthMode("login", audience);
   homeView.hidden = true;
   authView.hidden = false;
   passwordView.hidden = true;
   portalView.hidden = true;
+  setLandingHeader(false);
   clearAccountBar();
 }
 
@@ -109,18 +118,26 @@ function showHome() {
   authView.hidden = true;
   passwordView.hidden = true;
   portalView.hidden = true;
+  setLandingHeader(true);
   clearAccountBar();
 }
 
-function setAuthMode(mode) {
+function setAuthMode(mode, audience = "student") {
   const registering = mode === "register";
   document.querySelector("#login-form").hidden = registering;
   document.querySelector("#register-form").hidden = !registering;
-  document.querySelector("#auth-kicker").textContent = registering ? "A FRESH START" : "WELCOME BACK";
-  document.querySelector("#auth-heading").textContent = registering ? "Create your account" : "Sign in to Daymark";
+  const roleName = audience === "teacher" ? "teacher" : audience === "admin" ? "administrator" : "";
+  const roleSignIn = !registering && roleName.length > 0;
+  document.querySelector("#auth-kicker").textContent = registering ? "A FRESH START" : roleSignIn ? `${roleName.toUpperCase()} SITE` : "WELCOME BACK";
+  document.querySelector("#auth-heading").textContent = registering
+    ? "Create your account"
+    : audience === "teacher" ? "Sign in to your teaching space"
+      : audience === "admin" ? "Sign in to portal administration" : "Sign in to Daymark";
   document.querySelector("#auth-description").textContent = registering
     ? "Your student account is the first step on a new learning journey."
-    : "Pick up right where your learning left off.";
+    : roleSignIn
+      ? `Sign in with the ${roleName} account provided by your portal administrator.`
+      : "Pick up right where your learning left off.";
   document.querySelector("#auth-switch-copy").textContent = registering ? "Already have an account?" : "New to Daymark?";
   document.querySelector("#auth-switch-button").textContent = registering ? "Sign in instead" : "Create a student account";
 }
@@ -181,8 +198,18 @@ function categoryOptions(selectedId = "", optionCategories = categories) {
 
 function courseCard(course) {
   const action = currentUser.role === "student" && !course.isEnrolled ? "View course" : "Open course";
+  const icons = {
+    "technology-it": "⌘",
+    "business-finance": "↗",
+    "engineering-construction": "⌁",
+    "health-life-sciences": "✚",
+    "education-sciences": "∑",
+    "creative-professional-skills": "✳",
+  };
+  const categorySlug = course.category.slug;
   return `
-    <article class="course-card">
+    <article class="course-card" data-category="${escapeHtml(categorySlug)}">
+      <div class="course-card-art course-art-${escapeHtml(categorySlug)}" aria-hidden="true"><span>${icons[categorySlug] ?? "✧"}</span></div>
       <div class="course-card-top">
         <span class="category-chip">${escapeHtml(course.category.name)}</span>
         ${course.isPublished ? "" : '<span class="draft-chip">Draft</span>'}
@@ -214,7 +241,10 @@ async function loadView() {
   try {
     if (currentView === "dashboard") await renderStudentDashboard(generation);
     else if (currentView === "courses") await renderCourses();
+    else if (currentView === "assignments") await renderStudentAssignments();
+    else if (currentView === "grades") await renderStudentGrades();
     else if (currentView === "teaching") await renderTeachingDashboard();
+    else if (currentView === "reviews") await renderTeacherReviewPage();
     else if (currentView === "admin") await renderAdminDashboard();
     else if (currentView === "course-detail" && currentCourseId) await renderCourseDetail(currentCourseId);
   } catch (error) {
@@ -257,6 +287,8 @@ async function renderStudentDashboard(generation) {
   const pending = assignments.filter((assignment) => assignmentStatus(assignment).tone === "pending").length;
   const retakes = assignments.filter((assignment) => assignment.canSubmit && assignment.submissionState === "retake_available").length;
   const passed = assignments.filter((assignment) => assignmentStatus(assignment).tone === "passed").length;
+  const completed = assignments.filter((assignment) => assignment.attempts?.some((attempt) => attempt.status !== "pending")).length;
+  const progress = assignments.length ? Math.round((passed / assignments.length) * 100) : 0;
   const recommendations = courses.filter((course) => !course.isEnrolled).slice(0, 3);
 
   portalContent.innerHTML = `
@@ -264,18 +296,18 @@ async function renderStudentDashboard(generation) {
       <div>
         <p class="eyebrow"><span class="eyebrow-line"></span> YOUR LEARNING JOURNEY</p>
         <h1>Good to see you,<br /><span>${escapeHtml(currentUser.displayName.split(" ")[0])}.</span></h1>
-        <p>Keep your curiosity close. Your next little win is waiting.</p>
+        <p>Your learning progress is ready. Pick up where you left off.</p>
       </div>
       <span class="welcome-sparkle" aria-hidden="true">✿</span>
     </section>
     <section class="metric-grid" aria-label="Learning summary">
-      <article class="metric-card"><span class="metric-icon">✧</span><strong>${enrolled.length}</strong><span>Courses you're taking</span></article>
-      <article class="metric-card"><span class="metric-icon">◷</span><strong>${pending}</strong><span>Work awaiting review</span></article>
-      <article class="metric-card"><span class="metric-icon">↻</span><strong>${retakes}</strong><span>Retakes ready</span></article>
-      <article class="metric-card"><span class="metric-icon">✓</span><strong>${passed}</strong><span>Assignments passed</span></article>
+      <article class="metric-card"><span class="metric-icon">▤</span><strong>${enrolled.length}</strong><span>Enrolled courses</span></article>
+      <article class="metric-card"><span class="metric-icon">✓</span><strong>${completed}</strong><span>Completed assignments</span></article>
+      <article class="metric-card"><span class="metric-icon">◷</span><strong>${pending}</strong><span>Pending assignments</span></article>
+      <article class="metric-card"><span class="metric-icon">↗</span><strong>${progress}%</strong><span>Overall progress</span></article>
     </section>
     <div class="section-heading">
-      <div><p class="section-kicker">PICK UP WHERE YOU LEFT OFF</p><h2>Your courses</h2></div>
+      <div><p class="section-kicker">PICK UP WHERE YOU LEFT OFF</p><h2>My courses</h2></div>
       <button class="text-button" type="button" data-action="navigate" data-view="courses">Explore courses →</button>
     </div>
     ${enrolled.length
@@ -295,6 +327,7 @@ async function renderStudentDashboard(generation) {
           </button>`;
         }).join("")}
       </div>` : ""}
+    ${retakes ? `<p class="dashboard-retake-note">${retakes} assignment${retakes === 1 ? "" : "s"} ready for another attempt. <button class="text-button" type="button" data-action="navigate" data-view="assignments">Review assignments →</button></p>` : ""}
     ${recommendations.length ? `
       <div class="section-heading compact-heading"><div><p class="section-kicker">A LITTLE INSPIRATION</p><h2>Courses you might like</h2></div></div>
       <div class="course-grid">${recommendations.map(courseCard).join("")}</div>` : ""}
@@ -308,17 +341,98 @@ async function renderCourses() {
     : [];
   const available = currentUser.role === "student" ? courses.filter((course) => !course.isEnrolled) : courses;
   const enrolled = currentUser.role === "student" ? courses.filter((course) => course.isEnrolled) : [];
+  const categoryFilters = currentUser.role === "student" && categoryResult.categories.length
+    ? `<div class="category-filter-list" aria-label="Filter courses by subject">
+        <button class="filter-chip active" type="button" data-action="filter-category" data-category="all" aria-pressed="true">All</button>
+        ${categoryResult.categories.map((category) => `<button class="filter-chip" type="button" data-action="filter-category" data-category="${escapeHtml(category.slug)}" aria-pressed="false">${escapeHtml(category.name)}</button>`).join("")}
+      </div>`
+    : "";
   portalContent.innerHTML = `
     <div class="page-heading">
       <div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR NEXT INTEREST</p><h1>${currentUser.role === "admin" ? "Courses across every field." : "Curiosity looks good on you."}</h1><p>Learn something new, one thoughtful lesson at a time.</p></div>
     </div>
     ${currentUser.role === "student" ? '<label class="course-search-label" for="course-search">Find a course<input id="course-search" type="search" placeholder="Search title, subject or teacher…" /></label>' : ""}
+    ${categoryFilters}
     ${currentUser.role === "teacher" || currentUser.role === "admin" ? createCourseForm(categoryResult.categories, teachers) : ""}
     ${enrolled.length ? `<div class="section-heading"><div><p class="section-kicker">ALREADY ON YOUR PATH</p><h2>Your enrolled courses</h2></div></div><div class="course-grid">${enrolled.map(courseCard).join("")}</div>` : ""}
     <div class="section-heading ${enrolled.length ? "compact-heading" : ""}"><div><p class="section-kicker">A WORLD OF IDEAS</p><h2>${currentUser.role === "student" ? "Explore the catalog" : "Available courses"}</h2></div></div>
     ${available.length
       ? `<div class="course-grid">${available.map(courseCard).join("")}</div>`
       : `<div class="empty-panel"><span class="empty-symbol">✿</span><h3>${courses.length ? "You're all caught up." : "The catalog is taking shape."}</h3><p>${courses.length ? "You've enrolled in every available course." : "Published courses will appear here when they are ready."}</p></div>`}
+  `;
+}
+
+async function getStudentCoursework() {
+  const courses = await fetchCourses();
+  const enrolled = courses.filter((course) => course.isEnrolled);
+  const details = await Promise.all(enrolled.map((course) => request(`/api/courses/${course.id}`)));
+  return {
+    assignments: details.flatMap((detail) =>
+      detail.assignments.map((assignment) => ({
+        ...assignment,
+        courseTitle: detail.course.title,
+        courseId: detail.course.id,
+      })),
+    ),
+  };
+}
+
+async function renderStudentAssignments() {
+  const { assignments } = await getStudentCoursework();
+  const sortedAssignments = [...assignments].sort((left, right) =>
+    new Date(left.due_at).getTime() - new Date(right.due_at).getTime(),
+  );
+  portalContent.innerHTML = `
+    <div class="page-heading">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR COURSEWORK</p><h1>My assignments</h1><p>Check deadlines, review feedback, and pick up any available retakes.</p></div>
+    </div>
+    ${sortedAssignments.length ? `<div class="assignment-list">${sortedAssignments.map((assignment) => {
+      const status = assignmentStatus(assignment);
+      const effective = assignment.effectiveAttempt;
+      return `<article class="panel assignment-panel assignment-overview">
+        <div class="assignment-panel-heading">
+          <div><span class="section-kicker">${escapeHtml(assignment.courseTitle)} · DUE ${escapeHtml(formatDate(assignment.due_at))}</span><h3>${escapeHtml(assignment.title)}</h3></div>
+          <span class="status-pill status-${status.tone}">${status.label}</span>
+        </div>
+        <p class="assignment-instructions">${escapeHtml(assignment.instructions)}</p>
+        <div class="assignment-meta"><span>Pass mark ${escapeHtml(assignment.pass_mark)} / ${escapeHtml(assignment.max_score)}</span><span>${assignment.attempts?.length ?? 0} of ${escapeHtml(assignment.max_attempts)} attempts</span>${effective ? `<span>Score ${escapeHtml(effective.score)} / ${escapeHtml(assignment.max_score)}</span>` : ""}</div>
+        <button class="secondary-button" type="button" data-action="open-course" data-id="${escapeHtml(assignment.courseId)}">Open assignment <span aria-hidden="true">→</span></button>
+      </article>`;
+    }).join("")}</div>` : `<div class="empty-panel"><span class="empty-symbol">▣</span><h3>No assignments yet.</h3><p>Enroll in a course to see its assignments and due dates here.</p><button class="secondary-button" type="button" data-action="navigate" data-view="courses">Explore courses →</button></div>`}
+  `;
+}
+
+async function renderStudentGrades() {
+  const { assignments } = await getStudentCoursework();
+  const graded = assignments.filter((assignment) => assignment.effectiveAttempt);
+  portalContent.innerHTML = `
+    <div class="page-heading">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> RESULTS AND FEEDBACK</p><h1>My grades</h1><p>Review your recorded scores and teacher feedback.</p></div>
+    </div>
+    ${graded.length ? `<div class="grade-table-wrap"><table class="grade-table">
+      <thead><tr><th>Course</th><th>Assignment</th><th>Score</th><th>Result</th><th>Feedback</th></tr></thead>
+      <tbody>${graded.map((assignment) => {
+        const attempt = assignment.effectiveAttempt;
+        const passed = Number(attempt.score) >= Number(assignment.pass_mark);
+        return `<tr>
+          <td>${escapeHtml(assignment.courseTitle)}</td>
+          <td>${escapeHtml(assignment.title)}</td>
+          <td>${escapeHtml(attempt.score)} / ${escapeHtml(assignment.max_score)}</td>
+          <td><span class="status-pill status-${passed ? "passed" : "failed"}">${passed ? "Passed" : "Failed"}</span></td>
+          <td>${escapeHtml(attempt.feedback || "No feedback yet")}</td>
+        </tr>`;
+      }).join("")}</tbody>
+    </table></div>` : `<div class="empty-panel"><span class="empty-symbol">✓</span><h3>Your grades will appear here.</h3><p>Once a teacher reviews an assignment, you can see the score and feedback.</p></div>`}
+  `;
+}
+
+async function renderTeacherReviewPage() {
+  const result = await request("/api/teacher/submissions");
+  portalContent.innerHTML = `
+    <div class="page-heading">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> REVIEW STUDENT WORK</p><h1>Submissions</h1><p>Grade student attempts and leave feedback to guide their next steps.</p></div>
+    </div>
+    ${renderTeacherSubmissions(result.submissions)}
   `;
 }
 
@@ -407,7 +521,7 @@ async function renderAdminDashboard() {
 
 async function renderCourseDetail(courseId) {
   const detail = await request(`/api/courses/${courseId}`);
-  const { course, assignments, isEnrolled } = detail;
+  const { course, assignments, lessons = [], isEnrolled } = detail;
   const canManage = currentUser.role === "admin" ||
     (currentUser.role === "teacher" && String(course.teacher.id) === String(currentUser.id));
   let submissions = [];
@@ -429,6 +543,11 @@ async function renderCourseDetail(courseId) {
       ${canManage ? `<button class="secondary-button publish-toggle" type="button" data-action="toggle-publish" data-id="${escapeHtml(course.id)}" data-published="${String(course.isPublished)}">${course.isPublished ? "Unpublish course" : "Publish course"}</button>` : ""}
       ${currentUser.role === "student" && !isEnrolled ? `<button class="submit-button enroll-button" type="button" data-action="enroll" data-id="${escapeHtml(course.id)}">Enroll in this course <span aria-hidden="true">→</span></button>` : ""}
     </section>
+    ${canManage || isEnrolled ? `
+      <section class="section-heading course-assignment-heading"><div><p class="section-kicker">LEARN AT YOUR PACE</p><h2>Lessons and resources</h2></div><span class="count-chip">${lessons.length}</span></section>
+      ${lessons.length ? `<div class="lesson-list">${lessons.map((lesson, index) => `
+        <article class="panel lesson-card"><div class="lesson-number">${index + 1}</div><div class="lesson-copy"><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.content)}</p>${lesson.resource_url ? `<a class="lesson-resource" href="${escapeHtml(lesson.resource_url)}" target="_blank" rel="noopener noreferrer">Open learning resource ↗</a>` : ""}</div></article>`).join("")}</div>` : `<div class="empty-panel lesson-empty"><span class="empty-symbol">✧</span><h3>Your learning materials will appear here.</h3><p>${canManage ? "Add the first lesson below to give students a clear place to begin." : "The teacher has not added lessons yet."}</p></div>`}
+    ` : ""}
     ${canManage ? `
       <details class="panel create-panel">
         <summary><span class="summary-plus">＋</span><span><small>GIVE STUDENTS A NEW CHALLENGE</small><strong>Add an assignment</strong></span></summary>
@@ -446,6 +565,16 @@ async function renderCourseDetail(courseId) {
           <label for="assignment-policy">Result shown to student</label>
           <select id="assignment-policy" name="scorePolicy"><option value="highest">Highest attempt score</option><option value="latest">Latest attempt score</option></select>
           <button class="submit-button" type="submit">Publish assignment <span aria-hidden="true">→</span></button>
+        </form>
+      </details>
+      <details class="panel create-panel">
+        <summary><span class="summary-plus">＋</span><span><small>BUILD THE LEARNING PATH</small><strong>Add a lesson or resource</strong></span></summary>
+        <form class="portal-form inline-form" data-form="create-lesson" data-course-id="${escapeHtml(course.id)}">
+          <label for="lesson-title">Lesson title</label><input id="lesson-title" name="title" maxlength="160" required />
+          <label for="lesson-content">Lesson notes or learning material</label><textarea id="lesson-content" name="content" rows="5" maxlength="12000" placeholder="Explain the topic, add examples, or provide study notes…" required></textarea>
+          <label for="lesson-resource-url">Optional resource link <span class="field-note">HTTPS only</span></label><input id="lesson-resource-url" name="resourceUrl" type="url" maxlength="1000" placeholder="https://example.com/learning-resource" />
+          <p class="field-help">Add a link to a video, PDF, or other material hosted elsewhere. The lesson text is saved in Daymark.</p>
+          <button class="submit-button" type="submit">Save lesson <span aria-hidden="true">→</span></button>
         </form>
       </details>
       ${renderTeacherSubmissions(submissions)}
@@ -587,6 +716,12 @@ async function handlePortalForm(event) {
     await request(`/api/courses/${form.dataset.courseId}/assignments`, { method: "POST", body: values });
     showToast("Your assignment is published.");
     await refreshCurrentView();
+  } else if (kind === "create-lesson") {
+    await request(`/api/courses/${form.dataset.courseId}/lessons`, { method: "POST", body: values });
+    showToast("Lesson saved and added to the course.");
+    currentCourseId = form.dataset.courseId;
+    currentView = "course-detail";
+    await renderCourseDetail(currentCourseId);
   } else if (kind === "grade") {
     values.score = Number(values.score);
     await request(`/api/submissions/${form.dataset.submissionId}/grade`, { method: "POST", body: values });
@@ -628,9 +763,13 @@ async function handlePortalForm(event) {
 
 document.querySelectorAll("[data-auth-mode]").forEach((button) => {
   button.addEventListener("click", () => {
-    setAuthMode(button.dataset.authMode);
+    setAuthMode(button.dataset.authMode, button.dataset.authRole);
     homeView.hidden = true;
     authView.hidden = false;
+    passwordView.hidden = true;
+    portalView.hidden = true;
+    setLandingHeader(false);
+    clearAccountBar();
   });
 });
 
@@ -699,6 +838,19 @@ portalContent.addEventListener("click", async (event) => {
       });
       showToast(isPublished ? "Course unpublished." : "Course published. Students can now enroll.");
       await loadView();
+    } else if (button.dataset.action === "filter-category") {
+      const category = button.dataset.category;
+      for (const filter of portalContent.querySelectorAll('[data-action="filter-category"]')) {
+        const active = filter === button;
+        filter.classList.toggle("active", active);
+        filter.setAttribute("aria-pressed", String(active));
+      }
+      for (const card of portalContent.querySelectorAll(".course-card")) {
+        const matchesCategory = category === "all" || card.dataset.category === category;
+        const matchesSearch = card.textContent.toLocaleLowerCase()
+          .includes((portalContent.querySelector("#course-search")?.value ?? "").trim().toLocaleLowerCase());
+        card.hidden = !matchesCategory || !matchesSearch;
+      }
     }
   } catch (error) {
     showToast(error.message, true);
@@ -717,8 +869,12 @@ portalContent.addEventListener("submit", async (event) => {
 portalContent.addEventListener("input", (event) => {
   if (event.target.id !== "course-search") return;
   const query = event.target.value.trim().toLocaleLowerCase();
+  const activeFilter = portalContent.querySelector('[data-action="filter-category"].active');
+  const category = activeFilter?.dataset.category ?? "all";
   for (const card of portalContent.querySelectorAll(".course-card")) {
-    card.hidden = query.length > 0 && !card.textContent.toLocaleLowerCase().includes(query);
+    const matchesSearch = query.length === 0 || card.textContent.toLocaleLowerCase().includes(query);
+    const matchesCategory = category === "all" || card.dataset.category === category;
+    card.hidden = !matchesSearch || !matchesCategory;
   }
 });
 
@@ -733,6 +889,7 @@ document.querySelector("#logout-button").addEventListener("click", async () => {
 });
 
 (async function initialize() {
+  document.querySelector("#current-year").textContent = String(new Date().getFullYear());
   try {
     const result = await request("/api/me");
     currentUser = result.user;
@@ -744,6 +901,10 @@ document.querySelector("#logout-button").addEventListener("click", async () => {
       return;
     }
     showHome();
+    if (error.status === 404) {
+      showToast("Design preview only. Start the Daymark server with PostgreSQL to use accounts.", true);
+      return;
+    }
     showToast(error.message, true);
   }
 })();

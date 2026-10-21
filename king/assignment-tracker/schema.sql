@@ -50,6 +50,18 @@ CREATE TABLE IF NOT EXISTS courses (
 CREATE INDEX IF NOT EXISTS courses_teacher_idx ON courses(teacher_id);
 CREATE INDEX IF NOT EXISTS courses_category_idx ON courses(category_id);
 
+CREATE TABLE IF NOT EXISTS lessons (
+  id BIGSERIAL PRIMARY KEY,
+  course_id BIGINT NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
+  title TEXT NOT NULL CHECK (char_length(title) BETWEEN 3 AND 160),
+  content TEXT NOT NULL CHECK (char_length(content) BETWEEN 5 AND 12000),
+  resource_url TEXT NOT NULL DEFAULT '',
+  sort_order INTEGER NOT NULL DEFAULT 0 CHECK (sort_order >= 0),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS lessons_course_order_idx ON lessons(course_id, sort_order, id);
+
 CREATE TABLE IF NOT EXISTS enrollments (
   student_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   course_id BIGINT NOT NULL REFERENCES courses(id) ON DELETE CASCADE,

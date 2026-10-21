@@ -1,11 +1,6 @@
 services:
   - type: web
     name: daymark-assignment-tracker
-    runtime: static
-    buildCommand: echo "No build required"
-    staticPublishPath: king/assignment-tracker/public
-  - type: web
-    name: daymark-learning-portal
     runtime: node
     plan: free
     region: ohio
