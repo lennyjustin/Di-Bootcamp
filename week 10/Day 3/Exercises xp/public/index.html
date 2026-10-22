@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1455c0">
+    <title>TokenLab — JWT Authentication</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="TokenLab home">
+        <span class="brand-mark">T</span>
+        <span>Token<span class="brand-accent">Lab</span></span>
+      </a>
+      <span class="topbar-note"><span class="live-dot"></span> Local learning demo</span>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> AUTHENTICATION, MADE CLEAR</p>
+          <h1>Learn JWTs.<br><span>Build trust.</span></h1>
+          <p class="hero-description">A hands-on guide to signing in, protecting routes, and refreshing tokens with Express.</p>
+          <a class="text-link" href="#guide">Explore the essentials <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="token-card" aria-label="JWT consists of header, payload, and signature">
+          <div class="token-card-top"><span>YOUR TOKEN, DECODED</span><span class="token-lock">● SECURE</span></div>
+          <div class="token-parts">
+            <div class="token-part token-blue"><span>01 / HEADER</span><strong>{ alg: "HS256" }</strong></div>
+            <span class="token-dot">.</span>
+            <div class="token-part token-red"><span>02 / PAYLOAD</span><strong>{ sub: "user_42" }</strong></div>
+            <span class="token-dot">.</span>
+            <div class="token-part token-navy"><span>03 / SIGNATURE</span><strong>••••••••••••</strong></div>
+          </div>
+          <div class="token-caption"><span class="caption-rule"></span> Three parts. One verifiable identity.</div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-labelledby="workspace-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">TRY IT YOURSELF</p>
+            <h2 id="workspace-title">Your authentication workspace</h2>
+          </div>
+          <span class="demo-badge"><span></span> DEMO MODE</span>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite">Create an account or sign in to explore protected routes.</p>
+
+        <div class="workspace-grid">
+          <section class="auth-panel" aria-labelledby="account-title">
+            <div class="panel-heading">
+              <span class="panel-icon blue-icon" aria-hidden="true">↗</span>
+              <div><p class="panel-kicker">STEP 01</p><h3 id="account-title">Get started</h3></div>
+            </div>
+            <div class="tab-row" role="tablist" aria-label="Authentication options">
+              <button class="tab is-active" type="button" role="tab" aria-selected="true" data-mode="register">Create account</button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-mode="login">Sign in</button>
+            </div>
+            <form id="auth-form">
+              <label for="username">Username</label>
+              <input id="username" name="username" autocomplete="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]{3,24}" placeholder="e.g. alex_dev" required>
+              <p class="field-hint">3–24 letters, numbers, underscores, or hyphens.</p>
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="72" placeholder="At least 10 characters" required>
+              <button class="button button-blue" type="submit"><span id="submit-label">Create account</span><span aria-hidden="true">→</span></button>
+            </form>
+            <p class="privacy-note"><span aria-hidden="true">▣</span> Tokens are stored in HTTP-only cookies.</p>
+          </section>
+
+          <section class="protected-panel" aria-labelledby="protected-title">
+            <div class="panel-heading">
+              <span class="panel-icon red-icon" aria-hidden="true">✓</span>
+              <div><p class="panel-kicker">STEP 02</p><h3 id="protected-title">Protected profile</h3></div>
+              <span id="auth-indicator" class="auth-indicator">SIGNED OUT</span>
+            </div>
+            <div id="signed-out" class="locked-state">
+              <span class="lock-illustration" aria-hidden="true">⌑</span>
+              <strong>Your profile is locked</strong>
+              <span>Sign in to verify your token and open this protected route.</span>
+            </div>
+            <div id="signed-in" class="profile-state" hidden>
+              <div class="profile-avatar" id="avatar">?</div>
+              <div class="profile-details">
+                <span class="profile-label">AUTHENTICATED AS</span>
+                <strong id="profile-username">—</strong>
+                <span class="profile-id" id="profile-id">—</span>
+              </div>
+              <form id="profile-form" class="profile-form">
+                <label for="new-username">Update username</label>
+                <div class="inline-form">
+                  <input id="new-username" name="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]{3,24}" required>
+                  <button class="button button-outline" type="submit">Save</button>
+                </div>
+              </form>
+              <div class="profile-actions">
+                <button id="refresh-button" class="button button-soft" type="button">Refresh session</button>
+                <button id="logout-button" class="button button-danger" type="button">Sign out</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="guide" class="guide-section" aria-labelledby="guide-title">
+        <div class="section-intro guide-intro">
+          <div><p class="eyebrow">THE JWT PLAYBOOK</p><h2 id="guide-title">The essentials, step by step</h2></div>
+          <p class="guide-summary">Follow the flow from a new account to a renewed session.</p>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-card">
+            <span class="guide-number blue-number">01</span>
+            <h3>Know the three parts</h3>
+            <p>The header names the algorithm, the payload carries claims, and the signature lets the server verify the token.</p>
+            <span class="guide-tag blue-tag">HEADER · PAYLOAD · SIGNATURE</span>
+          </article>
+          <article class="guide-card">
+            <span class="guide-number red-number">02</span>
+            <h3>Register &amp; sign in</h3>
+            <p>Validate credentials, hash passwords with bcrypt, then issue short-lived access and longer-lived refresh tokens.</p>
+            <span class="guide-tag red-tag">HASH · SIGN · COOKIE</span>
+          </article>
+          <article class="guide-card">
+            <span class="guide-number blue-number">03</span>
+            <h3>Protect your routes</h3>
+            <p>Middleware verifies the access token before the server returns a private profile or accepts an update.</p>
+            <span class="guide-tag blue-tag">VERIFY · AUTHORIZE</span>
+          </article>
+          <article class="guide-card">
+            <span class="guide-number red-number">04</span>
+            <h3>Refresh &amp; revoke</h3>
+            <p>Rotate refresh tokens on use. Signing out revokes the active refresh session and clears both cookies.</p>
+            <span class="guide-tag red-tag">ROTATE · REVOKE</span>
+          </article>
+        </div>
+      </section>
+
+      <aside class="safety-note">
+        <span class="safety-icon" aria-hidden="true">i</span>
+        <p><strong>Learning environment:</strong> this demo stores users and refresh-session records in memory. Data resets when the server restarts. Use a persistent database, HTTPS, and a production-grade session strategy before deploying a real app.</p>
+      </aside>
+    </main>
+
+    <footer class="footer"><span>TokenLab</span><span>Learn safely. Build thoughtfully.</span></footer>
+  </body>
+</html>
