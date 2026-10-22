@@ -852,6 +852,15 @@ body.landing-page .portal-shell {
   font-size: 16px;
 }
 
+.metric-icon svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .metric-card strong,
 .teacher-summary strong {
   color: #503b5a;
@@ -1919,12 +1928,23 @@ body.landing-page .portal-shell {
 
 .lesson-resource {
   display: inline-flex;
+  align-items: center;
+  gap: 4px;
   margin-top: 12px;
   color: #16765d;
   font-size: 11px;
   font-weight: 700;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+}
+
+.lesson-resource svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .lesson-empty {
@@ -2535,10 +2555,21 @@ body {
 }
 
 .course-card-art span {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 47px;
-  font-weight: 600;
-  text-shadow: 0 5px 16px rgba(9, 39, 82, 0.2);
+  display: grid;
+  width: 60px;
+  height: 60px;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.course-category-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .course-art-business-finance {
@@ -3416,10 +3447,11 @@ body.landing-page {
     radial-gradient(circle at 72% 25%, rgba(255,255,255,.32) 0 2px, transparent 3px),
     linear-gradient(135deg, #123a68, #1682c4);
   color: rgba(255,255,255,.88);
-  font-family: "Manrope", "Segoe UI", sans-serif;
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: 1px;
+}
+
+.course-art .course-category-icon {
+  width: 42px;
+  height: 42px;
 }
 
 .featured-course.business .course-art { background: linear-gradient(135deg, #144f55, #35a284); }

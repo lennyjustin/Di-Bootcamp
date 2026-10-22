@@ -88,6 +88,8 @@ test("portal entry page is served with security headers", async () => {
     assert.match(page, /Health &amp; Life Sciences/);
     assert.match(page, /Education &amp; Sciences/);
     assert.match(page, /Creative &amp; Professional Skills/);
+    assert.equal((page.match(/class="course-category-icon"/g) ?? []).length, 6);
+    assert.doesNotMatch(page, /<span class="course-art"[^>]*>(?:↗|&lt;\/&gt;|⌁|✚|∑ \+ π|✳)<\/span>/);
     assert.match(page, /data-auth-role="teacher"/);
     assert.match(page, /id="teacher-site-title"/);
     assert.match(page, /Teacher accounts are issued by your portal administrator/);

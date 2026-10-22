@@ -16,6 +16,20 @@ let categories = [];
 let toastTimer;
 let viewGeneration = 0;
 
+const courseCategoryIcons = {
+  "technology-it": '<rect x="8" y="10" width="32" height="23" rx="3"/><path d="M4 39h40M19 39l2-6h6l2 6M18 18l-4 4 4 4m12-8 4 4-4 4m-4-6-3 5"/>',
+  "business-finance": '<rect x="7" y="16" width="34" height="24" rx="3"/><path d="M17 16v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M7 25h34M21 25v4h6v-4"/>',
+  "engineering-construction": '<path d="M5 29h38l-4-12H9L5 29Zm5 0v6h28v-6M14 17l3-8h14l3 8M24 9v8m-9 12v4m9-4v4m9-4v4"/>',
+  "health-life-sciences": '<path d="M24 40S7 30 7 19a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 11-17 21-17 21Z"/><path d="M12 24h7l3-6 5 12 3-6h6"/>',
+  "education-sciences": '<path d="m4 18 20-10 20 10-20 10L4 18Z"/><path d="M12 22v10c7 6 17 6 24 0V22M44 18v12"/>',
+  "creative-professional-skills": '<path d="M24 6a18 18 0 1 0 0 36h3a5 5 0 0 0 3-9 3 3 0 0 1 2-5h3a7 7 0 0 0 7-7C42 13 34 6 24 6Z"/><circle cx="15" cy="20" r="2"/><circle cx="23" cy="14" r="2"/><circle cx="32" cy="18" r="2"/>',
+};
+
+function courseCategoryIcon(categorySlug) {
+  const paths = courseCategoryIcons[categorySlug] ?? '<path d="M24 5v38M5 24h38M10 10l28 28m0-28L10 38"/>';
+  return `<svg class="course-category-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">${paths}</svg>`;
+}
+
 const navigationByRole = {
   student: [
     ["dashboard", "Dashboard", "⌂"],
@@ -198,18 +212,10 @@ function categoryOptions(selectedId = "", optionCategories = categories) {
 
 function courseCard(course) {
   const action = currentUser.role === "student" && !course.isEnrolled ? "View course" : "Open course";
-  const icons = {
-    "technology-it": "⌘",
-    "business-finance": "↗",
-    "engineering-construction": "⌁",
-    "health-life-sciences": "✚",
-    "education-sciences": "∑",
-    "creative-professional-skills": "✳",
-  };
   const categorySlug = course.category.slug;
   return `
     <article class="course-card" data-category="${escapeHtml(categorySlug)}">
-      <div class="course-card-art course-art-${escapeHtml(categorySlug)}" aria-hidden="true"><span>${icons[categorySlug] ?? "✧"}</span></div>
+      <div class="course-card-art course-art-${escapeHtml(categorySlug)}"><span>${courseCategoryIcon(categorySlug)}</span></div>
       <div class="course-card-top">
         <span class="category-chip">${escapeHtml(course.category.name)}</span>
         ${course.isPublished ? "" : '<span class="draft-chip">Draft</span>'}
@@ -304,7 +310,7 @@ async function renderStudentDashboard(generation) {
       <article class="metric-card"><span class="metric-icon">▤</span><strong>${enrolled.length}</strong><span>Enrolled courses</span></article>
       <article class="metric-card"><span class="metric-icon">✓</span><strong>${completed}</strong><span>Completed assignments</span></article>
       <article class="metric-card"><span class="metric-icon">◷</span><strong>${pending}</strong><span>Pending assignments</span></article>
-      <article class="metric-card"><span class="metric-icon">↗</span><strong>${progress}%</strong><span>Overall progress</span></article>
+      <article class="metric-card"><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15l4-4 3 2 5-7m-4 0h4v4"/></svg></span><strong>${progress}%</strong><span>Overall progress</span></article>
     </section>
     <div class="section-heading">
       <div><p class="section-kicker">PICK UP WHERE YOU LEFT OFF</p><h2>My courses</h2></div>
@@ -546,7 +552,7 @@ async function renderCourseDetail(courseId) {
     ${canManage || isEnrolled ? `
       <section class="section-heading course-assignment-heading"><div><p class="section-kicker">LEARN AT YOUR PACE</p><h2>Lessons and resources</h2></div><span class="count-chip">${lessons.length}</span></section>
       ${lessons.length ? `<div class="lesson-list">${lessons.map((lesson, index) => `
-        <article class="panel lesson-card"><div class="lesson-number">${index + 1}</div><div class="lesson-copy"><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.content)}</p>${lesson.resource_url ? `<a class="lesson-resource" href="${escapeHtml(lesson.resource_url)}" target="_blank" rel="noopener noreferrer">Open learning resource ↗</a>` : ""}</div></article>`).join("")}</div>` : `<div class="empty-panel lesson-empty"><span class="empty-symbol">✧</span><h3>Your learning materials will appear here.</h3><p>${canManage ? "Add the first lesson below to give students a clear place to begin." : "The teacher has not added lessons yet."}</p></div>`}
+        <article class="panel lesson-card"><div class="lesson-number">${index + 1}</div><div class="lesson-copy"><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.content)}</p>${lesson.resource_url ? `<a class="lesson-resource" href="${escapeHtml(lesson.resource_url)}" target="_blank" rel="noopener noreferrer">Open learning resource <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4h6v6m-1-5-9 9"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg></a>` : ""}</div></article>`).join("")}</div>` : `<div class="empty-panel lesson-empty"><span class="empty-symbol">✧</span><h3>Your learning materials will appear here.</h3><p>${canManage ? "Add the first lesson below to give students a clear place to begin." : "The teacher has not added lessons yet."}</p></div>`}
     ` : ""}
     ${canManage ? `
       <details class="panel create-panel">
