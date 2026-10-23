@@ -8,6 +8,9 @@ const accountBar = document.querySelector("#account-bar");
 const homeNavigation = document.querySelector("#home-navigation");
 const homeHeaderActions = document.querySelector(".home-header-actions");
 const toast = document.querySelector("#toast");
+const themeToggle = document.querySelector("[data-theme-toggle]");
+
+const THEME_KEY = "daymark-theme";
 
 let currentUser = null;
 let currentView = null;
@@ -82,6 +85,32 @@ async function request(url, options = {}) {
     throw error;
   }
   return payload;
+}
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("dark-theme", isDark);
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+  const label = themeToggle?.querySelector(".theme-toggle-label");
+  const icon = themeToggle?.querySelector(".theme-toggle-icon");
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+  }
+  if (label) label.textContent = isDark ? "Light mode" : "Dark mode";
+  if (icon) icon.textContent = isDark ? "☀" : "☾";
+  window.localStorage.setItem(THEME_KEY, theme);
+}
+
+function initializeTheme() {
+  const savedTheme = window.localStorage.getItem(THEME_KEY);
+  const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = savedTheme ?? (systemPrefersDark ? "dark" : "light");
+  applyTheme(theme);
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark-theme") ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
 }
 
 function showToast(message, isError = false) {
@@ -895,6 +924,7 @@ document.querySelector("#logout-button").addEventListener("click", async () => {
 });
 
 (async function initialize() {
+  initializeTheme();
   document.querySelector("#current-year").textContent = String(new Date().getFullYear());
   try {
     const result = await request("/api/me");

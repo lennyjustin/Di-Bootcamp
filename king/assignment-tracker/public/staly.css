@@ -12,6 +12,28 @@
   --muted: #79847c;
   --green: #39775c;
   --line: #e9ece6;
+  --bg-page: #f7f8f4;
+  --bg-panel: rgba(255, 255, 255, 0.68);
+  --bg-soft: rgba(255, 255, 255, 0.86);
+  --text-main: #24352d;
+  --text-soft: #79847c;
+  --glass-border: rgba(36, 53, 45, 0.09);
+  --shadow-glass: rgba(40, 58, 46, 0.06);
+}
+
+body.dark-theme {
+  color-scheme: dark;
+  --ink: #edf5ee;
+  --muted: #a7b9b3;
+  --green: #8de0b7;
+  --line: rgba(148, 163, 184, 0.22);
+  --bg-page: #0d1420;
+  --bg-panel: rgba(17, 24, 37, 0.68);
+  --bg-soft: rgba(20, 28, 42, 0.88);
+  --text-main: #edf5ee;
+  --text-soft: #b3c4bd;
+  --glass-border: rgba(148, 163, 184, 0.18);
+  --shadow-glass: rgba(2, 6, 23, 0.62);
 }
 
 * {
@@ -24,7 +46,15 @@ body {
   margin: 0;
   background:
     radial-gradient(ellipse at 48% 28%, rgba(226, 235, 224, 0.5), transparent 40%),
-    #f7f8f4;
+    var(--bg-page);
+  color: var(--text-main);
+  transition: background 200ms ease, color 200ms ease;
+}
+
+body.dark-theme {
+  background:
+    radial-gradient(ellipse at 48% 28%, rgba(87, 130, 143, 0.22), transparent 40%),
+    var(--bg-page);
 }
 
 button,
@@ -35,6 +65,57 @@ input {
 .page-shell {
   width: min(1100px, calc(100% - 64px));
   margin: 0 auto;
+}
+
+body.dark-theme .topbar,
+body.dark-theme .panel,
+body.dark-theme .featured-course,
+body.dark-theme .path-card,
+body.dark-theme .auth-panel,
+body.dark-theme .dashboard-card,
+body.dark-theme .course-card,
+body.dark-theme .assignment-card,
+body.dark-theme .submission-card,
+body.dark-theme .stat-card,
+body.dark-theme .lesson-card,
+body.dark-theme .home-highlight,
+body.dark-theme .home-benefits article {
+  background: var(--bg-panel);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 38px var(--shadow-glass);
+}
+
+body.dark-theme .brand,
+body.dark-theme .account-name,
+body.dark-theme .topbar-note,
+body.dark-theme .intro-copy,
+body.dark-theme .panel h2,
+body.dark-theme .list-heading h2,
+body.dark-theme .assignment-title,
+body.dark-theme .field label,
+body.dark-theme .empty-state h3,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p {
+  color: var(--text-main);
+}
+
+body.dark-theme .brand-mark,
+body.dark-theme .heading-icon,
+body.dark-theme .empty-illustration,
+body.dark-theme .assignment-marker,
+body.dark-theme .status-dot {
+  background: rgba(141, 224, 183, 0.12);
+}
+
+body.dark-theme .field input,
+body.dark-theme .field textarea,
+body.dark-theme .field select {
+  background: rgba(7, 14, 24, 0.72);
+  border-color: var(--glass-border);
+  color: var(--text-main);
 }
 
 .topbar {
