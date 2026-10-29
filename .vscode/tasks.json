@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run storytelling app",
+			"type": "shell",
+			"command": "npm run dev",
+			"args": [],
+			"options": {
+				"cwd": "${workspaceFolder}/week 10/Day 5/Exercises xp"
+			},
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

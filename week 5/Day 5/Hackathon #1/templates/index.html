@@ -23,6 +23,86 @@
       </header>
 
       <main>
+        <section class="daymark-portal" aria-labelledby="daymark-title">
+          <div class="portal-glow glow-one"></div>
+          <div class="portal-glow glow-two"></div>
+
+          <div class="portal-topbar">
+            <div>
+              <p class="eyebrow">Daymark Learning Portal</p>
+              <h1 id="daymark-title">Your courses, assignments, and pass/fail progress</h1>
+            </div>
+            <button type="button" class="portal-link-btn">Back to learn page</button>
+          </div>
+
+          <div class="portal-grid">
+            <div class="portal-panel portal-form-panel">
+              <h2>Add a new assignment</h2>
+              <form id="portal-assignment-form" class="portal-form">
+                <label>
+                  Assignment title
+                  <input id="portal-assignment-title" type="text" name="title" placeholder="e.g. Final project brief" required />
+                </label>
+                <label>
+                  Course
+                  <select id="portal-course-select" name="course"></select>
+                </label>
+                <label>
+                  Due date
+                  <input id="portal-assignment-date" type="date" name="dueDate" required />
+                </label>
+                <label>
+                  Teacher
+                  <input id="portal-assignment-teacher" type="text" name="teacher" placeholder="Teacher name" />
+                </label>
+                <label>
+                  Pass mark %
+                  <input id="portal-pass-mark" type="number" min="1" max="100" value="50" name="passMark" />
+                </label>
+                <button type="submit" class="portal-submit-btn">Submit assignment</button>
+              </form>
+              <p id="portal-form-status" class="portal-form-status" aria-live="polite"></p>
+            </div>
+
+            <div class="portal-panel portal-summary-panel">
+              <div class="mini-summary-card">
+                <span class="summary-label">Student</span>
+                <strong id="portal-student-name">Amina Njeri</strong>
+              </div>
+              <div class="mini-summary-card">
+                <span class="summary-label">Enrolled courses</span>
+                <strong id="portal-course-count">0</strong>
+              </div>
+              <div class="mini-summary-card success">
+                <span class="summary-label">Passed</span>
+                <strong id="portal-passed-count">0</strong>
+              </div>
+              <div class="mini-summary-card danger">
+                <span class="summary-label">Needs retake</span>
+                <strong id="portal-failed-count">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="portal-lower-grid">
+            <div class="portal-panel">
+              <div class="panel-heading">
+                <h2>Course catalog</h2>
+                <span class="panel-tag">All areas</span>
+              </div>
+              <div id="course-grid" class="course-grid"></div>
+            </div>
+
+            <div class="portal-panel">
+              <div class="panel-heading">
+                <h2>Assignments</h2>
+                <span class="panel-tag">Updated live</span>
+              </div>
+              <div id="assignment-list" class="assignment-list"></div>
+            </div>
+          </div>
+        </section>
+
         <section id="home-screen" class="screen active">
           <div class="hero-card">
             <div class="hero-copy">

@@ -14,11 +14,16 @@ from database import (
     get_lesson,
     init_database,
     list_curriculum_plans,
+    list_daymark_assignments,
+    list_daymark_courses,
     list_lessons,
     list_quiz_attempts,
     save_curriculum_plan,
+    save_daymark_assignment,
+    save_daymark_course,
     save_lesson,
     save_quiz_attempt,
+    update_daymark_assignment_result,
 )
 
 load_dotenv()
@@ -353,6 +358,128 @@ def get_learning_content(subject: str, topic: str) -> dict[str, Any]:
             result["revision_tasks"] = mathematics.get("questions", [])
 
         return result
+
+
+@app.route("/api/portal/summary")
+def portal_summary():
+    return jsonify(
+        {
+            "student": {"name": "Amina Njeri", "level": "Year 2"},
+            "courses": list_daymark_courses(app.config["DATABASE_PATH"]),
+            "assignments": list_daymark_assignments(app.config["DATABASE_PATH"]),
+        }
+    )
+
+
+@app.route("/api/portal/courses", methods=["GET", "POST"])
+def portal_courses():
+    if request.method == "GET":
+        return jsonify({"courses": list_daymark_courses(app.config["DATABASE_PATH"])})
+
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON request body is required."}), 400
+
+    title = str(data.get("title", "")).strip()
+    category = str(data.get("category", "General")).strip()
+    teacher = str(data.get("teacher", "Instructor")).strip()
+    level = str(data.get("level", "Beginner")).strip()
+    description = str(data.get("description", "")).strip()
+
+    if not title:
+        return jsonify({"error": "Course title is required."}), 400
+
+    course_id = save_daymark_course(
+        app.config["DATABASE_PATH"],
+        title,
+        category or "General",
+        teacher or "Instructor",
+        level or "Beginner",
+        description,
+    )
+    return jsonify({"id": course_id, "title": title}), 201
+
+
+@app.route("/api/portal/assignments", methods=["GET", "POST"])
+def portal_assignments():
+    if request.method == "GET":
+        return jsonify({"assignments": list_daymark_assignments(app.config["DATABASE_PATH"])})
+
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON request body is required."}), 400
+
+    title = str(data.get("title", "")).strip()
+    due_date = str(data.get("dueDate", "")).strip() or str(data.get("due_date", "")).strip()
+    teacher = str(data.get("teacher", "Instructor")).strip()
+    description = str(data.get("description", "")).strip()
+    course_name = str(data.get("course", "")).strip() or str(data.get("courseName", "")).strip()
+    pass_mark = data.get("passMark", 50) or data.get("pass_mark", 50)
+
+    if not title or not due_date or not course_name:
+        return jsonify({"error": "Assignment title, due date, and course are required."}), 400
+
+    if isinstance(pass_mark, bool):
+        return jsonify({"error": "Pass mark must be a number."}), 400
+
+    try:
+        pass_mark_int = int(pass_mark)
+    except (TypeError, ValueError):
+        return jsonify({"error": "Pass mark must be an integer."}), 400
+
+    courses = list_daymark_courses(app.config["DATABASE_PATH"])
+    course = next((item for item in courses if item["title"].lower() == course_name.lower()), None)
+    if course is None:
+        course_id = save_daymark_course(
+            app.config["DATABASE_PATH"],
+            course_name,
+            "General",
+            teacher or "Instructor",
+            "Beginner",
+            description,
+        )
+    else:
+        course_id = int(course["id"])
+
+    assignment_id = save_daymark_assignment(
+        app.config["DATABASE_PATH"],
+        course_id,
+        title,
+        due_date,
+        teacher or course.get("teacher", "Instructor") if course else teacher or "Instructor",
+        description,
+        pass_mark_int,
+    )
+    return jsonify({"id": assignment_id, "title": title}), 201
+
+
+@app.route("/api/portal/assignments/<int:assignment_id>/grade", methods=["POST"])
+def portal_grade_assignment(assignment_id: int):
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON request body is required."}), 400
+
+    result = str(data.get("result", "")).strip().lower()
+    score = data.get("score")
+    if score is not None and isinstance(score, bool):
+        return jsonify({"error": "Score must be a number."}), 400
+
+    if score is not None:
+        try:
+            score = int(score)
+        except (TypeError, ValueError):
+            return jsonify({"error": "Score must be an integer."}), 400
+
+    try:
+        updated = update_daymark_assignment_result(
+            app.config["DATABASE_PATH"], assignment_id, result or "pending", score
+        )
+    except LookupError as error:
+        return jsonify({"error": str(error)}), 404
+    except ValueError as error:
+        return jsonify({"error": str(error)}), 400
+
+    return jsonify(updated)
 
 
 @app.route("/")

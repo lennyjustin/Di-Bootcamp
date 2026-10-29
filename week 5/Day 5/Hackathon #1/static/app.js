@@ -34,6 +34,14 @@ const curriculumResources = document.getElementById('curriculum-resources');
 const learningHistoryList = document.getElementById('learning-history-list');
 const historyStatus = document.getElementById('history-status');
 const progressSaveStatus = document.getElementById('progress-save-status');
+const portalAssignmentForm = document.getElementById('portal-assignment-form');
+const portalFormStatus = document.getElementById('portal-form-status');
+const portalCourseSelect = document.getElementById('portal-course-select');
+const portalCourseCount = document.getElementById('portal-course-count');
+const portalPassedCount = document.getElementById('portal-passed-count');
+const portalFailedCount = document.getElementById('portal-failed-count');
+const courseGrid = document.getElementById('course-grid');
+const assignmentList = document.getElementById('assignment-list');
 
 let currentLesson = null;
 let currentQuestionIndex = 0;
@@ -431,6 +439,130 @@ function handleLearn(event) {
     });
 }
 
+function populateCourseSelect(courses) {
+  portalCourseSelect.innerHTML = courses.map((course) => `
+    <option value="${course.title}">${course.title}</option>
+  `).join('');
+}
+
+function renderCourseCards(courses) {
+  courseGrid.innerHTML = courses.map((course) => `
+    <article class="course-card">
+      <div class="course-card-header">
+        <strong>${course.title}</strong>
+        <span class="course-badge">${course.category}</span>
+      </div>
+      <div class="course-meta">
+        <div>Teacher: ${course.teacher}</div>
+        <div>Level: ${course.level}</div>
+        <div>${course.description || 'Flexible course content.'}</div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderAssignments(assignments) {
+  assignmentList.innerHTML = assignments.map((assignment) => {
+    const statusClass = String(assignment.status || 'pending').toLowerCase() === 'failed' ? 'failed' : '';
+    const statusText = String(assignment.status || 'pending').toLowerCase();
+    const scoreText = assignment.score !== null && assignment.score !== undefined ? `${assignment.score}/100` : 'Not graded';
+    return `
+      <article class="assignment-item">
+        <div class="assignment-header">
+          <strong>${assignment.title}</strong>
+          <span class="assignment-status ${statusClass}">${statusText}</span>
+        </div>
+        <div class="assignment-meta">
+          <div>Course: ${assignment.course_title}</div>
+          <div>Due: ${assignment.due_date}</div>
+          <div>Teacher: ${assignment.teacher}</div>
+          <div>Pass mark: ${assignment.pass_mark}%</div>
+          <div>Result: ${scoreText}</div>
+        </div>
+        <div class="assignment-actions">
+          <button type="button" class="status-btn ${statusClass}" data-grade-result="passed" data-assignment-id="${assignment.id}">Pass</button>
+          <button type="button" class="status-btn failed" data-grade-result="failed" data-assignment-id="${assignment.id}">Fail</button>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  portalCourseCount.textContent = String(assignments.length || 0);
+  portalPassedCount.textContent = String(assignments.filter((assignment) => String(assignment.status || '').toLowerCase() === 'passed').length);
+  portalFailedCount.textContent = String(assignments.filter((assignment) => String(assignment.status || '').toLowerCase() === 'failed').length);
+}
+
+async function loadPortalData() {
+  try {
+    const response = await fetch('/api/portal/summary');
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to load portal data.');
+    }
+
+    populateCourseSelect(data.courses || []);
+    renderCourseCards(data.courses || []);
+    renderAssignments(data.assignments || []);
+  } catch (error) {
+    portalFormStatus.textContent = error.message || 'Unable to load portal data.';
+  }
+}
+
+async function handlePortalAssignmentSubmit(event) {
+  event.preventDefault();
+  portalFormStatus.textContent = 'Submitting assignment...';
+
+  const title = document.getElementById('portal-assignment-title').value.trim();
+  const course = portalCourseSelect.value;
+  const dueDate = document.getElementById('portal-assignment-date').value;
+  const teacher = document.getElementById('portal-assignment-teacher').value.trim();
+  const passMark = document.getElementById('portal-pass-mark').value;
+
+  try {
+    const response = await fetch('/api/portal/assignments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, course, dueDate, teacher, passMark }),
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to save assignment.');
+    }
+
+    portalFormStatus.textContent = 'Assignment saved successfully.';
+    portalAssignmentForm.reset();
+    document.getElementById('portal-pass-mark').value = '50';
+    await loadPortalData();
+  } catch (error) {
+    portalFormStatus.textContent = error.message || 'Unable to save assignment.';
+  }
+}
+
+async function gradeAssignment(event) {
+  const button = event.target.closest('[data-grade-result]');
+  if (!button) return;
+
+  const assignmentId = Number(button.dataset.assignmentId);
+  const result = button.dataset.gradeResult;
+  const scoreValue = result === 'passed' ? 86 : 42;
+
+  try {
+    const response = await fetch(`/api/portal/assignments/${assignmentId}/grade`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ result, score: scoreValue }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Unable to update assignment status.');
+    }
+    await loadPortalData();
+  } catch (error) {
+    portalFormStatus.textContent = error.message || 'Unable to update assignment status.';
+  }
+}
+
 function startQuiz() {
   resetQuizState();
   renderQuestion();
@@ -438,6 +570,8 @@ function startQuiz() {
 }
 
 form.addEventListener('submit', handleLearn);
+portalAssignmentForm.addEventListener('submit', handlePortalAssignmentSubmit);
+assignmentList.addEventListener('click', gradeAssignment);
 learningHistoryList.addEventListener('click', (event) => {
   const button = event.target.closest('[data-lesson-id]');
   if (button) {
@@ -458,4 +592,5 @@ showScreen('home');
 loadCurriculumGuide();
 loadTopicSuggestions();
 loadLearningHistory();
+loadPortalData();
 subjectInput.addEventListener('change', loadTopicSuggestions);
