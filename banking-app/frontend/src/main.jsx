@@ -223,7 +223,7 @@ function ResetPassword({ token, onComplete }) {
   );
 }
 
-function MemberSignUp({ onSignIn, onBack }) {
+function MemberSignUp({ onSignIn, onBack, staffMode = false }) {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -270,12 +270,17 @@ function MemberSignUp({ onSignIn, onBack }) {
             <div className="brand-text">Sacco<span>Banking</span><small>Application submitted</small></div>
           </div>
           <h1>Application received</h1>
-          <p>Your membership application is waiting for SACCO administrator review. After approval, sign in with the email and password you entered on this form to open your own member account.</p>
+          <p>
+            Your membership application is waiting for SACCO administrator review. No member or savings account is active until it is approved.
+            {' '}{staffMode
+              ? 'After approval, the applicant can sign in using the email and password entered on the form.'
+              : 'After approval, sign in using the email and password entered on this form.'}
+          </p>
           <div className="alert signup-notice" role="status">
             Reference: <strong>{submittedApplication.id}</strong><br />
             No membership, savings account, or portal access is active yet. No financial contribution is being collected with this application.
           </div>
-          <button type="button" className="primary-button sign-in-button" onClick={onBack}>Return to SaccoBanking</button>
+          <button type="button" className="primary-button sign-in-button" onClick={onBack}>{staffMode ? 'Return to management' : 'Return to SaccoBanking'}</button>
         </section>
       </main>
     );
@@ -284,7 +289,7 @@ function MemberSignUp({ onSignIn, onBack }) {
   return (
     <main className="auth-screen">
       <form className="auth-card signup-card" onSubmit={handleSubmit}>
-        <button type="button" className="login-back-link" onClick={onBack}><Icon name="arrowLeft" size={16} /> Back to SaccoBanking</button>
+        <button type="button" className="login-back-link" onClick={onBack}><Icon name="arrowLeft" size={16} /> {staffMode ? 'Back to management' : 'Back to SaccoBanking'}</button>
         <div className="auth-brand">
           <div className="brand-logo">S</div>
           <div className="brand-text">Sacco<span>Banking</span><small>Membership application</small></div>
@@ -451,7 +456,7 @@ function MemberSignUp({ onSignIn, onBack }) {
         <button className="primary-button sign-in-button" type="submit" disabled={submitting}>
           {submitting ? 'Submitting application…' : 'Submit membership application'}
         </button>
-        <button type="button" className="auth-switch-button" onClick={onSignIn}>Already registered? Sign in</button>
+        {!staffMode && <button type="button" className="auth-switch-button" onClick={onSignIn}>Already registered? Sign in</button>}
       </form>
     </main>
   );
@@ -554,19 +559,23 @@ function App() {
   if (!user && showForgotPassword) {
     return <ForgotPassword onBack={() => setShowForgotPassword(false)} />;
   }
+  if (showSignUp) {
+    return (
+      <MemberSignUp
+        staffMode={Boolean(user)}
+        onBack={() => setShowSignUp(false)}
+        onSignIn={() => {
+          setShowSignUp(false);
+          if (!user) setShowLogin(true);
+        }}
+      />
+    );
+  }
   if (!user && !showLogin && !showSignUp) {
     return (
       <LandingPage
         onSignIn={() => { setShowSignUp(false); setShowLogin(true); }}
         onSignUp={() => { setShowLogin(false); setShowSignUp(true); }}
-      />
-    );
-  }
-  if (!user && showSignUp) {
-    return (
-      <MemberSignUp
-        onBack={() => setShowSignUp(false)}
-        onSignIn={() => { setShowSignUp(false); setShowLogin(true); }}
       />
     );
   }
@@ -894,7 +903,7 @@ function App() {
                 : page === 'Membership applications' ? <MembershipApplications />
                   : page === 'Mobile payments' ? <MobilePayments />
                     : page === 'Credit portfolio' ? <CreditPortfolio />
-                      : <ManagementPage page={page} search={search} onChanged={loadDashboard} user={user} />
+                      : <ManagementPage page={page} search={search} onChanged={loadDashboard} onAddMember={() => setShowSignUp(true)} user={user} />
           }
         </div>
       </main>

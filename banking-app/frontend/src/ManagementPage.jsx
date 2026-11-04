@@ -6,7 +6,7 @@ import LoanSchedule from './LoanSchedule.jsx';
 import LoanTools from './LoanTools.jsx';
 
 const pageDetails = {
-  Members: ['Members', 'Register members and manage membership status.'],
+  Members: ['Members', 'Submit membership applications for review and manage active members.'],
   Savings: ['Savings accounts', 'Review balances and record deposits or withdrawals.'],
   Loans: ['Loans', 'Review applications, record disbursements, and repayments.'],
   'Shares & dividends': ['Shares & dividend reporting', 'Review recorded share holdings; no dividend calculation or payout is enabled.'],
@@ -149,7 +149,7 @@ function exportTransactions(transactions) {
   URL.revokeObjectURL(url);
 }
 
-export default function ManagementPage({ page, search, onChanged, user }) {
+export default function ManagementPage({ page, search, onChanged, onAddMember, user }) {
   const [records, setRecords] = useState({ page: null, data: [] });
   const [members, setMembers] = useState([]);
   const [shareSummary, setShareSummary] = useState(null);
@@ -246,7 +246,6 @@ export default function ManagementPage({ page, search, onChanged, user }) {
 
     let path;
     const method = 'POST';
-    if (page === 'Members') path = '/members';
     if (page === 'Savings') {
       const endpoint = form.action === 'deposit' ? 'deposits' : 'withdrawals';
       path = `/savings/${form.record.id}/${endpoint}`;
@@ -327,15 +326,7 @@ export default function ManagementPage({ page, search, onChanged, user }) {
     }
   }
 
-  const formFields = form?.action === 'new' && page === 'Members'
-    ? [
-      { name: 'fullName', label: 'Full name', maxLength: 120 },
-      { name: 'phone', label: 'Phone number', maxLength: 20 },
-      { name: 'nationalId', label: 'National ID', maxLength: 32 },
-      { name: 'email', label: 'Email address', type: 'email', required: false, maxLength: 254 },
-      { name: 'address', label: 'Address', required: false, maxLength: 300 },
-    ]
-    : page === 'Savings'
+  const formFields = page === 'Savings'
       ? [
         { name: 'amount', label: 'Amount (KES)', type: 'number', min: 1, step: 1 },
         { name: 'channel', label: 'Channel', options: [{ value: 'cash', label: 'Cash' }, { value: 'bank', label: 'Bank' }, { value: 'mpesa', label: 'M-Pesa' }] },
@@ -392,7 +383,7 @@ export default function ManagementPage({ page, search, onChanged, user }) {
       <div className="management-heading">
         <div><div className="eyebrow">Management</div><h2>{title}</h2><p>{pageDescription}</p></div>
         {titleAction && (
-          <button type="button" className="primary-button" onClick={() => openForm('new')}>
+          <button type="button" className="primary-button" onClick={() => (page === 'Members' ? onAddMember() : openForm('new'))}>
             {page === 'Members' ? 'Add member' : 'New loan application'}
           </button>
         )}
