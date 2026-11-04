@@ -28,6 +28,9 @@
     h2 { margin: 28px 0 12px; font-size: 17px; }
     .subtitle, .note { color: #526579; }
     .note { padding: 12px 14px; border-left: 4px solid #21836b; background: #f0f8f5; }
+    .contact-card { margin: 18px 0; padding: 14px 16px; border: 1px solid #d5dee6; border-radius: 6px; background: #f8fafc; }
+    .contact-card h2 { margin: 0 0 8px; }
+    .contact-card p { margin: 5px 0; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
     .field { min-height: 44px; }
     .field.wide { grid-column: 1 / -1; }
@@ -62,7 +65,13 @@
   </div>
   <main>
     <h1>Membership Application</h1>
-    <p class="subtitle">SaccoBanking · Blank printable form</p>
+    <p class="subtitle">SaccoBanking · Member application form</p>
+    <section class="contact-card" aria-label="SACCO contact and information">
+      <h2>SaccoBanking</h2>
+      <p>SaccoBanking is a digital workspace for SACCO membership, savings, and lending services. Submit a complete application with the requested supporting documents; membership is activated only after an authorized SACCO review.</p>
+      <p><strong>Email:</strong> admin@sacco.local <em>(local development address; replace with the SACCO’s public email before distribution)</em></p>
+      <p><strong>Phone / office address:</strong> Contact details not provided.</p>
+    </section>
     <p class="note"><strong>Before you begin:</strong> Applicants must be Kenyan citizens aged 18 or older. Membership fees and contributions are awaiting confirmation; no payment is collected with this application. Do not write an account password on this paper form.</p>
 
     <h2>Applicant details</h2>
