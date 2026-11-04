@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blank Membership Application - SaccoBanking</title>
+  <style>
+    :root {
+      color: #172a3a;
+      font: 15px/1.45 Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #edf2f6;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 24px auto;
+      padding: 36px;
+      background: white;
+      box-shadow: 0 8px 28px #172a3a1a;
+    }
+
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 26px; }
+    h2 { margin: 28px 0 12px; font-size: 17px; }
+    .subtitle, .note { color: #526579; }
+    .note { padding: 12px 14px; border-left: 4px solid #21836b; background: #f0f8f5; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+    .field { min-height: 44px; }
+    .field.wide { grid-column: 1 / -1; }
+    .label { display: block; margin-bottom: 5px; font-weight: 700; }
+    .line { height: 24px; border-bottom: 1px solid #7890a3; }
+    .choices { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 5px 0; }
+    .choice { white-space: nowrap; }
+    .checklist { display: grid; gap: 8px; }
+    .signature { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 24px; }
+    .actions { margin: 0 auto 24px; text-align: center; }
+    button { padding: 10px 16px; border: 0; border-radius: 5px; background: #176b58; color: white; font: inherit; cursor: pointer; }
+    footer { margin-top: 26px; padding-top: 12px; border-top: 1px solid #d5dee6; color: #526579; font-size: 12px; }
+
+    @media (max-width: 620px) {
+      main { margin: 0; padding: 22px; }
+      .grid, .signature { grid-template-columns: 1fr; }
+      .field.wide { grid-column: auto; }
+    }
+
+    @media print {
+      body { background: white; }
+      main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      .actions { display: none; }
+      .note { break-inside: avoid; }
+      @page { size: A4; margin: 16mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+  <main>
+    <h1>Membership Application</h1>
+    <p class="subtitle">SaccoBanking · Blank printable form</p>
+    <p class="note"><strong>Before you begin:</strong> Applicants must be Kenyan citizens aged 18 or older. Membership fees and contributions are awaiting confirmation; no payment is collected with this application. Do not write an account password on this paper form.</p>
+
+    <h2>Applicant details</h2>
+    <div class="grid">
+      <div class="field"><span class="label">Full name</span><div class="line"></div></div>
+      <div class="field"><span class="label">Date of birth (DD / MM / YYYY)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Email address</span><div class="line"></div></div>
+      <div class="field"><span class="label">Phone number</span><div class="line"></div></div>
+      <div class="field"><span class="label">Citizenship</span><div class="line"></div></div>
+      <div class="field">
+        <span class="label">Identification type</span>
+        <div class="choices"><span class="choice">☐ National ID</span><span class="choice">☐ Passport</span></div>
+      </div>
+      <div class="field"><span class="label">Identification number</span><div class="line"></div></div>
+      <div class="field"><span class="label">KRA PIN</span><div class="line"></div></div>
+      <div class="field wide"><span class="label">Residential address</span><div class="line"></div></div>
+    </div>
+
+    <h2>Membership eligibility</h2>
+    <div class="grid">
+      <div class="field">
+        <span class="label">Membership category</span>
+        <div class="choices"><span class="choice">☐ Open membership</span><span class="choice">☐ Common bond</span></div>
+      </div>
+      <div class="field"><span class="label">If common bond, describe it</span><div class="line"></div></div>
+    </div>
+
+    <h2>Next of kin</h2>
+    <div class="grid">
+      <div class="field"><span class="label">Full name</span><div class="line"></div></div>
+      <div class="field"><span class="label">Relationship</span><div class="line"></div></div>
+      <div class="field"><span class="label">Phone number</span><div class="line"></div></div>
+    </div>
+
+    <h2>Employment and income</h2>
+    <div class="grid">
+      <div class="field">
+        <span class="label">Employment status</span>
+        <div class="choices"><span class="choice">☐ Employed</span><span class="choice">☐ Self-employed</span><span class="choice">☐ Unemployed</span><span class="choice">☐ Retired</span><span class="choice">☐ Student</span></div>
+      </div>
+      <div class="field"><span class="label">Occupation / source of income</span><div class="line"></div></div>
+      <div class="field"><span class="label">Employer (if applicable)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Monthly income (KES)</span><div class="line"></div></div>
+    </div>
+
+    <h2>Application statement</h2>
+    <p>Why would you like to join the SACCO? Please include any other relevant information.</p>
+    <div class="line"></div><div class="line"></div><div class="line"></div>
+
+    <h2>Supporting documents</h2>
+    <div class="checklist">
+      <span>☐ Passport photograph (JPEG or PNG)</span>
+      <span>☐ KRA PIN document (PDF, JPEG, or PNG)</span>
+      <span>☐ Identification document (PDF, JPEG, or PNG)</span>
+    </div>
+
+    <h2>Declaration and consent</h2>
+    <div class="checklist">
+      <span>☐ I confirm that I am at least 18 years old and that the information provided is accurate.</span>
+      <span>☐ I agree to the SACCO verifying my eligibility and supporting documents.</span>
+      <span>☐ I understand that submitting an application does not guarantee approval or activate membership.</span>
+    </div>
+    <div class="signature">
+      <div class="field"><span class="label">Applicant signature</span><div class="line"></div></div>
+      <div class="field"><span class="label">Date</span><div class="line"></div></div>
+    </div>
+
+    <footer>
+      This printable blank form is a preparation aid and cannot be submitted through the application system. To apply online, use the website’s “Become a member” flow and upload the required supporting documents. Set your account password only in the secure online form.
+    </footer>
+  </main>
+</body>
+</html>

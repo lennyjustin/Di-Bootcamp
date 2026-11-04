@@ -150,7 +150,7 @@ function exportTransactions(transactions) {
 }
 
 export default function ManagementPage({ page, search, onChanged, user }) {
-  const [records, setRecords] = useState([]);
+  const [records, setRecords] = useState({ page: null, data: [] });
   const [members, setMembers] = useState([]);
   const [shareSummary, setShareSummary] = useState(null);
   const [dashboard, setDashboard] = useState(null);
@@ -195,7 +195,7 @@ export default function ManagementPage({ page, search, onChanged, user }) {
         }),
       };
       const data = await requests[page]();
-      if (currentRequestId === requestId.current) setRecords(data);
+      if (currentRequestId === requestId.current) setRecords({ page, data });
     } catch (requestError) {
       if (currentRequestId === requestId.current) {
         if (requestError.status === 401) window.dispatchEvent(new Event('sacco:unauthorized'));
@@ -222,11 +222,12 @@ export default function ManagementPage({ page, search, onChanged, user }) {
     }
   }, [page]);
 
+  const pageRecords = records.page === page ? records.data : [];
   const visibleRecords = useMemo(() => {
-    if (!search || page === 'Members') return records;
+    if (!search || page === 'Members') return pageRecords;
     const needle = search.toLowerCase();
-    return records.filter((record) => JSON.stringify(record).toLowerCase().includes(needle));
-  }, [records, search, page]);
+    return pageRecords.filter((record) => JSON.stringify(record).toLowerCase().includes(needle));
+  }, [pageRecords, search, page]);
 
   function openForm(action, record = null) {
     setFormError('');
@@ -436,7 +437,7 @@ export default function ManagementPage({ page, search, onChanged, user }) {
             <div className="panel table-wrap">
               <table><thead><tr><th>Account no.</th><th>Member</th><th>Phone</th><th>Balance</th><th>Minimum</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>{visibleRecords.map((account) => <tr key={account.id}>
-                  <td>{account.accountNo}</td><td className="member-name">{account.member.fullName}</td><td>{account.member.phone}</td>
+                  <td>{account.accountNo}</td><td className="member-name">{account.member?.fullName || '—'}</td><td>{account.member?.phone || '—'}</td>
                   <td>{currency(account.balance)}</td><td>{currency(account.minimumBalance)}</td>
                   <td><span className={`status-badge status-${account.status}`}>{account.status}</span></td>
                   <td className="action-cell">
@@ -535,9 +536,9 @@ export default function ManagementPage({ page, search, onChanged, user }) {
           {page === 'Reports' && (
             <>
               <div className="report-summary panel">
-                <div><span>Transactions included</span><strong>{records.length}</strong></div>
-                <div><span>Deposits</span><strong>{currency(records.filter((item) => item.type === 'deposit').reduce((total, item) => total + item.amount, 0))}</strong></div>
-                <div><span>Loan disbursements</span><strong>{currency(records.filter((item) => item.type === 'loan_disbursement').reduce((total, item) => total + item.amount, 0))}</strong></div>
+                <div><span>Transactions included</span><strong>{pageRecords.length}</strong></div>
+                <div><span>Deposits</span><strong>{currency(pageRecords.filter((item) => item.type === 'deposit').reduce((total, item) => total + item.amount, 0))}</strong></div>
+                <div><span>Loan disbursements</span><strong>{currency(pageRecords.filter((item) => item.type === 'loan_disbursement').reduce((total, item) => total + item.amount, 0))}</strong></div>
               </div>
               <TransactionTable records={filteredTransactions} />
             </>
