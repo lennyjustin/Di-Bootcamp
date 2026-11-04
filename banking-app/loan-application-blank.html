@@ -39,6 +39,7 @@
     .line { height: 24px; border-bottom: 1px solid #7890a3; }
     .choices { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 5px 0; }
     .checklist { display: grid; gap: 8px; }
+    .checklist > span { min-width: 0; overflow-wrap: anywhere; }
     .signature { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 24px; }
     .actions { margin: 0 auto 24px; text-align: center; }
     button { padding: 10px 16px; border: 0; border-radius: 5px; background: #176b58; color: white; font: inherit; cursor: pointer; }
@@ -70,7 +71,7 @@
     <section class="contact-card" aria-label="SACCO contact and information">
       <p>SaccoBanking provides a digital workspace for member services, savings, and loan applications. Loan requests are reviewed by authorized SACCO staff, and submitting an application does not guarantee approval or determine final terms.</p>
       <p><strong>Email:</strong> admin@sacco.local <em>(local development address; replace with the SACCO’s public email before distribution)</em></p>
-      <p><strong>Phone / office address:</strong> Contact details not provided.</p>
+      <p><strong>Phone / office address:</strong> 011234565</p>
     </section>
     <p class="note"><strong>Important:</strong> This application is subject to SACCO review and does not guarantee approval. The interest rate and repayment schedule are illustrative until the SACCO confirms official terms. Ask the SACCO about current eligibility, fees, guarantor rules, and supporting-document requirements. Do not write an account password on this paper form.</p>
 
@@ -119,7 +120,7 @@
       <span>☐ Proof of income</span>
       <span>☐ Recent bank statement</span>
       <span>☐ Guarantor consent document (does not replace in-portal consent)</span>
-      <span>☐ Other document requested by the SACCO: __________________________________________</span>
+      <span>☐ Other document requested by the SACCO: ______________________________</span>
     </div>
     <p class="subtitle">For online submissions, PDF, JPEG, or PNG files up to 5 MB each are accepted.</p>
 
