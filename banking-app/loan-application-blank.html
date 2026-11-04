@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blank Loan Application - SaccoBanking</title>
+  <style>
+    :root {
+      color: #172a3a;
+      font: 15px/1.45 Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #edf2f6;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 24px auto;
+      padding: 36px;
+      background: white;
+      box-shadow: 0 8px 28px #172a3a1a;
+    }
+
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 26px; }
+    h2 { margin: 28px 0 12px; font-size: 17px; }
+    .subtitle, .note { color: #526579; }
+    .note { padding: 12px 14px; border-left: 4px solid #21836b; background: #f0f8f5; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+    .field { min-height: 44px; }
+    .field.wide { grid-column: 1 / -1; }
+    .label { display: block; margin-bottom: 5px; font-weight: 700; }
+    .line { height: 24px; border-bottom: 1px solid #7890a3; }
+    .choices { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 5px 0; }
+    .checklist { display: grid; gap: 8px; }
+    .signature { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 24px; }
+    .actions { margin: 0 auto 24px; text-align: center; }
+    button { padding: 10px 16px; border: 0; border-radius: 5px; background: #176b58; color: white; font: inherit; cursor: pointer; }
+    footer { margin-top: 26px; padding-top: 12px; border-top: 1px solid #d5dee6; color: #526579; font-size: 12px; }
+
+    @media (max-width: 620px) {
+      main { margin: 0; padding: 22px; }
+      .grid, .signature { grid-template-columns: 1fr; }
+      .field.wide { grid-column: auto; }
+    }
+
+    @media print {
+      body { background: white; }
+      main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      .actions { display: none; }
+      .note { break-inside: avoid; }
+      @page { size: A4; margin: 16mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+  <main>
+    <h1>Loan Application</h1>
+    <p class="subtitle">SaccoBanking · Blank printable form</p>
+    <p class="note"><strong>Important:</strong> This application is subject to SACCO review and does not guarantee approval. The interest rate and repayment schedule are illustrative until the SACCO confirms official terms. Ask the SACCO about current eligibility, fees, guarantor rules, and supporting-document requirements. Do not write an account password on this paper form.</p>
+
+    <h2>Member details</h2>
+    <div class="grid">
+      <div class="field"><span class="label">Full name</span><div class="line"></div></div>
+      <div class="field"><span class="label">Member number</span><div class="line"></div></div>
+      <div class="field"><span class="label">Phone number</span><div class="line"></div></div>
+      <div class="field"><span class="label">Email address (if available)</span><div class="line"></div></div>
+    </div>
+
+    <h2>Loan request</h2>
+    <div class="grid">
+      <div class="field"><span class="label">Requested principal (KES)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Requested term (months)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Proposed annual interest rate (%) — confirm with SACCO</span><div class="line"></div></div>
+      <div class="field"><span class="label">Date of application</span><div class="line"></div></div>
+      <div class="field wide"><span class="label">Purpose of loan</span><div class="line"></div><div class="line"></div></div>
+    </div>
+
+    <h2>Employment and finances (optional)</h2>
+    <div class="grid">
+      <div class="field">
+        <span class="label">Employment status</span>
+        <div class="choices"><span>☐ Employed</span><span>☐ Self-employed</span><span>☐ Other / not provided</span></div>
+      </div>
+      <div class="field"><span class="label">Occupation / income source</span><div class="line"></div></div>
+      <div class="field"><span class="label">Employer name (if applicable)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Monthly income (KES)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Existing monthly commitments (KES)</span><div class="line"></div></div>
+    </div>
+
+    <h2>Guarantors (if applicable)</h2>
+    <p>List proposed guarantors for follow-up. Each guarantor must provide consent through the SACCO’s approved process; listing a person here or attaching a consent document does not itself constitute approval.</p>
+    <div class="grid">
+      <div class="field"><span class="label">Guarantor name</span><div class="line"></div></div>
+      <div class="field"><span class="label">Member number / contact</span><div class="line"></div></div>
+      <div class="field"><span class="label">Proposed guarantee amount (KES)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Additional guarantor name (optional)</span><div class="line"></div></div>
+      <div class="field"><span class="label">Member number / contact</span><div class="line"></div></div>
+      <div class="field"><span class="label">Proposed guarantee amount (KES)</span><div class="line"></div></div>
+    </div>
+
+    <h2>Supporting documents (optional; confirm SACCO requirements)</h2>
+    <div class="checklist">
+      <span>☐ Proof of income</span>
+      <span>☐ Recent bank statement</span>
+      <span>☐ Guarantor consent document (does not replace in-portal consent)</span>
+      <span>☐ Other document requested by the SACCO: __________________________________________</span>
+    </div>
+    <p class="subtitle">For online submissions, PDF, JPEG, or PNG files up to 5 MB each are accepted.</p>
+
+    <h2>Applicant declaration</h2>
+    <div class="checklist">
+      <span>☐ I confirm that the information provided is accurate to the best of my knowledge.</span>
+      <span>☐ I understand that this application is subject to review and that no loan is approved by submitting this form.</span>
+      <span>☐ I understand that any guarantor must consent and receive SACCO review before a guarantee is recorded.</span>
+    </div>
+    <div class="signature">
+      <div class="field"><span class="label">Applicant signature</span><div class="line"></div></div>
+      <div class="field"><span class="label">Date</span><div class="line"></div></div>
+    </div>
+
+    <h2>For SACCO use only</h2>
+    <div class="grid">
+      <div class="field"><span class="label">Application reference</span><div class="line"></div></div>
+      <div class="field"><span class="label">Received by / date</span><div class="line"></div></div>
+      <div class="field"><span class="label">Review status</span><div class="choices"><span>☐ Pending</span><span>☐ Approved</span><span>☐ Rejected</span></div></div>
+      <div class="field"><span class="label">Reviewer / date</span><div class="line"></div></div>
+      <div class="field wide"><span class="label">Review notes</span><div class="line"></div><div class="line"></div></div>
+    </div>
+
+    <footer>
+      This printable blank form is a preparation aid and cannot be submitted through the application system. To apply online, sign in to the member portal, complete the loan application, and upload any optional supporting documents. Confirm official loan terms and requirements directly with the SACCO.
+    </footer>
+  </main>
+</body>
+</html>
