@@ -1,0 +1,7 @@
+node_modules
+.env
+*.db
+*.db-journal
+private/member-applications/
+private/loan-applications/
+npm-debug.log*

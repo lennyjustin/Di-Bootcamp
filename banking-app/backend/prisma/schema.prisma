@@ -1,0 +1,275 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String   @id @default(uuid())
+  fullName              String   @map("full_name")
+  email                 String   @unique
+  googleSub             String?  @unique @map("google_sub")
+  passwordHash          String   @map("password_hash")
+  role                  String   @default("admin")
+  isActive              Boolean  @default(true) @map("is_active")
+  passwordChangeRequired Boolean @default(false) @map("password_change_required")
+  tokenVersion          Int      @default(0) @map("token_version")
+  permissionOverrides   String?  @map("permission_overrides")
+  memberId              String?  @unique @map("member_id")
+  member                Member?  @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  membershipApplication MembershipApplication?
+  passwordResetTokens   PasswordResetToken[]
+  auditEvents           AuditEvent[]
+  reviewedGuarantees    GuaranteeRequest[] @relation("GuaranteeReviewer")
+  createdAt             DateTime @default(now()) @map("created_at")
+
+  @@index([role, isActive])
+  @@map("users")
+}
+
+model MembershipApplication {
+  id                     String   @id @default(uuid())
+  userId                 String   @unique @map("user_id")
+  user                   User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  status                 String   @default("pending")
+  phone                  String   @unique
+  dateOfBirth            DateTime @map("date_of_birth")
+  citizenship            String
+  identificationType     String   @map("identification_type")
+  identificationNumber   String   @unique @map("identification_number")
+  kraPin                 String   @map("kra_pin")
+  address                String
+  membershipType         String   @map("membership_type")
+  commonBondDetails      String?  @map("common_bond_details")
+  nextOfKinName          String   @map("next_of_kin_name")
+  nextOfKinRelationship  String   @map("next_of_kin_relationship")
+  nextOfKinPhone         String   @map("next_of_kin_phone")
+  employmentStatus       String   @map("employment_status")
+  occupation             String
+  employerName           String?  @map("employer_name")
+  monthlyIncome          BigInt   @map("monthly_income")
+  applicationStatement   String   @map("application_statement")
+  passportFile           String   @map("passport_file")
+  kraPinFile             String   @map("kra_pin_file")
+  identificationFile     String   @map("identification_file")
+  reviewedBy             String?  @map("reviewed_by")
+  reviewedAt             DateTime? @map("reviewed_at")
+  reviewNote             String?  @map("review_note")
+  createdAt              DateTime @default(now()) @map("created_at")
+
+  @@index([status, createdAt])
+  @@map("membership_applications")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique @map("token_hash")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([userId, expiresAt])
+  @@map("password_reset_tokens")
+}
+
+model AuditEvent {
+  id          String   @id @default(uuid())
+  actorUserId String?  @map("actor_user_id")
+  actor       User?    @relation(fields: [actorUserId], references: [id], onDelete: SetNull)
+  actorName   String   @map("actor_name")
+  actorRole   String   @map("actor_role")
+  method      String
+  path        String
+  statusCode  Int?     @map("status_code")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([actorUserId, createdAt])
+  @@map("audit_events")
+}
+
+model Member {
+  id         String            @id @default(uuid())
+  memberNo   String            @unique @map("member_no")
+  fullName   String            @map("full_name")
+  phone      String            @unique
+  email      String?
+  nationalId String            @unique @map("national_id")
+  dob        DateTime?
+  address    String?
+  status     String            @default("active")
+  joinedAt   DateTime          @default(now()) @map("joined_at")
+  accounts   SavingsAccount[]
+  loans      Loan[]
+  shares     Share[]
+  transactions Transaction[]
+  mpesaTransactions MpesaTransaction[]
+  portalUser User?
+  borrowedGuarantees GuaranteeRequest[] @relation("GuaranteeBorrower")
+  guaranteedRequests GuaranteeRequest[] @relation("GuaranteeGuarantor")
+
+  @@index([fullName])
+  @@map("members")
+}
+
+model SavingsAccount {
+  id             String        @id @default(uuid())
+  memberId       String        @map("member_id")
+  member         Member        @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  accountNo      String        @unique @map("account_no")
+  balance        BigInt        @default(0)
+  minimumBalance BigInt        @default(0) @map("minimum_balance")
+  interestRate   Float         @default(0) @map("interest_rate")
+  status         String        @default("active")
+  createdAt      DateTime      @default(now()) @map("created_at")
+  transactions   Transaction[]
+
+  @@index([memberId])
+  @@map("savings_accounts")
+}
+
+model Loan {
+  id                 String         @id @default(uuid())
+  loanNo             String         @unique @map("loan_no")
+  memberId           String         @map("member_id")
+  member             Member         @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  principal          BigInt
+  interestRate       Float          @map("interest_rate")
+  termMonths         Int            @map("term_months")
+  totalInterest      BigInt         @default(0) @map("total_interest")
+  totalRepayable     BigInt         @default(0) @map("total_repayable")
+  outstandingBalance BigInt         @default(0) @map("outstanding_balance")
+  status             String         @default("pending")
+  aiRiskScore        Float?         @map("ai_risk_score")
+  aiRiskLevel        String?        @map("ai_risk_level")
+  aiDecisionNote     String?        @map("ai_decision_note")
+  applicationNote    String?        @map("application_note")
+  employmentStatus   String?        @map("employment_status")
+  occupation         String?
+  employerName       String?        @map("employer_name")
+  monthlyIncome      BigInt?        @map("monthly_income")
+  monthlyCommitments BigInt?        @map("monthly_commitments")
+  appliedAt          DateTime       @default(now()) @map("applied_at")
+  approvedBy         String?        @map("approved_by")
+  disbursedAt        DateTime?      @map("disbursed_at")
+  repayments         LoanRepayment[]
+  guarantees         GuaranteeRequest[]
+  applicationDocuments LoanApplicationDocument[]
+  transactions       Transaction[]
+  mpesaTransactions  MpesaTransaction[]
+
+  @@index([memberId, status])
+  @@map("loans")
+}
+
+model LoanApplicationDocument {
+  id          String   @id @default(uuid())
+  loanId      String   @map("loan_id")
+  loan        Loan     @relation(fields: [loanId], references: [id], onDelete: Restrict)
+  documentType String  @map("document_type")
+  storedName  String   @unique @map("stored_name")
+  extension   String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([loanId, createdAt])
+  @@map("loan_application_documents")
+}
+
+model GuaranteeRequest {
+  id                 String   @id @default(uuid())
+  loanId             String   @map("loan_id")
+  loan               Loan     @relation(fields: [loanId], references: [id], onDelete: Restrict)
+  borrowerMemberId   String   @map("borrower_member_id")
+  borrower           Member   @relation("GuaranteeBorrower", fields: [borrowerMemberId], references: [id], onDelete: Restrict)
+  guarantorMemberId  String   @map("guarantor_member_id")
+  guarantor          Member   @relation("GuaranteeGuarantor", fields: [guarantorMemberId], references: [id], onDelete: Restrict)
+  amount             BigInt
+  status             String   @default("pending")
+  respondedAt        DateTime? @map("responded_at")
+  reviewedBy         String?  @map("reviewed_by")
+  reviewer           User?    @relation("GuaranteeReviewer", fields: [reviewedBy], references: [id], onDelete: SetNull)
+  reviewedAt         DateTime? @map("reviewed_at")
+  reviewNote         String?  @map("review_note")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  @@index([loanId, status])
+  @@index([borrowerMemberId, status, createdAt])
+  @@index([guarantorMemberId, status, createdAt])
+  @@map("guarantee_requests")
+}
+
+model LoanRepayment {
+  id        String   @id @default(uuid())
+  loanId    String   @map("loan_id")
+  loan      Loan     @relation(fields: [loanId], references: [id], onDelete: Restrict)
+  amount    BigInt
+  reference String   @unique
+  paidAt    DateTime @default(now()) @map("paid_at")
+
+  @@index([loanId, paidAt])
+  @@map("loan_repayments")
+}
+
+model Share {
+  id            String   @id @default(uuid())
+  memberId      String   @map("member_id")
+  member        Member   @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  units         Int
+  valuePerShare BigInt   @map("value_per_share")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@index([memberId])
+  @@map("shares")
+}
+
+model Transaction {
+  id               String         @id @default(uuid())
+  reference        String         @unique
+  memberId         String?        @map("member_id")
+  member           Member?        @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  savingsAccountId String?        @map("savings_account_id")
+  savingsAccount   SavingsAccount? @relation(fields: [savingsAccountId], references: [id], onDelete: Restrict)
+  loanId           String?        @map("loan_id")
+  loan             Loan?          @relation(fields: [loanId], references: [id], onDelete: Restrict)
+  type             String
+  amount           BigInt
+  balanceAfter     BigInt?        @map("balance_after")
+  channel          String         @default("cash")
+  status           String         @default("completed")
+  description      String?
+  createdBy        String?        @map("created_by")
+  createdAt        DateTime       @default(now()) @map("created_at")
+
+  @@index([memberId, createdAt])
+  @@index([createdAt])
+  @@map("transactions")
+}
+
+model MpesaTransaction {
+  id                String   @id @default(uuid())
+  memberId          String?  @map("member_id")
+  member            Member?  @relation(fields: [memberId], references: [id], onDelete: Restrict)
+  accountId         String?  @map("account_id")
+  loanId            String?  @map("loan_id")
+  loan              Loan?    @relation(fields: [loanId], references: [id], onDelete: Restrict)
+  purpose           String   @default("legacy")
+  checkoutRequestId String?  @unique @map("checkout_request_id")
+  merchantRequestId String?  @map("merchant_request_id")
+  receiptNumber     String?  @unique @map("receipt_number")
+  phoneNumber       String?  @map("phone_number")
+  amount            BigInt
+  status            String   @default("pending")
+  resultCode        Int?     @map("result_code")
+  resultDescription String?  @map("result_description")
+  callbackPayload   String?  @map("callback_payload")
+  settledAt         DateTime? @map("settled_at")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@index([memberId, createdAt])
+  @@index([status, createdAt])
+  @@map("mpesa_transactions")
+}

@@ -1,0 +1,37 @@
+{
+  "name": "micro-sacco-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push --skip-generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "node prisma/seed.js",
+    "db:seed:demo": "node prisma/seed-demo.js",
+    "db:super-admin": "node prisma/seed-super-admin.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "axios": "^1.21.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3",
+    "express-rate-limit": "^7.5.1",
+    "express-session": "^1.19.0",
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^189.0.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.3.1",
+    "openai": "^7.47.0",
+    "prisma": "^5.17.0",
+    "zod": "^4.6.7"
+  }
+}

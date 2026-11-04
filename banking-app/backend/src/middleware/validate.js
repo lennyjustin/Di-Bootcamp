@@ -1,0 +1,18 @@
+export function validate(schema) {
+  return (req, res, next) => {
+    const result = schema.safeParse(req.body);
+
+    if (!result.success) {
+      return res.status(400).json({
+        message: 'Invalid request data',
+        errors: result.error.issues.map(({ path, message }) => ({
+          field: path.join('.'),
+          message,
+        })),
+      });
+    }
+
+    req.validatedBody = result.data;
+    return next();
+  };
+}
