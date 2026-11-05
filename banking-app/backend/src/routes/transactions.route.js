@@ -2,12 +2,11 @@ import express from 'express';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 
 const router = express.Router();
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 router.get('/', authorizePermission('transactions.read'), asyncHandler(async (req, res) => {
   const limit = z.coerce.number().int().min(1).max(100).catch(50).parse(req.query.limit);

@@ -2,7 +2,6 @@ import express from 'express';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -14,7 +13,7 @@ const transactionSchema = z.object({
   channel: z.enum(['cash', 'bank', 'mpesa']).default('cash'),
   description: z.string().trim().max(250).optional(),
 });
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 router.get('/', authorizePermission('savings.read'), asyncHandler(async (req, res) => {
   const accounts = await prisma.savingsAccount.findMany({

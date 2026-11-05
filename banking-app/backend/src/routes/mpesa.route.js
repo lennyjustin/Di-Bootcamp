@@ -3,7 +3,6 @@ import { rateLimit } from 'express-rate-limit';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { saveDarajaCallback } from '../services/daraja.service.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -28,7 +27,7 @@ router.post('/stk/callback', callbackLimiter, asyncHandler(async (req, res) => {
   return res.json({ ResultCode: 0, ResultDesc: 'Accepted' });
 }));
 
-router.get('/transactions', authenticate, auditRequest({ includeReads: true }), authorizePermission('payments.read'), asyncHandler(async (req, res) => {
+router.get('/transactions', authenticate, authorizePermission('payments.read'), asyncHandler(async (req, res) => {
   const query = z.object({
     status: z.enum(['pending', 'initiating', 'processing', 'completed', 'failed', 'review', 'cancelled']).optional(),
     purpose: z.enum(['savings_deposit', 'loan_repayment', 'legacy']).optional(),

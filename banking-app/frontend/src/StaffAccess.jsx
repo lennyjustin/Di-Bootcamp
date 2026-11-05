@@ -262,7 +262,7 @@ export default function StaffAccess({ user }) {
           </div>
           <p className="application-help">Choose the exact API capabilities this person needs. Unchecked capabilities are denied even if the role normally includes them.</p>
           <div className="application-grid">
-            {Object.entries(permissionCatalog).map(([permission, label]) => (
+            {Object.entries(permissionCatalog).filter(([permission]) => permission !== 'audit.read').map(([permission, label]) => (
               <label className="application-consent" key={permission}>
                 <input
                   type="checkbox"
@@ -289,7 +289,7 @@ export default function StaffAccess({ user }) {
           <article className="panel" key={role.id}>
             <strong>{role.label}</strong>
             <p>{role.description}</p>
-            <small>{role.permissions.includes('*') ? 'All permissions' : role.permissions.join(' · ')}</small>
+            <small>{role.permissions.includes('*') ? (role.id === 'super_admin' ? 'All permissions' : 'All operational permissions') : role.permissions.join(' · ')}</small>
           </article>
         ))}
       </div>

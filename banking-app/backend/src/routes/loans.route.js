@@ -2,7 +2,6 @@ import express from 'express';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -61,7 +60,7 @@ const guaranteeReviewSchema = z.object({
   status: z.enum(['approved', 'rejected']),
   reviewNote: z.string().trim().max(500).optional(),
 });
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 function formatLoan(loan) {
   return {

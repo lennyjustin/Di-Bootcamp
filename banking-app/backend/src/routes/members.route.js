@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -30,7 +29,7 @@ const portalAccountSchema = z.object({
   confirmEmail: z.string().trim().email().max(254),
 });
 
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 router.get('/', authorizePermission('members.read'), asyncHandler(async (req, res) => {
   const query = z.coerce.number().int().min(1).max(100).catch(50).parse(req.query.limit);

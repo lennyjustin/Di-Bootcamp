@@ -1,12 +1,11 @@
 import express from 'express';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 
 const router = express.Router();
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 router.get('/', authorizePermission('shares.read'), asyncHandler(async (req, res) => {
   const shares = await prisma.share.findMany({

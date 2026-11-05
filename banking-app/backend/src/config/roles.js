@@ -22,7 +22,7 @@ export const permissionCatalog = {
   'staff.read': 'View staff accounts and role definitions',
   'staff.manage': 'Create staff and change staff roles or status',
   'staff.permissions.manage': 'Set individual staff permission overrides',
-  'audit.read': 'View staff activity audit history',
+  'audit.read': 'View the private system activity report (super administrator only)',
   'health.read': 'View application and database health',
 };
 
@@ -61,8 +61,8 @@ export const roleDefinitions = {
   },
   auditor: {
     label: 'Internal auditor',
-    description: 'Read-only audit history and operational records.',
-    permissions: ['members.read', 'members.profile.read', 'savings.read', 'loans.read', 'loans.analytics', 'shares.read', 'shares.report', 'transactions.read', 'reports.read', 'payments.read', 'audit.read', 'portfolio.summary'],
+    description: 'Read-only operational records; private activity reports are restricted to the super administrator.',
+    permissions: ['members.read', 'members.profile.read', 'savings.read', 'loans.read', 'loans.analytics', 'shares.read', 'shares.report', 'transactions.read', 'reports.read', 'payments.read', 'portfolio.summary'],
   },
   it_support: {
     label: 'IT support',
@@ -80,17 +80,20 @@ export function getRolePermissions(role, overrides = null) {
         console.error(`Invalid permission overrides for role ${role}; denying permissions`);
         return [];
       }
-      return [...new Set(parsed.filter((permission) => allPermissions.includes(permission)))];
+      return [...new Set(parsed.filter((permission) => allPermissions.includes(permission) && permission !== 'audit.read'))];
     } catch (error) {
       console.error(`Failed to parse permission overrides for role ${role}`, error);
       return [];
     }
   }
   const permissions = roleDefinitions[role]?.permissions || [];
-  return permissions.includes('*') ? allPermissions : permissions;
+  return permissions.includes('*')
+    ? allPermissions.filter((permission) => permission !== 'audit.read')
+    : permissions.filter((permission) => permission !== 'audit.read');
 }
 
 export function roleHasPermission(role, permission, overrides = null) {
+  if (permission === 'audit.read') return role === 'super_admin';
   if (role === 'super_admin') return true;
   if (overrides !== null && overrides !== undefined) {
     return getRolePermissions(role, overrides).includes(permission);

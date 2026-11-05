@@ -49,9 +49,9 @@ The super administrator is the highest-trust account and retains full access. It
 
 Permission overrides let the super administrator limit an individual account below its role defaults. Unchecked permissions are denied server-side; restoring role defaults removes the override. Changes to role, permissions, or account status revoke existing sessions so users must sign in again.
 
-The cashier can view members, savings accounts, the ledger, and mobile payments, and can record savings deposits and withdrawals. Credit officers can view member/loan details, submit loan applications, and review guarantor-consented guarantee requests, but cannot approve or disburse loans. Accountants have read-only operational reports. Board/committee users receive only aggregate member, savings, share, and loan-status summaries. Auditors have read-only record access and audit history. IT support can view staff accounts and the role matrix but cannot access member or financial records or secrets. These are conservative initial scopes; changes to financial permissions require explicit SACCO policy approval.
+The cashier can view members, savings accounts, the ledger, and mobile payments, and can record savings deposits and withdrawals. Credit officers can view member/loan details, submit loan applications, and review guarantor-consented guarantee requests, but cannot approve or disburse loans. Accountants have read-only operational reports. Board/committee users receive only aggregate member, savings, share, and loan-status summaries. Auditors have read-only operational record access; the private system activity report is restricted to the super administrator and cannot be granted through role permission overrides. IT support can view staff accounts and the role matrix but cannot access member or financial records or secrets. These are conservative initial scopes; changes to financial permissions require explicit SACCO policy approval.
 
-Authenticated management reads and write requests are recorded at `GET /api/audit`. Audit entries contain the actor, role, HTTP method, path, response status, and timestamp; request bodies and financial values are not copied into the log. This is an operational activity trail, not an immutable or tamper-evident audit system. Retention and export rules have not been configured.
+Every API request that reaches the application audit middleware is recorded, including reads, changes, sign-in attempts, and public requests. The super-admin-only `GET /api/audit?page=&limit=` endpoint returns up to 100 records per page. Events contain the actor (or anonymous status), role, HTTP method, path, response status, and timestamp; request bodies, credentials, query strings, and financial values are not copied into the log. This is an operational activity report, not an immutable or tamper-evident audit system. Retention and export rules have not been configured.
 
 ## API
 
@@ -64,7 +64,7 @@ The dashboard and member portal use the session cookie set by `POST /api/auth/lo
 | `GET /api/staff/users` | List staff accounts without password data (administrator or IT support) |
 | `POST /api/staff` | Create a staff account with a one-time temporary password (administrator; elevated roles require super administrator) |
 | `PATCH /api/staff/:userId` | Change staff role, override individual permissions, or enable/disable account (super administrator; limited staff management for administrators) |
-| `GET /api/audit?limit=` | Read recent staff activity (administrator, super administrator, or auditor) |
+| `GET /api/audit?page=&limit=` | Read the paginated private system activity report (super administrator only) |
 | `GET /api/dashboard/summary` | Read aggregate-only portfolio summary (administrator, accountant, auditor, or board) |
 | `GET /api/auth/session` | Check the current browser session; returns `user: null` when signed out |
 | `POST /api/membership-applications` | Submit a member application and required identity documents |

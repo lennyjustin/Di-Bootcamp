@@ -5,7 +5,6 @@ import { z } from 'zod';
 import prisma from '../config/db.js';
 import { getRolePermissions, permissionCatalog, roleDefinitions } from '../config/roles.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -13,7 +12,8 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 const router = express.Router();
 const staffRoles = Object.keys(roleDefinitions);
 const permissionNames = Object.keys(permissionCatalog);
-const permissionSchema = z.array(z.enum(permissionNames)).max(permissionNames.length);
+const assignablePermissionNames = permissionNames.filter((permission) => permission !== 'audit.read');
+const permissionSchema = z.array(z.enum(assignablePermissionNames)).max(assignablePermissionNames.length);
 const createStaffSchema = z.object({
   fullName: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(254),
@@ -29,7 +29,7 @@ function isSuperAdmin(req) {
   return req.user.role === 'super_admin';
 }
 
-router.use(authenticate, auditRequest({ includeReads: true }));
+router.use(authenticate);
 
 router.get('/roles', authorizePermission('staff.read'), (req, res) => (
   res.json({

@@ -8,7 +8,6 @@ import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import prisma from '../config/db.js';
 import { authenticate } from '../middleware/auth.js';
-import { auditRequest } from '../middleware/audit.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -248,7 +247,7 @@ router.post('/', registrationLimiter, receiveUploads, asyncHandler(async (req, r
   }
 }));
 
-router.get('/', authenticate, auditRequest({ includeReads: true }), authorizePermission('applications.manage'), asyncHandler(async (req, res) => {
+router.get('/', authenticate, authorizePermission('applications.manage'), asyncHandler(async (req, res) => {
   const applications = await prisma.membershipApplication.findMany({
     include: { user: { select: { fullName: true, email: true } } },
     orderBy: { createdAt: 'desc' },
@@ -257,7 +256,7 @@ router.get('/', authenticate, auditRequest({ includeReads: true }), authorizePer
   return res.json({ applications: applications.map(applicationRecord) });
 }));
 
-router.get('/:applicationId/documents/:documentType', authenticate, auditRequest({ includeReads: true }), authorizePermission('applications.manage'), asyncHandler(async (req, res) => {
+router.get('/:applicationId/documents/:documentType', authenticate, authorizePermission('applications.manage'), asyncHandler(async (req, res) => {
   const field = documentTypes[req.params.documentType];
   if (!field) return res.status(404).json({ message: 'Application document not found' });
 
@@ -281,7 +280,7 @@ router.get('/:applicationId/documents/:documentType', authenticate, auditRequest
   return res.attachment(`${req.params.documentType}-document.${extension}`).send(content);
 }));
 
-router.patch('/:applicationId/review', authenticate, auditRequest(), authorizePermission('applications.manage'), validate(reviewSchema), asyncHandler(async (req, res) => {
+router.patch('/:applicationId/review', authenticate, authorizePermission('applications.manage'), validate(reviewSchema), asyncHandler(async (req, res) => {
   const { status, reviewNote } = req.validatedBody;
   const application = await prisma.membershipApplication.findUnique({
     where: { id: req.params.applicationId },

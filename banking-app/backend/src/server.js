@@ -17,6 +17,8 @@ import sharesRoute from './routes/shares.route.js';
 import memberPortalRoute from './routes/member-portal.route.js';
 import staffRoute from './routes/staff.route.js';
 import auditRoute from './routes/audit.route.js';
+import { optionalAuthenticate } from './middleware/auth.js';
+import { auditRequest } from './middleware/audit.js';
 import { allowedOrigins, originGuard } from './middleware/originGuard.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
@@ -43,8 +45,10 @@ app.use(cors({
     return callback(null, false);
   },
 }));
-app.use(express.json({ limit: '32kb' }));
 app.use(cookieParser());
+app.use(auditRequest({ includeReads: true, excludePaths: ['/api/audit'] }));
+app.use(express.json({ limit: '32kb' }));
+app.use(optionalAuthenticate);
 
 app.use('/api', healthRoute);
 app.use('/api/auth', authRoute);

@@ -1,16 +1,16 @@
 import prisma from '../config/db.js';
 
-export function auditRequest({ includeReads = false } = {}) {
+export function auditRequest({ includeReads = false, excludePaths = [] } = {}) {
   return (req, res, next) => {
-    if (!includeReads && ['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
+    if (excludePaths.includes(req.path)
+      || (!includeReads && ['GET', 'HEAD', 'OPTIONS'].includes(req.method))) {
       return next();
     }
 
     const auditEvent = prisma.auditEvent.create({
       data: {
-        actorUserId: req.user.id,
-        actorName: req.user.fullName,
-        actorRole: req.user.role,
+        actorName: 'Unauthenticated request',
+        actorRole: 'anonymous',
         method: req.method,
         path: req.originalUrl.split('?')[0].slice(0, 512),
       },
@@ -20,7 +20,12 @@ export function auditRequest({ includeReads = false } = {}) {
       res.once('finish', () => {
         prisma.auditEvent.update({
           where: { id: event.id },
-          data: { statusCode: res.statusCode },
+          data: {
+            actorUserId: req.user?.id ?? null,
+            actorName: req.user?.fullName ?? 'Unauthenticated request',
+            actorRole: req.user?.role ?? 'anonymous',
+            statusCode: res.statusCode,
+          },
         }).catch((error) => {
           console.error('Failed to record audit response status', error);
         });

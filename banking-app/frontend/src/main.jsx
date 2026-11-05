@@ -14,7 +14,7 @@ import Icon from './Icon.jsx';
 import { apiRequest, currency, dateTime } from './api.js';
 import './index.css';
 
-const navItems = ['Dashboard', 'Board overview', 'Members', 'Savings', 'Loans', 'Shares & dividends', 'Transactions', 'Portfolio insights', 'Reports', 'Membership applications', 'Mobile payments', 'Credit portfolio', 'Staff access', 'Audit trail'];
+const navItems = ['Dashboard', 'Board overview', 'Members', 'Savings', 'Loans', 'Shares & dividends', 'Transactions', 'Portfolio insights', 'Reports', 'Membership applications', 'Mobile payments', 'Credit portfolio', 'Staff access', 'Activity report'];
 const pagePermissions = {
   Dashboard: 'dashboard.read',
   'Board overview': 'portfolio.summary',
@@ -29,7 +29,7 @@ const pagePermissions = {
   'Mobile payments': 'payments.read',
   'Credit portfolio': 'loans.analytics',
   'Staff access': 'staff.read',
-  'Audit trail': 'audit.read',
+  'Activity report': 'audit.read',
 };
 
 function hasPermission(user, permission) {
@@ -899,7 +899,7 @@ function App() {
             </>
           ) : page === 'Board overview' ? <BoardOverview />
             : page === 'Staff access' ? <StaffAccess user={user} />
-              : page === 'Audit trail' ? <AuditTrail />
+              : page === 'Activity report' ? <AuditTrail />
                 : page === 'Membership applications' ? <MembershipApplications />
                   : page === 'Mobile payments' ? <MobilePayments />
                     : page === 'Credit portfolio' ? <CreditPortfolio />
