@@ -2,9 +2,9 @@ import multer from 'multer';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { privateStorageDirectory } from '../config/privateStorage.js';
 
-const documentDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '../../private/loan-applications');
+const documentDirectory = resolve(privateStorageDirectory, 'loan-applications');
 const maxDocumentSize = 5 * 1024 * 1024;
 const documentTypes = ['incomeProof', 'bankStatement', 'guarantorConsent'];
 const extensions = { pdf: 'application/pdf', jpg: 'image/jpeg', png: 'image/png' };

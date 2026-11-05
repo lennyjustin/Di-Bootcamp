@@ -3,10 +3,10 @@ import multer from 'multer';
 import { randomUUID } from 'node:crypto';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import prisma from '../config/db.js';
+import { privateStorageDirectory } from '../config/privateStorage.js';
 import { authenticate } from '../middleware/auth.js';
 import { authorizePermission } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
@@ -15,7 +15,7 @@ import { generateRef } from '../utils/generateRef.js';
 import { rateLimit } from 'express-rate-limit';
 
 const router = express.Router();
-const documentDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '../../private/member-applications');
+const documentDirectory = resolve(privateStorageDirectory, 'member-applications');
 const maxDocumentSize = 5 * 1024 * 1024;
 const upload = multer({
   storage: multer.memoryStorage(),

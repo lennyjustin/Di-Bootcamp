@@ -29,7 +29,8 @@ export async function sendPasswordReset(userId, email) {
   const token = randomBytes(32).toString('base64url');
   const tokenHash = hashToken(token);
   const expiresAt = new Date(Date.now() + resetLifetimeMs);
-  const frontendOrigin = process.env.FRONTEND_ORIGIN?.split(',')[0]?.trim();
+  const frontendOrigin = process.env.FRONTEND_ORIGIN?.split(',')[0]?.trim()
+    || process.env.RENDER_EXTERNAL_URL;
   if (!frontendOrigin) {
     const error = new Error('Password reset link origin is not configured.');
     error.statusCode = 503;

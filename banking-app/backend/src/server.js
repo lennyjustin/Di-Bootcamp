@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -28,13 +30,24 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
 }
 const databaseUrl = process.env.DATABASE_URL || 'file:./prisma/dev.db';
 process.env.DATABASE_URL = databaseUrl;
+const frontendDist = resolve(dirname(fileURLToPath(import.meta.url)), '../../frontend/dist');
 if (!process.env.JWT_SECRET || Buffer.byteLength(process.env.JWT_SECRET) < 32) {
   throw new Error('JWT_SECRET must contain at least 32 bytes of random secret material.');
 }
 
 const app = express();
 app.disable('x-powered-by');
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      'font-src': ["'self'", 'https://fonts.gstatic.com'],
+    },
+  },
+}));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(frontendDist));
+}
 app.use(originGuard);
 app.use(cors({
   credentials: true,
@@ -63,6 +76,15 @@ app.use('/api/members', membersRoute);
 app.use('/api/savings', savingsRoute);
 app.use('/api/loans', loansRoute);
 app.use('/api/mpesa', mpesaRoute);
+app.use('/api', notFound);
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res, next) => {
+    if (!req.accepts('html')) return next();
+    return res.sendFile(resolve(frontendDist, 'index.html'), (error) => {
+      if (error) next(error);
+    });
+  });
+}
 app.use(notFound);
 app.use(errorHandler);
 

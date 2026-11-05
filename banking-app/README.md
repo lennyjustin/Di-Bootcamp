@@ -34,3 +34,15 @@ Prospective members can submit an application with eligibility details and suppo
 - Prisma
 - JWT-backed, HttpOnly role-scoped sessions
 - Safaricom Daraja integration (not enabled for live payments)
+
+## Render deployment
+
+Deploy the `banking-app` directory from the GitHub repository as a single Node.js web service, setting the service's **Root Directory** to `banking-app`. This keeps the frontend and API on the same origin and supports the application's secure session cookies.
+
+- **Build command:** `npm ci --prefix backend && npm run db:generate --prefix backend && npm ci --prefix frontend && npm run build --prefix frontend`
+- **Start command:** `npm run db:push --prefix backend && npm run db:super-admin --prefix backend && npm start --prefix backend`
+- **Health check path:** `/api/health`
+- **Persistent disk:** mount at `/var/data` (at least 1 GB).
+- **Environment:** `NODE_ENV=production`, `DATABASE_URL=file:/var/data/dev.db`, `SACCO_PRIVATE_STORAGE_DIR=/var/data/private`, `JWT_SECRET` (at least 32 random bytes), and `SUPER_ADMIN_NAME`, `SUPER_ADMIN_EMAIL`, `SUPER_ADMIN_PASSWORD` (16–72 UTF-8 bytes).
+
+The start command initializes the empty database schema and creates the first super-administrator using the configured secrets. Subsequent starts leave an existing super-administrator and password unchanged. The SQLite database and private application documents are stored on the persistent disk; keep a separate backup because a persistent disk is not a backup. Do not copy the local development database or uploaded documents to production. Configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM` if password-reset email is required.

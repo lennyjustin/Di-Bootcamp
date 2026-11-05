@@ -1,9 +1,10 @@
-const allowedOrigins = new Set(
-  (process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
+const allowedOrigins = new Set([
+  ...(process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
     .split(',')
     .map((origin) => origin.trim())
-    .filter(Boolean)
-);
+    .filter(Boolean),
+  process.env.RENDER_EXTERNAL_URL,
+].filter(Boolean));
 
 const safeMethods = new Set(['GET', 'HEAD', 'OPTIONS']);
 
