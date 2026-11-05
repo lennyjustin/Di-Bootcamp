@@ -41,7 +41,7 @@ export async function login(req, res, next) {
       include: { membershipApplication: { select: { status: true } } },
     });
 
-    if (!user) {
+    if (!user || !user.passwordHash) {
       await bcrypt.hash(password, 12);
       return res.status(401).json({ message: 'Email or password is incorrect' });
     }
