@@ -161,7 +161,12 @@ function applicationRecord(application) {
   };
 }
 
-router.post('/', registrationLimiter, receiveUploads, asyncHandler(async (req, res) => {
+router.post('/', (req, res, next) => {
+  if (process.env.SACCO_DEMO_MODE === 'true') {
+    return res.status(503).json({ message: 'Online membership applications are disabled in this demo.' });
+  }
+  return next();
+}, registrationLimiter, receiveUploads, asyncHandler(async (req, res) => {
   const parsed = applicationSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(400).json({

@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: micro-sacco-demo
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: banking-app
+    buildCommand: npm ci --prefix backend && npm run db:generate --prefix backend && npm ci --prefix frontend && npm run build --prefix frontend
+    startCommand: npm run db:push --prefix backend && npm run db:super-admin --prefix backend && npm start --prefix backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: SACCO_DEMO_MODE
+        value: "true"
+      - key: FRONTEND_ORIGIN
+        value: https://micro-sacco-demo.onrender.com
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SUPER_ADMIN_NAME
+        value: Micro SACCO Demo Administrator
+      - key: SUPER_ADMIN_EMAIL
+        value: admin@sacco-demo.local
+      - key: SUPER_ADMIN_PASSWORD
+        sync: false

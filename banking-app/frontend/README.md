@@ -12,7 +12,7 @@ The signed-in dashboard provides API-backed member registration/status managemen
 
 ## Environment
 
-Copy `.env.example` to `.env` if the API is not running at `http://localhost:5000/api`, and set `VITE_API_URL` to the backend API origin.
+The Vite development server proxies `/api` to `http://127.0.0.1:5000`, keeping local session cookies on the same host. Use `/api` for same-origin deployments. For a separate frontend deployment, set `VITE_API_URL` to the backend API origin; production builds honor this setting.
 
 Set `VITE_GOOGLE_CLIENT_ID` to the Google Identity Services web client ID to show the Google sign-in button. Set the same `GOOGLE_CLIENT_ID` in the backend environment. Google sign-in does not create accounts. If your Google email differs from your SaccoBanking email, first sign in with your SaccoBanking password, then connect Google from the signed-in account.
 
