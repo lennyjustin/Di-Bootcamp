@@ -11,33 +11,60 @@ class DarajaConfigurationError extends Error {
   }
 }
 
-function getDarajaConfig() {
-  const {
-    DARAJA_CONSUMER_KEY: consumerKey,
-    DARAJA_CONSUMER_SECRET: consumerSecret,
-    DARAJA_ENV: environment = 'sandbox',
-    DARAJA_SHORTCODE: shortcode,
-    DARAJA_PASSKEY: passkey,
-    DARAJA_CALLBACK_URL: callbackUrl,
-    DARAJA_TRANSACTION_TYPE: transactionType = 'CustomerPayBillOnline',
-  } = process.env;
+function configuredValue(...names) {
+  for (const name of names) {
+    const value = process.env[name]?.trim();
+    if (!value || /^your(?:[_\s-]|$)|^placeholder(?:[_\s-]|$)|_here$/i.test(value)) continue;
+    return value;
+  }
+  return undefined;
+}
 
-  const placeholders = ['your_key', 'your_secret', 'your_sandbox_passkey'];
-  if (!consumerKey || !consumerSecret || !shortcode || !passkey || !callbackUrl
-    || placeholders.includes(consumerKey) || placeholders.includes(consumerSecret) || placeholders.includes(passkey)) {
+function configuredEndpoint(value, fallback, settingName, expectedHostname) {
+  let endpoint;
+  try {
+    endpoint = new URL(value || fallback);
+  } catch {
+    throw new DarajaConfigurationError(`${settingName} must be a valid public HTTPS URL.`);
+  }
+  if (endpoint.protocol !== 'https:'
+    || endpoint.username
+    || endpoint.password
+    || endpoint.hostname === 'localhost'
+    || endpoint.hostname.endsWith('.localhost')
+    || endpoint.hostname.endsWith('.local')
+    || isIP(endpoint.hostname)) {
+    throw new DarajaConfigurationError(`${settingName} must be a public HTTPS URL.`);
+  }
+  if (endpoint.hostname !== expectedHostname) {
+    throw new DarajaConfigurationError(`${settingName} must use ${expectedHostname} for the selected environment.`);
+  }
+  return endpoint;
+}
+
+function getDarajaConfig() {
+  const consumerKey = configuredValue('DARAJA_CONSUMER_KEY', 'mpesa_consumer_key');
+  const consumerSecret = configuredValue('DARAJA_CONSUMER_SECRET', 'mpesa_consumer_secret');
+  const environment = configuredValue('DARAJA_ENV', 'mpesa_environment') || 'sandbox';
+  const shortcode = configuredValue('DARAJA_SHORTCODE', 'mpesa_short_code');
+  const passkey = configuredValue('DARAJA_PASSKEY', 'mpesa_passkey');
+  const callbackUrl = configuredValue('DARAJA_CALLBACK_URL', 'mpesa_callback_url');
+  const transactionType = configuredValue('DARAJA_TRANSACTION_TYPE', 'mpesa_transaction_type') || 'CustomerPayBillOnline';
+
+  if (!consumerKey || !consumerSecret || !shortcode || !passkey || !callbackUrl) {
     throw new DarajaConfigurationError('Daraja credentials and callback URL are not configured.');
   }
   if (!['sandbox', 'production'].includes(environment)) {
-    throw new DarajaConfigurationError('DARAJA_ENV must be sandbox or production.');
+    throw new DarajaConfigurationError('DARAJA_ENV or mpesa_environment must be sandbox or production.');
   }
   if (!['CustomerPayBillOnline', 'CustomerBuyGoodsOnline'].includes(transactionType)) {
-    throw new DarajaConfigurationError('DARAJA_TRANSACTION_TYPE must be CustomerPayBillOnline or CustomerBuyGoodsOnline.');
+    throw new DarajaConfigurationError('DARAJA_TRANSACTION_TYPE or mpesa_transaction_type must be CustomerPayBillOnline or CustomerBuyGoodsOnline.');
   }
   let callback;
   try {
     callback = new URL(callbackUrl);
   } catch {
-    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL must be a valid public HTTPS URL.');
+    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL or mpesa_callback_url must be a valid public HTTPS URL.');
   }
   if (callback.protocol !== 'https:'
     || callback.hostname === 'your-domain.com'
@@ -45,14 +72,26 @@ function getDarajaConfig() {
     || callback.hostname.endsWith('.localhost')
     || callback.hostname.endsWith('.local')
     || isIP(callback.hostname)) {
-    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL must be configured as a public HTTPS URL.');
+    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL or mpesa_callback_url must be configured as a public HTTPS URL.');
   }
   if (environment === 'production' && shortcode === '174379') {
     throw new DarajaConfigurationError('The sandbox test shortcode cannot be used in production.');
   }
   if (!callback.pathname.endsWith('/api/mpesa/stk/callback')) {
-    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL must end in /api/mpesa/stk/callback.');
+    throw new DarajaConfigurationError('DARAJA_CALLBACK_URL or mpesa_callback_url must end in /api/mpesa/stk/callback.');
   }
+
+  const baseUrl = environment === 'production'
+    ? 'https://api.safaricom.co.ke'
+    : 'https://sandbox.safaricom.co.ke';
+  const expectedHostname = new URL(baseUrl).hostname;
+  const accessTokenEndpoint = configuredEndpoint(
+    configuredValue('DARAJA_ACCESS_TOKEN_URL', 'mpesa_access_token_url'),
+    `${baseUrl}/oauth/v1/generate`,
+    'DARAJA_ACCESS_TOKEN_URL or mpesa_access_token_url',
+    expectedHostname,
+  );
+  accessTokenEndpoint.searchParams.set('grant_type', 'client_credentials');
 
   return {
     consumerKey,
@@ -62,9 +101,19 @@ function getDarajaConfig() {
     passkey,
     callbackUrl,
     transactionType,
-    baseUrl: environment === 'production'
-      ? 'https://api.safaricom.co.ke'
-      : 'https://sandbox.safaricom.co.ke',
+    accessTokenUrl: accessTokenEndpoint.toString(),
+    stkPushUrl: configuredEndpoint(
+      configuredValue('DARAJA_STK_PUSH_URL', 'mpesa_stk_push_url'),
+      `${baseUrl}/mpesa/stkpush/v1/processrequest`,
+      'DARAJA_STK_PUSH_URL or mpesa_stk_push_url',
+      expectedHostname,
+    ).toString(),
+    stkQueryUrl: configuredEndpoint(
+      configuredValue('DARAJA_STK_QUERY_URL', 'mpesa_query_url'),
+      `${baseUrl}/mpesa/stkpushquery/v1/query`,
+      'DARAJA_STK_QUERY_URL or mpesa_query_url',
+      expectedHostname,
+    ).toString(),
   };
 }
 
@@ -116,7 +165,7 @@ async function getDarajaToken(config = getDarajaConfig()) {
   }
   const authorization = Buffer.from(`${config.consumerKey}:${config.consumerSecret}`).toString('base64');
   const data = await requestJson(
-    `${config.baseUrl}/oauth/v1/generate?grant_type=client_credentials`,
+    config.accessTokenUrl,
     { headers: { Authorization: `Basic ${authorization}` } },
   );
   if (typeof data?.access_token !== 'string' || !data.access_token) {
@@ -168,7 +217,7 @@ export async function initiateStkPush({ phone, amount, accountReference, descrip
   const timestamp = darajaTimestamp();
   const normalizedPhone = normalizeKenyanPhone(phone);
   const data = await requestJson(
-    `${config.baseUrl}/mpesa/stkpush/v1/processrequest`,
+    config.stkPushUrl,
     {
       method: 'POST',
       headers: {
@@ -201,7 +250,7 @@ export async function queryStkStatus(checkoutRequestId) {
   const config = getDarajaConfig();
   const token = await getDarajaToken(config);
   const timestamp = darajaTimestamp();
-  return requestJson(`${config.baseUrl}/mpesa/stkpushquery/v1/query`, {
+  return requestJson(config.stkQueryUrl, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,

@@ -876,7 +876,12 @@ function App() {
               </div>
               <div className="mpesa-card">
                 <div className="mpesa-icon">MP</div>
-                <div><strong>Daraja payments</strong><p>{dashboard?.darajaEnabled ? 'Members can initiate STK Push payments in their portal.' : 'Configure sandbox credentials and a public HTTPS callback to enable member STK Push.'}</p></div>
+                <div>
+                  <strong>Daraja payments</strong>
+                  <p>{dashboard?.darajaEnabled
+                    ? 'Members can initiate STK Push payments in their portal.'
+                    : 'Add real Daraja sandbox API credentials in Render: DARAJA_CONSUMER_KEY, DARAJA_CONSUMER_SECRET, DARAJA_SHORTCODE, and DARAJA_PASSKEY. Set DARAJA_CALLBACK_URL to https://micro-sacco-demo-app.onrender.com/api/mpesa/stk/callback in Render and in your Daraja app. Your Daraja account email and password are not API credentials.'}</p>
+                </div>
               </div>
               <div className="mpesa-amounts">
                 {dashboard?.latestMpesa
