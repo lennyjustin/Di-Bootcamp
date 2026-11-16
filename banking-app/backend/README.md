@@ -56,7 +56,7 @@ Every API request that reaches the application audit middleware is recorded, inc
 
 ## API
 
-The dashboard and member portal use the session cookie set by `POST /api/auth/login`, which accepts `email`, `password`, and `accountType` (`member`, `staff`, `admin`, or `super_admin`). The backend verifies the selected account type against the stored role; selecting a higher role does not grant extra permissions. `GET /api/auth/me` returns the signed-in account role and full name; `POST /api/auth/logout` clears its session. Staff APIs enforce the role-specific permissions documented below; administrator provisioning remains separate from member portal accounts.
+The dashboard and member portal use the session cookie set by `POST /api/auth/login`, which accepts `email` and `password`. The backend loads the account role and permissions from the database; a user cannot select or elevate their role at sign-in. `GET /api/auth/me` returns the signed-in account role and full name; `POST /api/auth/logout` clears its session. Staff APIs enforce the role-specific permissions documented below; administrator provisioning remains separate from member portal accounts. Expired or outdated optional session cookies are cleared so they do not block a fresh sign-in.
 
 | Endpoint | Purpose |
 |---|---|

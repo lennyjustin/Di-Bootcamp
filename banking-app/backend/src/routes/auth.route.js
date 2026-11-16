@@ -44,7 +44,6 @@ const loginSchema = z.object({
     (password) => Buffer.byteLength(password, 'utf8') <= 72,
     'Password is too long'
   ),
-  accountType: accountTypeSchema,
 });
 const resetRequestSchema = z.object({
   email: z.string().trim().email().max(254),

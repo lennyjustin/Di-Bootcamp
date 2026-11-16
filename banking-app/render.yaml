@@ -20,8 +20,8 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: SUPER_ADMIN_NAME
-        value: Micro SACCO Demo Administrator
+        value: SACCO Super Administrator
       - key: SUPER_ADMIN_EMAIL
-        value: admin@sacco-demo.local
+        value: superadmin@sacco.local
       - key: SUPER_ADMIN_PASSWORD
         sync: false

@@ -45,7 +45,6 @@ function homePageForUser(user) {
 function Login({ onLogin, onBack, onSignUp, onForgotPassword }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [accountType, setAccountType] = useState('staff');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -57,7 +56,7 @@ function Login({ onLogin, onBack, onSignUp, onForgotPassword }) {
     try {
       const result = await apiRequest('/auth/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password, accountType }),
+        body: JSON.stringify({ email, password }),
       });
       onLogin(result.user);
     } catch (requestError) {
@@ -76,17 +75,8 @@ function Login({ onLogin, onBack, onSignUp, onForgotPassword }) {
           <div className="brand-text">Sacco<span>Banking</span><small>Secure account sign in</small></div>
         </div>
         <h1>Welcome back</h1>
-        <p>Staff use the account provided by the SACCO. Members can use the email and password from an approved membership application, or the portal credentials provided by staff.</p>
+        <p>Sign in with the email and password for your SACCO account. Your assigned role controls the pages and actions available after sign in.</p>
         {error && <div className="alert error-alert" role="alert">{error}</div>}
-        <label className="form-field">
-          Account type
-          <select value={accountType} onChange={(event) => setAccountType(event.target.value)} required>
-            <option value="staff">Staff</option>
-            <option value="admin">Administrator</option>
-            <option value="super_admin">Super administrator</option>
-            <option value="member">Member</option>
-          </select>
-        </label>
         <label className="form-field">
           Email address
           <input

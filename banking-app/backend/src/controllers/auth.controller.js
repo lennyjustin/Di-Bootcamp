@@ -35,7 +35,7 @@ function issueSession(user, res) {
 
 export async function login(req, res, next) {
   try {
-    const { email, password, accountType } = req.validatedBody;
+    const { email, password } = req.validatedBody;
     const user = await prisma.user.findUnique({
       where: { email: email.toLowerCase() },
       include: { membershipApplication: { select: { status: true } } },
@@ -49,10 +49,6 @@ export async function login(req, res, next) {
     const passwordMatches = await bcrypt.compare(password, user.passwordHash);
     if (!passwordMatches) {
       return res.status(401).json({ message: 'Email or password is incorrect' });
-    }
-
-    if (!accountMatchesType(user.role, accountType)) {
-      return res.status(401).json({ message: 'Email or password is incorrect for the selected account type' });
     }
 
     if (!user.isActive) {
